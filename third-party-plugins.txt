@@ -14,8 +14,4 @@ Here are some third-party plugins that I've found useful for using WordPress to 
 
 5. Export Users to CSV let's you run reports on your users, including all user meta data. If you use the "Favorite Posts" functionality, you'll need to add that field into the report by modifying the plugin. At the end of the $data_keys array, add 'faveposts'. (http://wordpress.org/extend/plugins/export-users-to-csv/)
 
-<<<<<<< HEAD
-6. Bootstrap isn't a plugin, but it does feature a ton of useful add-ons for building web apps, including alerts, modals, drop-downs and more. Brought you by the fine folks at Twitter. (http://twitter.github.com/bootstrap/)
-=======
 6. Bootstrap isn't a plugin, but it does feature a ton of useful add-ons for building web apps, including alerts, modals, drop-downs and more. Brought you by the fine folks at Twitter. (http://getbootstrap.com)
->>>>>>> Updated Third Party Plugins
