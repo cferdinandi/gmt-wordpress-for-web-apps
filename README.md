@@ -1,4 +1,4 @@
-# The Web App Starter Kit
+# WordPress for Web Apps
 A collection of templates and plugins to help you use WordPress to power web apps.
 
 **Version: 2.3**
@@ -20,7 +20,7 @@ A collection of templates and plugins to help you use WordPress to power web app
 * A list of other third-party plugins I’ve found useful for this kind of thing.
 
 ## What's Missing?
-Styling. The Web App Start Kit contains the PHP snippets and basic HTML to get a web app up and running on WordPress.
+Styling. WordPress for Web Apps contains the PHP snippets and basic HTML to get a web app up and running on WordPress.
 
 Tailor the look and feel to fit your design.
 
