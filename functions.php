@@ -659,6 +659,28 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
 
 
 /* ======================================================================
+ * Logout-Link-Shortcode.php
+ * A PHP script and shortcode for the WordPress logout link.
+ *
+ * Add a logout link in the WordPress content editor with the [logout_link] shortcode.
+ * ====================================================================== */
+
+// LOGOUT SHORTCODE
+
+function wpwebapp_logout() {
+
+    $logout = wp_logout_url( home_url() );
+
+	// Display the form
+	return $logout;
+}
+add_shortcode( 'logout_link', 'wpwebapp_logout' );
+
+
+
+
+
+/* ======================================================================
  * Disable-Admin-Bar.php
  * Disable admin bar for all users.
  * Script by Chris Ferdinandi - http://gomakethings.com
