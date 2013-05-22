@@ -1,4 +1,12 @@
-<?php get_header(); /*
+<?php 
+
+// If user is logged out, redirect them to the homepage
+if (!is_user_logged_in()) {
+	wp_redirect( home_url() );
+	exit;
+}
+
+get_header(); /*
 Template Name: Logged In Only
 */
 
@@ -8,21 +16,15 @@ Template Name: Logged In Only
  * ====================================================================== */
 ?>
 
-<?php if (is_user_logged_in()) : // If the user is logged in ?>
+<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+    <header>
+        <h1><?php the_title(); ?></h1>
+    </header>
 
-        <?php the_content(); ?>
+    <?php the_content(); ?>
 
-    <?php endwhile; endif; ?>
-
-
-<?php else : // If the user is NOT logged in ?>
-
-    <!-- Content for logged-out users. -->
-
-
-<?php endif; // End "If user logged in" statement ?>
+<?php endwhile; endif; ?>
 
 
 <?php get_footer(); ?>
