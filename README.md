@@ -7,10 +7,12 @@ A collection of functions, templates and plugins that transform WordPress into a
 To get started with WordPress for Web Apps, [view the online tutorial](http://cferdinandi.github.com/web-app-starter-kit/).
 
 ## Changelog
-* 5/17/2013
+* v2.1 (June 6, 2013)
+  * Split functions into individual files for easier inclusion and exclusion.
+* v2.0 (May 17, 2013)
   * Completely rebuilt.
-* 1/23/2013
-  * Initial GitHub Release (previously self-hosted)
+* v1.0 (January 23, 2013)
+  * Initial GitHub Release (previously self-hosted).
 
 ## License
-This starter kit, like WordPress, is licensed under the [GNU General Public License](http://www.gnu.org/copyleft/gpl.html) as published by the Free Software Foundation.
+WordPress for Web Apps is licensed under [WTFPL](http://www.wtfpl.net/).

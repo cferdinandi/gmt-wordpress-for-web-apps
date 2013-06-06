@@ -6,14 +6,14 @@ if (is_user_logged_in()) {
 	exit;
 }
 
-get_header(); /*
-Template Name: Logged Out Only
-*/
+get_header();
+
+/* Template Name: Logged Out Only */
 
 /* ======================================================================
- * logged-out-only.php
- * Template for content only accessible to logged-out users.
- * (For example, a reset lost password page.)
+    logged-out-only.php
+    Template for content only accessible to logged-out users.
+    (For example, a login screen.)
  * ====================================================================== */
 ?>
 

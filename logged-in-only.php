@@ -6,13 +6,13 @@ if (!is_user_logged_in()) {
 	exit;
 }
 
-get_header(); /*
-Template Name: Logged In Only
-*/
+get_header(); 
+
+/* Template Name: Logged In Only */
 
 /* ======================================================================
- * logged-in-only.php
- * Template for content only accessible to logged-in users.
+    logged-in-only.php
+    Template for content only accessible to logged-in users.
  * ====================================================================== */
 ?>
 
