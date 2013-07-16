@@ -55,7 +55,7 @@ function wpwebapp_pwform() {
                 <input type="password" name="currentpass" id="currentpass" class="input-large" value="" tabindex="1" autofocus>
             </div>
             <div>
-                <labelfor="pass1">
+                <label for="pass1">
                     New Password<br>
                     <em class="text-muted text-small">Must be at least 8 characters long</em>
                 </label>
