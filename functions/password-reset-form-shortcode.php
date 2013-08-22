@@ -64,8 +64,7 @@ add_shortcode( 'pwreset', 'wpwebapp_pwreset' );
 // Get user IDs from the database
 global $wpdb, $user_ID;
 
-// Validates URL for form processing
-// (In truth, I'm not sure why we need to do this, but the page works so I'm not touching it)
+// Sanitize and prepare the current URL
 function tg_validate_url() {
 	global $post;
 	$page_url = esc_url(get_permalink( $post->ID ));
