@@ -66,20 +66,31 @@ global $wpdb, $user_ID;
 
 // Sanitize and prepare the current URL
 function tg_validate_url() {
-	global $post;
-	$page_url = esc_url(get_permalink( $post->ID ));
-	$urlget = strpos($page_url, "?");
-	if ($urlget === false) {
-		$concate = "?";
-	} 
-	else {
-		$concate = "&";
-	}
-	return $page_url.$concate;
+    
+    global $post;
+    
+    $page_url = get_permalink( $post->ID );
+    if ( $page_url === false ) {
+        $page_url  = @( $_SERVER["HTTPS"] != 'on' ) ? 'http://'.$_SERVER["SERVER_NAME"] :  'https://'.$_SERVER["SERVER_NAME"];
+        $page_url .= ( $_SERVER["SERVER_PORT"] !== 80 ) ? ":".$_SERVER["SERVER_PORT"] : "";
+        $page_url .= $_SERVER["REQUEST_URI"];
+    }
+    $page_url = esc_url($page_url);
+
+    $urlget = strpos($page_url, "?");
+    if ( $urlget === false ) {
+        $concate = "?";
+    } 
+    else {
+        $concate = "&";
+    }
+
+    return $page_url . $concate;
+
 }
 
 // If password reset submitted, send and receive information from the database
-if(isset($_GET['key']) && $_GET['action'] == "reset_pwd") {
+if ( isset($_GET['key']) && $_GET['action'] == "reset_pwd" ) {
 
     // Success Page
     $reset_success = get_option('home') . '?password-reset=success';
@@ -125,7 +136,7 @@ if(isset($_GET['key']) && $_GET['action'] == "reset_pwd") {
 }
 
 // If form submitted
-if($_POST['action'] == "tg_pwd_reset"){
+if ( $_POST['action'] == "tg_pwd_reset" ) {
 
     // Get current page URL
     $url_current  = @( $_SERVER["HTTPS"] != 'on' ) ? 'http://'.$_SERVER["SERVER_NAME"] :  'https://'.$_SERVER["SERVER_NAME"];
