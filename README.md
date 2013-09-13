@@ -8,12 +8,11 @@ To get started with WordPress for Web Apps, [view the online tutorial](http://cf
 
 ## Roadmap
 
-**Version 2.2**
-* Convert generic PHP functions to WordPress specific where applicable.
-* Add sanitization and validation for all data fields.
-
-**Version 3**
-* Considering converting functions to plugins.
+* v2.2
+  * Convert generic PHP functions to WordPress specific where applicable.
+  * Add sanitization and validation for all data fields.
+* v3
+  * Considering converting functions to plugins.
 
 ## Changelog
 * v2.1 (June 7, 2013)
