@@ -7,12 +7,12 @@ A collection of functions, templates and plugins that transform WordPress into a
 To get started with WordPress for Web Apps, [view the online tutorial](http://cferdinandi.github.com/web-app-starter-kit/).
 
 ## Roadmap
-
-* v2.2
+* v3
+  * Convert to plugin.
   * Convert generic PHP functions to WordPress specific where applicable.
   * Add sanitization and validation for all data fields.
-* v3
-  * Considering converting functions to plugins.
+  * Redesign `forgot password` form.
+  * Add options menu to admin screen.
 
 ## Changelog
 * v2.1 (June 7, 2013)
