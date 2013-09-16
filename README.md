@@ -13,6 +13,8 @@ To get started with WordPress for Web Apps, [view the online tutorial](http://cf
   * Add sanitization and validation for all data fields.
   * Redesign `forgot password` form.
   * Add options menu to admin screen.
+  * Add front-end user profile fields.
+  * Redesign sign-up form for better UX.
 
 ## Changelog
 * v2.1 (June 7, 2013)
