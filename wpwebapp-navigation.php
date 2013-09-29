@@ -22,24 +22,20 @@
 // Clone existing navigation menus and create logged out versions
 function wpwebapp_register_loggedout_menus() {
     $default_menus = get_registered_nav_menus();
-    $loggedin_menus = array();
+    $loggedout_menus = array();
 
     foreach ( $default_menus as $slug => $name ) {
-        $loggedin_menus[$slug . '_wpwebapp_logged-out'] = $name . ' - Logged Out';
+        $loggedout_menus[$slug . '_wpwebapp_logged-out'] = $name . ' - Logged Out';
     }
 
-    register_nav_menus( $loggedin_menus );
+    register_nav_menus( $loggedout_menus );
 }
 add_action( 'init', 'wpwebapp_register_loggedout_menus' );
 
 
 // Dynamically serve the menu based on whether or not the user is logged in
 function wpwebapp_serve_dynamic_menus( $content ) {
-
-    $loggedin_theme_location = $content['theme_location'] . '_wpwebapp_logged-out';
-    $active_menu_locations = get_nav_menu_locations();
-
-    if ( is_user_logged_in() && !empty($content['theme_location']) && $active_menu_locations[$loggedin_theme_location] != 0 && array_key_exists($loggedin_theme_location, $active_menu_locations) ) {
+    if ( is_user_logged_in() ) {
         return $content;
     } else {
         $content['theme_location'] = $content['theme_location'] . '_wpwebapp_logged-out';
@@ -63,13 +59,14 @@ function wpwebapp_get_logout_url() {
     $logout = wp_logout_url( $front_page );
     return $logout;
 }
-add_shortcode( 'wpwebapp_logout_url', 'wpwebapp_get_logout_url' );
+add_shortcode( 'wpwa_logout_url', 'wpwebapp_get_logout_url' );
 
 
 // Logout Link Navigation Menu
 // Let's you use the logout shortcode with `wp_nav_menu()`
 function wpwebapp_menu_logout_url( $menu ){
-	return str_replace( 'wpwebapp_logout_url', preg_replace( '~^(?:f|ht)tps?://~i', '', wp_logout_url( home_url() ) ), do_shortcode( $menu ) );
+    $logout_url = wpwebapp_get_logout_url();
+	return str_replace( 'wpwa_logout_url', preg_replace( '~^(?:f|ht)tps?://~i', '', $logout_url ), do_shortcode( $menu ) );
 }
 add_filter('wp_nav_menu', 'wpwebapp_menu_logout_url');
 
@@ -95,7 +92,7 @@ add_shortcode( 'wpwebapp_display_username', 'wpwebapp_display_username' );
 // Let's you use the username shortcode with `wp_nav_menu()`
 function wpwebapp_menu_display_username( $menu ){
 	$username = wpwebapp_display_username();
-	return str_replace( '[wpwebapp_display_username]', $username, do_shortcode( $menu ) );
+	return str_replace( '[wpwa_display_username]', $username, do_shortcode( $menu ) );
 }
 add_filter('wp_nav_menu', 'wpwebapp_menu_display_username');
 
