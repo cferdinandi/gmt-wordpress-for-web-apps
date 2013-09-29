@@ -101,7 +101,7 @@ function wpwebapp_form_login() {
     return $form;
 
 }
-add_shortcode( 'wpwebapp_login_form', 'wpwebapp_form_login' );
+add_shortcode( 'wpwa_login_form', 'wpwebapp_form_login' );
 
 
 // Create & Display Signup Form
@@ -127,7 +127,7 @@ function wpwebapp_form_signup() {
     return $form;
 
 }
-add_shortcode( 'wpwebapp_signup_form', 'wpwebapp_form_signup' );
+add_shortcode( 'wpwa_signup_form', 'wpwebapp_form_signup' );
 
 
 // Create & Display Change Password Form
@@ -151,7 +151,7 @@ function wpwebapp_form_pw_change() {
     return $form;
 
 }
-add_shortcode( 'wpwebapp_pw_change_form', 'wpwebapp_form_pw_change' );
+add_shortcode( 'wpwa_pw_change_form', 'wpwebapp_form_pw_change' );
 
 
 // Create Forgot Password Form
@@ -216,7 +216,7 @@ function wpwebapp_form_pw_forgot_and_reset() {
     return $form;
 
 }
-add_shortcode( 'wpwebapp_forgot_pw_form', 'wpwebapp_form_pw_forgot_and_reset' );
+add_shortcode( 'wpwa_forgot_pw_form', 'wpwebapp_form_pw_forgot_and_reset' );
 
 
 
