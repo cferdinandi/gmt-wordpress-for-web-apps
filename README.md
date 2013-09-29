@@ -19,6 +19,7 @@ To get started with WordPress for Web Apps, [view the online tutorial](http://cf
   * Add "Update Profile" options to the front-end for users.
   * Add a "restrict to these users" by email option (Beta testers, for example).
   * Add Gravatar shortcode (with size argument).
+  * Add option to set default user access permission.
 
 
 ## Changelog
