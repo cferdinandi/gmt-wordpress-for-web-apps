@@ -80,11 +80,9 @@ add_action( 'wp_logout', 'wpwebapp_logout_redirect' );
 function wpwebapp_disable_admin_bar(){
     $disable_admin_bar = wpwebapp_get_block_admin_access();
     if ( $disable_admin_bar == 'hide' ) {
-        return false;
-    } else {
-        return true;
+        show_admin_bar( false );
     }
 }
-add_filter( 'show_admin_bar' , 'wpwebapp_disable_admin_bar');
+add_filter( 'init' , 'wpwebapp_disable_admin_bar');
 
 ?>
