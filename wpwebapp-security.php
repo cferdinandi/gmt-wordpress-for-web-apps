@@ -77,7 +77,7 @@ add_action( 'wp_logout', 'wpwebapp_logout_redirect' );
     Disable WordPress admin bar for all users.
  * ====================================================================== */
 
-function wpwebapp_disable_admin_bar(){
+function wpwebapp_disable_admin_bar() {
     $disable_admin_bar = wpwebapp_get_block_admin_access();
     if ( $disable_admin_bar == 'hide' ) {
         show_admin_bar( false );

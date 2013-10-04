@@ -23,6 +23,8 @@ To get started with WordPress for Web Apps, [view the online tutorial](http://cf
 
 
 ## Changelog
+* v3.1 (October 4, 2013)
+  * Updated `wpwebapp_disable_admin_bar()` to allow user preferences for users who have access.
 * v3.0 (September 28, 2013)
   * Converted from a collection of theme functions to a plugin.
   * Completely rebuilt forms for better consistency, security, and UX.
