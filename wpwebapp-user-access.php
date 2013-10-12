@@ -90,7 +90,7 @@ function wpwebapp_process_user_access_page_settings() {
     if ( $user_access_setting == 'loggedin' && !is_user_logged_in() ) {
         wp_safe_redirect( $redirect_logged_out, 302 );
         exit;
-    } else if ( $user_access_setting == 'loggedout' && is_user_logged_in() ) {
+    } else if ( $user_access_setting == 'loggedout' && is_user_logged_in() && !is_admin() ) {
         wp_safe_redirect( $redirect_logged_in, 302 );
         exit;
     }
