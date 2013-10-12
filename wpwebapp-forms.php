@@ -506,7 +506,7 @@ add_action('init', 'wpwebapp_process_pw_forgot');
 function wpwebapp_process_pw_reset_url() {
 
     // Check for password reset URL
-    if ( $_GET['action'] === 'reset-pw' ) {
+    if ( isset( $_GET['action'] ) && $_GET['action'] === 'reset-pw' ) {
 
         // Get and sanitize current URL
         $referer = esc_url_raw( wpwebapp_get_url() );

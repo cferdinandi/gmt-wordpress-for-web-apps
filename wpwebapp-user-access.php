@@ -55,7 +55,7 @@ function wpwebapp_user_access_fields() {
 function wpwebapp_save_user_access_settings( $post_id, $post ) {
 
     // Verify data came from edit screen and user has permission to edit post
-    if ( wp_verify_nonce( $_POST['wpwebapp-user-access-fields'], 'wpwebapp-user-access-fields-nonce' ) && current_user_can( 'edit_post', $post->ID ) ) {
+    if ( isset( $_POST['wpwebapp-user-access-fields'] ) && wp_verify_nonce( $_POST['wpwebapp-user-access-fields'], 'wpwebapp-user-access-fields-nonce' ) && current_user_can( 'edit_post', $post->ID ) ) {
 
         // Save setting to the database
         $user_access_setting = $_POST['wpwebapp-user-access-setting'];
