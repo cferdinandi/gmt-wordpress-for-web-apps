@@ -12,17 +12,9 @@ WordPress for Web Apps provides the essential components you need to power your 
 To get started with WordPress for Web Apps, [view the online tutorial](http://cferdinandi.github.com/web-app-starter-kit/).
 
 
-## Roadmap
-* v3.x
-  * Custom "password reset" and "welcome message" email settings.
-  * Add "Delete Account" option to the front-end for users.
-  * Add "Update Profile" options to the front-end for users.
-  * Add a "restrict to these users" by email option (Beta testers, for example).
-  * Add Gravatar shortcode (with size argument).
-  * Add option to set default user access permission.
-
-
 ## Changelog
+* v3.2 (October 18, 2013)
+  * Fixed [incorrect i18n](https://github.com/cferdinandi/web-app-starter-kit/issues/12).
 * v3.1 (October 4, 2013)
   * Updated `wpwebapp_disable_admin_bar()` to allow user preferences for users who have access.
 * v3.0 (September 28, 2013)

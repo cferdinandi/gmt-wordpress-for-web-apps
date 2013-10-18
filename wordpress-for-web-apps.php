@@ -5,7 +5,7 @@
     Plugin Name: WordPress for Web Apps
     Plugin URI: http://cferdinandi.github.io/web-app-starter-kit/
     Description: Transform WordPress into a web app engine.
-    Version: 3.1
+    Version: 3.2
     Author: Chris Ferdinandi
     Author URI: http://gomakethings.com
     License: MIT
