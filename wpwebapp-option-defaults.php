@@ -118,7 +118,7 @@ function wpwebapp_get_block_admin_access() {
 function wpwebapp_get_redirect_url_logged_in() {
     $options = wpwebapp_get_plugin_options();
     if ( $options['redirect_logged_in'] == '' ) {
-        $setting = home_url();
+        $setting = site_url();
     } else {
         $setting = $options['redirect_logged_in'];
     }
@@ -129,7 +129,7 @@ function wpwebapp_get_redirect_url_logged_in() {
 function wpwebapp_get_redirect_url_logged_out() {
     $options = wpwebapp_get_plugin_options();
     if ( $options['redirect_logged_out'] == '' ) {
-        $setting = home_url();
+        $setting = site_url();
     } else {
         $setting = $options['redirect_logged_out'];
     }
