@@ -242,21 +242,21 @@ function wpwebapp_get_pw_requirements_text() {
 
     if ( $options['pw_requirement_text'] == '' ) {
         if ( $requires_letters == 'on' && $requires_numbers == 'on' && $requires_special_chars == 'on' ) {
-                $setting = __( '<div>Use at least one letter, one number, one special character, and ' . $pw_min_length . ' characters.</div>', 'wpwebapp' );
+                $setting = '<div>' . sprintf( __( 'Use at least one letter, one number, one special character, and %d characters', 'kraken' ), $pw_min_length ) . '</div>';
             } else if ( $requires_letters == 'on' && $requires_numbers == 'on' ) {
-                $setting = __( '<div>Use at least one letter, one number, and ' . $pw_min_length . ' characters.</div>', 'wpwebapp' );
+                $setting = '<div>' . sprintf( __( 'Use at least one letter, one number, and %d characters', 'kraken' ), $pw_min_length ) . '</div>';
             } else if ( $requires_letters == 'on' && $requires_special_chars == 'on' ) {
-                $setting = __( '<div>Use at least one letter, one special character, and ' . $pw_min_length . ' characters.</div>', 'wpwebapp' );
+                $setting = '<div>' . sprintf( __( 'Use at least one letter, one special character, and %d characters', 'kraken' ), $pw_min_length ) . '</div>';
             } else if ( $requires_numbers == 'on' && $requires_special_chars == 'on' ) {
-                $setting = __( '<div>Use at least one number, one special character, and ' . $pw_min_length . ' characters.</div>', 'wpwebapp' );
+                $setting = '<div>' . sprintf( __( 'Use at least one number, one special character, and %d characters', 'kraken' ), $pw_min_length ) . '</div>';
             } else if ( $requires_letters == 'on' ) {
-                $setting = __( '<div>Use at least one letter and ' . $pw_min_length . ' characters.</div>', 'wpwebapp' );
+                $setting = '<div>' . sprintf( __( 'Use at least one letter and %d characters', 'kraken' ), $pw_min_length ) . '</div>';
             } else if ( $requires_numbers == 'on' ) {
-                $setting = __( '<div>Use at least one number and ' . $pw_min_length . ' characters.</div>', 'wpwebapp' );
+                $setting = '<div>' . sprintf( __( 'Use at least one number and %d characters', 'kraken' ), $pw_min_length ) . '</div>';
             } else if ( $requires_special_chars == 'on' ) {
-                $setting = __( '<div>Use at least one special character and ' . $pw_min_length . ' characters.</div>', 'wpwebapp' );
+                $setting = '<div>' . sprintf( __( 'Use at least one special character and %d characters', 'kraken' ), $pw_min_length ) . '</div>';
             } else if ( $pw_min_length > 1 ) {
-                $setting = __( '<div>Use at least ' . $pw_min_length . ' characters.</div>', 'wpwebapp' );
+                $setting = '<div>' . sprintf( __( 'Use at least %d characters', 'kraken' ), $pw_min_length ) . '</div>';
             } else {
                 $setting = '';
             }
@@ -282,7 +282,7 @@ function wpwebapp_get_pw_requirements_text() {
 function wpwebapp_get_alert_empty_fields() {
     $options = wpwebapp_get_plugin_options();
     if ( $options['alert_empty_fields'] == '' ) {
-        $setting = __( '<p>Please complete all fields.</p>', 'wpwebapp' );
+        $setting = '<p>' . __( 'Please complete all fields.', 'wpwebapp' ) . '</p>';
     } else {
         $setting = $options['alert_empty_fields'];
     }
@@ -299,21 +299,21 @@ function wpwebapp_get_alert_pw_requirements() {
 
     if ( $options['alert_pw_requirements'] == '' ) {
         if ( $requires_letters == 'on' && $requires_numbers == 'on' && $requires_special_chars == 'on' ) {
-            $setting = __( '<p>Please choose a password that contains at least one letter, one number, one special character, and ' . $pw_min_length . ' characters.</p>', 'wpwebapp' );
+            $setting = '<p>' . sprintf( __( 'Please choose a password that contains at least one letter, one number, one special character, and %d characters', 'wpwebapp' ), $pw_min_length ) . '</p>';
         } else if ( $requires_letters == 'on' && $requires_numbers == 'on' ) {
-            $setting = __( '<p>Please choose a password that contains at least one letter, one number, and ' . $pw_min_length . ' characters.</p>', 'wpwebapp' );
+            $setting = '<p>' . sprintf( __( 'Please choose a password that contains at least one letter, one number, and %d characters', 'wpwebapp' ), $pw_min_length ) . '</p>';
         } else if ( $requires_letters == 'on' && $requires_special_chars == 'on' ) {
-            $setting = __( '<p>Please choose a password that contains at least one letter, one special character, and ' . $pw_min_length . ' characters.</p>', 'wpwebapp' );
+            $setting = '<p>' . sprintf( __( 'Please choose a password that contains at least one letter, one special character, and %d characters', 'wpwebapp' ), $pw_min_length ) . '</p>';
         } else if ( $requires_numbers == 'on' && $requires_special_chars == 'on' ) {
-            $setting = __( '<p>Please choose a password that contains at least one number, one special character, and ' . $pw_min_length . ' characters.</p>', 'wpwebapp' );
+            $setting = '<p>' . sprintf( __( 'Please choose a password that contains at least one number, one special character, and %d characters', 'wpwebapp' ), $pw_min_length ) . '</p>';
         } else if ( $requires_letters == 'on' ) {
-            $setting = __( '<p>Please choose a password that contains at least one letter and ' . $pw_min_length . ' characters.</p>', 'wpwebapp' );
+            $setting = '<p>' . sprintf( __( 'Please choose a password that contains at least one letter and %d characters', 'wpwebapp' ), $pw_min_length ) . '</p>';
         } else if ( $requires_numbers == 'on' ) {
-            $setting = __( '<p>Please choose a password that contains at least one number and ' . $pw_min_length . ' characters.</p>', 'wpwebapp' );
+            $setting = '<p>' . sprintf( __( 'Please choose a password that contains at least one number and %d characters', 'wpwebapp' ), $pw_min_length ) . '</p>';
         } else if ( $requires_special_chars == 'on' ) {
-            $setting = __( '<p>Please choose a password that contains at least one special character and ' . $pw_min_length . ' characters.</p>', 'wpwebapp' );
+            $setting = '<p>' . sprintf( __( 'Please choose a password that contains at least one special character and %d characters', 'wpwebapp' ), $pw_min_length ) . '</p>';
         } else if ( $pw_min_length > 1 ) {
-            $setting = __( '<p>Please choose a password that contains at least ' . $pw_min_length . ' characters.</p>', 'wpwebapp' );
+            $setting = '<p>' . sprintf( __( 'Please choose a password that contains at least %d characters', 'wpwebapp' ), $pw_min_length ) . '</p>';
         } else {
             $setting = '';
         }
@@ -330,7 +330,7 @@ function wpwebapp_get_alert_pw_requirements() {
 function wpwebapp_get_alert_pw_match() {
     $options = wpwebapp_get_plugin_options();
     if ( $options['alert_pw_no_match'] == '' ) {
-        $setting = __( '<p>The new passwords your entered didn\'t match.</p>', 'wpwebapp' );
+        $setting = '<p>' . __( 'The new passwords your entered didn\'t match.', 'wpwebapp' ) . '</p>';
     } else {
         $setting = $options['alert_pw_no_match'];
     }
@@ -341,7 +341,7 @@ function wpwebapp_get_alert_pw_match() {
 function wpwebapp_get_alert_login_incorrect() {
     $options = wpwebapp_get_plugin_options();
     if ( $options['alert_incorrect_login'] == '' ) {
-        $setting = __( '<p>Incorrect username or password.</p>', 'wpwebapp' );
+        $setting = '<p>' . __( 'Incorrect username or password.', 'wpwebapp' ) . '</p>';
     } else {
         $setting = $options['alert_incorrect_login'];
     }
@@ -352,7 +352,7 @@ function wpwebapp_get_alert_login_incorrect() {
 function wpwebapp_get_alert_username_invalid() {
     $options = wpwebapp_get_plugin_options();
     if ( $options['alert_username_invalid'] == '' ) {
-        $setting = __( '<p>Usernames can only contain letters, numbers, and these special characters: _, space, ., -, *, and @.</p>', 'wpwebapp' );
+        $setting = '<p>' . __( 'Usernames can only contain letters, numbers, and these special characters: _, space, ., -, *, and @.', 'wpwebapp' ) . '</p>';
     } else {
         $setting = $options['alert_username_taken'];
     }
@@ -363,7 +363,7 @@ function wpwebapp_get_alert_username_invalid() {
 function wpwebapp_get_alert_username_taken() {
     $options = wpwebapp_get_plugin_options();
     if ( $options['alert_username_taken'] == '' ) {
-        $setting = __( '<p>Username already exists.</p>', 'wpwebapp' );
+        $setting = '<p>' . __( 'Username already exists.', 'wpwebapp' ) . '</p>';
     } else {
         $setting = $options['alert_username_taken'];
     }
@@ -374,7 +374,7 @@ function wpwebapp_get_alert_username_taken() {
 function wpwebapp_get_alert_email_invalid() {
     $options = wpwebapp_get_plugin_options();
     if ( $options['alert_email_invalid'] == '' ) {
-        $setting = __( '<p>Please use a valid email address.</p>', 'wpwebapp' );
+        $setting = '<p>' . __( 'Please use a valid email address.', 'wpwebapp' ) . '</p>';
     } else {
         $setting = $options['alert_email_invalid'];
     }
@@ -385,7 +385,7 @@ function wpwebapp_get_alert_email_invalid() {
 function wpwebapp_get_alert_email_taken() {
     $options = wpwebapp_get_plugin_options();
     if ( $options['alert_email_taken'] == '' ) {
-        $setting = __( '<p>An account with this email address already exists.</p>', 'wpwebapp' );
+        $setting = '<p>' . __( 'An account with this email address already exists.', 'wpwebapp' ) . '</p>';
     } else {
         $setting = $options['alert_email_taken'];
     }
@@ -396,7 +396,7 @@ function wpwebapp_get_alert_email_taken() {
 function wpwebapp_get_alert_pw_incorrect() {
     $options = wpwebapp_get_plugin_options();
     if ( $options['alert_pw_incorrect'] == '' ) {
-        $setting = __( '<p>The password you entered does not match your current password.</p>', 'wpwebapp' );
+        $setting = '<p>' . __( 'The password you entered does not match your current password.', 'wpwebapp' ) . '</p>';
     } else {
         $setting = $options['alert_pw_incorrect'];
     }
@@ -407,7 +407,7 @@ function wpwebapp_get_alert_pw_incorrect() {
 function wpwebapp_get_alert_pw_change_success() {
     $options = wpwebapp_get_plugin_options();
     if ( $options['alert_pw_change_success'] == '' ) {
-        $setting = __( '<p>Your password has been updated.</p>', 'wpwebapp' );
+        $setting = '<p>' . __( 'Your password has been updated.', 'wpwebapp' ) . '</p>';
     } else {
         $setting = $options['alert_pw_change_success'];
     }
@@ -418,7 +418,7 @@ function wpwebapp_get_alert_pw_change_success() {
 function wpwebapp_get_alert_login_does_not_exist() {
     $options = wpwebapp_get_plugin_options();
     if ( $options['alert_login_does_not_exist'] == '' ) {
-        $setting = __( '<p>Username or email doesn\'t exist.</p>', 'wpwebapp' );
+        $setting = '<p>' . __( 'Username or email doesn\'t exist.', 'wpwebapp' ) . '</p>';
     } else {
         $setting = $options['alert_login_does_not_exist'];
     }
@@ -429,7 +429,7 @@ function wpwebapp_get_alert_login_does_not_exist() {
 function wpwebapp_get_alert_pw_reset_not_allowed() {
     $options = wpwebapp_get_plugin_options();
     if ( $options['alert_pw_reset_not_allowed'] == '' ) {
-        $setting = __( '<p>Password resets are not allowed for this user.</p>', 'wpwebapp' );
+        $setting = '<p>' . __( 'Password resets are not allowed for this user.', 'wpwebapp' ) . '</p>';
     } else {
         $setting = $options['alert_pw_reset_not_allowed'];
     }
@@ -441,7 +441,7 @@ function wpwebapp_get_alert_pw_reset_email_sent() {
     $options = wpwebapp_get_plugin_options();
     $reset_length = wpwebapp_get_pw_reset_time_valid();
     if ( $options['alert_pw_reset_email_sent'] == '' ) {
-        $setting = __( '<p>We\'ve sent you an email with a temporary link that will allow you to reset your password for the next ' . $reset_length . ' hours. Please check your spam folder if the email doesn’t appear within a few minutes.</p>', 'wpwebapp' );
+        $setting = '<p>' . sprintf( __( 'We\'ve sent you an email with a temporary link that will allow you to reset your password for the next %d hours. Please check your spam folder if the email doesn’t appear within a few minutes.', 'wpwebapp' ), $reset_length ) . '</p>';
     } else {
         $setting = $options['alert_pw_reset_email_sent'];
         $scrubber = array( '%t' => $pw_min_length );
@@ -454,7 +454,7 @@ function wpwebapp_get_alert_pw_reset_email_sent() {
 function wpwebapp_get_alert_pw_reset_email_failed() {
     $options = wpwebapp_get_plugin_options();
     if ( $options['alert_pw_reset_email_failed'] == '' ) {
-        $setting = __( '<p>Oops, something went wrong on our end. Please try again.</p>', 'wpwebapp' );
+        $setting = '<p>' . __( 'Oops, something went wrong on our end. Please try again.', 'wpwebapp' ) . '</p>';
     } else {
         $setting = $options['alert_pw_reset_email_failed'];
     }
@@ -465,7 +465,7 @@ function wpwebapp_get_alert_pw_reset_email_failed() {
 function wpwebapp_get_alert_pw_reset_url_expired() {
     $options = wpwebapp_get_plugin_options();
     if ( $options['alert_pw_reset_url_invalid'] == '' ) {
-        $setting = __( '<p>This password reset request is no longer valid.</p>', 'wpwebapp' );
+        $setting = '<p>' . __( 'This password reset request is no longer valid.', 'wpwebapp' ) . '</p>';
     } else {
         $setting = $options['alert_pw_reset_url_invalid'];
     }
