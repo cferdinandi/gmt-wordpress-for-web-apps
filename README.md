@@ -13,6 +13,8 @@ To get started with WordPress for Web Apps, [view the online tutorial](http://cf
 
 
 ## Changelog
+* v3.3 (October 31, 2013)
+  * [Added a link to settings from plugin menu](https://github.com/cferdinandi/web-app-starter-kit/issues/13)
 * v3.2 (October 18, 2013)
   * Fixed [incorrect i18n](https://github.com/cferdinandi/web-app-starter-kit/issues/12).
   * Change `home_url()` to `site_url()`. [Fixed issue 5](https://github.com/cferdinandi/web-app-starter-kit/issues/5)
