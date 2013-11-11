@@ -179,6 +179,14 @@ function wpwebapp_settings_field_button_class() {
     <?php
 }
 
+function wpwebapp_settings_field_delete_button_class() {
+    $options = wpwebapp_get_plugin_options();
+    ?>
+    <input type="text" name="wpwebapp_plugin_options[delete_button_class]" id="delete-button-class" value="<?php echo esc_attr( $options['delete_button_class'] ); ?>" /><br>
+    <label class="description" for="delete-button-class"><?php _e( 'Example: <code>btn btn-red</code>. Default: Button Class value.', 'wpwebapp' ); ?></label>
+    <?php
+}
+
 function wpwebapp_settings_field_button_text_login() {
     $options = wpwebapp_get_plugin_options();
     ?>
@@ -240,6 +248,22 @@ function wpwebapp_settings_field_pw_requirement_text() {
     ?>
     <input type="text" name="wpwebapp_plugin_options[pw_requirement_text]" id="pw-requirement-text" value="<?php echo esc_attr( $options['pw_requirement_text'] ); ?>" /><br>
     <label class="description" for="pw-requirement-text"><?php _e( 'Default: Varies based on your password requirements under "Security"<br />Use the variable <code>%n</code> to dynamically display the minimum character number from your settings.', 'wpwebapp' ); ?></label>
+    <?php
+}
+
+function wpwebapp_settings_field_delete_account_text() {
+    $options = wpwebapp_get_plugin_options();
+    ?>
+    <input type="text" name="wpwebapp_plugin_options[delete_account_text]" id="delete-account-text" value="<?php echo esc_attr( $options['delete_account_text'] ); ?>" /><br>
+    <label class="description" for="delete-account-text"><?php _e( 'Default: <code>Delete Account</code>', 'wpwebapp' ); ?></label>
+    <?php
+}
+
+function wpwebapp_settings_field_delete_account_url() {
+    $options = wpwebapp_get_plugin_options();
+    ?>
+    <input type="text" name="wpwebapp_plugin_options[delete_account_url]" id="delete-account-text" value="<?php echo esc_attr( $options['delete_account_url'] ); ?>" /><br>
+    <label class="description" for="delete-account-url"><?php _e( 'Default: Logged-Out Redirect', 'wpwebapp' ); ?></label>
     <?php
 }
 
@@ -413,9 +437,11 @@ function wpwebapp_get_plugin_options() {
         'block_wp_backend_access' => 'admin',
         'redirect_logged_in' => '',
         'redirect_logged_out' => '',
+        'blog_posts_require_login' => 'off',
 
         // Forms
         'button_class' => '',
+        'delete_button_class' => '',
         'button_text_login' => '',
         'button_text_signup' => '',
         'button_text_pw_change' => '',
@@ -424,7 +450,8 @@ function wpwebapp_get_plugin_options() {
         'forgot_pw_url' => '',
         'forgot_pw_url_text' => '',
         'pw_requirement_text' => '',
-        'blog_posts_require_login' => 'off',
+        'delete_account_text' => '',
+        'delete_account_url' => '',
 
         // Alerts
         'alert_empty_fields' => '',
@@ -502,6 +529,9 @@ function wpwebapp_plugin_options_validate( $input ) {
     if ( isset( $input['button_class'] ) && ! empty( $input['button_class'] ) )
         $output['button_class'] = wp_filter_nohtml_kses( $input['button_class'] );
 
+    if ( isset( $input['delete_button_class'] ) && ! empty( $input['delete_button_class'] ) )
+        $output['delete_button_class'] = wp_filter_nohtml_kses( $input['delete_button_class'] );
+
     if ( isset( $input['button_text_login'] ) && ! empty( $input['button_text_login'] ) )
         $output['button_text_login'] = wp_filter_nohtml_kses( $input['button_text_login'] );
 
@@ -525,6 +555,12 @@ function wpwebapp_plugin_options_validate( $input ) {
 
     if ( isset( $input['pw_requirement_text'] ) && ! empty( $input['pw_requirement_text'] ) )
         $output['pw_requirement_text'] = wp_filter_post_kses( $input['pw_requirement_text'] );
+
+    if ( isset( $input['delete_account_text'] ) && ! empty( $input['delete_account_text'] ) )
+        $output['delete_account_text'] = wp_filter_post_kses( $input['delete_account_text'] );
+
+    if ( isset( $input['delete_account_url'] ) && ! empty( $input['delete_account_url'] ) )
+        $output['delete_account_url'] = wp_filter_post_kses( $input['delete_account_url'] );
 
 
     // Alerts
@@ -643,6 +679,7 @@ function wpwebapp_plugin_options_init() {
     // Forms
     add_settings_section( 'forms', __( 'Forms', 'wpwebapp' ),  '__return_false', 'plugin_options' );
     add_settings_field( 'button_class', __( 'Button Class', 'wpwebapp' ) . '<div class="description">' . __( 'Class to apply to form submit buttons.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_class', 'plugin_options', 'forms' );
+    add_settings_field( 'delete_button_class', __( 'Delete Button Class', 'wpwebapp' ) . '<div class="description">' . __( 'Class to apply to the "delete account" button.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_delete_button_class', 'plugin_options', 'forms' );
     add_settings_field( 'button_text_login', __( 'Login Text', 'wpwebapp' ) . '<div class="description">' . __( 'Text for the login button.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_text_login', 'plugin_options', 'forms' );
     add_settings_field( 'button_text_signup', __( 'Signup Text', 'wpwebapp' ) . '<div class="description">' . __( 'Text for the signup button.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_text_signup', 'plugin_options', 'forms' );
     add_settings_field( 'button_text_pw_change', __( 'Change Password Text', 'wpwebapp' ) . '<div class="description">' . __( 'Text for the change password button.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_text_pw_change', 'plugin_options', 'forms' );
@@ -651,6 +688,8 @@ function wpwebapp_plugin_options_init() {
     add_settings_field( 'forgot_pw_url', __( 'Forgot Password URL', 'wpwebapp' ) . '<div class="description">' . __( 'A link to the "forgot password" page.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_forgot_pw_url', 'plugin_options', 'forms' );
     add_settings_field( 'forgot_pw_url_text', __( 'Forgot Password URL Text', 'wpwebapp' ) . '<div class="description">' . __( 'Text for the "forgot password" URL (only shown if URL is set).', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_forgot_pw_url_text', 'plugin_options', 'forms' );
     add_settings_field( 'pw_requirement_text', __( 'Password Requirement Text', 'wpwebapp' ) . '<div class="description">' . __( 'Signup, Password Change, and Password Reset Forms', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_pw_requirement_text', 'plugin_options', 'forms' );
+    add_settings_field( 'delete_account_text', __( 'Delete Account Text', 'wpwebapp' ) . '<div class="description">' . __( 'Delete Account Form', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_delete_account_text', 'plugin_options', 'forms' );
+    add_settings_field( 'delete_account_url', __( 'Delete Account Redirect URL', 'wpwebapp' ) . '<div class="description">' . __( 'Delete Account Form', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_delete_account_url', 'plugin_options', 'forms' );
 
 
     // Alerts
