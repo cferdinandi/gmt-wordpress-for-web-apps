@@ -13,6 +13,8 @@ To get started with WordPress for Web Apps, [view the online tutorial](http://cf
 
 
 ## Changelog
+* v3.4 (November 10, 2013)
+  * [Added a delete account button for the front-end](https://github.com/cferdinandi/web-app-starter-kit/issues/7)
 * v3.3 (October 31, 2013)
   * [Added a link to settings from plugin menu](https://github.com/cferdinandi/web-app-starter-kit/issues/13)
 * v3.2 (October 18, 2013)
