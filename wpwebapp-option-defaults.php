@@ -159,6 +159,17 @@ function wpwebapp_get_form_button_class() {
     return $setting;
 }
 
+// Get class for delete account button
+function wpwebapp_get_delete_account_button_class() {
+    $options = wpwebapp_get_plugin_options();
+    if ( $options['delete_button_class'] == '' ) {
+        $setting = wpwebapp_get_form_button_class();
+    } else {
+        $setting = $options['delete_button_class'];
+    }
+    return $setting;
+}
+
 // Get text for login submit button
 function wpwebapp_get_form_login_text() {
     $options = wpwebapp_get_plugin_options();
@@ -266,6 +277,28 @@ function wpwebapp_get_pw_requirements_text() {
         $setting = strtr( $setting, $scrubber );
     }
 
+    return $setting;
+}
+
+// Get text for delete account button
+function wpwebapp_get_delete_account_text() {
+    $options = wpwebapp_get_plugin_options();
+    if ( $options['delete_account_text'] == '' ) {
+        $setting = __( 'Delete Account', 'wpwebapp' );
+    } else {
+        $setting = $options['delete_account_text'];
+    }
+    return $setting;
+}
+
+// Get redirect URL for delete account button
+function wpwebapp_get_delete_account_url() {
+    $options = wpwebapp_get_plugin_options();
+    if ( $options['delete_account_url'] == '' ) {
+        $setting = wpwebapp_get_redirect_url_logged_out();
+    } else {
+        $setting = $options['delete_account_url'];
+    }
     return $setting;
 }
 
