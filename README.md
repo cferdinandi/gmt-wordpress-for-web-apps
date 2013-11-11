@@ -2,6 +2,7 @@
 WordPress for Web Apps provides the essential components you need to power your web app with WordPress:
 
 * Front-end login, sign-up, password reset, and password change forms.
+* A delete account button for the front-end.
 * Separate navigation menus for logged-in and logged-out users.
 * User access settings, so you can selectively hide content from logged-out (or logged-in) users.
 * Security settings let you set password requirements, hide the admin bar, and block backend access.
