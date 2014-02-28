@@ -16,9 +16,9 @@ A plugin that provides the essential components you need to power your web app w
 3. [Adding Forms](#adding-forms)
 4. [User Access](#user-access)
 5. [Navigation](#navigation)
-
-3. [License](#license)
-4. [Changelog](#changelog)
+6. [Settings](#settings)
+7. [License](#license)
+8. [Changelog](#changelog)
 
 
 
