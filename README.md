@@ -17,8 +17,9 @@ A plugin that provides the essential components you need to power your web app w
 4. [User Access](#user-access)
 5. [Navigation](#navigation)
 6. [Settings](#settings)
-7. [License](#license)
-8. [Changelog](#changelog)
+7. [How to Contribute](#how-to-contribute)
+8. [License](#license)
+9. [Changelog](#changelog)
 
 
 
@@ -182,6 +183,12 @@ Whether form fields are left blank or passwords don't match, there's an error me
 ### Emails
 
 WordPress sends out a few default emails that aren't neccessarily a great user experience for you or your users. WordPress for Web Apps disables them by default, but you can reactivate them if you want to.
+
+
+
+## How to Contribute
+
+In lieu of a formal style guide, take care to maintain the existing coding style. Don't forget to update the version number, the changelog (in the `readme.md` file), and when applicable, the documentation.
 
 
 
