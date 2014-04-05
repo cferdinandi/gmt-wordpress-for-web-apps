@@ -9,6 +9,8 @@ A plugin that provides the essential components you need to power your web app w
 * Security settings let you set password requirements, hide the admin bar, and block backend access.
 * The web app settings panel lets you easily configure error messages, button text, and more.
 
+[Download Web App Starter Kit 3](https://github.com/cferdinandi/web-app-starter-kit/archive/master.zip)
+
 **In This Documentation**
 
 1. [Getting Started](#getting-started)
