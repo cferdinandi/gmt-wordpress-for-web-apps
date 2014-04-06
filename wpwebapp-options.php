@@ -2,11 +2,11 @@
 
 /* ======================================================================
 
-    WordPress for Web App Options
-    Adjust plugin settings from the admin dashboard.
+	WordPress for Web App Options
+	Adjust plugin settings from the admin dashboard.
 
-    Forked from code by Michael Fields.
-    https://gist.github.com/mfields/4678999
+	Forked from code by Michael Fields.
+	https://gist.github.com/mfields/4678999
 
  * ====================================================================== */
 
