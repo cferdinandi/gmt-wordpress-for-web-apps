@@ -9,65 +9,6 @@
 
 
 /* ======================================================================
-    FORM FIELDS
-    Structure for the form fields.
- * ====================================================================== */
-
-// Text Input
-function wpwebapp_form_field_text_input( $type, $id, $label, $value, $tabindex = '', $autofocus = '' ) {
-    $form_field =
-        '<div>
-            <label for="' . $id . '">' .
-                $label .
-            '</label>
-            <input
-                type="' . $type . '"
-                id="' . $id . '"
-                name="' . $id . '"
-                value="' . $value . '"
-                tabindex="' . $tabindex . '" ' .
-                $autofocus .
-            '>
-        </div>';
-    return $form_field;
-}
-
-
-// Checkbox
-function wpwebapp_form_field_checkbox( $id, $label, $value, $tabindex, $checked = '' ) {
-    $form_field =
-        '<div>
-            <label for="' . $id . '">' .
-                '<input type="checkbox"
-                    id="' . $id . '"
-                    name="' . $id . '"
-                    value="' . $value . '"
-                    tabindex="' . $tabindex . '" ' .
-                    $checked .
-                '>' .
-                $label .
-            '</label>
-        </div>';
-    return $form_field;
-}
-
-
-// Submit
-function wpwebapp_form_field_submit( $id, $class, $label, $action, $nonce_field, $tabindex ) {
-    $form_field =
-        '<div>' .
-            wp_nonce_field( $action, $nonce_field) .
-            '<button type="submit" class="' . $class . '" id="' . $id . '" name="' . $id . '" tabindex="' . $tabindex . '">' . $label . '</button>
-        </div>';
-    return $form_field;
-}
-
-
-
-
-
-
-/* ======================================================================
     CREATE & DISPLAY FORMS
     Create the forms and shortcodes.
  * ====================================================================== */
