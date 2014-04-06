@@ -226,6 +226,8 @@ WordPress for Web Apps is licensed under the [MIT License](http://gomakethings.c
 
 ## Changelog
 
+* v3.6 - April 5, 2014
+	* Added gravatar shortcode.
 * v3.5 - April 5, 2014
 	* Split forms and options across multiple files for more modular code structure.
 * v3.4 - November 10, 2013
