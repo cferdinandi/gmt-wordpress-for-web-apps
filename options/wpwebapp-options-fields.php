@@ -401,6 +401,22 @@ function wpwebapp_settings_field_alert_pw_reset_url_invalid() {
 
 
 /* ======================================================================
+	USER PROFILES
+ * ====================================================================== */
+
+function wpwebapp_settings_field_profile_gravatar_size() {
+	$options = wpwebapp_get_plugin_options();
+	?>
+	<input type="text" name="wpwebapp_plugin_options[profile_gravatar_size]" id="profile-gravatar-size" value="<?php echo esc_attr( $options['profile_gravatar_size'] ); ?>" /><br>
+	<label class="description" for="profile-gravatar-size"><?php _e( 'Default: <code>96</code>', 'wpwebapp' ); ?></label>
+	<?php
+}
+
+
+
+
+
+/* ======================================================================
 	EMAILS
  * ====================================================================== */
 

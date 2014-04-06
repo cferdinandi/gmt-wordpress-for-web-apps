@@ -10,13 +10,13 @@
 
 /* ======================================================================
 	SECURITY SETTINGS
-	Set defaults and get security settings from options page.
+	Get security settings from options page.
  * ====================================================================== */
 
 // Get minimum password length
 function wpwebapp_get_minimum_pw_length() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['minimum_password_length'] == '' ) {
+	if ( $options['minimum_password_length'] === '' ) {
 		$setting = '8';
 	} else {
 		$setting = $options['minimum_password_length'];
@@ -65,7 +65,7 @@ function wpwebapp_get_pw_reset_restriction() {
 // Get number of hours a password reset URL is valid for
 function wpwebapp_get_pw_reset_time_valid() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['pw_reset_time_valid'] == '' ) {
+	if ( $options['pw_reset_time_valid'] === '' ) {
 		$setting = '24';
 	} else {
 		$setting = $options['pw_reset_time_valid'];
@@ -79,7 +79,7 @@ function wpwebapp_get_pw_reset_time_valid() {
 
 /* ======================================================================
 	USER ACCESS SETTINGS
-	Set defaults and get user access settings from options page.
+	Get user access settings from options page.
  * ====================================================================== */
 
 // Get role restrictions for WordPress backend access
@@ -117,7 +117,7 @@ function wpwebapp_get_block_admin_access() {
 // Get logged-in redirect URL
 function wpwebapp_get_redirect_url_logged_in() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['redirect_logged_in'] == '' ) {
+	if ( $options['redirect_logged_in'] === '' ) {
 		$setting = site_url();
 	} else {
 		$setting = $options['redirect_logged_in'];
@@ -128,7 +128,7 @@ function wpwebapp_get_redirect_url_logged_in() {
 // Get logged-out redirect URL
 function wpwebapp_get_redirect_url_logged_out() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['redirect_logged_out'] == '' ) {
+	if ( $options['redirect_logged_out'] === '' ) {
 		$setting = site_url();
 	} else {
 		$setting = $options['redirect_logged_out'];
@@ -149,7 +149,7 @@ function wpwebapp_get_blog_post_access() {
 
 /* ======================================================================
 	FORM SETTINGS
-	Set defaults and get form settings from options page.
+	Get form settings from options page.
  * ====================================================================== */
 
 // Get class for form submit buttons
@@ -162,7 +162,7 @@ function wpwebapp_get_form_button_class() {
 // Get class for delete account button
 function wpwebapp_get_delete_account_button_class() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['delete_button_class'] == '' ) {
+	if ( $options['delete_button_class'] === '' ) {
 		$setting = wpwebapp_get_form_button_class();
 	} else {
 		$setting = $options['delete_button_class'];
@@ -173,7 +173,7 @@ function wpwebapp_get_delete_account_button_class() {
 // Get text for login submit button
 function wpwebapp_get_form_login_text() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['button_text_login'] == '' ) {
+	if ( $options['button_text_login'] === '' ) {
 		$setting = __( 'Login', 'wpwebapp' );
 	} else {
 		$setting = $options['button_text_login'];
@@ -184,7 +184,7 @@ function wpwebapp_get_form_login_text() {
 // Get text for signup submit button
 function wpwebapp_get_form_signup_text() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['button_text_signup'] == '' ) {
+	if ( $options['button_text_signup'] === '' ) {
 		$setting = __( 'Signup', 'wpwebapp' );
 	} else {
 		$setting = $options['button_text_signup'];
@@ -195,7 +195,7 @@ function wpwebapp_get_form_signup_text() {
 // Get text for password change submit button
 function wpwebapp_get_pw_change_text() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['button_text_pw_change'] == '' ) {
+	if ( $options['button_text_pw_change'] === '' ) {
 		$setting = __( 'Change Password', 'wpwebapp' );
 	} else {
 		$setting = $options['button_text_pw_change'];
@@ -206,7 +206,7 @@ function wpwebapp_get_pw_change_text() {
 // Get text for forgot password submit button
 function wpwebapp_get_pw_forgot_text() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['button_text_pw_forgot'] == '' ) {
+	if ( $options['button_text_pw_forgot'] === '' ) {
 		$setting = __( 'Reset Password', 'wpwebapp' );
 	} else {
 		$setting = $options['button_text_pw_forgot'];
@@ -217,7 +217,7 @@ function wpwebapp_get_pw_forgot_text() {
 // Get text for password reset submit button
 function wpwebapp_get_pw_reset_text() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['button_text_pw_reset'] == '' ) {
+	if ( $options['button_text_pw_reset'] === '' ) {
 		$setting = __( 'Set New Password', 'wpwebapp' );
 	} else {
 		$setting = $options['button_text_pw_reset'];
@@ -235,7 +235,7 @@ function wpwebapp_get_pw_forgot_url() {
 // Get text for forgot password link on login form
 function wpwebapp_get_pw_forgot_url_text() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['forgot_pw_url_text'] == '' ) {
+	if ( $options['forgot_pw_url_text'] === '' ) {
 		$setting = __( 'forgot password', 'wpwebapp' );
 	} else {
 		$setting = $options['forgot_pw_url_text'];
@@ -251,7 +251,7 @@ function wpwebapp_get_pw_requirements_text() {
 	$requires_numbers = wpwebapp_get_pw_requirement_numbers();
 	$requires_special_chars = wpwebapp_get_pw_requirement_special_chars();
 
-	if ( $options['pw_requirement_text'] == '' ) {
+	if ( $options['pw_requirement_text'] === '' ) {
 		if ( $requires_letters == 'on' && $requires_numbers == 'on' && $requires_special_chars == 'on' ) {
 				$setting = '<div>' . sprintf( __( 'Use at least one letter, one number, one special character, and %d characters', 'kraken' ), $pw_min_length ) . '</div>';
 			} else if ( $requires_letters == 'on' && $requires_numbers == 'on' ) {
@@ -283,7 +283,7 @@ function wpwebapp_get_pw_requirements_text() {
 // Get text for delete account button
 function wpwebapp_get_delete_account_text() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['delete_account_text'] == '' ) {
+	if ( $options['delete_account_text'] === '' ) {
 		$setting = __( 'Delete Account', 'wpwebapp' );
 	} else {
 		$setting = $options['delete_account_text'];
@@ -294,7 +294,7 @@ function wpwebapp_get_delete_account_text() {
 // Get redirect URL for delete account button
 function wpwebapp_get_delete_account_url() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['delete_account_url'] == '' ) {
+	if ( $options['delete_account_url'] === '' ) {
 		$setting = wpwebapp_get_redirect_url_logged_out();
 	} else {
 		$setting = $options['delete_account_url'];
@@ -308,13 +308,13 @@ function wpwebapp_get_delete_account_url() {
 
 /* ======================================================================
 	ALERT SETTINGS
-	Set defaults and get alert settings from options page.
+	Get alert settings from options page.
  * ====================================================================== */
 
 // Get alert for empty form fields
 function wpwebapp_get_alert_empty_fields() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['alert_empty_fields'] == '' ) {
+	if ( $options['alert_empty_fields'] === '' ) {
 		$setting = '<p>' . __( 'Please complete all fields.', 'wpwebapp' ) . '</p>';
 	} else {
 		$setting = $options['alert_empty_fields'];
@@ -330,7 +330,7 @@ function wpwebapp_get_alert_pw_requirements() {
 	$requires_numbers = wpwebapp_get_pw_requirement_numbers();
 	$requires_special_chars = wpwebapp_get_pw_requirement_special_chars();
 
-	if ( $options['alert_pw_requirements'] == '' ) {
+	if ( $options['alert_pw_requirements'] === '' ) {
 		if ( $requires_letters == 'on' && $requires_numbers == 'on' && $requires_special_chars == 'on' ) {
 			$setting = '<p>' . sprintf( __( 'Please choose a password that contains at least one letter, one number, one special character, and %d characters', 'wpwebapp' ), $pw_min_length ) . '</p>';
 		} else if ( $requires_letters == 'on' && $requires_numbers == 'on' ) {
@@ -362,7 +362,7 @@ function wpwebapp_get_alert_pw_requirements() {
 // Get alert for when new and confirmation password don't match
 function wpwebapp_get_alert_pw_match() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['alert_pw_no_match'] == '' ) {
+	if ( $options['alert_pw_no_match'] === '' ) {
 		$setting = '<p>' . __( 'The new passwords your entered didn\'t match.', 'wpwebapp' ) . '</p>';
 	} else {
 		$setting = $options['alert_pw_no_match'];
@@ -373,7 +373,7 @@ function wpwebapp_get_alert_pw_match() {
 // Get alert for incorrect login credentials
 function wpwebapp_get_alert_login_incorrect() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['alert_incorrect_login'] == '' ) {
+	if ( $options['alert_incorrect_login'] === '' ) {
 		$setting = '<p>' . __( 'Incorrect username or password.', 'wpwebapp' ) . '</p>';
 	} else {
 		$setting = $options['alert_incorrect_login'];
@@ -384,7 +384,7 @@ function wpwebapp_get_alert_login_incorrect() {
 // Get alert for invalid username at signup
 function wpwebapp_get_alert_username_invalid() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['alert_username_invalid'] == '' ) {
+	if ( $options['alert_username_invalid'] === '' ) {
 		$setting = '<p>' . __( 'Usernames can only contain letters, numbers, and these special characters: _, space, ., -, *, and @.', 'wpwebapp' ) . '</p>';
 	} else {
 		$setting = $options['alert_username_taken'];
@@ -395,7 +395,7 @@ function wpwebapp_get_alert_username_invalid() {
 // Get alert for existing username at signup
 function wpwebapp_get_alert_username_taken() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['alert_username_taken'] == '' ) {
+	if ( $options['alert_username_taken'] === '' ) {
 		$setting = '<p>' . __( 'Username already exists.', 'wpwebapp' ) . '</p>';
 	} else {
 		$setting = $options['alert_username_taken'];
@@ -406,7 +406,7 @@ function wpwebapp_get_alert_username_taken() {
 // Get when content of email field isn't a valid email address
 function wpwebapp_get_alert_email_invalid() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['alert_email_invalid'] == '' ) {
+	if ( $options['alert_email_invalid'] === '' ) {
 		$setting = '<p>' . __( 'Please use a valid email address.', 'wpwebapp' ) . '</p>';
 	} else {
 		$setting = $options['alert_email_invalid'];
@@ -417,7 +417,7 @@ function wpwebapp_get_alert_email_invalid() {
 // Get alert for when email address already exists
 function wpwebapp_get_alert_email_taken() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['alert_email_taken'] == '' ) {
+	if ( $options['alert_email_taken'] === '' ) {
 		$setting = '<p>' . __( 'An account with this email address already exists.', 'wpwebapp' ) . '</p>';
 	} else {
 		$setting = $options['alert_email_taken'];
@@ -428,7 +428,7 @@ function wpwebapp_get_alert_email_taken() {
 // Get alert for when current password is incorrect
 function wpwebapp_get_alert_pw_incorrect() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['alert_pw_incorrect'] == '' ) {
+	if ( $options['alert_pw_incorrect'] === '' ) {
 		$setting = '<p>' . __( 'The password you entered does not match your current password.', 'wpwebapp' ) . '</p>';
 	} else {
 		$setting = $options['alert_pw_incorrect'];
@@ -439,7 +439,7 @@ function wpwebapp_get_alert_pw_incorrect() {
 // Get alert for when password successfully changed
 function wpwebapp_get_alert_pw_change_success() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['alert_pw_change_success'] == '' ) {
+	if ( $options['alert_pw_change_success'] === '' ) {
 		$setting = '<p>' . __( 'Your password has been updated.', 'wpwebapp' ) . '</p>';
 	} else {
 		$setting = $options['alert_pw_change_success'];
@@ -450,7 +450,7 @@ function wpwebapp_get_alert_pw_change_success() {
 // Get alert for when username or email is not an existing user
 function wpwebapp_get_alert_login_does_not_exist() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['alert_login_does_not_exist'] == '' ) {
+	if ( $options['alert_login_does_not_exist'] === '' ) {
 		$setting = '<p>' . __( 'Username or email doesn\'t exist.', 'wpwebapp' ) . '</p>';
 	} else {
 		$setting = $options['alert_login_does_not_exist'];
@@ -461,7 +461,7 @@ function wpwebapp_get_alert_login_does_not_exist() {
 // Get alert for when password resets are not allowed for this user
 function wpwebapp_get_alert_pw_reset_not_allowed() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['alert_pw_reset_not_allowed'] == '' ) {
+	if ( $options['alert_pw_reset_not_allowed'] === '' ) {
 		$setting = '<p>' . __( 'Password resets are not allowed for this user.', 'wpwebapp' ) . '</p>';
 	} else {
 		$setting = $options['alert_pw_reset_not_allowed'];
@@ -473,7 +473,7 @@ function wpwebapp_get_alert_pw_reset_not_allowed() {
 function wpwebapp_get_alert_pw_reset_email_sent() {
 	$options = wpwebapp_get_plugin_options();
 	$reset_length = wpwebapp_get_pw_reset_time_valid();
-	if ( $options['alert_pw_reset_email_sent'] == '' ) {
+	if ( $options['alert_pw_reset_email_sent'] === '' ) {
 		$setting = '<p>' . sprintf( __( 'We\'ve sent you an email with a temporary link that will allow you to reset your password for the next %d hours. Please check your spam folder if the email doesn’t appear within a few minutes.', 'wpwebapp' ), $reset_length ) . '</p>';
 	} else {
 		$setting = $options['alert_pw_reset_email_sent'];
@@ -486,7 +486,7 @@ function wpwebapp_get_alert_pw_reset_email_sent() {
 // Get alert for when the password reset email fails to send
 function wpwebapp_get_alert_pw_reset_email_failed() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['alert_pw_reset_email_failed'] == '' ) {
+	if ( $options['alert_pw_reset_email_failed'] === '' ) {
 		$setting = '<p>' . __( 'Oops, something went wrong on our end. Please try again.', 'wpwebapp' ) . '</p>';
 	} else {
 		$setting = $options['alert_pw_reset_email_failed'];
@@ -497,7 +497,7 @@ function wpwebapp_get_alert_pw_reset_email_failed() {
 // Get alert for when the password reset URL has expired
 function wpwebapp_get_alert_pw_reset_url_expired() {
 	$options = wpwebapp_get_plugin_options();
-	if ( $options['alert_pw_reset_url_invalid'] == '' ) {
+	if ( $options['alert_pw_reset_url_invalid'] === '' ) {
 		$setting = '<p>' . __( 'This password reset request is no longer valid.', 'wpwebapp' ) . '</p>';
 	} else {
 		$setting = $options['alert_pw_reset_url_invalid'];
@@ -510,8 +510,28 @@ function wpwebapp_get_alert_pw_reset_url_expired() {
 
 
 /* ======================================================================
+	USER PROFILE SETTINGS
+	Get user profile settings from options page.
+ * ====================================================================== */
+
+// Get gravatar size
+function wpwebapp_get_profile_gravatar_size() {
+	$options = wpwebapp_get_plugin_options();
+	if ( $options['profile_gravatar_size'] === '' ) {
+		$setting = '96';
+	} else {
+		$setting = $options['profile_gravatar_size'];
+	}
+	return $setting;
+}
+
+
+
+
+
+/* ======================================================================
 	EMAIL SETTINGS
-	Set defaults and get email settings from options page.
+	Get email settings from options page.
  * ====================================================================== */
 
 // Get setting for disabling the default new user email (yes/no)

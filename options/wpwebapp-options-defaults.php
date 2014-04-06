@@ -58,6 +58,9 @@ function wpwebapp_get_plugin_options() {
 		'alert_pw_reset_email_failed' => '',
 		'alert_pw_reset_url_invalid' => '',
 
+		// User Profiles
+		'profile_gravatar_size' => '',
+
 		// Emails
 		'email_disable_new_user_default' => 'on',
 		'email_disable_pw_reset' => 'on',

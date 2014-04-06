@@ -16,12 +16,13 @@ A plugin that provides the essential components you need to power your web app w
 1. [Getting Started](#getting-started)
 2. [User Experience](#user-experience)
 3. [Adding Forms](#adding-forms)
-4. [User Access](#user-access)
-5. [Navigation](#navigation)
-6. [Settings](#settings)
-7. [How to Contribute](#how-to-contribute)
-8. [License](#license)
-9. [Changelog](#changelog)
+4. [User Profiles](#user-profiles)
+5. [User Access](#user-access)
+6. [Navigation](#navigation)
+7. [Settings](#settings)
+8. [How to Contribute](#how-to-contribute)
+9. [License](#license)
+10. [Changelog](#changelog)
 
 
 
@@ -99,6 +100,25 @@ There are two ways to add forms to your app:
 ```
 
 *Note:* The Delete Account button doesn’t include any sort of confirmation message or verification, so you should add your own. You might have an initial “Delete Account” button that opens a [modal window](http://cferdinandi.github.io/modals/), a [drop-down menu](http://cferdinandi.github.io/houdini/), or a new page where the real delete button resides.
+
+
+
+## User Profiles
+
+User's can create and manage profiles from the WordPress front-end. (*This functionality is currently in development.*)
+
+### Display Gravatar
+
+```php
+[wpwa_display_gravatar]
+<?php echo wpwebapp_display_gravatar(); ?>
+```
+
+### Coming Soon
+
+* Name
+* Description/Bio
+* Links
 
 
 
@@ -181,6 +201,10 @@ Assign a button class, change the text of buttons and labels, and pick a link fo
 ### Alerts
 
 Whether form fields are left blank or passwords don't match, there's an error message for most form issues. Change the defaults to suit your apps personality and style.
+
+### User Profiles
+
+Assign a default gravatar size for user profiles.
 
 ### Emails
 

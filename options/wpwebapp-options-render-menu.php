@@ -89,6 +89,10 @@ function wpwebapp_plugin_options_init() {
 	add_settings_field( 'alert_pw_reset_url_invalid', __( 'Password Reset URL Expired', 'wpwebapp' ) . '<div class="description">' . __( 'Password Reset form', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_alert_pw_reset_url_invalid', 'plugin_options', 'alerts' );
 
 
+	// User Profiles
+	add_settings_section( 'user_profiles', __( 'User Profiles', 'wpwebapp' ),  '__return_false', 'plugin_options' );
+	add_settings_field( 'profile_gravatar_size', __( 'Gravatar Size', 'wpwebapp' ) . '<div class="description">' . __( 'Size in pixels of gravatar displayed in a user\'s profile (must be a whole number)', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_profile_gravatar_size', 'plugin_options', 'user_profiles' );
+
 	// Emails
 	add_settings_section( 'emails', __( 'Emails', 'wpwebapp' ),  '__return_false', 'plugin_options' );
 	add_settings_field( 'email_disable_new_user_default', __( 'New User Default', 'wpwebapp' ), 'wpwebapp_settings_field_email_disable_new_user_default', 'plugin_options', 'emails' );
@@ -101,7 +105,7 @@ add_action( 'admin_init', 'wpwebapp_plugin_options_init' );
 
 // Add the plugin options page to the admin menu
 function wpwebapp_plugin_options_add_page() {
-	$theme_page = add_menu_page( __( 'Web App Options', 'wpwebapp' ), __( 'Web App Options', 'wpwebapp' ), 'edit_theme_options', 'plugin_options', 'wpwebapp_plugin_options_render_page' );
+	$theme_page = add_menu_page( __( 'WP Web Apps', 'wpwebapp' ), __( 'WP Web Apps', 'wpwebapp' ), 'edit_theme_options', 'plugin_options', 'wpwebapp_plugin_options_render_page' );
 }
 add_action( 'admin_menu', 'wpwebapp_plugin_options_add_page' );
 

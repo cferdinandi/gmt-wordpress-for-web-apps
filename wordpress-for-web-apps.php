@@ -19,5 +19,6 @@ require_once( dirname( __FILE__) . '/wpwebapp-user-access.php' );
 require_once( dirname( __FILE__) . '/wpwebapp-navigation.php' );
 require_once( dirname( __FILE__) . '/wpwebapp-emails.php' );
 require_once( dirname( __FILE__) . '/wpwebapp-forms.php' );
+require_once( dirname( __FILE__) . '/wpwebapp-display-gravatar.php' );
 
 ?>
