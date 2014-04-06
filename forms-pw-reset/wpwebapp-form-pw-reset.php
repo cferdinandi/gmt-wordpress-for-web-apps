@@ -15,7 +15,7 @@ function wpwebapp_form_pw_forgot() {
 	// Variables
 	$alert = stripslashes( wpwebapp_get_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_pw_forgot' ) );
 	$submit_text = stripslashes( wpwebapp_get_pw_forgot_text() );
-	$submit_class = esc_attr( wpwebapp_get_form_button_class() );
+	$submit_class = esc_attr( wpwebapp_get_form_button_class_pw_reset() );
 
 	$form =
 		$alert .
