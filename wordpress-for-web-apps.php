@@ -19,10 +19,6 @@ require_once( dirname( __FILE__) . '/wpwebapp-security.php' );
 require_once( dirname( __FILE__) . '/wpwebapp-user-access.php' );
 require_once( dirname( __FILE__) . '/wpwebapp-navigation.php' );
 require_once( dirname( __FILE__) . '/wpwebapp-emails.php' );
-require_once( dirname( __FILE__) . '/wpwebapp-form-login.php' );
-require_once( dirname( __FILE__) . '/wpwebapp-form-signup.php' );
-require_once( dirname( __FILE__) . '/wpwebapp-form-pw-change.php' );
-require_once( dirname( __FILE__) . '/wpwebapp-form-pw-reset.php' );
-require_once( dirname( __FILE__) . '/wpwebapp-form-delete-account.php' );
+require_once( dirname( __FILE__) . '/wpwebapp-forms.php' );
 
 ?>
