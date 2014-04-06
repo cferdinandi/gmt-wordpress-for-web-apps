@@ -132,6 +132,10 @@ function wpwebapp_plugin_options_validate( $input ) {
 		$output['alert_pw_reset_url_invalid'] = wp_filter_post_kses( $input['alert_pw_reset_url_invalid'] );
 
 
+	// User Profiles
+	if ( isset( $input['profile_gravatar_size'] ) && ! empty( $input['profile_gravatar_size'] ) && is_numeric( $input['profile_gravatar_size'] ) && ( $input['profile_gravatar_size'] > 0 ) )
+		$output['profile_gravatar_size'] = wp_filter_nohtml_kses( $input['profile_gravatar_size'] );
+
 	// Emails
 	if ( !isset( $input['email_disable_new_user_default'] ) )
 		$output['email_disable_new_user_default'] = 'off';
