@@ -203,7 +203,7 @@ WordPress for Web Apps is licensed under the [MIT License](http://gomakethings.c
 ## Changelog
 
 * v3.5 - April 5, 2014
-	* Split forms across multiple files for more modular code structure.
+	* Split forms and options across multiple files for more modular code structure.
 * v3.4 - November 10, 2013
 	* [Added a delete account button for the front-end](https://github.com/cferdinandi/web-app-starter-kit/issues/7)
 * v3.3 - October 31, 2013
