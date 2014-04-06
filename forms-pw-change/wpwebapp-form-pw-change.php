@@ -14,7 +14,7 @@ function wpwebapp_form_pw_change() {
 	// Variables
 	$alert = stripslashes( wpwebapp_get_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_pw_change' ) );
 	$submit_text = stripslashes( wpwebapp_get_pw_change_text() );
-	$submit_class = esc_attr( wpwebapp_get_form_button_class() );
+	$submit_class = esc_attr( wpwebapp_get_form_button_class_pw_change() );
 	$pw_requirements = stripslashes( wpwebapp_get_pw_requirements_text() );
 
 	$form =

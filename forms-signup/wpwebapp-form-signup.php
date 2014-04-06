@@ -16,7 +16,7 @@ function wpwebapp_form_signup() {
 	$username = esc_attr( wpwebapp_get_alert_message( 'wpwebapp_credentials_username', 'wpwebapp_username' ) );
 	$email = esc_attr( wpwebapp_get_alert_message( 'wpwebapp_credentials_email', 'wpwebapp_email' ) );
 	$submit_text = stripslashes( wpwebapp_get_form_signup_text() );
-	$submit_class = esc_attr( wpwebapp_get_form_button_class() );
+	$submit_class = esc_attr( wpwebapp_get_form_button_class_signup() );
 	$pw_requirements = stripslashes( wpwebapp_get_pw_requirements_text() );
 
 	$form =
