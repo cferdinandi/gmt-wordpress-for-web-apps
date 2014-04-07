@@ -117,7 +117,7 @@ function wpwebapp_plugin_options_init_forms_login() {
 	// Fields
 	add_settings_section( 'forms', '',  '__return_false', 'wpwebapp_plugin_options_forms_login' );
 	add_settings_field( 'button_class', __( 'Button Class', 'wpwebapp' ) . '<div class="description">' . __( 'Class to apply to form submit buttons.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_class', 'wpwebapp_plugin_options_forms_login', 'forms' );
-	add_settings_field( 'button_text_login', __( 'Login Text', 'wpwebapp' ) . '<div class="description">' . __( 'Text for the login button.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_text_login', 'wpwebapp_plugin_options_forms_login', 'forms' );
+	add_settings_field( 'button_text_login', __( 'Login Text', 'wpwebapp' ) . '<div class="description">' . __( 'Text for the login button. Default: <code>Login</code>', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_text_login', 'wpwebapp_plugin_options_forms_login', 'forms' );
 
 }
 add_action( 'admin_init', 'wpwebapp_plugin_options_init_forms_login' );
@@ -149,19 +149,17 @@ add_filter( 'option_page_capability_wpwebapp_options_forms_login', 'wpwebapp_opt
 // Get class for form submit buttons
 function wpwebapp_get_form_button_class_login() {
 	$options = wpwebapp_get_plugin_options_forms_login();
-	$setting = $options['button_class'];
-	return $setting;
+	return $options['button_class'];
 }
 
 // Get text for login submit button
 function wpwebapp_get_form_login_text() {
 	$options = wpwebapp_get_plugin_options_forms_login();
 	if ( $options['button_text_login'] === '' ) {
-		$setting = __( 'Login', 'wpwebapp' );
+		return __( 'Login', 'wpwebapp' );
 	} else {
-		$setting = $options['button_text_login'];
+		return $options['button_text_login'];
 	}
-	return $setting;
 }
 
 ?>

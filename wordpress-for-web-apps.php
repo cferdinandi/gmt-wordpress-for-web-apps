@@ -50,8 +50,8 @@ require_once( dirname( __FILE__) . '/forms-delete-account/wpwebapp-form-delete-a
 
 // User Profiles
 // TODO: Add user attributes (name, bio, etc.)
-require_once( dirname( __FILE__) . '/user-profiles/wpwebapp-options-user-profiles.php' );
-// require_once( dirname( __FILE__) . '/user-profiles-alt/wpwebapp-display-gravatar.php' );
+require_once( dirname( __FILE__) . '/forms-user-profile/wpwebapp-options-form-user-profile.php' );
+// require_once( dirname( __FILE__) . '/forms-user-profile/wpwebapp-form-user-profile.php' );
 
 // Alerts
 require_once( dirname( __FILE__) . '/alerts/wpwebapp-options-alerts.php' );
