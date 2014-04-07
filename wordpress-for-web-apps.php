@@ -10,6 +10,9 @@
 	Author URI: http://gomakethings.com
 	License: MIT
 
+	TODO:
+		* Check button class namespacing in menu render and "get" functions
+
  * ====================================================================== */
 
 // Helpers
@@ -47,7 +50,8 @@ require_once( dirname( __FILE__) . '/forms-delete-account/wpwebapp-form-delete-a
 
 // User Profiles
 // TODO: Add user attributes (name, bio, etc.)
-require_once( dirname( __FILE__) . '/user-profiles/wpwebapp-display-gravatar.php' );
+require_once( dirname( __FILE__) . '/user-profiles/wpwebapp-options-user-profiles.php' );
+// require_once( dirname( __FILE__) . '/user-profiles-alt/wpwebapp-display-gravatar.php' );
 
 // Alerts
 require_once( dirname( __FILE__) . '/alerts/wpwebapp-options-alerts.php' );
