@@ -39,70 +39,95 @@ function wpwebapp_form_user_profile() {
 		$submit_class = esc_attr( wpwebapp_get_form_button_class_user_profile() );
 		$profile_fields = wpwebapp_get_user_profile_field_types();
 		$value = wpwebapp_get_user_profile_info();
-		$contact_label_text = esc_attr( wpwebapp_get_contact_info_label() );
-		$field_gravatar = $field_name = $field_about = $field_location = $field_email = $field_website = $field_twitter = $field_facebook = $field_linkedin = '';
-		if ( wpwebapp_get_gravatar_text() === '' ) {
-			$field_gravatar_text = '<p>' . __( 'Update your profile photo at <a href="https://en.gravatar.com/">Gravatar.com</a>.' ) . '</p>';
+		$custom_layout = wpwebapp_get_user_profile_custom_layout();
+
+		if ( $custom_layout === '' ) {
+
+			$contact_label_text = esc_attr( wpwebapp_get_contact_info_label() );
+			$field_gravatar = $field_name = $field_about = $field_location = $field_email = $field_website = $field_twitter = $field_facebook = $field_linkedin = '';
+			if ( wpwebapp_get_gravatar_text() === '' ) {
+				$field_gravatar_text = '<p>' . __( 'Update your profile photo at <a href="https://en.gravatar.com/">Gravatar.com</a>.' ) . '</p>';
+			} else {
+				$field_gravatar_text = stripslashes( wpwebapp_get_gravatar_text() );
+			}
+
+			if ( $profile_fields['gravatar'] === 'on' ) {
+				$field_gravatar = $value['gravatar'] . $field_gravatar_text;
+			}
+
+			if ( $profile_fields['name'] === 'on' ) {
+				$field_name = wpwebapp_form_field_text_input_plus( 'text', 'wpwebapp-user-profile-name', __( 'Name', 'wpwebapp' ), esc_attr($value['name']) );
+			}
+
+			if ( $profile_fields['about'] === 'on' ) {
+				$field_about = wpwebapp_form_field_text_area_plus( 'text', 'wpwebapp-user-profile-about', __( 'Biography', 'wpwebapp' ), esc_attr($value['about']) );
+			}
+
+			if ( $profile_fields['location'] === 'on' ) {
+				$field_location = wpwebapp_form_field_text_input_plus( 'text', 'wpwebapp-user-profile-location', __( 'Location', 'wpwebapp'), esc_attr($value['location']) );
+			}
+
+			if ( $profile_fields['email'] === 'on' ) {
+				$field_email = wpwebapp_form_field_text_input_plus( 'text', 'wpwebapp-user-profile-email', __( 'Email (public)', 'wpwebapp' ), esc_attr($value['email']) );
+			}
+
+			if ( $profile_fields['website'] === 'on' ) {
+				$field_website = wpwebapp_form_field_text_input_plus( 'text', 'wpwebapp-user-profile-website', __( 'Website', 'wpwebapp' ), esc_attr($value['website']) );
+			}
+
+			if ( $profile_fields['twitter'] === 'on' ) {
+				$field_twitter = wpwebapp_form_field_text_input_plus( 'text', 'wpwebapp-user-profile-twitter', __( 'Twitter', 'wpwebapp' ), '@' . esc_attr($value['twitter']) );
+			}
+
+			if ( $profile_fields['facebook'] === 'on' ) {
+				$field_facebook = wpwebapp_form_field_text_input_plus( 'text', 'wpwebapp-user-profile-facebook', __( 'Facebook', 'wpwebapp' ), esc_attr($value['facebook']) );
+			}
+
+			if ( $profile_fields['linkedin'] === 'on' ) {
+				$field_linkedin = wpwebapp_form_field_text_input_plus( 'text', 'wpwebapp-user-profile-linkedin', __( 'LinkedIn', 'wpwebapp' ), esc_attr($value['linkedin']) );
+			}
+
+			if ( $contact_label_text !== '' ) {
+				$contact_label = '<h2>' . esc_attr( $contact_label_text ) . '</h2>';
+			}
+
+			$form =
+				$alert .
+				'<form class="form-wpwebapp" id="wpwebapp-form-user-profile" name="wpwebapp-form-user-profile" action="" method="post">' .
+					// fields
+					$field_gravatar .
+					$field_name .
+					$field_about .
+					$field_location .
+					$contact_label .
+					$field_email .
+					$field_website .
+					$field_twitter .
+					$field_facebook .
+					$field_linkedin .
+					wpwebapp_form_field_submit_plus( 'wpwebapp-update-profile-submit', $submit_class, $submit_text, 'wpwebapp-update-profile-process-nonce', 'wpwebapp-update-profile-process' ) .
+				'</form>';
+
 		} else {
-			$field_gravatar_text = stripslashes( wpwebapp_get_gravatar_text() );
+			$add_fields = array(
+				'%gravatar' => $value['gravatar'],
+				'%name' => wpwebapp_form_field_text_input( 'text', 'wpwebapp-user-profile-name', __( 'Name', 'wpwebapp' ), esc_attr($value['name']) ),
+				'%about' => wpwebapp_form_field_text_area( 'text', 'wpwebapp-user-profile-about', __( 'Biography', 'wpwebapp' ), esc_attr($value['about']) ),
+				'%location' => wpwebapp_form_field_text_input( 'text', 'wpwebapp-user-profile-location', __( 'Location', 'wpwebapp'), esc_attr($value['location']) ),
+				'%email' => wpwebapp_form_field_text_input( 'text', 'wpwebapp-user-profile-email', __( 'Email (public)', 'wpwebapp' ), esc_attr($value['email']) ),
+				'%website' => wpwebapp_form_field_text_input( 'text', 'wpwebapp-user-profile-website', __( 'Website', 'wpwebapp' ), esc_attr($value['website']) ),
+				'%twitter' => wpwebapp_form_field_text_input( 'text', 'wpwebapp-user-profile-twitter', __( 'Twitter', 'wpwebapp' ), '@' . esc_attr($value['twitter']) ),
+				'%facebook' => wpwebapp_form_field_text_input( 'text', 'wpwebapp-user-profile-facebook', __( 'Facebook', 'wpwebapp' ), esc_attr($value['facebook']) ),
+				'%linkedin' => wpwebapp_form_field_text_input( 'text', 'wpwebapp-user-profile-linkedin', __( 'LinkedIn', 'wpwebapp' ), esc_attr($value['linkedin']) ),
+				'%submit' => wpwebapp_form_field_submit( 'wpwebapp-update-profile-submit', $submit_class, $submit_text, 'wpwebapp-update-profile-process-nonce', 'wpwebapp-update-profile-process' ),
+			);
+			$custom_layout = strtr( $custom_layout, $add_fields );
+			$form =
+				'<form class="form-wpwebapp" id="wpwebapp-form-user-profile" name="wpwebapp-form-user-profile" action="" method="post">' .
+					$custom_layout .
+				'</form>';
 		}
 
-		if ( $profile_fields['gravatar'] === 'on' ) {
-			$field_gravatar = $value['gravatar'] . $field_gravatar_text;
-		}
-
-		if ( $profile_fields['name'] === 'on' ) {
-			$field_name = wpwebapp_form_field_text_input( 'text', 'wpwebapp-user-profile-name', __( 'Name', 'wpwebapp' ), esc_attr($value['name']) );
-		}
-
-		if ( $profile_fields['about'] === 'on' ) {
-			$field_about = wpwebapp_form_field_text_area( 'text', 'wpwebapp-user-profile-about', __( 'Biography', 'wpwebapp' ), esc_attr($value['about']) );
-		}
-
-		if ( $profile_fields['location'] === 'on' ) {
-			$field_location = wpwebapp_form_field_text_input( 'text', 'wpwebapp-user-profile-location', __( 'Location', 'wpwebapp'), esc_attr($value['location']) );
-		}
-
-		if ( $profile_fields['email'] === 'on' ) {
-			$field_email = wpwebapp_form_field_text_input( 'text', 'wpwebapp-user-profile-email', __( 'Email (public)', 'wpwebapp' ), esc_attr($value['email']) );
-		}
-
-		if ( $profile_fields['website'] === 'on' ) {
-			$field_website = wpwebapp_form_field_text_input( 'text', 'wpwebapp-user-profile-website', __( 'Website', 'wpwebapp' ), esc_attr($value['website']) );
-		}
-
-		if ( $profile_fields['twitter'] === 'on' ) {
-			$field_twitter = wpwebapp_form_field_text_input( 'text', 'wpwebapp-user-profile-twitter', __( 'Twitter', 'wpwebapp' ), '@' . esc_attr($value['twitter']) );
-		}
-
-		if ( $profile_fields['facebook'] === 'on' ) {
-			$field_facebook = wpwebapp_form_field_text_input( 'text', 'wpwebapp-user-profile-facebook', __( 'Facebook', 'wpwebapp' ), esc_attr($value['facebook']) );
-		}
-
-		if ( $profile_fields['linkedin'] === 'on' ) {
-			$field_linkedin = wpwebapp_form_field_text_input( 'text', 'wpwebapp-user-profile-linkedin', __( 'LinkedIn', 'wpwebapp' ), esc_attr($value['linkedin']) );
-		}
-
-		if ( $contact_label_text !== '' ) {
-			$contact_label = '<h2>' . esc_attr( $contact_label_text ) . '</h2>';
-		}
-
-		$form =
-			$alert .
-			'<form class="form-wpwebapp" id="wpwebapp-form-user-profile" name="wpwebapp-form-user-profile" action="" method="post">' .
-				// fields
-				$field_gravatar .
-				$field_name .
-				$field_about .
-				$field_location .
-				$contact_label .
-				$field_email .
-				$field_website .
-				$field_twitter .
-				$field_facebook .
-				$field_linkedin .
-				wpwebapp_form_field_submit( 'wpwebapp-update-profile-submit', $submit_class, $submit_text, 'wpwebapp-update-profile-process-nonce', 'wpwebapp-update-profile-process' ) .
-			'</form>';
 
 	} else {
 		$form = '<p>' . __( 'You must be logged in to update a profile.', 'wpwebapp' ) . '</p>';

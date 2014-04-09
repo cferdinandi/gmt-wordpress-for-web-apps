@@ -13,29 +13,72 @@
 	Structure for the form fields.
  * ====================================================================== */
 
-// Text Input
-function wpwebapp_form_field_text_input( $type, $id, $label, $value = '', $tabindex = '', $autofocus = '' ) {
-	$form_field =
-		'<div>
-			<label for="' . $id . '">' .
-				$label .
-			'</label>
-			<input
-				type="' . $type . '"
+// Label
+function wpwebapp_form_field_label( $id, $label ) {
+	$field =
+		'<label for="' . $id . '">' .
+			$label .
+		'</label>';
+	return $field;
+}
+
+// Checkbox
+function wpwebapp_form_field_checkbox( $id, $label, $value = '', $tabindex = '', $checked = '' ) {
+	$field =
+		'<label for="' . $id . '">' .
+			'<input type="checkbox"
 				id="' . $id . '"
 				name="' . $id . '"
 				value="' . $value . '"
 				tabindex="' . $tabindex . '" ' .
-				$autofocus .
-			'>
-		</div>';
-	return $form_field;
+				$checked .
+			'>' .
+			$label .
+		'</label>';
+	return $field;
+}
+
+// Text Input
+function wpwebapp_form_field_text_input( $type, $id, $label, $value = '', $tabindex = '', $autofocus = '' ) {
+	$field =
+		'<input
+			type="' . $type . '"
+			id="' . $id . '"
+			name="' . $id . '"
+			value="' . $value . '"
+			tabindex="' . $tabindex . '" ' .
+			$autofocus .
+		'>';
+	return $field;
+}
+
+// Text Area
+function wpwebapp_form_field_text_area( $type, $id, $label, $value = '', $tabindex = '', $autofocus = '' ) {
+	$field =
+		'<textarea
+			type="' . $type . '"
+			id="' . $id . '"
+			name="' . $id . '"
+			tabindex="' . $tabindex . '" ' .
+			$autofocus .
+		'>' .
+			$value .
+		'</textarea>';
+	return $field;
 }
 
 
+// Submit
+function wpwebapp_form_field_submit( $id, $class, $label, $action, $nonce_field, $tabindex ) {
+	$field =
+		wp_nonce_field( $action, $nonce_field) .
+		'<button type="submit" class="' . $class . '" id="' . $id . '" name="' . $id . '" tabindex="' . $tabindex . '">' . $label . '</button>';
+	return $field;
+}
+
 // Checkbox
-function wpwebapp_form_field_checkbox( $id, $label, $value = '', $tabindex = '', $checked = '' ) {
-	$form_field =
+function wpwebapp_form_field_checkbox_plus( $id, $label, $value = '', $tabindex = '', $checked = '' ) {
+	$field =
 		'<div>
 			<label for="' . $id . '">' .
 				'<input type="checkbox"
@@ -48,17 +91,32 @@ function wpwebapp_form_field_checkbox( $id, $label, $value = '', $tabindex = '',
 				$label .
 			'</label>
 		</div>';
-	return $form_field;
+	return $field;
+}
+
+// Text Input
+function wpwebapp_form_field_text_input_plus( $type, $id, $label, $value = '', $tabindex = '', $autofocus = '' ) {
+	$field =
+		'<div>' .
+			wpwebapp_form_field_label( $id, $label ) .
+			'<input
+				type="' . $type . '"
+				id="' . $id . '"
+				name="' . $id . '"
+				value="' . $value . '"
+				tabindex="' . $tabindex . '" ' .
+				$autofocus .
+			'>
+		</div>';
+	return $field;
 }
 
 // Text Area
-function wpwebapp_form_field_text_area( $type, $id, $label, $value = '', $tabindex = '', $autofocus = '' ) {
-	$form_field =
-		'<div>
-			<label for="' . $id . '">' .
-				$label .
-			'</label>
-			<textarea
+function wpwebapp_form_field_text_area_plus( $type, $id, $label, $value = '', $tabindex = '', $autofocus = '' ) {
+	$field =
+		'<div>' .
+			wpwebapp_form_field_label( $id, $label ) .
+			'<textarea
 				type="' . $type . '"
 				id="' . $id . '"
 				name="' . $id . '"
@@ -68,18 +126,18 @@ function wpwebapp_form_field_text_area( $type, $id, $label, $value = '', $tabind
 				$value .
 			'</textarea>
 		</div>';
-	return $form_field;
+	return $field;
 }
 
 
 // Submit
-function wpwebapp_form_field_submit( $id, $class, $label, $action, $nonce_field, $tabindex ) {
-	$form_field =
+function wpwebapp_form_field_submit_plus( $id, $class, $label, $action, $nonce_field, $tabindex ) {
+	$field =
 		'<div>' .
 			wp_nonce_field( $action, $nonce_field) .
 			'<button type="submit" class="' . $class . '" id="' . $id . '" name="' . $id . '" tabindex="' . $tabindex . '">' . $label . '</button>
 		</div>';
-	return $form_field;
+	return $field;
 }
 
 

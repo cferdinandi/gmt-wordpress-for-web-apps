@@ -57,7 +57,7 @@ function wpwebapp_process_email_change() {
 
 			// Alert Messages
 			$alert_all_fields = wpwebapp_get_alert_empty_fields();
-			$alert_incorrect_login = wpwebapp_get_alert_login_incorrect();
+			$alert_incorrect_pw = wpwebapp_get_alert_pw_incorrect();
 			$alert_email_success = wpwebapp_get_alert_email_change_success();
 
 			// Validate and authenticate passwords
@@ -66,7 +66,7 @@ function wpwebapp_process_email_change() {
 				wp_safe_redirect( $referer, 302 );
 				exit;
 			} else if ( !wp_check_password( $pw, $user_pw, $user_id ) ) {
-				wpwebapp_set_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_email_change', $alert_incorrect_login );
+				wpwebapp_set_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_email_change', $alert_incorrect_pw );
 				wp_safe_redirect( $referer, 302 );
 				exit;
 			}

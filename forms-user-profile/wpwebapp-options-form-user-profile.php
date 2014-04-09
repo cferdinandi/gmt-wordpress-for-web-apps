@@ -113,6 +113,27 @@ function wpwebapp_settings_field_button_text_user_profile() {
 	<?php
 }
 
+// Sample textarea field
+function wpwebapp_settings_field_custom_layout_user_profile() {
+	$options = wpwebapp_get_plugin_options_user_profile();
+	?>
+	<textarea class="large-text" type="text" name="wpwebapp_plugin_options_user_profile[custom_layout]" id="custom-layout" cols="50" rows="10" /><?php echo esc_textarea( $options['custom_layout'] ); ?></textarea>
+	<label class="description">
+		<?php _e( 'Use the following variables to add fields to the layout:', 'wpwebapp' ); ?><br />
+		<?php _e( 'Gravatar', 'wpwebapp' ); ?> - <code>%gravatar</code><br />
+		<?php _e( 'Name', 'wpwebapp' ); ?> - <code>%name</code><br />
+		<?php _e( 'About', 'wpwebapp' ); ?> - <code>%about</code><br />
+		<?php _e( 'Location', 'wpwebapp' ); ?> - <code>%location</code><br />
+		<?php _e( 'Email', 'wpwebapp' ); ?> - <code>%email</code><br />
+		<?php _e( 'Website', 'wpwebapp' ); ?> - <code>%website</code><br />
+		<?php _e( 'Twitter', 'wpwebapp' ); ?> - <code>%twitter</code><br />
+		<?php _e( 'Facebook', 'wpwebapp' ); ?> - <code>%facebook</code><br />
+		<?php _e( 'LinkedIn', 'wpwebapp' ); ?> - <code>%linkedin</code><br />
+		<?php _e( 'Submit Button', 'wpwebapp' ); ?> - <code>%submit</code>
+	</label>
+	<?php
+}
+
 
 
 
@@ -141,6 +162,7 @@ function wpwebapp_get_plugin_options_user_profile() {
 		'contact_info' => '',
 		'button_class' => '',
 		'button_text' => '',
+		'custom_layout' => '',
 	);
 
 	$defaults = apply_filters( 'wpwebapp_default_plugin_options_user_profile', $defaults );
@@ -207,6 +229,9 @@ function wpwebapp_plugin_options_validate_user_profile( $input ) {
 	if ( isset( $input['button_text'] ) && ! empty( $input['button_text'] ) )
 		$output['button_text'] = wp_filter_nohtml_kses( $input['button_text'] );
 
+	if ( isset( $input['custom_layout'] ) && ! empty( $input['custom_layout'] ) )
+		$output['custom_layout'] = wp_filter_post_kses( $input['custom_layout'] );
+
 	return apply_filters( 'wpwebapp_plugin_options_validate_user_profile', $output, $input );
 }
 
@@ -254,6 +279,7 @@ function wpwebapp_plugin_options_init_user_profile() {
 	add_settings_field( 'contact_info', __( 'Contact Info Label', 'wpwebapp' ) . '<div class="description">' . __( 'Label to display above contact info section.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_contact_info_label', 'wpwebapp_plugin_options_user_profile', 'user_profile' );
 	add_settings_field( 'button_class', __( 'Button Class', 'wpwebapp' ) . '<div class="description">' . __( 'Class to apply to form submit buttons.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_class_user_profile', 'wpwebapp_plugin_options_user_profile', 'user_profile' );
 	add_settings_field( 'button_text', __( 'Update Text', 'wpwebapp' ) . '<div class="description">' . __( 'Text to display for the update profile button.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_text_user_profile', 'wpwebapp_plugin_options_user_profile', 'user_profile' );
+	add_settings_field( 'custom_layout', __( 'Custom Layout', 'wpwebapp' ) . '<div class="description">' . __( 'Customize the layout of the form with your own markup.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_custom_layout_user_profile', 'wpwebapp_plugin_options_user_profile', 'user_profile' );
 
 }
 add_action( 'admin_init', 'wpwebapp_plugin_options_init_user_profile' );
@@ -335,6 +361,12 @@ function wpwebapp_get_user_profile_text() {
 	} else {
 		return $options['button_text'];
 	}
+}
+
+// Get custom layout
+function wpwebapp_get_user_profile_custom_layout() {
+	$options = wpwebapp_get_plugin_options_user_profile();
+	return $options['custom_layout'];
 }
 
 ?>
