@@ -11,22 +11,28 @@
 // Create & Display Signup Form
 function wpwebapp_form_signup() {
 
-	// Variables
-	$alert = stripslashes( wpwebapp_get_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_signup' ) );
-	$username = esc_attr( wpwebapp_get_alert_message( 'wpwebapp_credentials_username', 'wpwebapp_username' ) );
-	$email = esc_attr( wpwebapp_get_alert_message( 'wpwebapp_credentials_email', 'wpwebapp_email' ) );
-	$submit_text = stripslashes( wpwebapp_get_form_signup_text() );
-	$submit_class = esc_attr( wpwebapp_get_form_button_class_signup() );
-	$pw_requirements = stripslashes( wpwebapp_get_pw_requirements_text() );
+	if ( is_user_logged_in() ) {
+		$form = '<p>' . __( 'You already have an account.', 'wpwebapp' ) . '</p>';
+	} else {
 
-	$form =
-		$alert .
-		'<form class="form-wpwebapp" id="wpwebapp-form-signup" name="wpwebapp-form-signup" action="" method="post">' .
-			wpwebapp_form_field_text_input( 'text', 'wpwebapp-signup-username', __( 'Username', 'wpwebapp' ), $username, '1', 'autofocus' ) .
-			wpwebapp_form_field_text_input( 'email', 'wpwebapp-signup-email', __( 'Email', 'wpwebapp' ), $email, '2' ) .
-			wpwebapp_form_field_text_input( 'password', 'wpwebapp-signup-password', sprintf( __( 'Password %s', 'wpwebapp' ), $pw_requirements ), '', '3' ) .
-			wpwebapp_form_field_submit( 'wpwebapp-signup-submit', $submit_class, $submit_text, 'wpwebapp-signup-process-nonce', 'wpwebapp-signup-process', '4' ) .
-		'</form>';
+		// Variables
+		$alert = stripslashes( wpwebapp_get_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_signup' ) );
+		$username = esc_attr( wpwebapp_get_alert_message( 'wpwebapp_credentials_username', 'wpwebapp_username' ) );
+		$email = esc_attr( wpwebapp_get_alert_message( 'wpwebapp_credentials_email', 'wpwebapp_email' ) );
+		$submit_text = stripslashes( wpwebapp_get_form_signup_text() );
+		$submit_class = esc_attr( wpwebapp_get_form_button_class_signup() );
+		$pw_requirements = stripslashes( wpwebapp_get_pw_requirements_text() );
+
+		$form =
+			$alert .
+			'<form class="form-wpwebapp" id="wpwebapp-form-signup" name="wpwebapp-form-signup" action="" method="post">' .
+				wpwebapp_form_field_text_input( 'text', 'wpwebapp-signup-username', __( 'Username', 'wpwebapp' ), $username, '1', 'autofocus' ) .
+				wpwebapp_form_field_text_input( 'email', 'wpwebapp-signup-email', __( 'Email', 'wpwebapp' ), $email, '2' ) .
+				wpwebapp_form_field_text_input( 'password', 'wpwebapp-signup-password', sprintf( __( 'Password %s', 'wpwebapp' ), $pw_requirements ), '', '3' ) .
+				wpwebapp_form_field_submit( 'wpwebapp-signup-submit', $submit_class, $submit_text, 'wpwebapp-signup-process-nonce', 'wpwebapp-signup-process', '4' ) .
+			'</form>';
+
+	}
 
 	return $form;
 

@@ -163,33 +163,30 @@ add_filter( 'option_page_capability_wpwebapp_options_delete_account', 'wpwebapp_
 function wpwebapp_get_delete_account_button_class() {
 	$options = wpwebapp_get_plugin_options_delete_account();
 	if ( $options['delete_button_class'] === '' ) {
-		$setting = wpwebapp_get_form_button_class();
+		return '';
 	} else {
-		$setting = $options['delete_button_class'];
+		return $options['delete_button_class'];
 	}
-	return $setting;
 }
 
 // Get text for delete account button
 function wpwebapp_get_delete_account_text() {
 	$options = wpwebapp_get_plugin_options_delete_account();
 	if ( $options['delete_account_text'] === '' ) {
-		$setting = __( 'Delete Account', 'wpwebapp' );
+		return __( 'Delete Account', 'wpwebapp' );
 	} else {
-		$setting = $options['delete_account_text'];
+		return $options['delete_account_text'];
 	}
-	return $setting;
 }
 
 // Get redirect URL for delete account button
 function wpwebapp_get_delete_account_url() {
 	$options = wpwebapp_get_plugin_options_delete_account();
 	if ( $options['delete_account_url'] === '' ) {
-		$setting = wpwebapp_get_redirect_url_logged_out();
+		return wpwebapp_get_redirect_url_logged_out();
 	} else {
-		$setting = $options['delete_account_url'];
+		return $options['delete_account_url'];
 	}
-	return $setting;
 }
 
 ?>

@@ -153,15 +153,13 @@ add_filter( 'option_page_capability_wpwebapp_options_emails', 'wpwebapp_option_p
 // Get setting for disabling the default new user email (yes/no)
 function wpwebapp_get_email_disable_new_user() {
 	$options = wpwebapp_get_plugin_options_emails();
-	$setting = $options['email_disable_new_user_default'];
-	return $setting;
+	return $options['email_disable_new_user_default'];
 }
 
 // Get setting for disabling password change notification emails (yes/no)
 function wpwebapp_get_email_disable_password_change() {
 	$options = wpwebapp_get_plugin_options_emails();
-	$setting = $options['email_disable_pw_reset'];
-	return $setting;
+	return $options['email_disable_pw_reset'];
 }
 
 ?>

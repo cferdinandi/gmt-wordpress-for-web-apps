@@ -70,12 +70,6 @@ function wpwebapp_settings_field_user_profile_fields() {
 			<?php _e( 'LinkedIn', 'wpwebapp' ); ?>
 		</label>
 	</div>
-	<div class="layout">
-		<label class="description" for="user-profile-fields-other">
-			<input type="checkbox" name="wpwebapp_plugin_options_user_profile[user_profile_fields_other]" id="user-profile-fields-other" <?php checked( 'on', $options['user_profile_fields_other'] ); ?> />
-			<?php _e( 'Other', 'wpwebapp' ); ?>
-		</label>
-	</div>
 	<?php
 }
 
@@ -84,6 +78,14 @@ function wpwebapp_settings_field_gravatar_size() {
 	?>
 	<input type="text" name="wpwebapp_plugin_options_user_profile[gravatar_size]" id="gravatar-size" value="<?php echo esc_attr( $options['gravatar_size'] ); ?>" /><br>
 	<label class="description" for="gravatar-size"><?php _e( 'Default: <code>96</code>', 'wpwebapp' ); ?></label>
+	<?php
+}
+
+function wpwebapp_settings_field_gravatar_text() {
+	$options = wpwebapp_get_plugin_options_user_profile();
+	?>
+	<input type="text" name="wpwebapp_plugin_options_user_profile[gravatar_text]" id="gravatar-text" value="<?php echo esc_attr( $options['gravatar_text'] ); ?>" /><br>
+	<label class="description" for="gravatar-text"><?php _e( 'Default: <code>&lt;p&gt;Update your profile photo at &lt;a href="https://en.gravatar.com/"&gt;Gravatar.com&lt;/a&gt;.&lt;/p&gt;</code>', 'wpwebapp' ); ?></label>
 	<?php
 }
 
@@ -134,8 +136,8 @@ function wpwebapp_get_plugin_options_user_profile() {
 		'user_profile_fields_twitter' => 'off',
 		'user_profile_fields_facebook' => 'off',
 		'user_profile_fields_linkedin' => 'off',
-		'user_profile_fields_other' => 'off',
 		'gravatar_size' => '',
+		'gravatar_text' => '',
 		'contact_info' => '',
 		'button_class' => '',
 		'button_text' => '',
@@ -190,11 +192,11 @@ function wpwebapp_plugin_options_validate_user_profile( $input ) {
 	if ( isset( $input['user_profile_fields_linkedin'] ) )
 		$output['user_profile_fields_linkedin'] = 'on';
 
-	if ( isset( $input['user_profile_fields_other'] ) )
-		$output['user_profile_fields_other'] = 'on';
-
 	if ( isset( $input['gravatar_size'] ) && ! empty( $input['gravatar_size'] ) && is_numeric( $input['gravatar_size'] ) && ( $input['gravatar_size'] > 0 ) )
 		$output['gravatar_size'] = wp_filter_nohtml_kses( $input['gravatar_size'] );
+
+	if ( isset( $input['gravatar_text'] ) && ! empty( $input['gravatar_text'] ) )
+		$output['gravatar_text'] = wp_filter_post_kses( $input['gravatar_text'] );
 
 	if ( isset( $input['contact_info'] ) && ! empty( $input['contact_info'] ) )
 		$output['contact_info'] = wp_filter_nohtml_kses( $input['contact_info'] );
@@ -248,6 +250,7 @@ function wpwebapp_plugin_options_init_user_profile() {
 	add_settings_section( 'user_profile', '',  '__return_false', 'wpwebapp_plugin_options_user_profile' );
 	add_settings_field( 'user_profile_fields', __( 'User Profile Fields', 'wpwebapp' ) . '<div class="description">' . __( 'Fields to display in user profile.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_user_profile_fields', 'wpwebapp_plugin_options_user_profile', 'user_profile' );
 	add_settings_field( 'gravatar_size', __( 'Gravatar Size', 'wpwebapp' ) . '<div class="description">' . __( 'Default size for gravatar profile images.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_gravatar_size', 'wpwebapp_plugin_options_user_profile', 'user_profile' );
+	add_settings_field( 'gravatar_text', __( 'Gravatar Text', 'wpwebapp' ) . '<div class="description">' . __( 'Text displayed below gravatar image.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_gravatar_text', 'wpwebapp_plugin_options_user_profile', 'user_profile' );
 	add_settings_field( 'contact_info', __( 'Contact Info Label', 'wpwebapp' ) . '<div class="description">' . __( 'Label to display above contact info section.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_contact_info_label', 'wpwebapp_plugin_options_user_profile', 'user_profile' );
 	add_settings_field( 'button_class', __( 'Button Class', 'wpwebapp' ) . '<div class="description">' . __( 'Class to apply to form submit buttons.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_class_user_profile', 'wpwebapp_plugin_options_user_profile', 'user_profile' );
 	add_settings_field( 'button_text', __( 'Update Text', 'wpwebapp' ) . '<div class="description">' . __( 'Text to display for the update profile button.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_text_user_profile', 'wpwebapp_plugin_options_user_profile', 'user_profile' );
@@ -279,64 +282,10 @@ add_filter( 'option_page_capability_wpwebapp_options_user_profile', 'wpwebapp_op
 	Methods to get settings in other plugin functions.
  * ====================================================================== */
 
-// function wpwebapp_get_user_profile_field_gravatar() {
-// 	$options = wpwebapp_get_plugin_options_user_profile();
-// 	$setting = $options['user_profile_fields_gravatar'];
-// 	return $setting;
-// }
-
-// function wpwebapp_get_user_profile_field_name() {
-// 	$options = wpwebapp_get_plugin_options_user_profile();
-// 	$setting = $options['user_profile_fields_name'];
-// 	return $setting;
-// }
-
-// function wpwebapp_get_user_profile_field_about() {
-// 	$options = wpwebapp_get_plugin_options_user_profile();
-// 	$setting = $options['user_profile_fields_about'];
-// 	return $setting;
-// }
-
-// function wpwebapp_get_user_profile_field_location() {
-// 	$options = wpwebapp_get_plugin_options_user_profile();
-// 	$setting = $options['user_profile_fields_locationt'];
-// 	return $setting;
-// }
-
-// function wpwebapp_get_user_profile_field_website() {
-// 	$options = wpwebapp_get_plugin_options_user_profile();
-// 	$setting = $options['user_profile_fields_website'];
-// 	return $setting;
-// }
-
-// function wpwebapp_get_user_profile_field_twitter() {
-// 	$options = wpwebapp_get_plugin_options_user_profile();
-// 	$setting = $options['user_profile_fields_twitter'];
-// 	return $setting;
-// }
-
-// function wpwebapp_get_user_profile_field_facebook() {
-// 	$options = wpwebapp_get_plugin_options_user_profile();
-// 	$setting = $options['user_profile_fields_facebook'];
-// 	return $setting;
-// }
-
-// function wpwebapp_get_user_profile_field_linkedin() {
-// 	$options = wpwebapp_get_plugin_options_user_profile();
-// 	$setting = $options['user_profile_fields_linkedin'];
-// 	return $setting;
-// }
-
-// function wpwebapp_get_user_profile_field_other() {
-// 	$options = wpwebapp_get_plugin_options_user_profile();
-// 	$setting = $options['user_profile_fields_other'];
-// 	return $setting;
-// }
-
 // Get an array of profile field types to display
 function wpwebapp_get_user_profile_field_types() {
 	$options = wpwebapp_get_plugin_options_user_profile();
-	$setting = array(
+	return array(
 		'gravatar' => $options['user_profile_fields_gravatar'],
 		'name' => $options['user_profile_fields_name'],
 		'about' => $options['user_profile_fields_about'],
@@ -346,9 +295,7 @@ function wpwebapp_get_user_profile_field_types() {
 		'twitter' => $options['user_profile_fields_twitter'],
 		'facebook' => $options['user_profile_fields_facebook'],
 		'linkedin' => $options['user_profile_fields_linkedin'],
-		'other' => $options['user_profile_fields_other'],
 	);
-	return $setting;
 }
 
 // Get default gravatar size
@@ -362,6 +309,12 @@ function wpwebapp_get_gravatar_size() {
 	}
 }
 
+// Get gravatar caption text
+function wpwebapp_get_gravatar_text() {
+	$options = wpwebapp_get_plugin_options_user_profile();
+	return $options['gravatar_text'];
+}
+
 // Get contact info label
 function wpwebapp_get_contact_info_label() {
 	$options = wpwebapp_get_plugin_options_user_profile();
@@ -371,8 +324,7 @@ function wpwebapp_get_contact_info_label() {
 // Get class for form submit buttons
 function wpwebapp_get_form_button_class_user_profile() {
 	$options = wpwebapp_get_plugin_options_user_profile();
-	$setting = $options['button_class'];
-	return $setting;
+	return $options['button_class'];
 }
 
 // Get text for form submit buttons

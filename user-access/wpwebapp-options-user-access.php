@@ -232,41 +232,37 @@ function wpwebapp_get_block_admin_access() {
 
 	// Determine if user has required capability for access
 	if ( user_can( $user_id, $capability ) ) {
-		$setting = 'show';
+		return 'show';
 	} else {
-		$setting = 'hide';
+		return 'hide';
 	}
 
-	return $setting;
 }
 
 // Get logged-in redirect URL
 function wpwebapp_get_redirect_url_logged_in() {
 	$options = wpwebapp_get_plugin_options_user_access();
 	if ( $options['redirect_logged_in'] === '' ) {
-		$setting = site_url();
+		return site_url();
 	} else {
-		$setting = $options['redirect_logged_in'];
+		return $options['redirect_logged_in'];
 	}
-	return $setting;
 }
 
 // Get logged-out redirect URL
 function wpwebapp_get_redirect_url_logged_out() {
 	$options = wpwebapp_get_plugin_options_user_access();
 	if ( $options['redirect_logged_out'] === '' ) {
-		$setting = site_url();
+		return site_url();
 	} else {
-		$setting = $options['redirect_logged_out'];
+		return $options['redirect_logged_out'];
 	}
-	return $setting;
 }
 
 // Get blog post access settings
 function wpwebapp_get_blog_post_access() {
 	$options = wpwebapp_get_plugin_options_user_access();
-	$setting = $options['blog_posts_require_login'];
-	return $setting;
+	return $options['blog_posts_require_login'];
 }
 
 ?>

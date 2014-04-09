@@ -12,17 +12,23 @@
 // Displayed in `wpwebapp_form_pw_forgot_reset()`
 function wpwebapp_form_pw_forgot() {
 
-	// Variables
-	$alert = stripslashes( wpwebapp_get_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_pw_forgot' ) );
-	$submit_text = stripslashes( wpwebapp_get_pw_forgot_text() );
-	$submit_class = esc_attr( wpwebapp_get_form_button_class_pw_reset() );
+	if ( is_user_logged_in() ) {
+		$form = '<p>' . __( 'You\'re already logged in.', 'wpwebapp' ) . '</p>';
+	} else {
 
-	$form =
-		$alert .
-		'<form class="form-wpwebapp" id="wpwebapp-form-pw-forgot" name="wpwebapp-form-pw-forgot" action="" method="post">' .
-			wpwebapp_form_field_text_input( 'text', 'wpwebapp-username-email', __( 'Username or Email', 'wpwebapp' ), '', '1', 'autofocus' ) .
-			wpwebapp_form_field_submit( 'wpwebapp-forgot-pw-submit', $submit_class, $submit_text, 'wpwebapp-forgot-pw-process-nonce', 'wpwebapp-forgot-pw-process', '2' ) .
-		'</form>';
+		// Variables
+		$alert = stripslashes( wpwebapp_get_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_pw_forgot' ) );
+		$submit_text = stripslashes( wpwebapp_get_pw_forgot_text() );
+		$submit_class = esc_attr( wpwebapp_get_form_button_class_pw_reset() );
+
+		$form =
+			$alert .
+			'<form class="form-wpwebapp" id="wpwebapp-form-pw-forgot" name="wpwebapp-form-pw-forgot" action="" method="post">' .
+				wpwebapp_form_field_text_input( 'text', 'wpwebapp-username-email', __( 'Username or Email', 'wpwebapp' ), '', '1', 'autofocus' ) .
+				wpwebapp_form_field_submit( 'wpwebapp-forgot-pw-submit', $submit_class, $submit_text, 'wpwebapp-forgot-pw-process-nonce', 'wpwebapp-forgot-pw-process', '2' ) .
+			'</form>';
+
+	}
 
 	return $form;
 

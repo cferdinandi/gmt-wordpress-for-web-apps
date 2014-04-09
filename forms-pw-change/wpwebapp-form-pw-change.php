@@ -11,20 +11,26 @@
 // Create & Display Change Password Form
 function wpwebapp_form_pw_change() {
 
-	// Variables
-	$alert = stripslashes( wpwebapp_get_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_pw_change' ) );
-	$submit_text = stripslashes( wpwebapp_get_pw_change_text() );
-	$submit_class = esc_attr( wpwebapp_get_form_button_class_pw_change() );
-	$pw_requirements = stripslashes( wpwebapp_get_pw_requirements_text() );
+	if ( is_user_logged_in() ) {
 
-	$form =
-		$alert .
-		'<form class="form-wpwebapp" id="wpwebapp-form-pw-change" name="wpwebapp-form-pw-change" action="" method="post">' .
-			wpwebapp_form_field_text_input( 'password', 'wpwebapp-pw-current', __( 'Current Password', 'wpwebapp' ), '', '1', 'autofocus' ) .
-			wpwebapp_form_field_text_input( 'password', 'wpwebapp-pw-new-1', sprintf( __( 'New Password %s', 'wpwebapp' ), $pw_requirements ), '', '2' ) .
-			wpwebapp_form_field_text_input( 'password', 'wpwebapp-pw-new-2', __( 'Confirm New Password', 'wpwebapp' ), '', '3' ) .
-			wpwebapp_form_field_submit( 'wpwebapp-change-pw-submit', $submit_class, $submit_text, 'wpwebapp-change-pw-process-nonce', 'wpwebapp-change-pw-process', '4' ) .
-		'</form>';
+		// Variables
+		$alert = stripslashes( wpwebapp_get_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_pw_change' ) );
+		$submit_text = stripslashes( wpwebapp_get_pw_change_text() );
+		$submit_class = esc_attr( wpwebapp_get_form_button_class_pw_change() );
+		$pw_requirements = stripslashes( wpwebapp_get_pw_requirements_text() );
+
+		$form =
+			$alert .
+			'<form class="form-wpwebapp" id="wpwebapp-form-pw-change" name="wpwebapp-form-pw-change" action="" method="post">' .
+				wpwebapp_form_field_text_input( 'password', 'wpwebapp-pw-current', __( 'Current Password', 'wpwebapp' ), '', '1', 'autofocus' ) .
+				wpwebapp_form_field_text_input( 'password', 'wpwebapp-pw-new-1', sprintf( __( 'New Password %s', 'wpwebapp' ), $pw_requirements ), '', '2' ) .
+				wpwebapp_form_field_text_input( 'password', 'wpwebapp-pw-new-2', __( 'Confirm New Password', 'wpwebapp' ), '', '3' ) .
+				wpwebapp_form_field_submit( 'wpwebapp-change-pw-submit', $submit_class, $submit_text, 'wpwebapp-change-pw-process-nonce', 'wpwebapp-change-pw-process', '4' ) .
+			'</form>';
+
+	} else {
+		$form = '<p>' . __( 'You must be logged in to change a password.', 'wpwebapp' ) . '</p>';
+	}
 
 	return $form;
 

@@ -11,28 +11,34 @@
 // Create & Display Login Form
 function wpwebapp_form_login() {
 
-	// Variables
-	$alert = stripslashes( wpwebapp_get_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_login' ) );
-	$username = stripslashes( wpwebapp_get_alert_message( 'wpwebapp_credentials_username', 'wpwebapp_username' ) );
-	$forgot_pw_url = esc_url_raw( wpwebapp_get_pw_forgot_url() );
-	$forgot_pw_text = stripslashes( wpwebapp_get_pw_forgot_url_text() );
-	$submit_text = stripslashes( wpwebapp_get_form_login_text() );
-	$submit_class = esc_attr( wpwebapp_get_form_button_class_login() );
-
-	if ( $forgot_pw_url == '' ) {
-		$forgot_pw = '';
+	if ( is_user_logged_in() ) {
+		$form = '<p>' . __( 'You\'re already logged in.', 'wpwebapp' ) . '</p>';
 	} else {
-		$forgot_pw = '<a href="' . $forgot_pw_url . '">' . $forgot_pw_text . '</a>';
-	}
 
-	$form =
-		$alert .
-		'<form class="form-wpwebapp" id="wpwebapp-form-login" name="wpwebapp-form-login" action="" method="post">' .
-			wpwebapp_form_field_text_input( 'text', 'wpwebapp-username', __( 'Username or Email', 'wpwebapp' ), $username, '1', 'autofocus' ) .
-			wpwebapp_form_field_text_input( 'password', 'wpwebapp-password', __( 'Password ', 'wpwebapp' ) . $forgot_pw, '', '2' ) .
-			wpwebapp_form_field_checkbox( 'wpwebapp-rememberme', __( 'Remember Me', 'wpwebapp' ), 'rememberme', '3', 'checked' ) .
-			wpwebapp_form_field_submit( 'wpwebapp-login-submit', $submit_class, $submit_text, 'wpwebapp-login-process-nonce', 'wpwebapp-login-process', '4' ) .
-		'</form>';
+		// Variables
+		$alert = stripslashes( wpwebapp_get_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_login' ) );
+		$username = stripslashes( wpwebapp_get_alert_message( 'wpwebapp_credentials_username', 'wpwebapp_username' ) );
+		$forgot_pw_url = esc_url_raw( wpwebapp_get_pw_forgot_url() );
+		$forgot_pw_text = stripslashes( wpwebapp_get_pw_forgot_url_text() );
+		$submit_text = stripslashes( wpwebapp_get_form_login_text() );
+		$submit_class = esc_attr( wpwebapp_get_form_button_class_login() );
+
+		if ( $forgot_pw_url == '' ) {
+			$forgot_pw = '';
+		} else {
+			$forgot_pw = '<a href="' . $forgot_pw_url . '">' . $forgot_pw_text . '</a>';
+		}
+
+		$form =
+			$alert .
+			'<form class="form-wpwebapp" id="wpwebapp-form-login" name="wpwebapp-form-login" action="" method="post">' .
+				wpwebapp_form_field_text_input( 'text', 'wpwebapp-username', __( 'Username or Email', 'wpwebapp' ), $username, '1', 'autofocus' ) .
+				wpwebapp_form_field_text_input( 'password', 'wpwebapp-password', __( 'Password ', 'wpwebapp' ) . $forgot_pw, '', '2' ) .
+				wpwebapp_form_field_checkbox( 'wpwebapp-rememberme', __( 'Remember Me', 'wpwebapp' ), 'rememberme', '3', 'checked' ) .
+				wpwebapp_form_field_submit( 'wpwebapp-login-submit', $submit_class, $submit_text, 'wpwebapp-login-process-nonce', 'wpwebapp-login-process', '4' ) .
+			'</form>';
+
+	}
 
 	return $form;
 

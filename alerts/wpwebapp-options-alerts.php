@@ -41,7 +41,7 @@ function wpwebapp_settings_field_alert_incorrect_login() {
 	$options = wpwebapp_get_plugin_options_alerts();
 	?>
 	<input type="text" name="wpwebapp_plugin_options_alerts[alert_incorrect_login]" id="alert-incorrect-login" value="<?php echo esc_html( $options['alert_incorrect_login'] ); ?>" /><br>
-	<label class="description" for="alert-incorrect-login"><?php _e( 'Default: <code>&lt;p&gt;Incorrect username or password.&lt;/p&gt;</code>', 'wpwebapp' ); ?></label>
+	<label class="description" for="alert-incorrect-login"><?php _e( 'Default: <code>&lt;p&gt;Incorrect login information.&lt;/p&gt;</code>', 'wpwebapp' ); ?></label>
 	<?php
 }
 
@@ -82,6 +82,14 @@ function wpwebapp_settings_field_alert_pw_incorrect() {
 	?>
 	<input type="text" name="wpwebapp_plugin_options_alerts[alert_pw_incorrect]" id="alert-pw-incorrect" value="<?php echo esc_html( $options['alert_pw_incorrect'] ); ?>" /><br>
 	<label class="description" for="alert-pw-incorrect"><?php _e( 'Default: <code>&lt;p&gt;The password you entered does not match your current password.&lt;/p&gt;</code>', 'wpwebapp' ); ?></label>
+	<?php
+}
+
+function wpwebapp_settings_field_alert_email_change_success() {
+	$options = wpwebapp_get_plugin_options_alerts();
+	?>
+	<input type="text" name="wpwebapp_plugin_options_alerts[alert_email_change_success]" id="alert-email-change-success" value="<?php echo esc_html( $options['alert_email_change_success'] ); ?>" /><br>
+	<label class="description" for="alert-email-change-success"><?php _e( 'Default: <code>&lt;p&gt;Your email has been updated.&lt;/p&gt;</code>', 'wpwebapp' ); ?></label>
 	<?php
 }
 
@@ -133,6 +141,22 @@ function wpwebapp_settings_field_alert_pw_reset_url_invalid() {
 	<?php
 }
 
+function wpwebapp_settings_field_alert_profile_update_success() {
+	$options = wpwebapp_get_plugin_options_alerts();
+	?>
+	<input type="text" name="wpwebapp_plugin_options_alerts[alert_profile_update_success]" id="alert-profile-update-success" value="<?php echo esc_html( $options['alert_profile_update_success'] ); ?>" /><br>
+	<label class="description" for="alert-profile-update-success"><?php _e( 'Default: <code>&lt;p&gt;Your profile was updated.&lt;/p&gt;</code>', 'wpwebapp' ); ?></label>
+	<?php
+}
+
+function wpwebapp_settings_field_alert_profile_update_failure() {
+	$options = wpwebapp_get_plugin_options_alerts();
+	?>
+	<input type="text" name="wpwebapp_plugin_options_alerts[alert_profile_update_failure]" id="alert-profile-update-failure" value="<?php echo esc_html( $options['alert_profile_update_failure'] ); ?>" /><br>
+	<label class="description" for="alert-profile-update-failure"><?php _e( 'Default: <code>&lt;p&gt;Sorry, but we\'re unable to update your profile at this time. Please try again later.&lt;/p&gt;</code>', 'wpwebapp' ); ?></label>
+	<?php
+}
+
 
 
 
@@ -156,12 +180,15 @@ function wpwebapp_get_plugin_options_alerts() {
 		'alert_email_invalid' => '',
 		'alert_email_taken' => '',
 		'alert_pw_incorrect' => '',
+		'alert_email_change_success' => '',
 		'alert_pw_change_success' => '',
 		'alert_login_does_not_exist' => '',
 		'alert_pw_reset_not_allowed' => '',
 		'alert_pw_reset_email_sent' => '',
 		'alert_pw_reset_email_failed' => '',
 		'alert_pw_reset_url_invalid' => '',
+		'alert_profile_update_success' => '',
+		'alert_profile_update_failure' => '',
 	);
 
 	$defaults = apply_filters( 'wpwebapp_default_plugin_options_alerts', $defaults );
@@ -213,6 +240,9 @@ function wpwebapp_plugin_options_validate_alerts( $input ) {
 	if ( isset( $input['alert_pw_incorrect'] ) && ! empty( $input['alert_pw_incorrect'] ) )
 		$output['alert_pw_incorrect'] = wp_filter_post_kses( $input['alert_pw_incorrect'] );
 
+	if ( isset( $input['alert_email_change_success'] ) && ! empty( $input['alert_email_change_success'] ) )
+		$output['alert_email_change_success'] = wp_filter_post_kses( $input['alert_email_change_success'] );
+
 	if ( isset( $input['alert_pw_change_success'] ) && ! empty( $input['alert_pw_change_success'] ) )
 		$output['alert_pw_change_success'] = wp_filter_post_kses( $input['alert_pw_change_success'] );
 
@@ -230,6 +260,12 @@ function wpwebapp_plugin_options_validate_alerts( $input ) {
 
 	if ( isset( $input['alert_pw_reset_url_invalid'] ) && ! empty( $input['alert_pw_reset_url_invalid'] ) )
 		$output['alert_pw_reset_url_invalid'] = wp_filter_post_kses( $input['alert_pw_reset_url_invalid'] );
+
+	if ( isset( $input['alert_profile_update_success'] ) && ! empty( $input['alert_profile_update_success'] ) )
+		$output['alert_profile_update_success'] = wp_filter_post_kses( $input['alert_profile_update_success'] );
+
+	if ( isset( $input['alert_profile_update_failure'] ) && ! empty( $input['alert_profile_update_failure'] ) )
+		$output['alert_profile_update_failure'] = wp_filter_post_kses( $input['alert_profile_update_failure'] );
 
 	return apply_filters( 'wpwebapp_plugin_options_validate_alerts', $output, $input );
 }
@@ -275,18 +311,21 @@ function wpwebapp_plugin_options_init_alerts() {
 	add_settings_field( 'alert_empty_fields', __( 'Empty Fields', 'wpwebapp' ) . '<div class="description">' . __( 'Signup, Password Change, and Password Reset Forms', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_alert_empty_fields', 'wpwebapp_plugin_options_alerts', 'alerts' );
 	add_settings_field( 'alert_pw_requirements', __( 'Password Requirements', 'wpwebapp' ) . '<div class="description">' . __( 'Signup, Password Change and Password Reset forms', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_alert_pw_requirements', 'wpwebapp_plugin_options_alerts', 'alerts' );
 	add_settings_field( 'alert_pw_no_match', __( 'Passwords Don\'t Match', 'wpwebapp' ) . '<div class="description">' . __( 'Password Change and Password Reset forms', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_alert_pw_no_match', 'wpwebapp_plugin_options_alerts', 'alerts' );
-	add_settings_field( 'alert_incorrect_login', __( 'Incorrect Login', 'wpwebapp' ) . '<div class="description">' . __( 'Login and Forgot Password forms', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_alert_incorrect_login', 'wpwebapp_plugin_options_alerts', 'alerts' );
+	add_settings_field( 'alert_incorrect_login', __( 'Incorrect Login', 'wpwebapp' ) . '<div class="description">' . __( 'Login, Forgot Password, and Update Email forms', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_alert_incorrect_login', 'wpwebapp_plugin_options_alerts', 'alerts' );
 	add_settings_field( 'alert_username_invalid', __( 'Username Taken', 'wpwebapp' ) . '<div class="description">' . __( 'Signup form', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_alert_username_invalid', 'wpwebapp_plugin_options_alerts', 'alerts' );
 	add_settings_field( 'alert_username_taken', __( 'Username Taken', 'wpwebapp' ) . '<div class="description">' . __( 'Signup form', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_alert_username_taken', 'wpwebapp_plugin_options_alerts', 'alerts' );
 	add_settings_field( 'alert_email_invalid', __( 'Invalid Email', 'wpwebapp' ) . '<div class="description">' . __( 'Signup form', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_alert_email_invalid', 'wpwebapp_plugin_options_alerts', 'alerts' );
 	add_settings_field( 'alert_email_taken', __( 'Email Taken', 'wpwebapp' ) . '<div class="description">' . __( 'Signup form', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_alert_email_taken', 'wpwebapp_plugin_options_alerts', 'alerts' );
 	add_settings_field( 'alert_pw_incorrect', __( 'Incorrect Password', 'wpwebapp' ) . '<div class="description">' . __( 'Password change form', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_alert_pw_incorrect', 'wpwebapp_plugin_options_alerts', 'alerts' );
+	add_settings_field( 'alert_email_change_success', __( 'Email Change Success', 'wpwebapp' ) . '<div class="description">' . __( 'Update Email form', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_alert_email_change_success', 'wpwebapp_plugin_options_alerts', 'alerts' );
 	add_settings_field( 'alert_pw_change_success', __( 'Password Change Success', 'wpwebapp' ) . '<div class="description">' . __( 'Password Change form', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_alert_pw_change_success', 'wpwebapp_plugin_options_alerts', 'alerts' );
 	add_settings_field( 'alert_login_does_not_exist', __( 'Login Doesn\'t Exist', 'wpwebapp' ) . '<div class="description">' . __( 'Forgot Password form', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_alert_login_does_not_exist', 'wpwebapp_plugin_options_alerts', 'alerts' );
 	add_settings_field( 'alert_pw_reset_not_allowed', __( 'Password Reset Not Allowed', 'wpwebapp' ) . '<div class="description">' . __( 'Forgot Password form (no resets for admins)', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_alert_pw_reset_not_allowed', 'wpwebapp_plugin_options_alerts', 'alerts' );
 	add_settings_field( 'alert_pw_reset_email_sent', __( 'Password Reset Email Sent', 'wpwebapp' ) . '<div class="description">' . __( 'Forgot Password form', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_alert_pw_reset_email_sent', 'wpwebapp_plugin_options_alerts', 'alerts' );
 	add_settings_field( 'alert_pw_reset_email_failed', __( 'Password Reset Email Failed', 'wpwebapp' ) . '<div class="description">' . __( 'Forgot Password form', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_alert_pw_reset_email_failed', 'wpwebapp_plugin_options_alerts', 'alerts' );
 	add_settings_field( 'alert_pw_reset_url_invalid', __( 'Password Reset URL Expired', 'wpwebapp' ) . '<div class="description">' . __( 'Password Reset form', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_alert_pw_reset_url_invalid', 'wpwebapp_plugin_options_alerts', 'alerts' );
+	add_settings_field( 'alert_profile_update_success', __( 'Profile Update Success', 'wpwebapp' ) . '<div class="description">' . __( 'Update Profile form', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_alert_profile_update_success', 'wpwebapp_plugin_options_alerts', 'alerts' );
+	add_settings_field( 'alert_profile_update_failure', __( 'Profile Update Failed', 'wpwebapp' ) . '<div class="description">' . __( 'Update Profile form', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_alert_profile_update_failure', 'wpwebapp_plugin_options_alerts', 'alerts' );
 
 }
 add_action( 'admin_init', 'wpwebapp_plugin_options_init_alerts' );
@@ -319,11 +358,10 @@ add_filter( 'option_page_capability_wpwebapp_options_alerts', 'wpwebapp_option_p
 function wpwebapp_get_alert_empty_fields() {
 	$options = wpwebapp_get_plugin_options_alerts();
 	if ( $options['alert_empty_fields'] === '' ) {
-		$setting = '<p>' . __( 'Please complete all fields.', 'wpwebapp' ) . '</p>';
+		return '<p>' . __( 'Please complete all fields.', 'wpwebapp' ) . '</p>';
 	} else {
-		$setting = $options['alert_empty_fields'];
+		return $options['alert_empty_fields'];
 	}
-	return $setting;
 }
 
 // Get alert for not meeting password requirements
@@ -336,141 +374,140 @@ function wpwebapp_get_alert_pw_requirements() {
 
 	if ( $options['alert_pw_requirements'] === '' ) {
 		if ( $requires_letters == 'on' && $requires_numbers == 'on' && $requires_special_chars == 'on' ) {
-			$setting = '<p>' . sprintf( __( 'Please choose a password that contains at least one letter, one number, one special character, and %d characters', 'wpwebapp' ), $pw_min_length ) . '</p>';
+			return '<p>' . sprintf( __( 'Please choose a password that contains at least one letter, one number, one special character, and %d characters', 'wpwebapp' ), $pw_min_length ) . '</p>';
 		} else if ( $requires_letters == 'on' && $requires_numbers == 'on' ) {
-			$setting = '<p>' . sprintf( __( 'Please choose a password that contains at least one letter, one number, and %d characters', 'wpwebapp' ), $pw_min_length ) . '</p>';
+			return '<p>' . sprintf( __( 'Please choose a password that contains at least one letter, one number, and %d characters', 'wpwebapp' ), $pw_min_length ) . '</p>';
 		} else if ( $requires_letters == 'on' && $requires_special_chars == 'on' ) {
-			$setting = '<p>' . sprintf( __( 'Please choose a password that contains at least one letter, one special character, and %d characters', 'wpwebapp' ), $pw_min_length ) . '</p>';
+			return '<p>' . sprintf( __( 'Please choose a password that contains at least one letter, one special character, and %d characters', 'wpwebapp' ), $pw_min_length ) . '</p>';
 		} else if ( $requires_numbers == 'on' && $requires_special_chars == 'on' ) {
-			$setting = '<p>' . sprintf( __( 'Please choose a password that contains at least one number, one special character, and %d characters', 'wpwebapp' ), $pw_min_length ) . '</p>';
+			return '<p>' . sprintf( __( 'Please choose a password that contains at least one number, one special character, and %d characters', 'wpwebapp' ), $pw_min_length ) . '</p>';
 		} else if ( $requires_letters == 'on' ) {
-			$setting = '<p>' . sprintf( __( 'Please choose a password that contains at least one letter and %d characters', 'wpwebapp' ), $pw_min_length ) . '</p>';
+			return '<p>' . sprintf( __( 'Please choose a password that contains at least one letter and %d characters', 'wpwebapp' ), $pw_min_length ) . '</p>';
 		} else if ( $requires_numbers == 'on' ) {
-			$setting = '<p>' . sprintf( __( 'Please choose a password that contains at least one number and %d characters', 'wpwebapp' ), $pw_min_length ) . '</p>';
+			return '<p>' . sprintf( __( 'Please choose a password that contains at least one number and %d characters', 'wpwebapp' ), $pw_min_length ) . '</p>';
 		} else if ( $requires_special_chars == 'on' ) {
-			$setting = '<p>' . sprintf( __( 'Please choose a password that contains at least one special character and %d characters', 'wpwebapp' ), $pw_min_length ) . '</p>';
+			return '<p>' . sprintf( __( 'Please choose a password that contains at least one special character and %d characters', 'wpwebapp' ), $pw_min_length ) . '</p>';
 		} else if ( $pw_min_length > 1 ) {
-			$setting = '<p>' . sprintf( __( 'Please choose a password that contains at least %d characters', 'wpwebapp' ), $pw_min_length ) . '</p>';
+			return '<p>' . sprintf( __( 'Please choose a password that contains at least %d characters', 'wpwebapp' ), $pw_min_length ) . '</p>';
 		} else {
-			$setting = '';
+			return '';
 		}
 	} else {
 		$setting = $options['alert_pw_requirements'];
 		$scrubber = array( '%n' => $pw_min_length );
-		$setting = strtr( $setting, $scrubber );
+		return strtr( $setting, $scrubber );
 	}
 
-	return $setting;
 }
 
 // Get alert for when new and confirmation password don't match
 function wpwebapp_get_alert_pw_match() {
 	$options = wpwebapp_get_plugin_options_alerts();
 	if ( $options['alert_pw_no_match'] === '' ) {
-		$setting = '<p>' . __( 'The new passwords your entered didn\'t match.', 'wpwebapp' ) . '</p>';
+		return '<p>' . __( 'The new passwords your entered didn\'t match.', 'wpwebapp' ) . '</p>';
 	} else {
-		$setting = $options['alert_pw_no_match'];
+		return $options['alert_pw_no_match'];
 	}
-	return $setting;
 }
 
 // Get alert for incorrect login credentials
 function wpwebapp_get_alert_login_incorrect() {
 	$options = wpwebapp_get_plugin_options_alerts();
 	if ( $options['alert_incorrect_login'] === '' ) {
-		$setting = '<p>' . __( 'Incorrect username or password.', 'wpwebapp' ) . '</p>';
+		return '<p>' . __( 'Incorrect login information.', 'wpwebapp' ) . '</p>';
 	} else {
-		$setting = $options['alert_incorrect_login'];
+		return $options['alert_incorrect_login'];
 	}
-	return $setting;
 }
 
 // Get alert for invalid username at signup
 function wpwebapp_get_alert_username_invalid() {
 	$options = wpwebapp_get_plugin_options_alerts();
 	if ( $options['alert_username_invalid'] === '' ) {
-		$setting = '<p>' . __( 'Usernames can only contain letters, numbers, and these special characters: _, space, ., -, *, and @.', 'wpwebapp' ) . '</p>';
+		return '<p>' . __( 'Usernames can only contain letters, numbers, and these special characters: _, space, ., -, *, and @.', 'wpwebapp' ) . '</p>';
 	} else {
-		$setting = $options['alert_username_taken'];
+		return $options['alert_username_taken'];
 	}
-	return $setting;
 }
 
 // Get alert for existing username at signup
 function wpwebapp_get_alert_username_taken() {
 	$options = wpwebapp_get_plugin_options_alerts();
 	if ( $options['alert_username_taken'] === '' ) {
-		$setting = '<p>' . __( 'Username already exists.', 'wpwebapp' ) . '</p>';
+		return '<p>' . __( 'Username already exists.', 'wpwebapp' ) . '</p>';
 	} else {
-		$setting = $options['alert_username_taken'];
+		return $options['alert_username_taken'];
 	}
-	return $setting;
 }
 
 // Get when content of email field isn't a valid email address
 function wpwebapp_get_alert_email_invalid() {
 	$options = wpwebapp_get_plugin_options_alerts();
 	if ( $options['alert_email_invalid'] === '' ) {
-		$setting = '<p>' . __( 'Please use a valid email address.', 'wpwebapp' ) . '</p>';
+		return '<p>' . __( 'Please use a valid email address.', 'wpwebapp' ) . '</p>';
 	} else {
-		$setting = $options['alert_email_invalid'];
+		return $options['alert_email_invalid'];
 	}
-	return $setting;
 }
 
 // Get alert for when email address already exists
 function wpwebapp_get_alert_email_taken() {
 	$options = wpwebapp_get_plugin_options_alerts();
 	if ( $options['alert_email_taken'] === '' ) {
-		$setting = '<p>' . __( 'An account with this email address already exists.', 'wpwebapp' ) . '</p>';
+		return '<p>' . __( 'An account with this email address already exists.', 'wpwebapp' ) . '</p>';
 	} else {
-		$setting = $options['alert_email_taken'];
+		return $options['alert_email_taken'];
 	}
-	return $setting;
 }
 
 // Get alert for when current password is incorrect
 function wpwebapp_get_alert_pw_incorrect() {
 	$options = wpwebapp_get_plugin_options_alerts();
 	if ( $options['alert_pw_incorrect'] === '' ) {
-		$setting = '<p>' . __( 'The password you entered does not match your current password.', 'wpwebapp' ) . '</p>';
+		return '<p>' . __( 'The password you entered does not match your current password.', 'wpwebapp' ) . '</p>';
 	} else {
-		$setting = $options['alert_pw_incorrect'];
+		return $options['alert_pw_incorrect'];
 	}
-	return $setting;
+}
+
+// Get alert for when password successfully changed
+function wpwebapp_get_alert_email_change_success() {
+	$options = wpwebapp_get_plugin_options_alerts();
+	if ( $options['alert_email_change_success'] === '' ) {
+		return '<p>' . __( 'Your email has been updated.', 'wpwebapp' ) . '</p>';
+	} else {
+		return $options['alert_email_change_success'];
+	}
 }
 
 // Get alert for when password successfully changed
 function wpwebapp_get_alert_pw_change_success() {
 	$options = wpwebapp_get_plugin_options_alerts();
 	if ( $options['alert_pw_change_success'] === '' ) {
-		$setting = '<p>' . __( 'Your password has been updated.', 'wpwebapp' ) . '</p>';
+		return '<p>' . __( 'Your password has been updated.', 'wpwebapp' ) . '</p>';
 	} else {
-		$setting = $options['alert_pw_change_success'];
+		return $options['alert_pw_change_success'];
 	}
-	return $setting;
 }
 
 // Get alert for when username or email is not an existing user
 function wpwebapp_get_alert_login_does_not_exist() {
 	$options = wpwebapp_get_plugin_options_alerts();
 	if ( $options['alert_login_does_not_exist'] === '' ) {
-		$setting = '<p>' . __( 'Username or email doesn\'t exist.', 'wpwebapp' ) . '</p>';
+		return '<p>' . __( 'Username or email doesn\'t exist.', 'wpwebapp' ) . '</p>';
 	} else {
-		$setting = $options['alert_login_does_not_exist'];
+		return $options['alert_login_does_not_exist'];
 	}
-	return $setting;
 }
 
 // Get alert for when password resets are not allowed for this user
 function wpwebapp_get_alert_pw_reset_not_allowed() {
 	$options = wpwebapp_get_plugin_options_alerts();
 	if ( $options['alert_pw_reset_not_allowed'] === '' ) {
-		$setting = '<p>' . __( 'Password resets are not allowed for this user.', 'wpwebapp' ) . '</p>';
+		return '<p>' . __( 'Password resets are not allowed for this user.', 'wpwebapp' ) . '</p>';
 	} else {
-		$setting = $options['alert_pw_reset_not_allowed'];
+		return $options['alert_pw_reset_not_allowed'];
 	}
-	return $setting;
 }
 
 // Get alert for when the password reset email is successfully sent
@@ -478,35 +515,52 @@ function wpwebapp_get_alert_pw_reset_email_sent() {
 	$options = wpwebapp_get_plugin_options_alerts();
 	$reset_length = wpwebapp_get_pw_reset_time_valid();
 	if ( $options['alert_pw_reset_email_sent'] === '' ) {
-		$setting = '<p>' . sprintf( __( 'We\'ve sent you an email with a temporary link that will allow you to reset your password for the next %d hours. Please check your spam folder if the email doesn’t appear within a few minutes.', 'wpwebapp' ), $reset_length ) . '</p>';
+		return '<p>' . sprintf( __( 'We\'ve sent you an email with a temporary link that will allow you to reset your password for the next %d hours. Please check your spam folder if the email doesn’t appear within a few minutes.', 'wpwebapp' ), $reset_length ) . '</p>';
 	} else {
 		$setting = $options['alert_pw_reset_email_sent'];
 		$scrubber = array( '%t' => $pw_min_length );
-		$setting = strtr( $setting, $scrubber );
+		return strtr( $setting, $scrubber );
 	}
-	return $setting;
 }
 
 // Get alert for when the password reset email fails to send
 function wpwebapp_get_alert_pw_reset_email_failed() {
 	$options = wpwebapp_get_plugin_options_alerts();
 	if ( $options['alert_pw_reset_email_failed'] === '' ) {
-		$setting = '<p>' . __( 'Oops, something went wrong on our end. Please try again.', 'wpwebapp' ) . '</p>';
+		return '<p>' . __( 'Oops, something went wrong on our end. Please try again.', 'wpwebapp' ) . '</p>';
 	} else {
-		$setting = $options['alert_pw_reset_email_failed'];
+		return $options['alert_pw_reset_email_failed'];
 	}
-	return $setting;
 }
 
 // Get alert for when the password reset URL has expired
 function wpwebapp_get_alert_pw_reset_url_expired() {
 	$options = wpwebapp_get_plugin_options_alerts();
 	if ( $options['alert_pw_reset_url_invalid'] === '' ) {
-		$setting = '<p>' . __( 'This password reset request is no longer valid.', 'wpwebapp' ) . '</p>';
+		return '<p>' . __( 'This password reset request is no longer valid.', 'wpwebapp' ) . '</p>';
 	} else {
-		$setting = $options['alert_pw_reset_url_invalid'];
+		return $options['alert_pw_reset_url_invalid'];
 	}
-	return $setting;
+}
+
+// Get alert for when a user successfully updates profile
+function wpwebapp_get_alert_profile_update_success() {
+	$options = wpwebapp_get_plugin_options_alerts();
+	if ( $options['alert_profile_update_success'] === '' ) {
+		return '<p>' . __( 'Your profile was updated.', 'wpwebapp' ) . '</p>';
+	} else {
+		return $options['alert_profile_update_success'];
+	}
+}
+
+// Get alert for when a user profile update fails
+function wpwebapp_get_alert_profile_update_failure() {
+	$options = wpwebapp_get_plugin_options_alerts();
+	if ( $options['alert_profile_update_failure'] === '' ) {
+		return '<p>' . __( 'Sorry, but we\'re unable to update your profile at this time. Please try again later.', 'wpwebapp' ) . '</p>';
+	} else {
+		return $options['alert_profile_update_failure'];
+	}
 }
 
 ?>

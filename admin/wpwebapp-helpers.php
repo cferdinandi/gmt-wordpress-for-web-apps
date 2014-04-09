@@ -14,7 +14,7 @@
  * ====================================================================== */
 
 // Text Input
-function wpwebapp_form_field_text_input( $type, $id, $label, $value, $tabindex = '', $autofocus = '' ) {
+function wpwebapp_form_field_text_input( $type, $id, $label, $value = '', $tabindex = '', $autofocus = '' ) {
 	$form_field =
 		'<div>
 			<label for="' . $id . '">' .
@@ -34,7 +34,7 @@ function wpwebapp_form_field_text_input( $type, $id, $label, $value, $tabindex =
 
 
 // Checkbox
-function wpwebapp_form_field_checkbox( $id, $label, $value, $tabindex, $checked = '' ) {
+function wpwebapp_form_field_checkbox( $id, $label, $value = '', $tabindex = '', $checked = '' ) {
 	$form_field =
 		'<div>
 			<label for="' . $id . '">' .
@@ -47,6 +47,26 @@ function wpwebapp_form_field_checkbox( $id, $label, $value, $tabindex, $checked 
 				'>' .
 				$label .
 			'</label>
+		</div>';
+	return $form_field;
+}
+
+// Text Area
+function wpwebapp_form_field_text_area( $type, $id, $label, $value = '', $tabindex = '', $autofocus = '' ) {
+	$form_field =
+		'<div>
+			<label for="' . $id . '">' .
+				$label .
+			'</label>
+			<textarea
+				type="' . $type . '"
+				id="' . $id . '"
+				name="' . $id . '"
+				tabindex="' . $tabindex . '" ' .
+				$autofocus .
+			'>' .
+				$value .
+			'</textarea>
 		</div>';
 	return $form_field;
 }

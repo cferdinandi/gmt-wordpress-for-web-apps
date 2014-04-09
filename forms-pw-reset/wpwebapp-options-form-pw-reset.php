@@ -152,7 +152,7 @@ function wpwebapp_plugin_options_init_pw_reset() {
 
 	// Fields
 	add_settings_section( 'forms', '',  '__return_false', 'wpwebapp_plugin_options_pw_reset' );
-	add_settings_field( 'button_class', __( 'Button Class', 'wpwebapp' ) . '<div class="description">' . __( 'Class to apply to form submit buttons.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_class', 'wpwebapp_plugin_options_pw_reset', 'forms' );
+	add_settings_field( 'button_class', __( 'Button Class', 'wpwebapp' ) . '<div class="description">' . __( 'Class to apply to form submit buttons.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_class_pw_reset', 'wpwebapp_plugin_options_pw_reset', 'forms' );
 	add_settings_field( 'button_text_pw_forgot', __( 'Forgot Password Text', 'wpwebapp' ) . '<div class="description">' . __( 'Text for the button to send a password reset email.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_text_pw_forgot', 'wpwebapp_plugin_options_pw_reset', 'forms' );
 	add_settings_field( 'button_text_pw_reset', __( 'Password Reset Text', 'wpwebapp' ) . '<div class="description">' . __( 'Text for the button to change a password after a reset.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_text_pw_reset', 'wpwebapp_plugin_options_pw_reset', 'forms' );
 	add_settings_field( 'forgot_pw_url', __( 'Forgot Password URL', 'wpwebapp' ) . '<div class="description">' . __( 'A link to the "forgot password" page.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_forgot_pw_url', 'wpwebapp_plugin_options_pw_reset', 'forms' );
@@ -188,48 +188,43 @@ add_filter( 'option_page_capability_wpwebapp_options_pw_reset', 'wpwebapp_option
 // Get class for form submit buttons
 function wpwebapp_get_form_button_class_pw_reset() {
 	$options = wpwebapp_get_plugin_options_pw_reset();
-	$setting = $options['button_class'];
-	return $setting;
+	return $options['button_class'];
 }
 
 // Get text for forgot password submit button
 function wpwebapp_get_pw_forgot_text() {
 	$options = wpwebapp_get_plugin_options_pw_reset();
 	if ( $options['button_text_pw_forgot'] === '' ) {
-		$setting = __( 'Reset Password', 'wpwebapp' );
+		return __( 'Reset Password', 'wpwebapp' );
 	} else {
-		$setting = $options['button_text_pw_forgot'];
+		return $options['button_text_pw_forgot'];
 	}
-	return $setting;
 }
 
 // Get text for password reset submit button
 function wpwebapp_get_pw_reset_text() {
 	$options = wpwebapp_get_plugin_options_pw_reset();
 	if ( $options['button_text_pw_reset'] === '' ) {
-		$setting = __( 'Set New Password', 'wpwebapp' );
+		return __( 'Set New Password', 'wpwebapp' );
 	} else {
-		$setting = $options['button_text_pw_reset'];
+		return $options['button_text_pw_reset'];
 	}
-	return $setting;
 }
 
 // Get URL of forgot password form
 function wpwebapp_get_pw_forgot_url() {
 	$options = wpwebapp_get_plugin_options_pw_reset();
-	$setting = $options['forgot_pw_url'];
-	return $setting;
+	return $options['forgot_pw_url'];
 }
 
 // Get text for forgot password link on login form
 function wpwebapp_get_pw_forgot_url_text() {
 	$options = wpwebapp_get_plugin_options_pw_reset();
 	if ( $options['forgot_pw_url_text'] === '' ) {
-		$setting = __( 'forgot password', 'wpwebapp' );
+		return __( 'forgot password', 'wpwebapp' );
 	} else {
-		$setting = $options['forgot_pw_url_text'];
+		return $options['forgot_pw_url_text'];
 	}
-	return $setting;
 }
 
 ?>

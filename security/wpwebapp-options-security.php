@@ -246,60 +246,54 @@ add_filter( 'option_page_capability_wpwebapp_options_security', 'wpwebapp_option
 function wpwebapp_get_minimum_pw_length() {
 	$options = wpwebapp_get_plugin_options_security();
 	if ( $options['minimum_password_length'] === '' ) {
-		$setting = '8';
+		return '8';
 	} else {
-		$setting = $options['minimum_password_length'];
+		return $options['minimum_password_length'];
 	}
-	return $setting;
 }
 
 // Get password requirement for letters
 function wpwebapp_get_pw_requirement_letters() {
 	$options = wpwebapp_get_plugin_options_security();
-	$setting = $options['password_requirements_letters'];
-	return $setting;
+	return $options['password_requirements_letters'];
 }
 
 // Get password requirement for numbers
 function wpwebapp_get_pw_requirement_numbers() {
 	$options = wpwebapp_get_plugin_options_security();
-	$setting = $options['password_requirements_numbers'];
-	return $setting;
+	return $options['password_requirements_numbers'];
 }
 
 // Get password requirement for special characters
 function wpwebapp_get_pw_requirement_special_chars() {
 	$options = wpwebapp_get_plugin_options_security();
-	$setting = $options['password_requirements_special_chars'];
-	return $setting;
+	return $options['password_requirements_special_chars'];
 }
 
 // Get role restrictions for password resets
 function wpwebapp_get_pw_reset_restriction() {
 	$options = wpwebapp_get_plugin_options_security();
 	if ( $options['restrict_pw_reset'] == 'subscriber' ) {
-		$setting = 'edit_posts';
+		return 'edit_posts';
 	} else if ( $options['restrict_pw_reset'] == 'contributor' ) {
-		$setting = 'publish_posts';
+		return 'publish_posts';
 	} else if ( $options['restrict_pw_reset'] == 'author' ) {
-		$setting = 'edit_pages';
+		return 'edit_pages';
 	} else if ( $options['restrict_pw_reset'] == 'editor' ) {
-		$setting = 'edit_themes';
+		return 'edit_themes';
 	} else {
-		$setting = '';
+		return '';
 	}
-	return $setting;
 }
 
 // Get number of hours a password reset URL is valid for
 function wpwebapp_get_pw_reset_time_valid() {
 	$options = wpwebapp_get_plugin_options_security();
 	if ( $options['pw_reset_time_valid'] === '' ) {
-		$setting = '24';
+		return '24';
 	} else {
-		$setting = $options['pw_reset_time_valid'];
+		return $options['pw_reset_time_valid'];
 	}
-	return $setting;
 }
 
 // Get text for password requirements description
@@ -312,31 +306,29 @@ function wpwebapp_get_pw_requirements_text() {
 
 	if ( $options['pw_requirement_text'] === '' ) {
 		if ( $requires_letters == 'on' && $requires_numbers == 'on' && $requires_special_chars == 'on' ) {
-				$setting = '<div>' . sprintf( __( 'Use at least one letter, one number, one special character, and %d characters', 'kraken' ), $pw_min_length ) . '</div>';
+				return '<div>' . sprintf( __( 'Use at least one letter, one number, one special character, and %d characters', 'kraken' ), $pw_min_length ) . '</div>';
 			} else if ( $requires_letters == 'on' && $requires_numbers == 'on' ) {
-				$setting = '<div>' . sprintf( __( 'Use at least one letter, one number, and %d characters', 'kraken' ), $pw_min_length ) . '</div>';
+				return '<div>' . sprintf( __( 'Use at least one letter, one number, and %d characters', 'kraken' ), $pw_min_length ) . '</div>';
 			} else if ( $requires_letters == 'on' && $requires_special_chars == 'on' ) {
-				$setting = '<div>' . sprintf( __( 'Use at least one letter, one special character, and %d characters', 'kraken' ), $pw_min_length ) . '</div>';
+				return '<div>' . sprintf( __( 'Use at least one letter, one special character, and %d characters', 'kraken' ), $pw_min_length ) . '</div>';
 			} else if ( $requires_numbers == 'on' && $requires_special_chars == 'on' ) {
-				$setting = '<div>' . sprintf( __( 'Use at least one number, one special character, and %d characters', 'kraken' ), $pw_min_length ) . '</div>';
+				return '<div>' . sprintf( __( 'Use at least one number, one special character, and %d characters', 'kraken' ), $pw_min_length ) . '</div>';
 			} else if ( $requires_letters == 'on' ) {
-				$setting = '<div>' . sprintf( __( 'Use at least one letter and %d characters', 'kraken' ), $pw_min_length ) . '</div>';
+				return '<div>' . sprintf( __( 'Use at least one letter and %d characters', 'kraken' ), $pw_min_length ) . '</div>';
 			} else if ( $requires_numbers == 'on' ) {
-				$setting = '<div>' . sprintf( __( 'Use at least one number and %d characters', 'kraken' ), $pw_min_length ) . '</div>';
+				return '<div>' . sprintf( __( 'Use at least one number and %d characters', 'kraken' ), $pw_min_length ) . '</div>';
 			} else if ( $requires_special_chars == 'on' ) {
-				$setting = '<div>' . sprintf( __( 'Use at least one special character and %d characters', 'kraken' ), $pw_min_length ) . '</div>';
+				return '<div>' . sprintf( __( 'Use at least one special character and %d characters', 'kraken' ), $pw_min_length ) . '</div>';
 			} else if ( $pw_min_length > 1 ) {
-				$setting = '<div>' . sprintf( __( 'Use at least %d characters', 'kraken' ), $pw_min_length ) . '</div>';
+				return '<div>' . sprintf( __( 'Use at least %d characters', 'kraken' ), $pw_min_length ) . '</div>';
 			} else {
-				$setting = '';
+				return '';
 			}
 	} else {
 		$setting = $options['pw_requirement_text'];
 		$scrubber = array( '%n' => $pw_min_length );
-		$setting = strtr( $setting, $scrubber );
+		return strtr( $setting, $scrubber );
 	}
-
-	return $setting;
 }
 
 ?>

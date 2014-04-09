@@ -116,7 +116,7 @@ function wpwebapp_plugin_options_init_pw_change() {
 
 	// Fields
 	add_settings_section( 'forms', '',  '__return_false', 'wpwebapp_plugin_options_pw_change' );
-	add_settings_field( 'button_class', __( 'Button Class', 'wpwebapp' ) . '<div class="description">' . __( 'Class to apply to form submit buttons.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_class', 'wpwebapp_plugin_options_pw_change', 'forms' );
+	add_settings_field( 'button_class', __( 'Button Class', 'wpwebapp' ) . '<div class="description">' . __( 'Class to apply to form submit buttons.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_class_pw_change', 'wpwebapp_plugin_options_pw_change', 'forms' );
 	add_settings_field( 'button_text_pw_change', __( 'Change Password Text', 'wpwebapp' ) . '<div class="description">' . __( 'Text for the change password button.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_text_pw_change', 'wpwebapp_plugin_options_pw_change', 'forms' );
 
 }
@@ -149,19 +149,17 @@ add_filter( 'option_page_capability_wpwebapp_options_pw_change', 'wpwebapp_optio
 // Get class for form submit buttons
 function wpwebapp_get_form_button_class_pw_change() {
 	$options = wpwebapp_get_plugin_options_pw_change();
-	$setting = $options['button_class'];
-	return $setting;
+	return $options['button_class'];
 }
 
 // Get text for password change submit button
 function wpwebapp_get_pw_change_text() {
 	$options = wpwebapp_get_plugin_options_pw_change();
 	if ( $options['button_text_pw_change'] === '' ) {
-		$setting = __( 'Change Password', 'wpwebapp' );
+		return __( 'Change Password', 'wpwebapp' );
 	} else {
-		$setting = $options['button_text_pw_change'];
+		return $options['button_text_pw_change'];
 	}
-	return $setting;
 }
 
 ?>

@@ -13,7 +13,7 @@
 	Create the option fields.
  * ====================================================================== */
 
-function wpwebapp_settings_field_button_class() {
+function wpwebapp_settings_field_button_class_login() {
 	$options = wpwebapp_get_plugin_options_forms_login();
 	?>
 	<input type="text" name="wpwebapp_plugin_options_forms_login[button_class]" id="button-class" value="<?php echo esc_attr( $options['button_class'] ); ?>" /><br>
@@ -116,7 +116,7 @@ function wpwebapp_plugin_options_init_forms_login() {
 
 	// Fields
 	add_settings_section( 'forms', '',  '__return_false', 'wpwebapp_plugin_options_forms_login' );
-	add_settings_field( 'button_class', __( 'Button Class', 'wpwebapp' ) . '<div class="description">' . __( 'Class to apply to form submit buttons.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_class', 'wpwebapp_plugin_options_forms_login', 'forms' );
+	add_settings_field( 'button_class', __( 'Button Class', 'wpwebapp' ) . '<div class="description">' . __( 'Class to apply to form submit buttons.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_class_login', 'wpwebapp_plugin_options_forms_login', 'forms' );
 	add_settings_field( 'button_text_login', __( 'Login Text', 'wpwebapp' ) . '<div class="description">' . __( 'Text for the login button. Default: <code>Login</code>', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_text_login', 'wpwebapp_plugin_options_forms_login', 'forms' );
 
 }

@@ -116,7 +116,7 @@ function wpwebapp_plugin_options_init_forms_signup() {
 
 	// Fields
 	add_settings_section( 'forms', '',  '__return_false', 'wpwebapp_plugin_options_forms_signup' );
-	add_settings_field( 'button_class', __( 'Button Class', 'wpwebapp' ) . '<div class="description">' . __( 'Class to apply to form submit buttons.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_class', 'wpwebapp_plugin_options_forms_signup', 'forms' );
+	add_settings_field( 'button_class', __( 'Button Class', 'wpwebapp' ) . '<div class="description">' . __( 'Class to apply to form submit buttons.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_class_signup', 'wpwebapp_plugin_options_forms_signup', 'forms' );
 	add_settings_field( 'button_text_signup', __( 'Signup Text', 'wpwebapp' ) . '<div class="description">' . __( 'Text for the signup button.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_text_signup', 'wpwebapp_plugin_options_forms_signup', 'forms' );
 
 }
@@ -149,19 +149,17 @@ add_filter( 'option_page_capability_wpwebapp_options_forms_signup', 'wpwebapp_op
 // Get class for form submit buttons
 function wpwebapp_get_form_button_class_signup() {
 	$options = wpwebapp_get_plugin_options_forms_signup();
-	$setting = $options['button_class'];
-	return $setting;
+	return $options['button_class'];
 }
 
 // Get text for signup submit button
 function wpwebapp_get_form_signup_text() {
 	$options = wpwebapp_get_plugin_options_forms_signup();
 	if ( $options['button_text_signup'] === '' ) {
-		$setting = __( 'Signup', 'wpwebapp' );
+		return __( 'Signup', 'wpwebapp' );
 	} else {
-		$setting = $options['button_text_signup'];
+		return $options['button_text_signup'];
 	}
-	return $setting;
 }
 
 ?>
