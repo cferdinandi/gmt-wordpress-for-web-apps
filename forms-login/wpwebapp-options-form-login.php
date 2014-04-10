@@ -29,6 +29,21 @@ function wpwebapp_settings_field_button_text_login() {
 	<?php
 }
 
+function wpwebapp_settings_field_custom_layout_login() {
+	$options = wpwebapp_get_plugin_options_forms_login();
+	?>
+	<textarea class="large-text" type="text" name="wpwebapp_plugin_options_forms_login[custom_layout]" id="custom-layout" cols="50" rows="10" /><?php echo esc_textarea( $options['custom_layout'] ); ?></textarea>
+	<label class="description">
+		<?php _e( 'Use the following variables to add fields to the layout:', 'wpwebapp' ); ?><br />
+		<?php _e( 'Alert', 'wpwebapp' ); ?> - <code>%alert</code><br />
+		<?php _e( 'Username', 'wpwebapp' ); ?> - <code>%username</code><br />
+		<?php _e( 'Password', 'wpwebapp' ); ?> - <code>%password</code><br />
+		<?php _e( 'Remember Me', 'wpwebapp' ); ?> - <code>%rememberme</code><br />
+		<?php _e( 'Submit Button', 'wpwebapp' ); ?> - <code>%submit</code>
+	</label>
+	<?php
+}
+
 
 
 
@@ -45,6 +60,7 @@ function wpwebapp_get_plugin_options_forms_login() {
 	$defaults = array(
 		'button_class' => '',
 		'button_text_login' => '',
+		'custom_layout' => '',
 	);
 
 	$defaults = apply_filters( 'wpwebapp_default_plugin_options_forms_login', $defaults );
@@ -74,6 +90,9 @@ function wpwebapp_plugin_options_validate_forms_login( $input ) {
 
 	if ( isset( $input['button_text_login'] ) && ! empty( $input['button_text_login'] ) )
 		$output['button_text_login'] = wp_filter_nohtml_kses( $input['button_text_login'] );
+
+	if ( isset( $input['custom_layout'] ) && ! empty( $input['custom_layout'] ) )
+		$output['custom_layout'] = wp_filter_post_kses( $input['custom_layout'] );
 
 	return apply_filters( 'wpwebapp_plugin_options_validate_forms_login', $output, $input );
 }
@@ -118,6 +137,7 @@ function wpwebapp_plugin_options_init_forms_login() {
 	add_settings_section( 'forms', '',  '__return_false', 'wpwebapp_plugin_options_forms_login' );
 	add_settings_field( 'button_class', __( 'Button Class', 'wpwebapp' ) . '<div class="description">' . __( 'Class to apply to form submit buttons.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_class_login', 'wpwebapp_plugin_options_forms_login', 'forms' );
 	add_settings_field( 'button_text_login', __( 'Login Text', 'wpwebapp' ) . '<div class="description">' . __( 'Text for the login button. Default: <code>Login</code>', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_text_login', 'wpwebapp_plugin_options_forms_login', 'forms' );
+	add_settings_field( 'custom_layout', __( 'Custom Layout', 'wpwebapp' ) . '<div class="description">' . __( 'Customize the layout of the form with your own markup.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_custom_layout_login', 'wpwebapp_plugin_options_forms_login', 'forms' );
 
 }
 add_action( 'admin_init', 'wpwebapp_plugin_options_init_forms_login' );
@@ -160,6 +180,12 @@ function wpwebapp_get_form_login_text() {
 	} else {
 		return $options['button_text_login'];
 	}
+}
+
+// Get custom layout
+function wpwebapp_get_form_login_custom_layout() {
+	$options = wpwebapp_get_plugin_options_forms_login();
+	return $options['custom_layout'];
 }
 
 ?>
