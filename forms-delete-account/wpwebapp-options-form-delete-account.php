@@ -32,7 +32,7 @@ function wpwebapp_settings_field_delete_account_text() {
 function wpwebapp_settings_field_delete_account_url() {
 	$options = wpwebapp_get_plugin_options_delete_account();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_delete_account[delete_account_url]" id="delete-account-text" value="<?php echo esc_attr( $options['delete_account_url'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_delete_account[delete_account_url]" id="delete-account-text" value="<?php echo esc_url_raw( $options['delete_account_url'] ); ?>" /><br>
 	<label class="description" for="delete-account-url"><?php _e( 'Default: Logged-Out Redirect', 'wpwebapp' ); ?></label>
 	<?php
 }
