@@ -53,6 +53,33 @@ function wpwebapp_settings_field_forgot_pw_url_text() {
 	<?php
 }
 
+function wpwebapp_settings_field_custom_layout_pw_forgot() {
+	$options = wpwebapp_get_plugin_options_pw_reset();
+	?>
+	<textarea class="large-text" type="text" name="wpwebapp_plugin_options_pw_reset[custom_layout_pw_forgot]" id="custom-layout" cols="50" rows="10" /><?php echo esc_textarea( $options['custom_layout_pw_forgot'] ); ?></textarea>
+	<label class="description">
+		<?php _e( 'Use the following variables to add fields to the layout:', 'wpwebapp' ); ?><br />
+		<?php _e( 'Alert', 'wpwebapp' ); ?> - <code>%alert</code><br />
+		<?php _e( 'Username', 'wpwebapp' ); ?> - <code>%username</code><br />
+		<?php _e( 'Submit Button', 'wpwebapp' ); ?> - <code>%submit</code>
+	</label>
+	<?php
+}
+
+function wpwebapp_settings_field_custom_layout_pw_reset() {
+	$options = wpwebapp_get_plugin_options_pw_reset();
+	?>
+	<textarea class="large-text" type="text" name="wpwebapp_plugin_options_pw_reset[custom_layout_pw_reset]" id="custom-layout" cols="50" rows="10" /><?php echo esc_textarea( $options['custom_layout_pw_reset'] ); ?></textarea>
+	<label class="description">
+		<?php _e( 'Use the following variables to add fields to the layout:', 'wpwebapp' ); ?><br />
+		<?php _e( 'Alert', 'wpwebapp' ); ?> - <code>%alert</code><br />
+		<?php _e( 'Password', 'wpwebapp' ); ?> - <code>%password</code><br />
+		<?php _e( 'Password Confirm', 'wpwebapp' ); ?> - <code>%password-confirm</code><br />
+		<?php _e( 'Submit Button', 'wpwebapp' ); ?> - <code>%submit</code>
+	</label>
+	<?php
+}
+
 
 
 
@@ -72,6 +99,8 @@ function wpwebapp_get_plugin_options_pw_reset() {
 		'button_text_pw_reset' => '',
 		'forgot_pw_url' => '',
 		'forgot_pw_url_text' => '',
+		'custom_layout_pw_forgot' => '',
+		'custom_layout_pw_reset' => '',
 	);
 
 	$defaults = apply_filters( 'wpwebapp_default_plugin_options_pw_reset', $defaults );
@@ -110,6 +139,12 @@ function wpwebapp_plugin_options_validate_pw_reset( $input ) {
 
 	if ( isset( $input['forgot_pw_url_text'] ) && ! empty( $input['forgot_pw_url_text'] ) )
 		$output['forgot_pw_url_text'] = wp_filter_post_kses( $input['forgot_pw_url_text'] );
+
+	if ( isset( $input['custom_layout_pw_forgot'] ) && ! empty( $input['custom_layout_pw_forgot'] ) )
+		$output['custom_layout_pw_forgot'] = wp_filter_post_kses( $input['custom_layout_pw_forgot'] );
+
+	if ( isset( $input['custom_layout_pw_reset'] ) && ! empty( $input['custom_layout_pw_reset'] ) )
+		$output['custom_layout_pw_reset'] = wp_filter_post_kses( $input['custom_layout_pw_reset'] );
 
 	return apply_filters( 'wpwebapp_plugin_options_validate_pw_reset', $output, $input );
 }
@@ -157,6 +192,8 @@ function wpwebapp_plugin_options_init_pw_reset() {
 	add_settings_field( 'button_text_pw_reset', __( 'Password Reset Text', 'wpwebapp' ) . '<div class="description">' . __( 'Text for the button to change a password after a reset.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_text_pw_reset', 'wpwebapp_plugin_options_pw_reset', 'forms' );
 	add_settings_field( 'forgot_pw_url', __( 'Forgot Password URL', 'wpwebapp' ) . '<div class="description">' . __( 'A link to the "forgot password" page.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_forgot_pw_url', 'wpwebapp_plugin_options_pw_reset', 'forms' );
 	add_settings_field( 'forgot_pw_url_text', __( 'Forgot Password URL Text', 'wpwebapp' ) . '<div class="description">' . __( 'Text for the "forgot password" URL (only shown if URL is set).', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_forgot_pw_url_text', 'wpwebapp_plugin_options_pw_reset', 'forms' );
+	add_settings_field( 'custom_layout_pw_forgot', __( 'Custom Layout PW Forgot', 'wpwebapp' ) . '<div class="description">' . __( 'Customize the layout of the forgot password form with your own markup.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_custom_layout_pw_forgot', 'wpwebapp_plugin_options_pw_reset', 'forms' );
+	add_settings_field( 'custom_layout_pw_reset', __( 'Custom Layout PW Reset', 'wpwebapp' ) . '<div class="description">' . __( 'Customize the layout of the password reset form with your own markup.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_custom_layout_pw_reset', 'wpwebapp_plugin_options_pw_reset', 'forms' );
 
 }
 add_action( 'admin_init', 'wpwebapp_plugin_options_init_pw_reset' );
@@ -225,6 +262,18 @@ function wpwebapp_get_pw_forgot_url_text() {
 	} else {
 		return $options['forgot_pw_url_text'];
 	}
+}
+
+// Get custom layout pw forgot
+function wpwebapp_get_form_signup_custom_layout_pw_forgot() {
+	$options = wpwebapp_get_plugin_options_pw_reset();
+	return $options['custom_layout_pw_forgot'];
+}
+
+// Get custom layout pw reset
+function wpwebapp_get_form_signup_custom_layout_pw_reset() {
+	$options = wpwebapp_get_plugin_options_pw_reset();
+	return $options['custom_layout_pw_reset'];
 }
 
 ?>

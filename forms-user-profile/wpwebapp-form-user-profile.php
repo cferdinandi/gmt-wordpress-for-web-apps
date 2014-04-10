@@ -110,6 +110,7 @@ function wpwebapp_form_user_profile() {
 
 		} else {
 			$add_fields = array(
+				'%alert' => $alert,
 				'%gravatar' => $value['gravatar'],
 				'%name' => wpwebapp_form_field_text_input( 'text', 'wpwebapp-user-profile-name', __( 'Name', 'wpwebapp' ), esc_attr($value['name']) ),
 				'%about' => wpwebapp_form_field_text_area( 'text', 'wpwebapp-user-profile-about', __( 'Biography', 'wpwebapp' ), esc_attr($value['about']) ),

@@ -113,13 +113,13 @@ function wpwebapp_settings_field_button_text_user_profile() {
 	<?php
 }
 
-// Sample textarea field
 function wpwebapp_settings_field_custom_layout_user_profile() {
 	$options = wpwebapp_get_plugin_options_user_profile();
 	?>
 	<textarea class="large-text" type="text" name="wpwebapp_plugin_options_user_profile[custom_layout]" id="custom-layout" cols="50" rows="10" /><?php echo esc_textarea( $options['custom_layout'] ); ?></textarea>
 	<label class="description">
 		<?php _e( 'Use the following variables to add fields to the layout:', 'wpwebapp' ); ?><br />
+		<?php _e( 'Alert', 'wpwebapp' ); ?> - <code>%alert</code><br />
 		<?php _e( 'Gravatar', 'wpwebapp' ); ?> - <code>%gravatar</code><br />
 		<?php _e( 'Name', 'wpwebapp' ); ?> - <code>%name</code><br />
 		<?php _e( 'About', 'wpwebapp' ); ?> - <code>%about</code><br />
