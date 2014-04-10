@@ -22,14 +22,30 @@ function wpwebapp_form_email_change() {
 		$submit_text = stripslashes( wpwebapp_get_email_change_text() );
 		$submit_class = esc_attr( wpwebapp_get_form_button_class_email_change() );
 		$email =  $user_data->user_email;
+		$custom_layout = wpwebapp_get_email_change_custom_layout();
 
-		$form =
-			$alert .
-			'<form class="form-wpwebapp" id="wpwebapp-form-email-change" name="wpwebapp-form-email-change" action="" method="post">' .
-				wpwebapp_form_field_text_input( 'text', 'wpwebapp-email', __( 'Email', 'wpwebapp' ), $email, '1' ) .
-				wpwebapp_form_field_text_input( 'password', 'wpwebapp-pw', __( 'Password', 'wpwebapp' ), '', '2' ) .
-				wpwebapp_form_field_submit( 'wpwebapp-change-email-submit', $submit_class, $submit_text, 'wpwebapp-change-email-process-nonce', 'wpwebapp-change-email-process', '3' ) .
-			'</form>';
+		if ( $custom_layout === '' ) {
+			$form =
+				$alert .
+				'<form class="form-wpwebapp" id="wpwebapp-form-email-change" name="wpwebapp-form-email-change" action="" method="post">' .
+					wpwebapp_form_field_text_input_plus( 'text', 'wpwebapp-email', __( 'Email', 'wpwebapp' ), $email, '1' ) .
+					wpwebapp_form_field_text_input_plus( 'password', 'wpwebapp-pw', __( 'Password', 'wpwebapp' ), '', '2' ) .
+					wpwebapp_form_field_submit_plus( 'wpwebapp-change-email-submit', $submit_class, $submit_text, 'wpwebapp-change-email-process-nonce', 'wpwebapp-change-email-process', '3' ) .
+				'</form>';
+		} else {
+			$add_fields = array(
+				'%alert' => $alert,
+				'%email' => wpwebapp_form_field_text_input( 'text', 'wpwebapp-email', __( 'Email', 'wpwebapp' ), $email ),
+				'%password' => wpwebapp_form_field_text_input( 'password', 'wpwebapp-pw', __( 'Password', 'wpwebapp' ), '' ),
+				'%submit' => wpwebapp_form_field_submit( 'wpwebapp-change-email-submit', $submit_class, $submit_text, 'wpwebapp-change-email-process-nonce', 'wpwebapp-change-email-process' ),
+			);
+			$custom_layout = strtr( $custom_layout, $add_fields );
+			$form =
+				'<form class="form-wpwebapp" id="wpwebapp-form-email-change" name="wpwebapp-form-email-change" action="" method="post">' .
+					$custom_layout .
+				'</form>';
+		}
+
 
 	} else {
 		$form = '<p>' . __( 'You must be logged in to change your email.', 'wpwebapp' ) . '</p>';
