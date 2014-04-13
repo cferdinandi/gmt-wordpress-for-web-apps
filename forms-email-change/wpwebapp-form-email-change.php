@@ -36,7 +36,7 @@ function wpwebapp_form_email_change() {
 			$add_fields = array(
 				'%alert' => $alert,
 				'%email' => wpwebapp_form_field_text_input( 'text', 'wpwebapp-email', __( 'Email', 'wpwebapp' ), $email ),
-				'%password' => wpwebapp_form_field_text_input( 'password', 'wpwebapp-pw', __( 'Password', 'wpwebapp' ), '' ),
+				'%password' => wpwebapp_form_field_text_input( 'password', 'wpwebapp-pw', __( 'Password', 'wpwebapp' ) ),
 				'%submit' => wpwebapp_form_field_submit( 'wpwebapp-change-email-submit', $submit_class, $submit_text, 'wpwebapp-change-email-process-nonce', 'wpwebapp-change-email-process' ),
 			);
 			$custom_layout = strtr( $custom_layout, $add_fields );

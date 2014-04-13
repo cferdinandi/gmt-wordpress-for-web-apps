@@ -26,13 +26,13 @@ function wpwebapp_form_pw_forgot() {
 			$form =
 				$alert .
 				'<form class="form-wpwebapp" id="wpwebapp-form-pw-forgot" name="wpwebapp-form-pw-forgot" action="" method="post">' .
-					wpwebapp_form_field_text_input_plus( 'text', 'wpwebapp-username-email', __( 'Username or Email', 'wpwebapp' ), '', '1', 'autofocus' ) .
+					wpwebapp_form_field_text_input_plus( 'text', 'wpwebapp-username-email', __( 'Username or Email', 'wpwebapp' ), '', '1' ) .
 					wpwebapp_form_field_submit_plus( 'wpwebapp-forgot-pw-submit', $submit_class, $submit_text, 'wpwebapp-forgot-pw-process-nonce', 'wpwebapp-forgot-pw-process', '2' ) .
 				'</form>';
 		} else {
 			$add_fields = array(
 				'%alert' => $alert,
-				'%username' => wpwebapp_form_field_text_input( 'text', 'wpwebapp-username-email', __( 'Username or Email', 'wpwebapp' ), '' ),
+				'%username' => wpwebapp_form_field_text_input( 'text', 'wpwebapp-username-email', __( 'Username or Email', 'wpwebapp' ) ),
 				'%submit' => wpwebapp_form_field_submit( 'wpwebapp-forgot-pw-submit', $submit_class, $submit_text, 'wpwebapp-forgot-pw-process-nonce', 'wpwebapp-forgot-pw-process' ),
 			);
 			$custom_layout = strtr( $custom_layout, $add_fields );
@@ -69,7 +69,7 @@ function wpwebapp_form_pw_reset() {
 			$form =
 				$alert .
 				'<form class="form-wpwebapp" id="wpwebapp-form-pw-reset" name="wpwebapp-form-pw-reset" action="" method="post">' .
-					wpwebapp_form_field_text_input_plus( 'password', 'wpwebapp-pw-reset-new-1', sprintf( __( 'New Password %s', 'wpwebapp' ), $pw_requirements ), '', '1', 'autofocus' ) .
+					wpwebapp_form_field_text_input_plus( 'password', 'wpwebapp-pw-reset-new-1', sprintf( __( 'New Password %s', 'wpwebapp' ), $pw_requirements ), '', '1' ) .
 					wpwebapp_form_field_text_input_plus( 'password', 'wpwebapp-pw-reset-new-2', __( 'Confirm New Password', 'wpwebapp' ), '', '2' ) .
 					wpwebapp_form_field_text_input( 'hidden', 'wpwebapp-pw-reset-id', '', $user_id ) .
 					wpwebapp_form_field_submit_plus( 'wpwebapp-reset-pw-submit', $submit_class, $submit_text, 'wpwebapp-reset-pw-process-nonce', 'wpwebapp-reset-pw-process', '3' ) .
@@ -77,8 +77,8 @@ function wpwebapp_form_pw_reset() {
 		} else {
 			$add_fields = array(
 				'%alert' => $alert,
-				'%password' => wpwebapp_form_field_text_input( 'password', 'wpwebapp-pw-reset-new-1', sprintf( __( 'New Password %s', 'wpwebapp' ), $pw_requirements ), '' ),
-				'%password-confirm' => wpwebapp_form_field_text_input( 'password', 'wpwebapp-pw-reset-new-2', __( 'Confirm New Password', 'wpwebapp' ), '' ),
+				'%password' => wpwebapp_form_field_text_input( 'password', 'wpwebapp-pw-reset-new-1', sprintf( __( 'New Password %s', 'wpwebapp' ), $pw_requirements ) ),
+				'%password-confirm' => wpwebapp_form_field_text_input( 'password', 'wpwebapp-pw-reset-new-2', __( 'Confirm New Password', 'wpwebapp' ) ),
 				'%submit' => wpwebapp_form_field_submit( 'wpwebapp-reset-pw-submit', $submit_class, $submit_text, 'wpwebapp-reset-pw-process-nonce', 'wpwebapp-reset-pw-process' ),
 			);
 			$custom_layout = strtr( $custom_layout, $add_fields );

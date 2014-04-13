@@ -14,7 +14,7 @@
  * ====================================================================== */
 
 // Label
-function wpwebapp_form_field_label( $id, $label ) {
+function wpwebapp_form_field_label( $id = '', $label = '' ) {
 	$field =
 		'<label for="' . $id . '">' .
 			$label .
@@ -23,7 +23,7 @@ function wpwebapp_form_field_label( $id, $label ) {
 }
 
 // Checkbox
-function wpwebapp_form_field_checkbox( $id, $label, $value = '', $tabindex = '', $checked = '' ) {
+function wpwebapp_form_field_checkbox( $id = '', $label = '', $value = '', $tabindex = '', $checked = '' ) {
 	$field =
 		'<label for="' . $id . '">' .
 			'<input type="checkbox"
@@ -39,7 +39,7 @@ function wpwebapp_form_field_checkbox( $id, $label, $value = '', $tabindex = '',
 }
 
 // Text Input
-function wpwebapp_form_field_text_input( $type, $id, $label, $value = '', $tabindex = '', $autofocus = '' ) {
+function wpwebapp_form_field_text_input( $type = 'text', $id = '', $label = '', $value = '', $tabindex = '' ) {
 	$field =
 		'<input
 			type="' . $type . '"
@@ -47,20 +47,17 @@ function wpwebapp_form_field_text_input( $type, $id, $label, $value = '', $tabin
 			name="' . $id . '"
 			value="' . $value . '"
 			tabindex="' . $tabindex . '" ' .
-			$autofocus .
 		'>';
 	return $field;
 }
 
 // Text Area
-function wpwebapp_form_field_text_area( $type, $id, $label, $value = '', $tabindex = '', $autofocus = '' ) {
+function wpwebapp_form_field_text_area( $id = '', $label = '', $value = '', $tabindex = '' ) {
 	$field =
 		'<textarea
-			type="' . $type . '"
 			id="' . $id . '"
 			name="' . $id . '"
 			tabindex="' . $tabindex . '" ' .
-			$autofocus .
 		'>' .
 			$value .
 		'</textarea>';
@@ -69,74 +66,50 @@ function wpwebapp_form_field_text_area( $type, $id, $label, $value = '', $tabind
 
 
 // Submit
-function wpwebapp_form_field_submit( $id, $class, $label, $action, $nonce_field, $tabindex ) {
+function wpwebapp_form_field_submit( $id = '', $class = '', $label = '', $action = '', $nonce_field = '', $tabindex = '' ) {
 	$field =
 		wp_nonce_field( $action, $nonce_field) .
 		'<button type="submit" class="' . $class . '" id="' . $id . '" name="' . $id . '" tabindex="' . $tabindex . '">' . $label . '</button>';
 	return $field;
 }
 
-// Checkbox
+// Checkbox + Wrapper
 function wpwebapp_form_field_checkbox_plus( $id, $label, $value = '', $tabindex = '', $checked = '' ) {
 	$field =
-		'<div>
-			<label for="' . $id . '">' .
-				'<input type="checkbox"
-					id="' . $id . '"
-					name="' . $id . '"
-					value="' . $value . '"
-					tabindex="' . $tabindex . '" ' .
-					$checked .
-				'>' .
-				$label .
-			'</label>
-		</div>';
+		'<div>' .
+				wpwebapp_form_field_checkbox( $id, $label, $value, $tabindex, $checked ) .
+		'</div>';
 	return $field;
 }
 
-// Text Input
-function wpwebapp_form_field_text_input_plus( $type, $id, $label, $value = '', $tabindex = '', $autofocus = '' ) {
+// Text Input + Label and Wrapper
+function wpwebapp_form_field_text_input_plus( $type, $id, $label, $value = '', $tabindex = '' ) {
 	$field =
 		'<div>' .
 			wpwebapp_form_field_label( $id, $label ) .
-			'<input
-				type="' . $type . '"
-				id="' . $id . '"
-				name="' . $id . '"
-				value="' . $value . '"
-				tabindex="' . $tabindex . '" ' .
-				$autofocus .
-			'>
-		</div>';
+			wpwebapp_form_field_text_input( $type, $id, $label, $value, $tabindex ) .
+		'</div>';
 	return $field;
 }
 
-// Text Area
-function wpwebapp_form_field_text_area_plus( $type, $id, $label, $value = '', $tabindex = '', $autofocus = '' ) {
+// Text Area + Label and Wrapper
+function wpwebapp_form_field_text_area_plus( $type, $id, $label, $value = '', $tabindex = '' ) {
 	$field =
 		'<div>' .
 			wpwebapp_form_field_label( $id, $label ) .
-			'<textarea
-				type="' . $type . '"
-				id="' . $id . '"
-				name="' . $id . '"
-				tabindex="' . $tabindex . '" ' .
-				$autofocus .
-			'>' .
-				$value .
-			'</textarea>
-		</div>';
+			wpwebapp_form_field_text_area( $type, $id, $label, $value, $tabindex ) .
+		'</div>';
 	return $field;
 }
 
 
-// Submit
+// Submit + Wrapper
 function wpwebapp_form_field_submit_plus( $id, $class, $label, $action, $nonce_field, $tabindex ) {
 	$field =
 		'<div>' .
 			wp_nonce_field( $action, $nonce_field) .
-			'<button type="submit" class="' . $class . '" id="' . $id . '" name="' . $id . '" tabindex="' . $tabindex . '">' . $label . '</button>
-		</div>';
+			wpwebapp_form_field_submit( $id, $class, $label, $action, $nonce_field, $tabindex ) .
+		'</div>';
 	return $field;
 }
 

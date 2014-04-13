@@ -12,15 +12,14 @@ function wpwebapp_get_user_profile_info() {
 	global $current_user;
 	get_currentuserinfo();
 	$user_id = $current_user->ID;
-	$user_data = get_userdata( $user_id );
 	$gravatar_size = wpwebapp_get_gravatar_size();
 	return array(
 		'gravatar' => get_avatar($user_id, $size),
-		'name' => $user_data->nickname,
-		'about' => $user_data->description,
+		'name' => get_user_meta($user_id, 'wpwa_user_name', true),
+		'about' => get_user_meta($user_id, 'wpwa_user_about', true),
 		'location' => get_user_meta($user_id, 'wpwa_user_location', true),
 		'email' => get_user_meta($user_id, 'wpwa_user_email', true),
-		'website' => $user_data->user_url,
+		'website' => get_user_meta($user_id, 'wpwa_user_website', true),
 		'twitter' => get_user_meta($user_id, 'wpwa_user_twitter', true),
 		'facebook' => get_user_meta($user_id, 'wpwa_user_facebook', true),
 		'linkedin' => get_user_meta($user_id, 'wpwa_user_linkedin', true),
@@ -60,7 +59,7 @@ function wpwebapp_form_user_profile() {
 			}
 
 			if ( $profile_fields['about'] === 'on' ) {
-				$field_about = wpwebapp_form_field_text_area_plus( 'text', 'wpwebapp-user-profile-about', __( 'Biography', 'wpwebapp' ), esc_attr($value['about']) );
+				$field_about = wpwebapp_form_field_text_area_plus( 'wpwebapp-user-profile-about', __( 'Biography', 'wpwebapp' ), esc_attr($value['about']) );
 			}
 
 			if ( $profile_fields['location'] === 'on' ) {
@@ -113,7 +112,7 @@ function wpwebapp_form_user_profile() {
 				'%alert' => $alert,
 				'%gravatar' => $value['gravatar'],
 				'%name' => wpwebapp_form_field_text_input( 'text', 'wpwebapp-user-profile-name', __( 'Name', 'wpwebapp' ), esc_attr($value['name']) ),
-				'%about' => wpwebapp_form_field_text_area( 'text', 'wpwebapp-user-profile-about', __( 'Biography', 'wpwebapp' ), esc_attr($value['about']) ),
+				'%about' => wpwebapp_form_field_text_area( 'wpwebapp-user-profile-about', __( 'Biography', 'wpwebapp' ), esc_attr($value['about']) ),
 				'%location' => wpwebapp_form_field_text_input( 'text', 'wpwebapp-user-profile-location', __( 'Location', 'wpwebapp'), esc_attr($value['location']) ),
 				'%email' => wpwebapp_form_field_text_input( 'text', 'wpwebapp-user-profile-email', __( 'Email (public)', 'wpwebapp' ), esc_attr($value['email']) ),
 				'%website' => wpwebapp_form_field_text_input( 'text', 'wpwebapp-user-profile-website', __( 'Website', 'wpwebapp' ), esc_attr($value['website']) ),
@@ -168,11 +167,11 @@ function wpwebapp_process_update_profile() {
 
 			// Update settings
 			if ( isset($field_name) ) {
-				wp_update_user( array( 'ID' => $user_id, 'nickname' => $field_name ) );
+				update_user_meta( $user_id, 'wpwa_user_name', $field_name );
 			}
 
 			if ( isset($field_about) ) {
-				wp_update_user( array( 'ID' => $user_id, 'description' => $field_about ) );
+				update_user_meta( $user_id, 'wpwa_user_about', $field_about );
 			}
 
 			if ( isset($field_location) ) {
@@ -184,7 +183,7 @@ function wpwebapp_process_update_profile() {
 			}
 
 			if ( isset($field_website) ) {
-				wp_update_user( array( 'ID' => $user_id, 'user_url' => $field_website ) );
+				update_user_meta( $user_id, 'wpwa_user_website', $field_website );
 			}
 
 			if ( isset($field_twitter) ) {
