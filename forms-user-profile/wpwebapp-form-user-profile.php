@@ -238,37 +238,55 @@ function wpwebapp_add_user_profile_to_backend( $user ) {
 	$user_id = $current_user->ID;
 	?>
 
-		<h3>User Profile Info</h3>
+		<h3>WordPress for Web Apps User Profile Info</h3>
 		<table class="form-table">
 			<tr>
-				<th><label for="location">Location</label></th>
+				<th><label for="wpwa-name">Name</label></th>
 				<td>
-					<input type="text" name="location" id="location" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_location', true) ); ?>" class="regular-text" />
+					<input type="text" name="wpwa-name" id="wpwa-name" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_name', true) ); ?>" class="regular-text" />
 				</td>
 			</tr>
 			<tr>
-				<th><label for="public-email">Public Email</label></th>
+				<th><label for="wpwa-about">About</label></th>
 				<td>
-					<input type="text" name="public-email" id="public-email" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_email', true) ); ?>" class="regular-text" />
+					<textarea name="wpwa-about" id="wpwa-about" rows="5" cols="30"><?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_about', true) ); ?></textarea>
 				</td>
 			</tr>
 			<tr>
-				<th><label for="twitter">Twitter</label></th>
+				<th><label for="wpwa-location">Location</label></th>
 				<td>
-					<input type="text" name="twitter" id="twitter" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_twitter', true) ); ?>" class="regular-text" />
+					<input type="text" name="wpwa-location" id="wpwa-location" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_location', true) ); ?>" class="regular-text" />
 				</td>
 			</tr>
 			<tr>
-				<th><label for="facebook">Facebook</label></th>
+				<th><label for="wpwa-email">Public Email</label></th>
 				<td>
-					<input type="text" name="facebook" id="facebook" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_facebook', true) ); ?>" class="regular-text" />
+					<input type="text" name="wpwa-email" id="wpwa-email" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_email', true) ); ?>" class="regular-text" />
+				</td>
+			</tr>
+			<tr>
+				<th><label for="wpwa-website">Website</label></th>
+				<td>
+					<input type="text" name="wpwa-website" id="wpwa-website" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_website', true) ); ?>" class="regular-text" />
+				</td>
+			</tr>
+			<tr>
+				<th><label for="wpwa-twitter">Twitter</label></th>
+				<td>
+					<input type="text" name="wpwa-twitter" id="wpwa-twitter" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_twitter', true) ); ?>" class="regular-text" />
+				</td>
+			</tr>
+			<tr>
+				<th><label for="wpwa-facebook">Facebook</label></th>
+				<td>
+					<input type="text" name="wpwa-facebook" id="wpwa-facebook" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_facebook', true) ); ?>" class="regular-text" />
 				</td>
 			</tr>
 
 			<tr>
-				<th><label for="linkedin">LinkedIn</label></th>
+				<th><label for="wpwa-linkedin">LinkedIn</label></th>
 				<td>
-					<input type="text" name="linkedin" id="linkedin" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_linkedin', true) ); ?>" class="regular-text" />
+					<input type="text" name="wpwa-linkedin" id="wpwa-linkedin" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_linkedin', true) ); ?>" class="regular-text" />
 				</td>
 			</tr>
 		</table>
@@ -284,11 +302,14 @@ function wpwebapp_save_user_profile_from_backend( $user_id ) {
 	if ( !current_user_can( 'edit_user', $user_id ) ) {
 		return false;
 	}
-	update_user_meta( $user_id, 'wpwa_user_location', $_POST['location'] );
-	update_user_meta( $user_id, 'wpwa_user_email', $_POST['public-email'] );
-	update_user_meta( $user_id, 'wpwa_user_twitter', $_POST['twitter'] );
-	update_user_meta( $user_id, 'wpwa_user_facebook', $_POST['facebook'] );
-	update_user_meta( $user_id, 'wpwa_user_linkedin', $_POST['linkedin'] );
+	update_user_meta( $user_id, 'wpwa_user_name', $_POST['wpwa-name'] );
+	update_user_meta( $user_id, 'wpwa_user_about', $_POST['wpwa-about'] );
+	update_user_meta( $user_id, 'wpwa_user_location', $_POST['wpwa-location'] );
+	update_user_meta( $user_id, 'wpwa_user_email', $_POST['wpwa-email'] );
+	update_user_meta( $user_id, 'wpwa_user_website', $_POST['wpwa-website'] );
+	update_user_meta( $user_id, 'wpwa_user_twitter', $_POST['wpwa-twitter'] );
+	update_user_meta( $user_id, 'wpwa_user_facebook', $_POST['wpwa-facebook'] );
+	update_user_meta( $user_id, 'wpwa_user_linkedin', $_POST['wpwa-linkedin'] );
 }
 add_action( 'personal_options_update', 'wpwebapp_save_user_profile_from_backend' );
 add_action( 'edit_user_profile_update', 'wpwebapp_save_user_profile_from_backend' );
