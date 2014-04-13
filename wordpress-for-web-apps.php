@@ -28,6 +28,9 @@ require_once( dirname( __FILE__) . '/security/wpwebapp-security.php' );
 require_once( dirname( __FILE__) . '/user-access/wpwebapp-options-user-access.php' );
 require_once( dirname( __FILE__) . '/user-access/wpwebapp-user-access.php' );
 
+// Alerts
+require_once( dirname( __FILE__) . '/alerts/wpwebapp-options-alerts.php' );
+
 // // Login Form
 require_once( dirname( __FILE__) . '/forms-login/wpwebapp-options-form-login.php' );
 require_once( dirname( __FILE__) . '/forms-login/wpwebapp-form-login.php' );
@@ -57,14 +60,12 @@ require_once( dirname( __FILE__) . '/forms-delete-account/wpwebapp-form-delete-a
 require_once( dirname( __FILE__) . '/forms-user-profile/wpwebapp-options-form-user-profile.php' );
 require_once( dirname( __FILE__) . '/forms-user-profile/wpwebapp-form-user-profile.php' );
 
-// Alerts
-require_once( dirname( __FILE__) . '/alerts/wpwebapp-options-alerts.php' );
-
 // Navigation
 require_once( dirname( __FILE__) . '/navigation/wpwebapp-navigation.php' );
 
 // Emails
-require_once( dirname( __FILE__) . '/emails/wpwebapp-options-emails.php' );
-require_once( dirname( __FILE__) . '/emails/wpwebapp-emails.php' );
+// Incorporated into respective sections for easier settings
+// require_once( dirname( __FILE__) . '/emails/wpwebapp-options-emails.php' );
+// require_once( dirname( __FILE__) . '/emails/wpwebapp-emails.php' );
 
 ?>

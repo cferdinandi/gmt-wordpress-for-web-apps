@@ -80,6 +80,45 @@ function wpwebapp_settings_field_custom_layout_pw_reset() {
 	<?php
 }
 
+function wpwebapp_settings_field_disable_pw_reset_email() {
+	$options = wpwebapp_get_plugin_options_pw_reset();
+	?>
+	<label for="email-disable-pw-reset">
+		<input type="checkbox" name="wpwebapp_plugin_options_pw_reset[email_disable_pw_reset]" id="email-disable-pw-reset" <?php checked( 'on', $options['email_disable_pw_reset'] ); ?> />
+		<?php _e( 'Disable the email WordPress sends site Admins whenever a user changes/resets their password', 'wpwebapp' ); ?>
+	</label>
+	<?php
+}
+
+function wpwebapp_settings_field_pw_reset_email_from() {
+	$options = wpwebapp_get_plugin_options_pw_reset();
+	?>
+	<input type="text" name="wpwebapp_plugin_options_pw_reset[pw_reset_email_from]" id="pw-reset-email-from" value="<?php echo esc_attr( $options['pw_reset_email_from'] ); ?>" /><br>
+	<label class="description" for="pw-reset-email-from"><?php _e( '<code>name</code>, not: <code>name@domain.com</code>. Default: <code>passwordreset</code>.', 'wpwebapp' ); ?></label>
+	<?php
+}
+
+function wpwebapp_settings_field_pw_reset_email_subject() {
+	$options = wpwebapp_get_plugin_options_pw_reset();
+	?>
+	<input type="text" name="wpwebapp_plugin_options_pw_reset[pw_reset_email_subject]" id="pw-reset-email-subject" value="<?php echo esc_attr( $options['pw_reset_email_subject'] ); ?>" /><br>
+	<label class="description" for="pw-reset-email-subject"><?php _e( 'Password reset for [App Name]', 'wpwebapp' ); ?></label>
+	<?php
+}
+
+function wpwebapp_settings_field_pw_reset_email_message() {
+	$options = wpwebapp_get_plugin_options_pw_reset();
+	?>
+	<textarea class="large-text" type="text" name="wpwebapp_plugin_options_pw_reset[pw_reset_email_message]" id="pw-reset-email-message" cols="50" rows="10" /><?php echo esc_textarea( $options['pw_reset_email_message'] ); ?></textarea>
+	<label class="description">
+		<?php _e( 'Use the following variables to add content to the message:', 'wpwebapp' ); ?><br />
+		<?php _e( 'Username', 'wpwebapp' ); ?> - <code>%username</code><br />
+		<?php _e( 'Reset URL', 'wpwebapp' ); ?> - <code>%url</code><br />
+		<?php _e( 'Default: ', 'wpwebapp' ); ?> <code><?php _e( 'We received a request to reset the password for your [App Name] account [username]. To reset your password, click on the link below (or copy and paste the URL into your browser): [Reset URL]. If this was a mistake, just ignore this email.', 'wpwebapp' ); ?></code>
+	</label>
+	<?php
+}
+
 
 
 
@@ -101,6 +140,10 @@ function wpwebapp_get_plugin_options_pw_reset() {
 		'forgot_pw_url_text' => '',
 		'custom_layout_pw_forgot' => '',
 		'custom_layout_pw_reset' => '',
+		'email_disable_pw_reset' => 'on',
+		'pw_reset_email_from' => '',
+		'pw_reset_email_subject' => '',
+		'pw_reset_email_message' => '',
 	);
 
 	$defaults = apply_filters( 'wpwebapp_default_plugin_options_pw_reset', $defaults );
@@ -145,6 +188,18 @@ function wpwebapp_plugin_options_validate_pw_reset( $input ) {
 
 	if ( isset( $input['custom_layout_pw_reset'] ) && ! empty( $input['custom_layout_pw_reset'] ) )
 		$output['custom_layout_pw_reset'] = wp_filter_post_kses( $input['custom_layout_pw_reset'] );
+
+	if ( !isset( $input['email_disable_pw_reset'] ) )
+		$output['email_disable_pw_reset'] = 'off';
+
+	if ( isset( $input['pw_reset_email_from'] ) && ! empty( $input['pw_reset_email_from'] ) )
+		$output['pw_reset_email_from'] = wp_filter_nohtml_kses( $input['pw_reset_email_from'] );
+
+	if ( isset( $input['pw_reset_email_subject'] ) && ! empty( $input['pw_reset_email_subject'] ) )
+		$output['pw_reset_email_subject'] = wp_filter_nohtml_kses( $input['pw_reset_email_subject'] );
+
+	if ( isset( $input['pw_reset_email_message'] ) && ! empty( $input['pw_reset_email_message'] ) )
+		$output['pw_reset_email_message'] = wp_filter_nohtml_kses( $input['pw_reset_email_message'] );
 
 	return apply_filters( 'wpwebapp_plugin_options_validate_pw_reset', $output, $input );
 }
@@ -194,6 +249,10 @@ function wpwebapp_plugin_options_init_pw_reset() {
 	add_settings_field( 'forgot_pw_url_text', __( 'Forgot Password URL Text', 'wpwebapp' ) . '<div class="description">' . __( 'Text for the "forgot password" URL (only shown if URL is set).', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_forgot_pw_url_text', 'wpwebapp_plugin_options_pw_reset', 'forms' );
 	add_settings_field( 'custom_layout_pw_forgot', __( 'Custom Layout PW Forgot', 'wpwebapp' ) . '<div class="description">' . __( 'Customize the layout of the forgot password form with your own markup.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_custom_layout_pw_forgot', 'wpwebapp_plugin_options_pw_reset', 'forms' );
 	add_settings_field( 'custom_layout_pw_reset', __( 'Custom Layout PW Reset', 'wpwebapp' ) . '<div class="description">' . __( 'Customize the layout of the password reset form with your own markup.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_custom_layout_pw_reset', 'wpwebapp_plugin_options_pw_reset', 'forms' );
+	add_settings_field( 'email_disable_pw_reset', __( 'Disable Admin Email', 'wpwebapp' ), 'wpwebapp_settings_field_disable_pw_reset_email', 'wpwebapp_plugin_options_pw_reset', 'forms' );
+	add_settings_field( 'pw_reset_email_from', __( 'Reset Email From Address', 'wpwebapp' ) . '<div class="description">' . __( 'Email account to send password reset emails to the user from.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_pw_reset_email_from', 'wpwebapp_plugin_options_pw_reset', 'forms' );
+	add_settings_field( 'pw_reset_email_subject', __( 'Reset Email Subject', 'wpwebapp' ) . '<div class="description">' . __( 'Subject of password reset emails sent to the user.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_pw_reset_email_subject', 'wpwebapp_plugin_options_pw_reset', 'forms' );
+	add_settings_field( 'pw_reset_email_message', __( 'Reset Email Message', 'wpwebapp' ) . '<div class="description">' . __( 'Content of password reset emails sent to the user.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_pw_reset_email_message', 'wpwebapp_plugin_options_pw_reset', 'forms' );
 
 }
 add_action( 'admin_init', 'wpwebapp_plugin_options_init_pw_reset' );
@@ -274,6 +333,38 @@ function wpwebapp_get_form_signup_custom_layout_pw_forgot() {
 function wpwebapp_get_form_signup_custom_layout_pw_reset() {
 	$options = wpwebapp_get_plugin_options_pw_reset();
 	return $options['custom_layout_pw_reset'];
+}
+
+// Get setting for disabling password change notification emails (yes/no)
+function wpwebapp_get_email_disable_password_change() {
+	$options = wpwebapp_get_plugin_options_pw_reset();
+	return $options['email_disable_pw_reset'];
+}
+
+// Get password reset email from address
+function wpwebapp_get_pw_reset_email_from() {
+	$options = wpwebapp_get_plugin_options_pw_reset();
+	if ( $options['pw_reset_email_from'] === '' ) {
+		return 'passwordreset';
+	} else {
+		return $options['pw_reset_email_from'];
+	}
+}
+
+// Get password reset email subject
+function wpwebapp_get_pw_reset_email_subject( $site_name ) {
+	$options = wpwebapp_get_plugin_options_pw_reset();
+	if ( $options['pw_reset_email_subject'] === '' ) {
+		return 'Password reset for ' . $site_name;
+	} else {
+		return $options['pw_reset_email_subject'];
+	}
+}
+
+// Get password reset email message
+function wpwebapp_get_pw_reset_email_message() {
+	$options = wpwebapp_get_plugin_options_pw_reset();
+	return $options['pw_reset_email_message'];
 }
 
 ?>

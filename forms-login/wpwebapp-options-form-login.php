@@ -136,7 +136,7 @@ function wpwebapp_plugin_options_init_forms_login() {
 	// Fields
 	add_settings_section( 'forms', '',  '__return_false', 'wpwebapp_plugin_options_forms_login' );
 	add_settings_field( 'button_class', __( 'Button Class', 'wpwebapp' ) . '<div class="description">' . __( 'Class to apply to form submit buttons.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_class_login', 'wpwebapp_plugin_options_forms_login', 'forms' );
-	add_settings_field( 'button_text_login', __( 'Login Text', 'wpwebapp' ) . '<div class="description">' . __( 'Text for the login button. Default: <code>Login</code>', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_text_login', 'wpwebapp_plugin_options_forms_login', 'forms' );
+	add_settings_field( 'button_text_login', __( 'Login Text', 'wpwebapp' ) . '<div class="description">' . __( 'Text for the login button.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_text_login', 'wpwebapp_plugin_options_forms_login', 'forms' );
 	add_settings_field( 'custom_layout', __( 'Custom Layout', 'wpwebapp' ) . '<div class="description">' . __( 'Customize the layout of the form with your own markup.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_custom_layout_login', 'wpwebapp_plugin_options_forms_login', 'forms' );
 
 }

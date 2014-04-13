@@ -115,6 +115,35 @@ function wpwebapp_form_pw_forgot_and_reset() {
 add_shortcode( 'wpwa_forgot_pw_form', 'wpwebapp_form_pw_forgot_and_reset' );
 
 
+// Create the email to send to users upon password reset
+function wpwebapp_send_pw_reset_email( $to, $user_login, $reset_url ) {
+
+	$from = wpwebapp_get_pw_reset_email_from();
+	$site_name = get_bloginfo('name');
+	$domain = wpwebapp_get_site_domain();
+	$headers = 'From: ' . $site_name . ' <' . $from . '@' . $domain . '>' . "\r\n";
+	$subject = wpwebapp_get_pw_reset_email_subject( $site_name );
+	$custom_message = wpwebapp_get_pw_reset_email_message();
+
+	if ( $custom_message === '' ) {
+		$message =
+			sprintf( __( 'We received a request to reset the password for your %s account: %s.', 'wpwebapp' ), $site_name, $user_login ) . "\r\n\r\n" .
+			sprintf( __( 'To reset your password, click on the link below (or copy and paste the URL into your browser): %s', 'wpwebapp' ), $reset_url ) . "\r\n\r\n" .
+			__( 'If this was a mistake, just ignore this email.', 'wpwebapp' )  . "\r\n";
+	} else {
+		$add_content = array(
+			'%username' => $user_login,
+			'%url' => $reset_url,
+		);
+		$custom_message = strtr( $custom_message, $add_content );
+		$message = $custom_message;
+	}
+
+	return wp_mail( $to, $subject, $message, $headers );
+
+}
+
+
 // Process Forgot Password Form
 function wpwebapp_process_pw_forgot() {
 	if ( isset( $_POST['wpwebapp-forgot-pw-process'] ) ) {
@@ -182,7 +211,7 @@ function wpwebapp_process_pw_forgot() {
 
 			// Send Password Reset Email
 			$reset_url = wpwebapp_prepare_url( $referer ) . 'action=reset-pw&id=' . $user_id . '&key=' . $key;
-			$send_email = wpwebapp_email_pw_reset( $user_email, $user_login, $reset_url );
+			$send_email = wpwebapp_send_pw_reset_email( $user_email, $user_login, $reset_url );
 
 			// If email was sent successfully
 			if ( $send_email ) {
@@ -292,5 +321,11 @@ function wpwebapp_process_pw_reset() {
 	}
 }
 add_action('init', 'wpwebapp_process_pw_reset');
+
+
+// Disable Admin notification when user resets password
+if ( !function_exists( 'wp_password_change_notification' ) && wpwebapp_get_email_disable_password_change() == 'on' ) {
+	function wp_password_change_notification() { }
+}
 
 ?>

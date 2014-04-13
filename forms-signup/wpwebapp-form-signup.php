@@ -136,4 +136,64 @@ function wpwebapp_process_signup() {
 }
 add_action('init', 'wpwebapp_process_signup');
 
+
+// Modify new user notification emails
+// if ( !function_exists( 'wp_new_user_notification' ) && wpwebapp_get_email_disable_new_user() == 'on' ) {
+// 	function wp_new_user_notification( $user_id, $plaintext_pass = '' ) { }
+// }
+
+if ( !function_exists( 'wp_new_user_notification' ) ) {
+
+	function wp_new_user_notification( $user_id ) {
+
+		if ( wpwebapp_get_send_new_user_email_admin() === 'on' ) {
+
+			$user = new WP_User( $user_id );
+			$user_login = stripslashes( $user->user_login );
+			$user_email = stripslashes( $user->user_email );
+			$message  =
+				sprintf( __( 'New user registration on %s:', 'wpwebapp' ), get_option('blogname') ) . "\r\n\r\n" .
+				sprintf( __( 'Username: %s', 'wpwebapp' ), $user_login ) . "\r\n\r\n" .
+				sprintf( __( 'E-mail: %s', 'wpwebapp' ), $user_email ) . "\r\n";
+
+			@wp_mail( get_option('admin_email'), sprintf(__('[%s] New User Registration'), get_option('blogname') ), $message );
+
+		}
+
+		if ( wpwebapp_get_send_new_user_email_user() === 'on' ) {
+
+			// User Info
+			$user = new WP_User( $user_id );
+			$user_login = stripslashes( $user->user_login );
+			$user_email = stripslashes( $user->user_email );
+
+			// Email Info
+			$from = wpwebapp_get_new_user_email_from();
+			$site_name = get_bloginfo('name');
+			$domain = wpwebapp_get_site_domain();
+			$headers = 'From: ' . $site_name . ' <' . $from . '@' . $domain . '>' . "\r\n";
+			$subject = wpwebapp_get_new_user_email_subject( $site_name );
+			$custom_message = wpwebapp_get_send_new_user_email_message();
+
+			if ( $custom_message === '' ) {
+				$message  =
+					sprintf( __( 'Welcome to %s.', 'wpwebapp' ), get_option('blogname') ) .
+					sprintf( __( 'Your username is %s.', 'wpwebapp' ), $user_login ) .
+					sprintf( __( 'Login at %s.', 'wpwebapp' ), site_url() );
+			} else {
+				$add_content = array(
+					'%username' => $user_login,
+					'%email' => $user_email,
+				);
+				$custom_message = strtr( $custom_message, $add_content );
+				$message = $custom_message;
+			}
+
+			wp_mail( $to, $subject, $message, $headers );
+
+		}
+
+	}
+}
+
 ?>
