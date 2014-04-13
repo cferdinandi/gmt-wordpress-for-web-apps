@@ -16,7 +16,7 @@
 function wpwebapp_settings_field_delete_button_class() {
 	$options = wpwebapp_get_plugin_options_delete_account();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_delete_account[delete_button_class]" id="delete-button-class" value="<?php echo esc_attr( $options['delete_button_class'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_delete_account[delete_button_class]" id="delete-button-class" value="<?php echo esc_attr( $options['delete_button_class'] ); ?>"><br>
 	<label class="description" for="delete-button-class"><?php _e( 'Example: <code>btn btn-red</code>. Default: None.', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -24,7 +24,7 @@ function wpwebapp_settings_field_delete_button_class() {
 function wpwebapp_settings_field_delete_account_text() {
 	$options = wpwebapp_get_plugin_options_delete_account();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_delete_account[delete_account_text]" id="delete-account-text" value="<?php echo esc_attr( $options['delete_account_text'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_delete_account[delete_account_text]" id="delete-account-text" value="<?php echo esc_attr( $options['delete_account_text'] ); ?>"><br>
 	<label class="description" for="delete-account-text"><?php _e( 'Default: <code>Delete Account</code>', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -32,7 +32,7 @@ function wpwebapp_settings_field_delete_account_text() {
 function wpwebapp_settings_field_delete_account_url() {
 	$options = wpwebapp_get_plugin_options_delete_account();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_delete_account[delete_account_url]" id="delete-account-text" value="<?php echo esc_url_raw( $options['delete_account_url'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_delete_account[delete_account_url]" id="delete-account-text" value="<?php echo esc_url_raw( $options['delete_account_url'] ); ?>"><br>
 	<label class="description" for="delete-account-url"><?php _e( 'Default: Logged-Out Redirect', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -103,7 +103,7 @@ function wpwebapp_plugin_options_render_page_delete_account() {
 	?>
 	<div class="wrap">
 		<?php $theme_name = function_exists( 'wp_get_theme' ) ? wp_get_theme() : get_current_theme(); ?>
-		<h2><?php _e( 'Delete Account', 'wpwebapp' ); ?></h2>
+		<h2><?php _e( 'Delete Account Button', 'wpwebapp' ); ?></h2>
 		<?php settings_errors(); ?>
 
 		<p><?php _e( 'Control delete account settings.', 'wpwebapp' ) ?></p>
@@ -139,7 +139,7 @@ add_action( 'admin_init', 'wpwebapp_plugin_options_init_delete_account' );
 
 // Add the plugin options page to the admin menu
 function wpwebapp_plugin_options_add_page_delete_account() {
-	add_submenu_page( 'wpwa_options', __( 'Delete Account', 'wpwebapp' ), __( 'Delete Account', 'wpwebapp' ), 'edit_theme_options', 'wpwebapp_plugin_options_delete_account', 'wpwebapp_plugin_options_render_page_delete_account' );
+	add_submenu_page( 'wpwa_options', __( 'Delete Account Button', 'wpwebapp' ), __( 'Delete Account Button', 'wpwebapp' ), 'edit_theme_options', 'wpwebapp_plugin_options_forms_delete_account', 'wpwebapp_plugin_options_render_page_delete_account' );
 }
 add_action( 'admin_menu', 'wpwebapp_plugin_options_add_page_delete_account' );
 

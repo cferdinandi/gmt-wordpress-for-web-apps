@@ -16,7 +16,7 @@
 function wpwebapp_settings_field_button_class_pw_change() {
 	$options = wpwebapp_get_plugin_options_pw_change();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_pw_change[button_class]" id="button-class" value="<?php echo esc_attr( $options['button_class'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_pw_change[button_class]" id="button-class" value="<?php echo esc_attr( $options['button_class'] ); ?>"><br>
 	<label class="description" for="button-class"><?php _e( 'Example: <code>btn btn-blue</code>. Default: None.', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -24,7 +24,7 @@ function wpwebapp_settings_field_button_class_pw_change() {
 function wpwebapp_settings_field_button_text_pw_change() {
 	$options = wpwebapp_get_plugin_options_pw_change();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_pw_change[button_text_pw_change]" id="button-text-pw-change" value="<?php echo esc_attr( $options['button_text_pw_change'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_pw_change[button_text_pw_change]" id="button-text-pw-change" value="<?php echo esc_attr( $options['button_text_pw_change'] ); ?>"><br>
 	<label class="description" for="button-text-pw-change"><?php _e( 'Default: <code>Change Password</code>', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -33,7 +33,7 @@ function wpwebapp_settings_field_disable_pw_confirm_field() {
 	$options = wpwebapp_get_plugin_options_pw_change();
 	?>
 	<label for="disable-pw-confirm-field">
-		<input type="checkbox" name="wpwebapp_plugin_options_pw_change[disable_pw_confirm_field]" id="disable-pw-confirm-field" <?php checked( 'on', $options['disable_pw_confirm_field'] ); ?> />
+		<input type="checkbox" name="wpwebapp_plugin_options_pw_change[disable_pw_confirm_field]" id="disable-pw-confirm-field" <?php checked( 'on', $options['disable_pw_confirm_field'] ); ?>>
 		<?php _e( 'Disable the new password confirmation field', 'wpwebapp' ); ?>
 	</label>
 	<?php
@@ -42,13 +42,13 @@ function wpwebapp_settings_field_disable_pw_confirm_field() {
 function wpwebapp_settings_field_custom_layout_pw_change() {
 	$options = wpwebapp_get_plugin_options_pw_change();
 	?>
-	<textarea class="large-text" type="text" name="wpwebapp_plugin_options_pw_change[custom_layout]" id="custom-layout" cols="50" rows="10" /><?php echo esc_textarea( $options['custom_layout'] ); ?></textarea>
+	<textarea class="large-text" type="text" name="wpwebapp_plugin_options_pw_change[custom_layout]" id="custom-layout" cols="50" rows="10"><?php echo esc_textarea( $options['custom_layout'] ); ?></textarea>
 	<label class="description">
-		<?php _e( 'Use the following variables to add fields to the layout:', 'wpwebapp' ); ?><br />
-		<?php _e( 'Alert', 'wpwebapp' ); ?> - <code>%alert</code><br />
-		<?php _e( 'Current Password', 'wpwebapp' ); ?> - <code>%pw-current</code><br />
-		<?php _e( 'New Password', 'wpwebapp' ); ?> - <code>%pw-new</code><br />
-		<?php _e( 'Confirm Password', 'wpwebapp' ); ?> - <code>%pw-confirm</code><br />
+		<?php _e( 'Use the following variables to add fields to the layout:', 'wpwebapp' ); ?><br>
+		<?php _e( 'Alert', 'wpwebapp' ); ?> - <code>%alert</code><br>
+		<?php _e( 'Current Password', 'wpwebapp' ); ?> - <code>%pw-current</code><br>
+		<?php _e( 'New Password', 'wpwebapp' ); ?> - <code>%pw-new</code><br>
+		<?php _e( 'Confirm Password', 'wpwebapp' ); ?> - <code>%pw-confirm</code><br>
 		<?php _e( 'Submit Button', 'wpwebapp' ); ?> - <code>%submit</code>
 	</label>
 	<?php

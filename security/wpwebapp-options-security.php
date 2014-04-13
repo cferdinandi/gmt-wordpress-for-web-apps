@@ -15,7 +15,7 @@
 function wpwebapp_settings_field_minimum_password_length() {
 	$options = wpwebapp_get_plugin_options_security();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_security[minimum_password_length]" id="minimum-password-length" value="<?php echo esc_attr( $options['minimum_password_length'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_security[minimum_password_length]" id="minimum-password-length" value="<?php echo esc_attr( $options['minimum_password_length'] ); ?>"><br>
 	<label class="description" for="minimum-password-length"><?php _e( 'Default: <code>8</code>', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -25,19 +25,19 @@ function wpwebapp_settings_field_password_requirements() {
 	?>
 	<div class="layout">
 		<label class="description" for="password-requirements-letters">
-			<input type="checkbox" name="wpwebapp_plugin_options_security[password_requirements_letters]" id="password-requirements-letters" <?php checked( 'on', $options['password_requirements_letters'] ); ?> />
+			<input type="checkbox" name="wpwebapp_plugin_options_security[password_requirements_letters]" id="password-requirements-letters" <?php checked( 'on', $options['password_requirements_letters'] ); ?>>
 			<?php _e( 'Letters', 'wpwebapp' ); ?>
 		</label>
 	</div>
 	<div class="layout">
 		<label class="description" for="password-requirements-numbers">
-			<input type="checkbox" name="wpwebapp_plugin_options_security[password_requirements_numbers]" id="password-requirements-numbers" <?php checked( 'on', $options['password_requirements_numbers'] ); ?> />
+			<input type="checkbox" name="wpwebapp_plugin_options_security[password_requirements_numbers]" id="password-requirements-numbers" <?php checked( 'on', $options['password_requirements_numbers'] ); ?>>
 			<?php _e( 'Numbers', 'wpwebapp' ); ?>
 		</label>
 	</div>
 	<div class="layout">
 		<label class="description" for="password-requirements-special-chars">
-			<input type="checkbox" name="wpwebapp_plugin_options_security[password_requirements_special_chars]" id="password-requirements-special-chars" <?php checked( 'on', $options['password_requirements_special_chars'] ); ?> />
+			<input type="checkbox" name="wpwebapp_plugin_options_security[password_requirements_special_chars]" id="password-requirements-special-chars" <?php checked( 'on', $options['password_requirements_special_chars'] ); ?>>
 			<?php _e( 'Special Characters', 'wpwebapp' ); ?>
 		</label>
 	</div>
@@ -78,7 +78,7 @@ function wpwebapp_settings_field_restrict_pw_reset() {
 	?>
 	<div class="layout">
 		<label class="description">
-			<input type="radio" name="wpwebapp_plugin_options_security[restrict_pw_reset]" value="<?php echo esc_attr( $button['value'] ); ?>" <?php checked( $options['restrict_pw_reset'], $button['value'] ); ?> />
+			<input type="radio" name="wpwebapp_plugin_options_security[restrict_pw_reset]" value="<?php echo esc_attr( $button['value'] ); ?>" <?php checked( $options['restrict_pw_reset'], $button['value'] ); ?>>
 			<?php echo $button['label']; ?>
 		</label>
 	</div>
@@ -89,7 +89,7 @@ function wpwebapp_settings_field_restrict_pw_reset() {
 function wpwebapp_settings_field_pw_reset_time_valid() {
 	$options = wpwebapp_get_plugin_options_security();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_security[pw_reset_time_valid]" id="pw-reset-time-valid" value="<?php echo esc_attr( $options['pw_reset_time_valid'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_security[pw_reset_time_valid]" id="pw-reset-time-valid" value="<?php echo esc_attr( $options['pw_reset_time_valid'] ); ?>"><br>
 	<label class="description" for="pw-reset-time-valid"><?php _e( 'Default: <code>24</code>', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -97,8 +97,8 @@ function wpwebapp_settings_field_pw_reset_time_valid() {
 function wpwebapp_settings_field_pw_requirement_text() {
 	$options = wpwebapp_get_plugin_options_security();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_security[pw_requirement_text]" id="pw-requirement-text" value="<?php echo esc_attr( $options['pw_requirement_text'] ); ?>" /><br>
-	<label class="description" for="pw-requirement-text"><?php _e( 'Default: Varies based on your password requirements under "Security"<br />Use the variable <code>%n</code> to dynamically display the minimum character number from your settings.', 'wpwebapp' ); ?></label>
+	<input type="text" name="wpwebapp_plugin_options_security[pw_requirement_text]" id="pw-requirement-text" value="<?php echo esc_attr( $options['pw_requirement_text'] ); ?>"><br>
+	<label class="description" for="pw-requirement-text"><?php _e( 'Default: Varies based on your password requirements under "Security"<br>Use the variable <code>%n</code> to dynamically display the minimum character number from your settings.', 'wpwebapp' ); ?></label>
 	<?php
 }
 

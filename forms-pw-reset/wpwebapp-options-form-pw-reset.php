@@ -16,7 +16,7 @@
 function wpwebapp_settings_field_button_class_pw_reset() {
 	$options = wpwebapp_get_plugin_options_pw_reset();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_pw_reset[button_class]" id="button-class" value="<?php echo esc_attr( $options['button_class'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_pw_reset[button_class]" id="button-class" value="<?php echo esc_attr( $options['button_class'] ); ?>"><br>
 	<label class="description" for="button-class"><?php _e( 'Example: <code>btn btn-blue</code>. Default: None.', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -24,7 +24,7 @@ function wpwebapp_settings_field_button_class_pw_reset() {
 function wpwebapp_settings_field_button_text_pw_forgot() {
 	$options = wpwebapp_get_plugin_options_pw_reset();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_pw_reset[button_text_pw_forgot]" id="button-text-pw-forgot" value="<?php echo esc_attr( $options['button_text_pw_forgot'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_pw_reset[button_text_pw_forgot]" id="button-text-pw-forgot" value="<?php echo esc_attr( $options['button_text_pw_forgot'] ); ?>"><br>
 	<label class="description" for="button-text-pw-forgot"><?php _e( 'Default: <code>Reset Password</code>', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -32,7 +32,7 @@ function wpwebapp_settings_field_button_text_pw_forgot() {
 function wpwebapp_settings_field_button_text_pw_reset() {
 	$options = wpwebapp_get_plugin_options_pw_reset();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_pw_reset[button_text_pw_reset]" id="button-text-pw-reset" value="<?php echo esc_attr( $options['button_text_pw_reset'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_pw_reset[button_text_pw_reset]" id="button-text-pw-reset" value="<?php echo esc_attr( $options['button_text_pw_reset'] ); ?>"><br>
 	<label class="description" for="button-text-pw-reset"><?php _e( 'Default: <code>Set New Password</code>', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -40,7 +40,7 @@ function wpwebapp_settings_field_button_text_pw_reset() {
 function wpwebapp_settings_field_forgot_pw_url() {
 	$options = wpwebapp_get_plugin_options_pw_reset();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_pw_reset[forgot_pw_url]" id="forgot-pw-url" value="<?php echo esc_url( $options['forgot_pw_url'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_pw_reset[forgot_pw_url]" id="forgot-pw-url" value="<?php echo esc_url( $options['forgot_pw_url'] ); ?>"><br>
 	<label class="description" for="forgot-pw-url"><?php _e( 'Default: None', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -48,7 +48,7 @@ function wpwebapp_settings_field_forgot_pw_url() {
 function wpwebapp_settings_field_forgot_pw_url_text() {
 	$options = wpwebapp_get_plugin_options_pw_reset();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_pw_reset[forgot_pw_url_text]" id="forgot-pw-url-text" value="<?php echo esc_attr( $options['forgot_pw_url_text'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_pw_reset[forgot_pw_url_text]" id="forgot-pw-url-text" value="<?php echo esc_attr( $options['forgot_pw_url_text'] ); ?>"><br>
 	<label class="description" for="forgot-pw-url-text"><?php _e( 'Default: <code>forgot password</code>', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -56,11 +56,11 @@ function wpwebapp_settings_field_forgot_pw_url_text() {
 function wpwebapp_settings_field_custom_layout_pw_forgot() {
 	$options = wpwebapp_get_plugin_options_pw_reset();
 	?>
-	<textarea class="large-text" type="text" name="wpwebapp_plugin_options_pw_reset[custom_layout_pw_forgot]" id="custom-layout" cols="50" rows="10" /><?php echo esc_textarea( $options['custom_layout_pw_forgot'] ); ?></textarea>
+	<textarea class="large-text" type="text" name="wpwebapp_plugin_options_pw_reset[custom_layout_pw_forgot]" id="custom-layout" cols="50" rows="10"><?php echo esc_textarea( $options['custom_layout_pw_forgot'] ); ?></textarea>
 	<label class="description">
-		<?php _e( 'Use the following variables to add fields to the layout:', 'wpwebapp' ); ?><br />
-		<?php _e( 'Alert', 'wpwebapp' ); ?> - <code>%alert</code><br />
-		<?php _e( 'Username', 'wpwebapp' ); ?> - <code>%username</code><br />
+		<?php _e( 'Use the following variables to add fields to the layout:', 'wpwebapp' ); ?><br>
+		<?php _e( 'Alert', 'wpwebapp' ); ?> - <code>%alert</code><br>
+		<?php _e( 'Username', 'wpwebapp' ); ?> - <code>%username</code><br>
 		<?php _e( 'Submit Button', 'wpwebapp' ); ?> - <code>%submit</code>
 	</label>
 	<?php
@@ -69,12 +69,12 @@ function wpwebapp_settings_field_custom_layout_pw_forgot() {
 function wpwebapp_settings_field_custom_layout_pw_reset() {
 	$options = wpwebapp_get_plugin_options_pw_reset();
 	?>
-	<textarea class="large-text" type="text" name="wpwebapp_plugin_options_pw_reset[custom_layout_pw_reset]" id="custom-layout" cols="50" rows="10" /><?php echo esc_textarea( $options['custom_layout_pw_reset'] ); ?></textarea>
+	<textarea class="large-text" type="text" name="wpwebapp_plugin_options_pw_reset[custom_layout_pw_reset]" id="custom-layout" cols="50" rows="10"><?php echo esc_textarea( $options['custom_layout_pw_reset'] ); ?></textarea>
 	<label class="description">
-		<?php _e( 'Use the following variables to add fields to the layout:', 'wpwebapp' ); ?><br />
-		<?php _e( 'Alert', 'wpwebapp' ); ?> - <code>%alert</code><br />
-		<?php _e( 'Password', 'wpwebapp' ); ?> - <code>%password</code><br />
-		<?php _e( 'Password Confirm', 'wpwebapp' ); ?> - <code>%password-confirm</code><br />
+		<?php _e( 'Use the following variables to add fields to the layout:', 'wpwebapp' ); ?><br>
+		<?php _e( 'Alert', 'wpwebapp' ); ?> - <code>%alert</code><br>
+		<?php _e( 'Password', 'wpwebapp' ); ?> - <code>%password</code><br>
+		<?php _e( 'Password Confirm', 'wpwebapp' ); ?> - <code>%password-confirm</code><br>
 		<?php _e( 'Submit Button', 'wpwebapp' ); ?> - <code>%submit</code>
 	</label>
 	<?php
@@ -84,7 +84,7 @@ function wpwebapp_settings_field_disable_pw_reset_email() {
 	$options = wpwebapp_get_plugin_options_pw_reset();
 	?>
 	<label for="email-disable-pw-reset">
-		<input type="checkbox" name="wpwebapp_plugin_options_pw_reset[email_disable_pw_reset]" id="email-disable-pw-reset" <?php checked( 'on', $options['email_disable_pw_reset'] ); ?> />
+		<input type="checkbox" name="wpwebapp_plugin_options_pw_reset[email_disable_pw_reset]" id="email-disable-pw-reset" <?php checked( 'on', $options['email_disable_pw_reset'] ); ?>>
 		<?php _e( 'Disable the email WordPress sends site Admins whenever a user changes/resets their password', 'wpwebapp' ); ?>
 	</label>
 	<?php
@@ -93,7 +93,7 @@ function wpwebapp_settings_field_disable_pw_reset_email() {
 function wpwebapp_settings_field_pw_reset_email_from() {
 	$options = wpwebapp_get_plugin_options_pw_reset();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_pw_reset[pw_reset_email_from]" id="pw-reset-email-from" value="<?php echo esc_attr( $options['pw_reset_email_from'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_pw_reset[pw_reset_email_from]" id="pw-reset-email-from" value="<?php echo esc_attr( $options['pw_reset_email_from'] ); ?>"><br>
 	<label class="description" for="pw-reset-email-from"><?php _e( '<code>name</code>, not: <code>name@domain.com</code>. Default: <code>passwordreset</code>.', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -101,7 +101,7 @@ function wpwebapp_settings_field_pw_reset_email_from() {
 function wpwebapp_settings_field_pw_reset_email_subject() {
 	$options = wpwebapp_get_plugin_options_pw_reset();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_pw_reset[pw_reset_email_subject]" id="pw-reset-email-subject" value="<?php echo esc_attr( $options['pw_reset_email_subject'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_pw_reset[pw_reset_email_subject]" id="pw-reset-email-subject" value="<?php echo esc_attr( $options['pw_reset_email_subject'] ); ?>"><br>
 	<label class="description" for="pw-reset-email-subject"><?php _e( 'Password reset for [App Name]', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -109,11 +109,11 @@ function wpwebapp_settings_field_pw_reset_email_subject() {
 function wpwebapp_settings_field_pw_reset_email_message() {
 	$options = wpwebapp_get_plugin_options_pw_reset();
 	?>
-	<textarea class="large-text" type="text" name="wpwebapp_plugin_options_pw_reset[pw_reset_email_message]" id="pw-reset-email-message" cols="50" rows="10" /><?php echo esc_textarea( $options['pw_reset_email_message'] ); ?></textarea>
+	<textarea class="large-text" type="text" name="wpwebapp_plugin_options_pw_reset[pw_reset_email_message]" id="pw-reset-email-message" cols="50" rows="10"><?php echo esc_textarea( $options['pw_reset_email_message'] ); ?></textarea>
 	<label class="description">
-		<?php _e( 'Use the following variables to add content to the message:', 'wpwebapp' ); ?><br />
-		<?php _e( 'Username', 'wpwebapp' ); ?> - <code>%username</code><br />
-		<?php _e( 'Reset URL', 'wpwebapp' ); ?> - <code>%url</code><br />
+		<?php _e( 'Use the following variables to add content to the message:', 'wpwebapp' ); ?><br>
+		<?php _e( 'Username', 'wpwebapp' ); ?> - <code>%username</code><br>
+		<?php _e( 'Reset URL', 'wpwebapp' ); ?> - <code>%url</code><br>
 		<?php _e( 'Default: ', 'wpwebapp' ); ?> <code><?php _e( 'We received a request to reset the password for your [App Name] account [username]. To reset your password, click on the link below (or copy and paste the URL into your browser): [Reset URL]. If this was a mistake, just ignore this email.', 'wpwebapp' ); ?></code>
 	</label>
 	<?php

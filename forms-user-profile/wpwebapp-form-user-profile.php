@@ -243,7 +243,7 @@ function wpwebapp_add_user_profile_to_backend( $user ) {
 			<tr>
 				<th><label for="wpwa-name">Name</label></th>
 				<td>
-					<input type="text" name="wpwa-name" id="wpwa-name" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_name', true) ); ?>" class="regular-text" />
+					<input type="text" name="wpwa-name" id="wpwa-name" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_name', true) ); ?>" class="regular-text">
 				</td>
 			</tr>
 			<tr>
@@ -255,38 +255,38 @@ function wpwebapp_add_user_profile_to_backend( $user ) {
 			<tr>
 				<th><label for="wpwa-location">Location</label></th>
 				<td>
-					<input type="text" name="wpwa-location" id="wpwa-location" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_location', true) ); ?>" class="regular-text" />
+					<input type="text" name="wpwa-location" id="wpwa-location" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_location', true) ); ?>" class="regular-text">
 				</td>
 			</tr>
 			<tr>
 				<th><label for="wpwa-email">Public Email</label></th>
 				<td>
-					<input type="text" name="wpwa-email" id="wpwa-email" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_email', true) ); ?>" class="regular-text" />
+					<input type="text" name="wpwa-email" id="wpwa-email" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_email', true) ); ?>" class="regular-text">
 				</td>
 			</tr>
 			<tr>
 				<th><label for="wpwa-website">Website</label></th>
 				<td>
-					<input type="text" name="wpwa-website" id="wpwa-website" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_website', true) ); ?>" class="regular-text" />
+					<input type="text" name="wpwa-website" id="wpwa-website" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_website', true) ); ?>" class="regular-text">
 				</td>
 			</tr>
 			<tr>
 				<th><label for="wpwa-twitter">Twitter</label></th>
 				<td>
-					<input type="text" name="wpwa-twitter" id="wpwa-twitter" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_twitter', true) ); ?>" class="regular-text" />
+					<input type="text" name="wpwa-twitter" id="wpwa-twitter" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_twitter', true) ); ?>" class="regular-text">
 				</td>
 			</tr>
 			<tr>
 				<th><label for="wpwa-facebook">Facebook</label></th>
 				<td>
-					<input type="text" name="wpwa-facebook" id="wpwa-facebook" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_facebook', true) ); ?>" class="regular-text" />
+					<input type="text" name="wpwa-facebook" id="wpwa-facebook" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_facebook', true) ); ?>" class="regular-text">
 				</td>
 			</tr>
 
 			<tr>
 				<th><label for="wpwa-linkedin">LinkedIn</label></th>
 				<td>
-					<input type="text" name="wpwa-linkedin" id="wpwa-linkedin" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_linkedin', true) ); ?>" class="regular-text" />
+					<input type="text" name="wpwa-linkedin" id="wpwa-linkedin" value="<?php echo esc_attr( get_user_meta($user_id, 'wpwa_user_linkedin', true) ); ?>" class="regular-text">
 				</td>
 			</tr>
 		</table>

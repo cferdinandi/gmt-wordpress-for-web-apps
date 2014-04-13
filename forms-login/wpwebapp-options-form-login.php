@@ -16,7 +16,7 @@
 function wpwebapp_settings_field_button_class_login() {
 	$options = wpwebapp_get_plugin_options_forms_login();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_forms_login[button_class]" id="button-class" value="<?php echo esc_attr( $options['button_class'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_forms_login[button_class]" id="button-class" value="<?php echo esc_attr( $options['button_class'] ); ?>"><br>
 	<label class="description" for="button-class"><?php _e( 'Example: <code>btn btn-blue</code>. Default: None.', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -24,7 +24,7 @@ function wpwebapp_settings_field_button_class_login() {
 function wpwebapp_settings_field_button_text_login() {
 	$options = wpwebapp_get_plugin_options_forms_login();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_forms_login[button_text_login]" id="button-text-login" value="<?php echo esc_attr( $options['button_text_login'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_forms_login[button_text_login]" id="button-text-login" value="<?php echo esc_attr( $options['button_text_login'] ); ?>"><br>
 	<label class="description" for="button-text-login"><?php _e( 'Default: <code>Login</code>', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -32,13 +32,13 @@ function wpwebapp_settings_field_button_text_login() {
 function wpwebapp_settings_field_custom_layout_login() {
 	$options = wpwebapp_get_plugin_options_forms_login();
 	?>
-	<textarea class="large-text" type="text" name="wpwebapp_plugin_options_forms_login[custom_layout]" id="custom-layout" cols="50" rows="10" /><?php echo esc_textarea( $options['custom_layout'] ); ?></textarea>
+	<textarea class="large-text" type="text" name="wpwebapp_plugin_options_forms_login[custom_layout]" id="custom-layout" cols="50" rows="10"><?php echo esc_textarea( $options['custom_layout'] ); ?></textarea>
 	<label class="description">
-		<?php _e( 'Use the following variables to add fields to the layout:', 'wpwebapp' ); ?><br />
-		<?php _e( 'Alert', 'wpwebapp' ); ?> - <code>%alert</code><br />
-		<?php _e( 'Username', 'wpwebapp' ); ?> - <code>%username</code><br />
-		<?php _e( 'Password', 'wpwebapp' ); ?> - <code>%password</code><br />
-		<?php _e( 'Remember Me', 'wpwebapp' ); ?> - <code>%rememberme</code><br />
+		<?php _e( 'Use the following variables to add fields to the layout:', 'wpwebapp' ); ?><br>
+		<?php _e( 'Alert', 'wpwebapp' ); ?> - <code>%alert</code><br>
+		<?php _e( 'Username', 'wpwebapp' ); ?> - <code>%username</code><br>
+		<?php _e( 'Password', 'wpwebapp' ); ?> - <code>%password</code><br>
+		<?php _e( 'Remember Me', 'wpwebapp' ); ?> - <code>%rememberme</code><br>
 		<?php _e( 'Submit Button', 'wpwebapp' ); ?> - <code>%submit</code>
 	</label>
 	<?php

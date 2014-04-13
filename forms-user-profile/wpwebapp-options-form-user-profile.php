@@ -18,55 +18,55 @@ function wpwebapp_settings_field_user_profile_fields() {
 	?>
 	<div class="layout">
 		<label class="description" for="user-profile-fields-gravatar">
-			<input type="checkbox" name="wpwebapp_plugin_options_user_profile[user_profile_fields_gravatar]" id="user-profile-fields-gravatar" <?php checked( 'on', $options['user_profile_fields_gravatar'] ); ?> />
+			<input type="checkbox" name="wpwebapp_plugin_options_user_profile[user_profile_fields_gravatar]" id="user-profile-fields-gravatar" <?php checked( 'on', $options['user_profile_fields_gravatar'] ); ?>>
 			<?php _e( 'Gravatar', 'wpwebapp' ); ?>
 		</label>
 	</div>
 	<div class="layout">
 		<label class="description" for="user-profile-fields-name">
-			<input type="checkbox" name="wpwebapp_plugin_options_user_profile[user_profile_fields_name]" id="user-profile-fields-name" <?php checked( 'on', $options['user_profile_fields_name'] ); ?> />
+			<input type="checkbox" name="wpwebapp_plugin_options_user_profile[user_profile_fields_name]" id="user-profile-fields-name" <?php checked( 'on', $options['user_profile_fields_name'] ); ?>>
 			<?php _e( 'Name', 'wpwebapp' ); ?>
 		</label>
 	</div>
 	<div class="layout">
 		<label class="description" for="user-profile-fields-about">
-			<input type="checkbox" name="wpwebapp_plugin_options_user_profile[user_profile_fields_about]" id="user-profile-fields-about" <?php checked( 'on', $options['user_profile_fields_about'] ); ?> />
+			<input type="checkbox" name="wpwebapp_plugin_options_user_profile[user_profile_fields_about]" id="user-profile-fields-about" <?php checked( 'on', $options['user_profile_fields_about'] ); ?>>
 			<?php _e( 'About', 'wpwebapp' ); ?>
 		</label>
 	</div>
 	<div class="layout">
 		<label class="description" for="user-profile-fields-location">
-			<input type="checkbox" name="wpwebapp_plugin_options_user_profile[user_profile_fields_location]" id="user-profile-fields-location" <?php checked( 'on', $options['user_profile_fields_location'] ); ?> />
+			<input type="checkbox" name="wpwebapp_plugin_options_user_profile[user_profile_fields_location]" id="user-profile-fields-location" <?php checked( 'on', $options['user_profile_fields_location'] ); ?>>
 			<?php _e( 'Location', 'wpwebapp' ); ?>
 		</label>
 	</div>
 	<div class="layout">
 		<label class="description" for="user-profile-fields-email">
-			<input type="checkbox" name="wpwebapp_plugin_options_user_profile[user_profile_fields_email]" id="user-profile-fields-email" <?php checked( 'on', $options['user_profile_fields_email'] ); ?> />
+			<input type="checkbox" name="wpwebapp_plugin_options_user_profile[user_profile_fields_email]" id="user-profile-fields-email" <?php checked( 'on', $options['user_profile_fields_email'] ); ?>>
 			<?php _e( 'Email', 'wpwebapp' ); ?>
 		</label>
 	</div>
 	<div class="layout">
 		<label class="description" for="user-profile-fields-website">
-			<input type="checkbox" name="wpwebapp_plugin_options_user_profile[user_profile_fields_website]" id="user-profile-fields-website" <?php checked( 'on', $options['user_profile_fields_website'] ); ?> />
+			<input type="checkbox" name="wpwebapp_plugin_options_user_profile[user_profile_fields_website]" id="user-profile-fields-website" <?php checked( 'on', $options['user_profile_fields_website'] ); ?>>
 			<?php _e( 'Website', 'wpwebapp' ); ?>
 		</label>
 	</div>
 	<div class="layout">
 		<label class="description" for="user-profile-fields-twitter">
-			<input type="checkbox" name="wpwebapp_plugin_options_user_profile[user_profile_fields_twitter]" id="user-profile-fields-twitter" <?php checked( 'on', $options['user_profile_fields_twitter'] ); ?> />
+			<input type="checkbox" name="wpwebapp_plugin_options_user_profile[user_profile_fields_twitter]" id="user-profile-fields-twitter" <?php checked( 'on', $options['user_profile_fields_twitter'] ); ?>>
 			<?php _e( 'Twitter', 'wpwebapp' ); ?>
 		</label>
 	</div>
 	<div class="layout">
 		<label class="description" for="user-profile-fields-facebook">
-			<input type="checkbox" name="wpwebapp_plugin_options_user_profile[user_profile_fields_facebook]" id="user-profile-fields-facebook" <?php checked( 'on', $options['user_profile_fields_facebook'] ); ?> />
+			<input type="checkbox" name="wpwebapp_plugin_options_user_profile[user_profile_fields_facebook]" id="user-profile-fields-facebook" <?php checked( 'on', $options['user_profile_fields_facebook'] ); ?>>
 			<?php _e( 'Facebook', 'wpwebapp' ); ?>
 		</label>
 	</div>
 	<div class="layout">
 		<label class="description" for="user-profile-fields-linkedin">
-			<input type="checkbox" name="wpwebapp_plugin_options_user_profile[user_profile_fields_linkedin]" id="user-profile-fields-linkedin" <?php checked( 'on', $options['user_profile_fields_linkedin'] ); ?> />
+			<input type="checkbox" name="wpwebapp_plugin_options_user_profile[user_profile_fields_linkedin]" id="user-profile-fields-linkedin" <?php checked( 'on', $options['user_profile_fields_linkedin'] ); ?>>
 			<?php _e( 'LinkedIn', 'wpwebapp' ); ?>
 		</label>
 	</div>
@@ -76,7 +76,7 @@ function wpwebapp_settings_field_user_profile_fields() {
 function wpwebapp_settings_field_gravatar_size() {
 	$options = wpwebapp_get_plugin_options_user_profile();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_user_profile[gravatar_size]" id="gravatar-size" value="<?php echo esc_attr( $options['gravatar_size'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_user_profile[gravatar_size]" id="gravatar-size" value="<?php echo esc_attr( $options['gravatar_size'] ); ?>"><br>
 	<label class="description" for="gravatar-size"><?php _e( 'Default: <code>96</code>', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -84,7 +84,7 @@ function wpwebapp_settings_field_gravatar_size() {
 function wpwebapp_settings_field_gravatar_text() {
 	$options = wpwebapp_get_plugin_options_user_profile();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_user_profile[gravatar_text]" id="gravatar-text" value="<?php echo esc_attr( $options['gravatar_text'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_user_profile[gravatar_text]" id="gravatar-text" value="<?php echo esc_attr( $options['gravatar_text'] ); ?>"><br>
 	<label class="description" for="gravatar-text"><?php _e( 'Default: <code>&lt;p&gt;Update your profile photo at &lt;a href="https://en.gravatar.com/"&gt;Gravatar.com&lt;/a&gt;.&lt;/p&gt;</code>', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -93,7 +93,7 @@ function wpwebapp_settings_field_gravatar_image_link() {
 	$options = wpwebapp_get_plugin_options_user_profile();
 	?>
 	<label for="gravatar-image-link">
-		<input type="checkbox" name="wpwebapp_plugin_options_user_profile[gravatar_image_link]" id="gravatar-image-link" <?php checked( 'on', $options['gravatar_image_link'] ); ?> />
+		<input type="checkbox" name="wpwebapp_plugin_options_user_profile[gravatar_image_link]" id="gravatar-image-link" <?php checked( 'on', $options['gravatar_image_link'] ); ?>>
 		<?php _e( 'Link Gravatar image in update profile form to Gravatar.com', 'wpwebapp' ); ?>
 	</label>
 	<?php
@@ -102,7 +102,7 @@ function wpwebapp_settings_field_gravatar_image_link() {
 function wpwebapp_settings_field_contact_info_label() {
 	$options = wpwebapp_get_plugin_options_user_profile();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_user_profile[contact_info]" id="contact-info" value="<?php echo esc_attr( $options['contact_info'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_user_profile[contact_info]" id="contact-info" value="<?php echo esc_attr( $options['contact_info'] ); ?>"><br>
 	<label class="description" for="contact-info"><?php _e( 'Default: None.', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -110,7 +110,7 @@ function wpwebapp_settings_field_contact_info_label() {
 function wpwebapp_settings_field_button_class_user_profile() {
 	$options = wpwebapp_get_plugin_options_user_profile();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_user_profile[button_class]" id="button-class" value="<?php echo esc_attr( $options['button_class'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_user_profile[button_class]" id="button-class" value="<?php echo esc_attr( $options['button_class'] ); ?>"><br>
 	<label class="description" for="button-class"><?php _e( 'Example: <code>btn btn-blue</code>. Default: None.', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -118,7 +118,7 @@ function wpwebapp_settings_field_button_class_user_profile() {
 function wpwebapp_settings_field_button_text_user_profile() {
 	$options = wpwebapp_get_plugin_options_user_profile();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_user_profile[button_text]" id="button-text" value="<?php echo esc_attr( $options['button_text'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_user_profile[button_text]" id="button-text" value="<?php echo esc_attr( $options['button_text'] ); ?>"><br>
 	<label class="description" for="button-text"><?php _e( 'Default: None.', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -126,19 +126,19 @@ function wpwebapp_settings_field_button_text_user_profile() {
 function wpwebapp_settings_field_custom_layout_user_profile() {
 	$options = wpwebapp_get_plugin_options_user_profile();
 	?>
-	<textarea class="large-text" type="text" name="wpwebapp_plugin_options_user_profile[custom_layout]" id="custom-layout" cols="50" rows="10" /><?php echo esc_textarea( $options['custom_layout'] ); ?></textarea>
+	<textarea class="large-text" type="text" name="wpwebapp_plugin_options_user_profile[custom_layout]" id="custom-layout" cols="50" rows="10"><?php echo esc_textarea( $options['custom_layout'] ); ?></textarea>
 	<label class="description">
-		<?php _e( 'Use the following variables to add fields to the layout:', 'wpwebapp' ); ?><br />
-		<?php _e( 'Alert', 'wpwebapp' ); ?> - <code>%alert</code><br />
-		<?php _e( 'Gravatar', 'wpwebapp' ); ?> - <code>%gravatar</code><br />
-		<?php _e( 'Name', 'wpwebapp' ); ?> - <code>%name</code><br />
-		<?php _e( 'About', 'wpwebapp' ); ?> - <code>%about</code><br />
-		<?php _e( 'Location', 'wpwebapp' ); ?> - <code>%location</code><br />
-		<?php _e( 'Email', 'wpwebapp' ); ?> - <code>%email</code><br />
-		<?php _e( 'Website', 'wpwebapp' ); ?> - <code>%website</code><br />
-		<?php _e( 'Twitter', 'wpwebapp' ); ?> - <code>%twitter</code><br />
-		<?php _e( 'Facebook', 'wpwebapp' ); ?> - <code>%facebook</code><br />
-		<?php _e( 'LinkedIn', 'wpwebapp' ); ?> - <code>%linkedin</code><br />
+		<?php _e( 'Use the following variables to add fields to the layout:', 'wpwebapp' ); ?><br>
+		<?php _e( 'Alert', 'wpwebapp' ); ?> - <code>%alert</code><br>
+		<?php _e( 'Gravatar', 'wpwebapp' ); ?> - <code>%gravatar</code><br>
+		<?php _e( 'Name', 'wpwebapp' ); ?> - <code>%name</code><br>
+		<?php _e( 'About', 'wpwebapp' ); ?> - <code>%about</code><br>
+		<?php _e( 'Location', 'wpwebapp' ); ?> - <code>%location</code><br>
+		<?php _e( 'Email', 'wpwebapp' ); ?> - <code>%email</code><br>
+		<?php _e( 'Website', 'wpwebapp' ); ?> - <code>%website</code><br>
+		<?php _e( 'Twitter', 'wpwebapp' ); ?> - <code>%twitter</code><br>
+		<?php _e( 'Facebook', 'wpwebapp' ); ?> - <code>%facebook</code><br>
+		<?php _e( 'LinkedIn', 'wpwebapp' ); ?> - <code>%linkedin</code><br>
 		<?php _e( 'Submit Button', 'wpwebapp' ); ?> - <code>%submit</code>
 	</label>
 	<?php
@@ -262,7 +262,7 @@ function wpwebapp_plugin_options_render_page_user_profile() {
 	?>
 	<div class="wrap">
 		<?php $theme_name = function_exists( 'wp_get_theme' ) ? wp_get_theme() : get_current_theme(); ?>
-		<h2><?php _e( 'User Profiles', 'wpwebapp' ); ?></h2>
+		<h2><?php _e( 'User Profile Forms', 'wpwebapp' ); ?></h2>
 		<?php settings_errors(); ?>
 
 		<p><?php _e( 'Control user profile settings.', 'wpwebapp' ) ?></p>
@@ -303,7 +303,7 @@ add_action( 'admin_init', 'wpwebapp_plugin_options_init_user_profile' );
 
 // Add the plugin options page to the admin menu
 function wpwebapp_plugin_options_add_page_user_profile() {
-	add_submenu_page( 'wpwa_options', __( 'User Profiles', 'wpwebapp' ), __( 'User Profiles', 'wpwebapp' ), 'edit_theme_options', 'wpwebapp_plugin_options_user_profile', 'wpwebapp_plugin_options_render_page_user_profile' );
+	add_submenu_page( 'wpwa_options', __( 'User Profile Form', 'wpwebapp' ), __( 'User Profile Form', 'wpwebapp' ), 'edit_theme_options', 'wpwebapp_plugin_options_forms_user_profile', 'wpwebapp_plugin_options_render_page_user_profile' );
 }
 add_action( 'admin_menu', 'wpwebapp_plugin_options_add_page_user_profile' );
 

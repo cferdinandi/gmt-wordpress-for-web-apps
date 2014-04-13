@@ -16,7 +16,7 @@
 function wpwebapp_settings_field_button_class_signup() {
 	$options = wpwebapp_get_plugin_options_forms_signup();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_forms_signup[button_class]" id="button-class" value="<?php echo esc_attr( $options['button_class'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_forms_signup[button_class]" id="button-class" value="<?php echo esc_attr( $options['button_class'] ); ?>"><br>
 	<label class="description" for="button-class"><?php _e( 'Example: <code>btn btn-blue</code>. Default: None.', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -24,7 +24,7 @@ function wpwebapp_settings_field_button_class_signup() {
 function wpwebapp_settings_field_button_text_signup() {
 	$options = wpwebapp_get_plugin_options_forms_signup();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_forms_signup[button_text_signup]" id="button-text-signup" value="<?php echo esc_attr( $options['button_text_signup'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_forms_signup[button_text_signup]" id="button-text-signup" value="<?php echo esc_attr( $options['button_text_signup'] ); ?>"><br>
 	<label class="description" for="button-text-signup"><?php _e( 'Default: <code>Signup</code>', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -32,13 +32,13 @@ function wpwebapp_settings_field_button_text_signup() {
 function wpwebapp_settings_field_custom_layout_signup() {
 	$options = wpwebapp_get_plugin_options_forms_signup();
 	?>
-	<textarea class="large-text" type="text" name="wpwebapp_plugin_options_forms_signup[custom_layout]" id="custom-layout" cols="50" rows="10" /><?php echo esc_textarea( $options['custom_layout'] ); ?></textarea>
+	<textarea class="large-text" type="text" name="wpwebapp_plugin_options_forms_signup[custom_layout]" id="custom-layout" cols="50" rows="10"><?php echo esc_textarea( $options['custom_layout'] ); ?></textarea>
 	<label class="description">
-		<?php _e( 'Use the following variables to add fields to the layout:', 'wpwebapp' ); ?><br />
-		<?php _e( 'Alert', 'wpwebapp' ); ?> - <code>%alert</code><br />
-		<?php _e( 'Username', 'wpwebapp' ); ?> - <code>%username</code><br />
-		<?php _e( 'Email', 'wpwebapp' ); ?> - <code>%email</code><br />
-		<?php _e( 'Password', 'wpwebapp' ); ?> - <code>%password</code><br />
+		<?php _e( 'Use the following variables to add fields to the layout:', 'wpwebapp' ); ?><br>
+		<?php _e( 'Alert', 'wpwebapp' ); ?> - <code>%alert</code><br>
+		<?php _e( 'Username', 'wpwebapp' ); ?> - <code>%username</code><br>
+		<?php _e( 'Email', 'wpwebapp' ); ?> - <code>%email</code><br>
+		<?php _e( 'Password', 'wpwebapp' ); ?> - <code>%password</code><br>
 		<?php _e( 'Submit Button', 'wpwebapp' ); ?> - <code>%submit</code>
 	</label>
 	<?php
@@ -48,7 +48,7 @@ function wpwebapp_settings_field_send_new_user_email_admin() {
 	$options = wpwebapp_get_plugin_options_forms_signup();
 	?>
 	<label for="send-new-user-email-admin">
-		<input type="checkbox" name="wpwebapp_plugin_options_forms_signup[send_new_user_email_admin]" id="send-new-user-email-admin" <?php checked( 'on', $options['send_new_user_email_admin'] ); ?> />
+		<input type="checkbox" name="wpwebapp_plugin_options_forms_signup[send_new_user_email_admin]" id="send-new-user-email-admin" <?php checked( 'on', $options['send_new_user_email_admin'] ); ?>>
 		<?php _e( 'Receive an email whenever a new user signs up', 'wpwebapp' ); ?>
 	</label>
 	<?php
@@ -58,7 +58,7 @@ function wpwebapp_settings_field_send_new_user_email_user() {
 	$options = wpwebapp_get_plugin_options_forms_signup();
 	?>
 	<label for="send-new-user-email-user">
-		<input type="checkbox" name="wpwebapp_plugin_options_forms_signup[send_new_user_email_user]" id="send-new-user-email-user" <?php checked( 'on', $options['send_new_user_email_user'] ); ?> />
+		<input type="checkbox" name="wpwebapp_plugin_options_forms_signup[send_new_user_email_user]" id="send-new-user-email-user" <?php checked( 'on', $options['send_new_user_email_user'] ); ?>>
 		<?php _e( 'Send new users an email when they sign up', 'wpwebapp' ); ?>
 	</label>
 	<?php
@@ -67,7 +67,7 @@ function wpwebapp_settings_field_send_new_user_email_user() {
 function wpwebapp_settings_field_new_user_email_from() {
 	$options = wpwebapp_get_plugin_options_forms_signup();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_forms_signup[new_user_email_from]" id="new-user-email-from" value="<?php echo esc_attr( $options['new_user_email_from'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_forms_signup[new_user_email_from]" id="new-user-email-from" value="<?php echo esc_attr( $options['new_user_email_from'] ); ?>"><br>
 	<label class="description" for="new-user-email-from"><?php _e( '<code>name</code>, not: <code>name@domain.com</code>. Default: <code>welcome</code>.', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -75,7 +75,7 @@ function wpwebapp_settings_field_new_user_email_from() {
 function wpwebapp_settings_field_new_user_email_subject() {
 	$options = wpwebapp_get_plugin_options_forms_signup();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_forms_signup[new_user_email_subject]" id="new-user-email-subject" value="<?php echo esc_attr( $options['new_user_email_subject'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_forms_signup[new_user_email_subject]" id="new-user-email-subject" value="<?php echo esc_attr( $options['new_user_email_subject'] ); ?>"><br>
 	<label class="description" for="new-user-email-subject"><?php _e( 'Welcome to [App Name]', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -83,12 +83,12 @@ function wpwebapp_settings_field_new_user_email_subject() {
 function wpwebapp_settings_field_new_user_email_message() {
 	$options = wpwebapp_get_plugin_options_forms_signup();
 	?>
-	<textarea class="large-text" type="text" name="wpwebapp_plugin_options_forms_signup[new_user_email_message]" id="new-user-email-message" cols="50" rows="10" /><?php echo esc_textarea( $options['new_user_email_message'] ); ?></textarea>
+	<textarea class="large-text" type="text" name="wpwebapp_plugin_options_forms_signup[new_user_email_message]" id="new-user-email-message" cols="50" rows="10"><?php echo esc_textarea( $options['new_user_email_message'] ); ?></textarea>
 	<label class="description">
-		<?php _e( 'Use the following variables to add content to the email:', 'wpwebapp' ); ?><br />
-		<?php _e( 'Username', 'wpwebapp' ); ?> - <code>%username</code><br />
-		<?php _e( 'User Email', 'wpwebapp' ); ?> - <code>%email</code><br />
-		<?php _e( 'Default', 'wpwebapp' ); ?>: <code><?php _e( 'Welcome to [App Name].Your username is [username]. Login at [app URL].', 'wpwebapp' ); ?></code><br />
+		<?php _e( 'Use the following variables to add content to the email:', 'wpwebapp' ); ?><br>
+		<?php _e( 'Username', 'wpwebapp' ); ?> - <code>%username</code><br>
+		<?php _e( 'User Email', 'wpwebapp' ); ?> - <code>%email</code><br>
+		<?php _e( 'Default', 'wpwebapp' ); ?>: <code><?php _e( 'Welcome to [App Name].Your username is [username]. Login at [app URL].', 'wpwebapp' ); ?></code><br>
 	</label>
 	<?php
 }

@@ -16,7 +16,7 @@
 function wpwebapp_settings_field_button_class_email_change() {
 	$options = wpwebapp_get_plugin_options_email_change();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_email_change[button_class]" id="button-class" value="<?php echo esc_attr( $options['button_class'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_email_change[button_class]" id="button-class" value="<?php echo esc_attr( $options['button_class'] ); ?>"><br>
 	<label class="description" for="button-class"><?php _e( 'Example: <code>btn btn-blue</code>. Default: None.', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -24,7 +24,7 @@ function wpwebapp_settings_field_button_class_email_change() {
 function wpwebapp_settings_field_button_text_email_change() {
 	$options = wpwebapp_get_plugin_options_email_change();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_email_change[button_text_email_change]" id="button-text-email-change" value="<?php echo esc_attr( $options['button_text_email_change'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_email_change[button_text_email_change]" id="button-text-email-change" value="<?php echo esc_attr( $options['button_text_email_change'] ); ?>"><br>
 	<label class="description" for="button-text-email-change"><?php _e( 'Default: <code>Update Email</code>', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -32,12 +32,12 @@ function wpwebapp_settings_field_button_text_email_change() {
 function wpwebapp_settings_field_custom_layout_email_change() {
 	$options = wpwebapp_get_plugin_options_email_change();
 	?>
-	<textarea class="large-text" type="text" name="wpwebapp_plugin_options_email_change[custom_layout]" id="custom-layout" cols="50" rows="10" /><?php echo esc_textarea( $options['custom_layout'] ); ?></textarea>
+	<textarea class="large-text" type="text" name="wpwebapp_plugin_options_email_change[custom_layout]" id="custom-layout" cols="50" rows="10"><?php echo esc_textarea( $options['custom_layout'] ); ?></textarea>
 	<label class="description">
-		<?php _e( 'Use the following variables to add fields to the layout:', 'wpwebapp' ); ?><br />
-		<?php _e( 'Alert', 'wpwebapp' ); ?> - <code>%alert</code><br />
-		<?php _e( 'Email', 'wpwebapp' ); ?> - <code>%email</code><br />
-		<?php _e( 'Password', 'wpwebapp' ); ?> - <code>%password</code><br />
+		<?php _e( 'Use the following variables to add fields to the layout:', 'wpwebapp' ); ?><br>
+		<?php _e( 'Alert', 'wpwebapp' ); ?> - <code>%alert</code><br>
+		<?php _e( 'Email', 'wpwebapp' ); ?> - <code>%email</code><br>
+		<?php _e( 'Password', 'wpwebapp' ); ?> - <code>%password</code><br>
 		<?php _e( 'Submit Button', 'wpwebapp' ); ?> - <code>%submit</code>
 	</label>
 	<?php

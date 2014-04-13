@@ -94,7 +94,7 @@ function wpwebapp_form_field_text_area_plus( $id, $label, $value = '' ) {
 	$field =
 		'<div>' .
 			wpwebapp_form_field_label( $id, $label ) .
-			wpwebapp_form_field_text_area( $type, $id, $label, $value ) .
+			wpwebapp_form_field_text_area( $id, $label, $value ) .
 		'</div>';
 	return $field;
 }

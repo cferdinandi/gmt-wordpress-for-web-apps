@@ -47,7 +47,7 @@ function wpwebapp_settings_field_block_wp_backend_access() {
 	?>
 	<div class="layout">
 		<label class="description">
-			<input type="radio" name="wpwebapp_plugin_options_user_access[block_wp_backend_access]" value="<?php echo esc_attr( $button['value'] ); ?>" <?php checked( $options['block_wp_backend_access'], $button['value'] ); ?> />
+			<input type="radio" name="wpwebapp_plugin_options_user_access[block_wp_backend_access]" value="<?php echo esc_attr( $button['value'] ); ?>" <?php checked( $options['block_wp_backend_access'], $button['value'] ); ?>>
 			<?php echo $button['label']; ?>
 		</label>
 	</div>
@@ -58,7 +58,7 @@ function wpwebapp_settings_field_block_wp_backend_access() {
 function wpwebapp_settings_field_redirect_logged_out() {
 	$options = wpwebapp_get_plugin_options_user_access();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_user_access[redirect_logged_out]" id="redirect-logged-out" value="<?php echo esc_url( $options['redirect_logged_out'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_user_access[redirect_logged_out]" id="redirect-logged-out" value="<?php echo esc_url( $options['redirect_logged_out'] ); ?>"><br>
 	<label class="description" for="redirect-logged-out"><?php _e( 'Default: Home Page', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -66,7 +66,7 @@ function wpwebapp_settings_field_redirect_logged_out() {
 function wpwebapp_settings_field_redirect_logged_in() {
 	$options = wpwebapp_get_plugin_options_user_access();
 	?>
-	<input type="text" name="wpwebapp_plugin_options_user_access[redirect_logged_in]" id="redirect-logged-in" value="<?php echo esc_url( $options['redirect_logged_in'] ); ?>" /><br>
+	<input type="text" name="wpwebapp_plugin_options_user_access[redirect_logged_in]" id="redirect-logged-in" value="<?php echo esc_url( $options['redirect_logged_in'] ); ?>"><br>
 	<label class="description" for="redirect-logged-in"><?php _e( 'Default: Home Page', 'wpwebapp' ); ?></label>
 	<?php
 }
@@ -75,7 +75,7 @@ function wpwebapp_settings_field_blog_posts_require_login() {
 	$options = wpwebapp_get_plugin_options_user_access();
 	?>
 	<label for="blog-posts-require-login">
-		<input type="checkbox" name="wpwebapp_plugin_options_user_access[blog_posts_require_login]" id="blog-posts-require-login" <?php checked( 'on', $options['blog_posts_require_login'] ); ?> />
+		<input type="checkbox" name="wpwebapp_plugin_options_user_access[blog_posts_require_login]" id="blog-posts-require-login" <?php checked( 'on', $options['blog_posts_require_login'] ); ?>>
 		<?php _e( 'Require user login to view blog posts', 'wpwebapp' ); ?>
 	</label>
 	<?php
