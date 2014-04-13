@@ -26,8 +26,8 @@ function wpwebapp_form_pw_forgot() {
 			$form =
 				$alert .
 				'<form class="form-wpwebapp" id="wpwebapp-form-pw-forgot" name="wpwebapp-form-pw-forgot" action="" method="post">' .
-					wpwebapp_form_field_text_input_plus( 'text', 'wpwebapp-username-email', __( 'Username or Email', 'wpwebapp' ), '', '1' ) .
-					wpwebapp_form_field_submit_plus( 'wpwebapp-forgot-pw-submit', $submit_class, $submit_text, 'wpwebapp-forgot-pw-process-nonce', 'wpwebapp-forgot-pw-process', '2' ) .
+					wpwebapp_form_field_text_input_plus( 'text', 'wpwebapp-username-email', __( 'Username or Email', 'wpwebapp' ) ) .
+					wpwebapp_form_field_submit_plus( 'wpwebapp-forgot-pw-submit', $submit_class, $submit_text, 'wpwebapp-forgot-pw-process-nonce', 'wpwebapp-forgot-pw-process' ) .
 				'</form>';
 		} else {
 			$add_fields = array(
@@ -69,8 +69,8 @@ function wpwebapp_form_pw_reset() {
 			$form =
 				$alert .
 				'<form class="form-wpwebapp" id="wpwebapp-form-pw-reset" name="wpwebapp-form-pw-reset" action="" method="post">' .
-					wpwebapp_form_field_text_input_plus( 'password', 'wpwebapp-pw-reset-new-1', sprintf( __( 'New Password %s', 'wpwebapp' ), $pw_requirements ), '', '1' ) .
-					wpwebapp_form_field_text_input_plus( 'password', 'wpwebapp-pw-reset-new-2', __( 'Confirm New Password', 'wpwebapp' ), '', '2' ) .
+					wpwebapp_form_field_text_input_plus( 'password', 'wpwebapp-pw-reset-new-1', sprintf( __( 'New Password %s', 'wpwebapp' ), $pw_requirements ) ) .
+					wpwebapp_form_field_text_input_plus( 'password', 'wpwebapp-pw-reset-new-2', __( 'Confirm New Password', 'wpwebapp' ) ) .
 					wpwebapp_form_field_text_input( 'hidden', 'wpwebapp-pw-reset-id', '', $user_id ) .
 					wpwebapp_form_field_submit_plus( 'wpwebapp-reset-pw-submit', $submit_class, $submit_text, 'wpwebapp-reset-pw-process-nonce', 'wpwebapp-reset-pw-process', '3' ) .
 				'</form>';
@@ -103,7 +103,7 @@ function wpwebapp_form_pw_forgot_and_reset() {
 	$status = wpwebapp_get_alert_message( 'wpwebapp_status', 'wpwebapp_status_pw_reset' );
 
 	// If this is password reset URL with a valid key
-	if ( $_GET['action'] === 'reset-pw' && $status == 'reset-key-valid' ) {
+	if ( $_GET['action'] === 'reset-pw' && $status === 'reset-key-valid' ) {
 		$form = wpwebapp_form_pw_reset();
 	} else {
 		$form = wpwebapp_form_pw_forgot();
@@ -127,7 +127,7 @@ function wpwebapp_send_pw_reset_email( $to, $user_login, $reset_url ) {
 
 	if ( $custom_message === '' ) {
 		$message =
-			sprintf( __( 'We received a request to reset the password for your %s account: %s.', 'wpwebapp' ), $site_name, $user_login ) . "\r\n\r\n" .
+			sprintf( __( 'We received a request to reset the password for your %1$s account: %2$s.', 'wpwebapp' ), $site_name, $user_login ) . "\r\n\r\n" .
 			sprintf( __( 'To reset your password, click on the link below (or copy and paste the URL into your browser): %s', 'wpwebapp' ), $reset_url ) . "\r\n\r\n" .
 			__( 'If this was a mistake, just ignore this email.', 'wpwebapp' )  . "\r\n";
 	} else {
@@ -161,7 +161,7 @@ function wpwebapp_process_pw_forgot() {
 			$alert_pw_reset_email_failed = wpwebapp_get_alert_pw_reset_email_failed();
 
 			// Check that form is not empty
-			if ( $_POST['wpwebapp-username-email'] == '' ) {
+			if ( $_POST['wpwebapp-username-email'] === '' ) {
 				wpwebapp_set_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_pw_forgot', $alert_empty_fields );
 				wp_safe_redirect( $referer, 302 );
 				exit;
@@ -288,11 +288,11 @@ function wpwebapp_process_pw_reset() {
 			$alert_pw_requirements = wpwebapp_get_alert_pw_requirements();
 
 			// Validate and authenticate passwords
-			if ( $pw_new_1 == '' || $pw_new_2 == '' ) {
+			if ( $pw_new_1 === '' || $pw_new_2 === '' ) {
 				wpwebapp_set_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_pw_reset', $alert_empty_fields );
 				wp_safe_redirect( $referer, 302 );
 				exit;
-			} else if ( $pw_new_1 != $pw_new_2 ) {
+			} else if ( $pw_new_1 !== $pw_new_2 ) {
 				wpwebapp_set_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_pw_reset', $alert_pw_match );
 				wp_safe_redirect( $referer, 302 );
 				exit;
@@ -324,7 +324,7 @@ add_action('init', 'wpwebapp_process_pw_reset');
 
 
 // Disable Admin notification when user resets password
-if ( !function_exists( 'wp_password_change_notification' ) && wpwebapp_get_email_disable_password_change() == 'on' ) {
+if ( !function_exists( 'wp_password_change_notification' ) && wpwebapp_get_email_disable_password_change() === 'on' ) {
 	function wp_password_change_notification() { }
 }
 

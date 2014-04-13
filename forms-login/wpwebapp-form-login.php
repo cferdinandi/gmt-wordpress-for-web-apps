@@ -23,7 +23,7 @@ function wpwebapp_form_login() {
 		$submit_text = stripslashes( wpwebapp_get_form_login_text() );
 		$submit_class = esc_attr( wpwebapp_get_form_button_class_login() );
 		$custom_layout = wpwebapp_get_form_login_custom_layout();
-		if ( $forgot_pw_url == '' ) {
+		if ( $forgot_pw_url === '' ) {
 			$forgot_pw = '';
 		} else {
 			$forgot_pw = '<a href="' . $forgot_pw_url . '">' . $forgot_pw_text . '</a>';
@@ -33,10 +33,10 @@ function wpwebapp_form_login() {
 			$form =
 				$alert .
 				'<form class="form-wpwebapp" id="wpwebapp-form-login" name="wpwebapp-form-login" action="" method="post">' .
-					wpwebapp_form_field_text_input_plus( 'text', 'wpwebapp-username', __( 'Username or Email', 'wpwebapp' ), $username, '1' ) .
-					wpwebapp_form_field_text_input_plus( 'password', 'wpwebapp-password', __( 'Password ', 'wpwebapp' ) . $forgot_pw, '', '2' ) .
-					wpwebapp_form_field_checkbox_plus( 'wpwebapp-rememberme', __( 'Remember Me', 'wpwebapp' ), 'rememberme', '3', 'checked' ) .
-					wpwebapp_form_field_submit_plus( 'wpwebapp-login-submit', $submit_class, $submit_text, 'wpwebapp-login-process-nonce', 'wpwebapp-login-process', '4' ) .
+					wpwebapp_form_field_text_input_plus( 'text', 'wpwebapp-username', __( 'Username or Email', 'wpwebapp' ), $username ) .
+					wpwebapp_form_field_text_input_plus( 'password', 'wpwebapp-password', __( 'Password ', 'wpwebapp' ) . $forgot_pw ) .
+					wpwebapp_form_field_checkbox_plus( 'wpwebapp-rememberme', __( 'Remember Me', 'wpwebapp' ), 'rememberme', 'checked' ) .
+					wpwebapp_form_field_submit_plus( 'wpwebapp-login-submit', $submit_class, $submit_text, 'wpwebapp-login-process-nonce', 'wpwebapp-login-process' ) .
 				'</form>';
 		} else {
 			$add_fields = array(

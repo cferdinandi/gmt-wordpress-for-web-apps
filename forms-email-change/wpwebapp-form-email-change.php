@@ -28,9 +28,9 @@ function wpwebapp_form_email_change() {
 			$form =
 				$alert .
 				'<form class="form-wpwebapp" id="wpwebapp-form-email-change" name="wpwebapp-form-email-change" action="" method="post">' .
-					wpwebapp_form_field_text_input_plus( 'text', 'wpwebapp-email', __( 'Email', 'wpwebapp' ), $email, '1' ) .
-					wpwebapp_form_field_text_input_plus( 'password', 'wpwebapp-pw', __( 'Password', 'wpwebapp' ), '', '2' ) .
-					wpwebapp_form_field_submit_plus( 'wpwebapp-change-email-submit', $submit_class, $submit_text, 'wpwebapp-change-email-process-nonce', 'wpwebapp-change-email-process', '3' ) .
+					wpwebapp_form_field_text_input_plus( 'text', 'wpwebapp-email', __( 'Email', 'wpwebapp' ), $email ) .
+					wpwebapp_form_field_text_input_plus( 'password', 'wpwebapp-pw', __( 'Password', 'wpwebapp' ) ) .
+					wpwebapp_form_field_submit_plus( 'wpwebapp-change-email-submit', $submit_class, $submit_text, 'wpwebapp-change-email-process-nonce', 'wpwebapp-change-email-process' ) .
 				'</form>';
 		} else {
 			$add_fields = array(

@@ -29,6 +29,16 @@ function wpwebapp_settings_field_button_text_pw_change() {
 	<?php
 }
 
+function wpwebapp_settings_field_disable_pw_confirm_field() {
+	$options = wpwebapp_get_plugin_options_pw_change();
+	?>
+	<label for="disable-pw-confirm-field">
+		<input type="checkbox" name="wpwebapp_plugin_options_pw_change[disable_pw_confirm_field]" id="disable-pw-confirm-field" <?php checked( 'on', $options['disable_pw_confirm_field'] ); ?> />
+		<?php _e( 'Disable the new password confirmation field', 'wpwebapp' ); ?>
+	</label>
+	<?php
+}
+
 function wpwebapp_settings_field_custom_layout_pw_change() {
 	$options = wpwebapp_get_plugin_options_pw_change();
 	?>
@@ -60,6 +70,7 @@ function wpwebapp_get_plugin_options_pw_change() {
 	$defaults = array(
 		'button_class' => '',
 		'button_text_pw_change' => '',
+		'disable_pw_confirm_field' => 'off',
 		'custom_layout' => '',
 	);
 
@@ -90,6 +101,9 @@ function wpwebapp_plugin_options_validate_pw_change( $input ) {
 
 	if ( isset( $input['button_text_pw_change'] ) && ! empty( $input['button_text_pw_change'] ) )
 		$output['button_text_pw_change'] = wp_filter_nohtml_kses( $input['button_text_pw_change'] );
+
+	if ( isset( $input['disable_pw_confirm_field'] ) )
+		$output['disable_pw_confirm_field'] = 'on';
 
 	if ( isset( $input['custom_layout'] ) && ! empty( $input['custom_layout'] ) )
 		$output['custom_layout'] = wp_filter_post_kses( $input['custom_layout'] );
@@ -137,6 +151,7 @@ function wpwebapp_plugin_options_init_pw_change() {
 	add_settings_section( 'forms', '',  '__return_false', 'wpwebapp_plugin_options_pw_change' );
 	add_settings_field( 'button_class', __( 'Button Class', 'wpwebapp' ) . '<div class="description">' . __( 'Class to apply to form submit buttons.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_class_pw_change', 'wpwebapp_plugin_options_pw_change', 'forms' );
 	add_settings_field( 'button_text_pw_change', __( 'Change Password Text', 'wpwebapp' ) . '<div class="description">' . __( 'Text for the change password button.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_button_text_pw_change', 'wpwebapp_plugin_options_pw_change', 'forms' );
+	add_settings_field( 'disable_pw_confirm_field', __( 'Disable Password Confirmation', 'wpwebapp' ), 'wpwebapp_settings_field_disable_pw_confirm_field', 'wpwebapp_plugin_options_pw_change', 'forms' );
 	add_settings_field( 'custom_layout', __( 'Custom Layout', 'wpwebapp' ) . '<div class="description">' . __( 'Customize the layout of the form with your own markup.', 'wpwebapp' ) . '</div>', 'wpwebapp_settings_field_custom_layout_pw_change', 'wpwebapp_plugin_options_pw_change', 'forms' );
 
 }
@@ -180,6 +195,12 @@ function wpwebapp_get_pw_change_text() {
 	} else {
 		return $options['button_text_pw_change'];
 	}
+}
+
+// Get disable password confirm field
+function wpwebapp_get_disable_pw_confirm_field() {
+	$options = wpwebapp_get_plugin_options_pw_change();
+	return $options['disable_pw_confirm_field'];
 }
 
 // Get custom layout

@@ -189,8 +189,8 @@ function wpwebapp_plugin_options_validate_pw_reset( $input ) {
 	if ( isset( $input['custom_layout_pw_reset'] ) && ! empty( $input['custom_layout_pw_reset'] ) )
 		$output['custom_layout_pw_reset'] = wp_filter_post_kses( $input['custom_layout_pw_reset'] );
 
-	if ( !isset( $input['email_disable_pw_reset'] ) )
-		$output['email_disable_pw_reset'] = 'off';
+	if ( isset( $input['email_disable_pw_reset'] ) )
+		$output['email_disable_pw_reset'] = 'on';
 
 	if ( isset( $input['pw_reset_email_from'] ) && ! empty( $input['pw_reset_email_from'] ) )
 		$output['pw_reset_email_from'] = wp_filter_nohtml_kses( $input['pw_reset_email_from'] );

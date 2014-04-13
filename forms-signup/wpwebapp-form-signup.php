@@ -28,10 +28,10 @@ function wpwebapp_form_signup() {
 			$form =
 				$alert .
 				'<form class="form-wpwebapp" id="wpwebapp-form-signup" name="wpwebapp-form-signup" action="" method="post">' .
-					wpwebapp_form_field_text_input_plus( 'text', 'wpwebapp-signup-username', __( 'Username', 'wpwebapp' ), $username, '1' ) .
-					wpwebapp_form_field_text_input_plus( 'email', 'wpwebapp-signup-email', __( 'Email', 'wpwebapp' ), $email, '2' ) .
-					wpwebapp_form_field_text_input_plus( 'password', 'wpwebapp-signup-password', sprintf( __( 'Password %s', 'wpwebapp' ), $pw_requirements ), '', '3' ) .
-					wpwebapp_form_field_submit_plus( 'wpwebapp-signup-submit', $submit_class, $submit_text, 'wpwebapp-signup-process-nonce', 'wpwebapp-signup-process', '4' ) .
+					wpwebapp_form_field_text_input_plus( 'text', 'wpwebapp-signup-username', __( 'Username', 'wpwebapp' ), $username ) .
+					wpwebapp_form_field_text_input_plus( 'email', 'wpwebapp-signup-email', __( 'Email', 'wpwebapp' ), $email ) .
+					wpwebapp_form_field_text_input_plus( 'password', 'wpwebapp-signup-password', sprintf( __( 'Password %s', 'wpwebapp' ), $pw_requirements ) ) .
+					wpwebapp_form_field_submit_plus( 'wpwebapp-signup-submit', $submit_class, $submit_text, 'wpwebapp-signup-process-nonce', 'wpwebapp-signup-process' ) .
 				'</form>';
 		} else {
 			$add_fields = array(
@@ -79,7 +79,7 @@ function wpwebapp_process_signup() {
 			$alert_pw_requirements = wpwebapp_get_alert_pw_requirements();
 
 			// Validate username, email, and password
-			if ( $username == '' || $email == '' || $password == '' ) {
+			if ( $username === '' || $email === '' || $password === '' ) {
 				wpwebapp_set_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_signup', $alert_empty_fields );
 				wpwebapp_set_alert_message( 'wpwebapp_credentials_username', 'wpwebapp_username', $username );
 				wpwebapp_set_alert_message( 'wpwebapp_credentials_email', 'wpwebapp_email', $email );
@@ -138,10 +138,6 @@ add_action('init', 'wpwebapp_process_signup');
 
 
 // Modify new user notification emails
-// if ( !function_exists( 'wp_new_user_notification' ) && wpwebapp_get_email_disable_new_user() == 'on' ) {
-// 	function wp_new_user_notification( $user_id, $plaintext_pass = '' ) { }
-// }
-
 if ( !function_exists( 'wp_new_user_notification' ) ) {
 
 	function wp_new_user_notification( $user_id ) {

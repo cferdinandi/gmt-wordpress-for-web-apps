@@ -14,7 +14,7 @@ function wpwebapp_get_user_profile_info() {
 	$user_id = $current_user->ID;
 	$gravatar_size = wpwebapp_get_gravatar_size();
 	return array(
-		'gravatar' => get_avatar($user_id, $size),
+		'gravatar' => get_avatar($user_id, $gravatar_size),
 		'name' => get_user_meta($user_id, 'wpwa_user_name', true),
 		'about' => get_user_meta($user_id, 'wpwa_user_about', true),
 		'location' => get_user_meta($user_id, 'wpwa_user_location', true),

@@ -23,14 +23,13 @@ function wpwebapp_form_field_label( $id = '', $label = '' ) {
 }
 
 // Checkbox
-function wpwebapp_form_field_checkbox( $id = '', $label = '', $value = '', $tabindex = '', $checked = '' ) {
+function wpwebapp_form_field_checkbox( $id = '', $label = '', $value = '', $checked = '' ) {
 	$field =
 		'<label for="' . $id . '">' .
 			'<input type="checkbox"
 				id="' . $id . '"
 				name="' . $id . '"
-				value="' . $value . '"
-				tabindex="' . $tabindex . '" ' .
+				value="' . $value . '" ' .
 				$checked .
 			'>' .
 			$label .
@@ -39,25 +38,23 @@ function wpwebapp_form_field_checkbox( $id = '', $label = '', $value = '', $tabi
 }
 
 // Text Input
-function wpwebapp_form_field_text_input( $type = 'text', $id = '', $label = '', $value = '', $tabindex = '' ) {
+function wpwebapp_form_field_text_input( $type = 'text', $id = '', $label = '', $value = '' ) {
 	$field =
 		'<input
 			type="' . $type . '"
 			id="' . $id . '"
 			name="' . $id . '"
-			value="' . $value . '"
-			tabindex="' . $tabindex . '" ' .
+			value="' . $value . '" ' .
 		'>';
 	return $field;
 }
 
 // Text Area
-function wpwebapp_form_field_text_area( $id = '', $label = '', $value = '', $tabindex = '' ) {
+function wpwebapp_form_field_text_area( $id = '', $label = '', $value = '' ) {
 	$field =
 		'<textarea
 			id="' . $id . '"
-			name="' . $id . '"
-			tabindex="' . $tabindex . '" ' .
+			name="' . $id . '" ' .
 		'>' .
 			$value .
 		'</textarea>';
@@ -66,49 +63,49 @@ function wpwebapp_form_field_text_area( $id = '', $label = '', $value = '', $tab
 
 
 // Submit
-function wpwebapp_form_field_submit( $id = '', $class = '', $label = '', $action = '', $nonce_field = '', $tabindex = '' ) {
+function wpwebapp_form_field_submit( $id = '', $class = '', $label = '', $action = '', $nonce_field = '' ) {
 	$field =
 		wp_nonce_field( $action, $nonce_field) .
-		'<button type="submit" class="' . $class . '" id="' . $id . '" name="' . $id . '" tabindex="' . $tabindex . '">' . $label . '</button>';
+		'<button type="submit" class="' . $class . '" id="' . $id . '" name="' . $id . '">' . $label . '</button>';
 	return $field;
 }
 
 // Checkbox + Wrapper
-function wpwebapp_form_field_checkbox_plus( $id, $label, $value = '', $tabindex = '', $checked = '' ) {
+function wpwebapp_form_field_checkbox_plus( $id, $label, $value = '', $checked = '' ) {
 	$field =
 		'<div>' .
-				wpwebapp_form_field_checkbox( $id, $label, $value, $tabindex, $checked ) .
+				wpwebapp_form_field_checkbox( $id, $label, $value, $checked ) .
 		'</div>';
 	return $field;
 }
 
 // Text Input + Label and Wrapper
-function wpwebapp_form_field_text_input_plus( $type, $id, $label, $value = '', $tabindex = '' ) {
+function wpwebapp_form_field_text_input_plus( $type, $id, $label, $value = '' ) {
 	$field =
 		'<div>' .
 			wpwebapp_form_field_label( $id, $label ) .
-			wpwebapp_form_field_text_input( $type, $id, $label, $value, $tabindex ) .
+			wpwebapp_form_field_text_input( $type, $id, $label, $value ) .
 		'</div>';
 	return $field;
 }
 
 // Text Area + Label and Wrapper
-function wpwebapp_form_field_text_area_plus( $type, $id, $label, $value = '', $tabindex = '' ) {
+function wpwebapp_form_field_text_area_plus( $type, $id, $label, $value = '' ) {
 	$field =
 		'<div>' .
 			wpwebapp_form_field_label( $id, $label ) .
-			wpwebapp_form_field_text_area( $type, $id, $label, $value, $tabindex ) .
+			wpwebapp_form_field_text_area( $type, $id, $label, $value ) .
 		'</div>';
 	return $field;
 }
 
 
 // Submit + Wrapper
-function wpwebapp_form_field_submit_plus( $id, $class, $label, $action, $nonce_field, $tabindex ) {
+function wpwebapp_form_field_submit_plus( $id, $class, $label, $action, $nonce_field ) {
 	$field =
 		'<div>' .
 			wp_nonce_field( $action, $nonce_field) .
-			wpwebapp_form_field_submit( $id, $class, $label, $action, $nonce_field, $tabindex ) .
+			wpwebapp_form_field_submit( $id, $class, $label, $action, $nonce_field ) .
 		'</div>';
 	return $field;
 }
