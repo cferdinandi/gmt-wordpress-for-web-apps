@@ -45,13 +45,17 @@ function wpwebapp_form_user_profile() {
 			$contact_label_text = esc_attr( wpwebapp_get_contact_info_label() );
 			$field_gravatar = $field_name = $field_about = $field_location = $field_email = $field_website = $field_twitter = $field_facebook = $field_linkedin = '';
 			if ( wpwebapp_get_gravatar_text() === '' ) {
-				$field_gravatar_text = '<p>' . __( 'Update your profile photo at <a href="https://en.gravatar.com/">Gravatar.com</a>.' ) . '</p>';
+				$field_gravatar_text = '<p>' . __( 'Update your profile photo at <a target="_blank" href="https://gravatar.com/">Gravatar.com</a>.' ) . '</p>';
 			} else {
 				$field_gravatar_text = stripslashes( wpwebapp_get_gravatar_text() );
 			}
 
 			if ( $profile_fields['gravatar'] === 'on' ) {
-				$field_gravatar = $value['gravatar'] . $field_gravatar_text;
+				if ( wpwebapp_get_gravatar_image_link() === 'on' ) {
+					$field_gravatar = '<a target="_blank" href="https://gravatar.com/">' . $value['gravatar'] . '</a><br>' . $field_gravatar_text;
+				} else {
+					$field_gravatar = $value['gravatar'] . '<br>' . $field_gravatar_text;
+				}
 			}
 
 			if ( $profile_fields['name'] === 'on' ) {

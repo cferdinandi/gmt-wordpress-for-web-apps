@@ -26,7 +26,7 @@ function wpwebapp_form_login() {
 		if ( $forgot_pw_url === '' ) {
 			$forgot_pw = '';
 		} else {
-			$forgot_pw = '<a href="' . $forgot_pw_url . '">' . $forgot_pw_text . '</a>';
+			$forgot_pw = '<a href="' . $forgot_pw_url . '" tabindex="999">' . $forgot_pw_text . '</a>';
 		}
 
 		if ( $custom_layout === '' ) {

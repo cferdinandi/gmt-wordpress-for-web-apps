@@ -90,7 +90,7 @@ function wpwebapp_form_field_text_input_plus( $type, $id, $label, $value = '' ) 
 }
 
 // Text Area + Label and Wrapper
-function wpwebapp_form_field_text_area_plus( $type, $id, $label, $value = '' ) {
+function wpwebapp_form_field_text_area_plus( $id, $label, $value = '' ) {
 	$field =
 		'<div>' .
 			wpwebapp_form_field_label( $id, $label ) .
