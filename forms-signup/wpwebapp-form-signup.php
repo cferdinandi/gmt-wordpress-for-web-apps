@@ -85,8 +85,8 @@ function wpwebapp_send_new_user_welcome_email( $user_login, $user_email ) {
 
 		if ( $custom_message === '' ) {
 			$message  =
-				sprintf( __( 'Welcome to %s.', 'wpwebapp' ), get_option('blogname') ) .
-				sprintf( __( 'Your username is %s.', 'wpwebapp' ), $user_login ) .
+				sprintf( __( 'Welcome to %s. ', 'wpwebapp' ), get_option('blogname') ) .
+				sprintf( __( 'Your username is %s. ', 'wpwebapp' ), $user_login ) .
 				sprintf( __( 'Login at %s.', 'wpwebapp' ), site_url() );
 		} else {
 			$add_content = array(
@@ -97,7 +97,7 @@ function wpwebapp_send_new_user_welcome_email( $user_login, $user_email ) {
 			$message = $custom_message;
 		}
 
-		wp_mail( $to, $subject, $message, $headers );
+		wp_mail( $user_email, $subject, $message, $headers );
 
 	}
 
