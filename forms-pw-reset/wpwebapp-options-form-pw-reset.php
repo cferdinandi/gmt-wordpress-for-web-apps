@@ -49,7 +49,7 @@ function wpwebapp_settings_field_forgot_pw_url_text() {
 	$options = wpwebapp_get_plugin_options_pw_reset();
 	?>
 	<input type="text" name="wpwebapp_plugin_options_pw_reset[forgot_pw_url_text]" id="forgot-pw-url-text" value="<?php echo esc_attr( $options['forgot_pw_url_text'] ); ?>"><br>
-	<label class="description" for="forgot-pw-url-text"><?php _e( 'Default: <code>forgot password</code>', 'wpwebapp' ); ?></label>
+	<label class="description" for="forgot-pw-url-text"><?php _e( 'Default: <code>(forgot password)</code>', 'wpwebapp' ); ?></label>
 	<?php
 }
 
@@ -102,7 +102,7 @@ function wpwebapp_settings_field_pw_reset_email_subject() {
 	$options = wpwebapp_get_plugin_options_pw_reset();
 	?>
 	<input type="text" name="wpwebapp_plugin_options_pw_reset[pw_reset_email_subject]" id="pw-reset-email-subject" value="<?php echo esc_attr( $options['pw_reset_email_subject'] ); ?>"><br>
-	<label class="description" for="pw-reset-email-subject"><?php _e( 'Password reset for [App Name]', 'wpwebapp' ); ?></label>
+	<label class="description" for="pw-reset-email-subject"><?php _e( 'Default', 'wpwebapp' ); ?>: <code><?php _e( 'Default', 'Password reset for [App Name]', 'wpwebapp' ); ?></code></label>
 	<?php
 }
 
@@ -317,7 +317,7 @@ function wpwebapp_get_pw_forgot_url() {
 function wpwebapp_get_pw_forgot_url_text() {
 	$options = wpwebapp_get_plugin_options_pw_reset();
 	if ( $options['forgot_pw_url_text'] === '' ) {
-		return __( 'forgot password', 'wpwebapp' );
+		return '(' . __( 'forgot password', 'wpwebapp' ) . ')';
 	} else {
 		return $options['forgot_pw_url_text'];
 	}

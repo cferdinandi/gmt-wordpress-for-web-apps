@@ -61,7 +61,7 @@ function wpwebapp_form_pw_reset() {
 		$alert = stripslashes( wpwebapp_get_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_pw_forgot' ) );
 		$user_id = esc_attr( $_GET['id'] );
 		$submit_text = stripslashes( wpwebapp_get_pw_reset_text() );
-		$submit_class = esc_attr( wpwebapp_get_form_button_class() );
+		$submit_class = esc_attr( wpwebapp_get_form_button_class_pw_reset() );
 		$pw_requirements = stripslashes( wpwebapp_get_pw_requirements_text() );
 		$custom_layout = wpwebapp_get_form_signup_custom_layout_pw_reset();
 
