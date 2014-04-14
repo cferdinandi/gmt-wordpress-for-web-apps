@@ -38,7 +38,7 @@ function wpwebapp_form_user_profile() {
 		$submit_class = esc_attr( wpwebapp_get_form_button_class_user_profile() );
 		$profile_fields = wpwebapp_get_user_profile_field_types();
 		$value = wpwebapp_get_user_profile_info();
-		$custom_layout = wpwebapp_get_user_profile_custom_layout();
+		$custom_layout = stripslashes( wpwebapp_get_user_profile_custom_layout() );
 
 		if ( $custom_layout === '' ) {
 

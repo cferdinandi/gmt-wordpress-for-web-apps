@@ -18,7 +18,7 @@ function wpwebapp_form_pw_change() {
 		$submit_text = stripslashes( wpwebapp_get_pw_change_text() );
 		$submit_class = esc_attr( wpwebapp_get_form_button_class_pw_change() );
 		$pw_requirements = stripslashes( wpwebapp_get_pw_requirements_text() );
-		$custom_layout = wpwebapp_get_pw_change_custom_layout();
+		$custom_layout = stripslashes( wpwebapp_get_pw_change_custom_layout() );
 
 		if ( wpwebapp_get_disable_pw_confirm_field() === 'off' ) {
 			$field_pw_confirm = wpwebapp_form_field_text_input_plus( 'password', 'wpwebapp-pw-new-2', __( 'Confirm New Password', 'wpwebapp' ) );

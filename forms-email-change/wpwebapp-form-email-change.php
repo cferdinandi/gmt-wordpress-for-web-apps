@@ -22,7 +22,7 @@ function wpwebapp_form_email_change() {
 		$submit_text = stripslashes( wpwebapp_get_email_change_text() );
 		$submit_class = esc_attr( wpwebapp_get_form_button_class_email_change() );
 		$email =  $user_data->user_email;
-		$custom_layout = wpwebapp_get_email_change_custom_layout();
+		$custom_layout = stripslashes( wpwebapp_get_email_change_custom_layout() );
 
 		if ( $custom_layout === '' ) {
 			$form =

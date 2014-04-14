@@ -22,7 +22,7 @@ function wpwebapp_form_login() {
 		$forgot_pw_text = stripslashes( wpwebapp_get_pw_forgot_url_text() );
 		$submit_text = stripslashes( wpwebapp_get_form_login_text() );
 		$submit_class = esc_attr( wpwebapp_get_form_button_class_login() );
-		$custom_layout = wpwebapp_get_form_login_custom_layout();
+		$custom_layout = stripslashes( wpwebapp_get_form_login_custom_layout() );
 		if ( $forgot_pw_url === '' ) {
 			$forgot_pw = '';
 		} else {

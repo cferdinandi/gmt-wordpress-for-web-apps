@@ -20,7 +20,7 @@ function wpwebapp_form_pw_forgot() {
 		$alert = stripslashes( wpwebapp_get_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_pw_forgot' ) );
 		$submit_text = stripslashes( wpwebapp_get_pw_forgot_text() );
 		$submit_class = esc_attr( wpwebapp_get_form_button_class_pw_reset() );
-		$custom_layout = wpwebapp_get_form_signup_custom_layout_pw_forgot();
+		$custom_layout = stripslashes( wpwebapp_get_form_signup_custom_layout_pw_forgot() );
 
 		if ( $custom_layout === '' ) {
 			$form =
@@ -63,7 +63,7 @@ function wpwebapp_form_pw_reset() {
 		$submit_text = stripslashes( wpwebapp_get_pw_reset_text() );
 		$submit_class = esc_attr( wpwebapp_get_form_button_class_pw_reset() );
 		$pw_requirements = stripslashes( wpwebapp_get_pw_requirements_text() );
-		$custom_layout = wpwebapp_get_form_signup_custom_layout_pw_reset();
+		$custom_layout = stripslashes( wpwebapp_get_form_signup_custom_layout_pw_reset() );
 
 		if ( $custom_layout === '' ) {
 			$form =

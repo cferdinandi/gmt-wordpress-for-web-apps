@@ -22,7 +22,7 @@ function wpwebapp_form_signup() {
 		$submit_text = stripslashes( wpwebapp_get_form_signup_text() );
 		$submit_class = esc_attr( wpwebapp_get_form_button_class_signup() );
 		$pw_requirements = stripslashes( wpwebapp_get_pw_requirements_text() );
-		$custom_layout = wpwebapp_get_form_signup_custom_layout();
+		$custom_layout = stripslashes( wpwebapp_get_form_signup_custom_layout() );
 
 		if ( $custom_layout === '' ) {
 			$form =
