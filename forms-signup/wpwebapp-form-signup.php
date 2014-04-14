@@ -17,8 +17,8 @@ function wpwebapp_form_signup() {
 
 		// Variables
 		$alert = stripslashes( wpwebapp_get_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_signup' ) );
-		$username = esc_attr( wpwebapp_get_alert_message( 'wpwebapp_credentials_username', 'wpwebapp_username' ) );
-		$email = esc_attr( wpwebapp_get_alert_message( 'wpwebapp_credentials_email', 'wpwebapp_email' ) );
+		$username = esc_attr( wpwebapp_get_alert_message( 'wpwebapp_credentials_signup_username', 'wpwebapp_username' ) );
+		$email = esc_attr( wpwebapp_get_alert_message( 'wpwebapp_credentials_signup_email', 'wpwebapp_email' ) );
 		$submit_text = stripslashes( wpwebapp_get_form_signup_text() );
 		$submit_class = esc_attr( wpwebapp_get_form_button_class_signup() );
 		$pw_requirements = stripslashes( wpwebapp_get_pw_requirements_text() );
@@ -129,38 +129,38 @@ function wpwebapp_process_signup() {
 			// Validate username, email, and password
 			if ( $username === '' || $email === '' || $password === '' ) {
 				wpwebapp_set_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_signup', $alert_empty_fields );
-				wpwebapp_set_alert_message( 'wpwebapp_credentials_username', 'wpwebapp_username', $username );
-				wpwebapp_set_alert_message( 'wpwebapp_credentials_email', 'wpwebapp_email', $email );
+				wpwebapp_set_alert_message( 'wpwebapp_credentials_signup_username', 'wpwebapp_username', $username );
+				wpwebapp_set_alert_message( 'wpwebapp_credentials_signup_email', 'wpwebapp_email', $email );
 				wp_safe_redirect( $referer, 302 );
 				exit;
 			} else if ( !validate_username( $username ) ) {
-				wpwebapp_set_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_signup', $alert_username_invalid ); // TODO: get from options
-				wpwebapp_set_alert_message( 'wpwebapp_credentials_username', 'wpwebapp_username', $username );
-				wpwebapp_set_alert_message( 'wpwebapp_credentials_email', 'wpwebapp_email', $email );
+				wpwebapp_set_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_signup', $alert_username_invalid );
+				wpwebapp_set_alert_message( 'wpwebapp_credentials_signup_username', 'wpwebapp_username', $username );
+				wpwebapp_set_alert_message( 'wpwebapp_credentials_signup_email', 'wpwebapp_email', $email );
 				wp_safe_redirect( $referer, 302 );
 				exit;
 			} else if ( username_exists( $username ) ) {
 				wpwebapp_set_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_signup', $alert_username_taken );
-				wpwebapp_set_alert_message( 'wpwebapp_credentials_username', 'wpwebapp_username', $username );
-				wpwebapp_set_alert_message( 'wpwebapp_credentials_email', 'wpwebapp_email', $email );
+				wpwebapp_set_alert_message( 'wpwebapp_credentials_signup_username', 'wpwebapp_username', $username );
+				wpwebapp_set_alert_message( 'wpwebapp_credentials_signup_email', 'wpwebapp_email', $email );
 				wp_safe_redirect( $referer, 302 );
 				exit;
 			} else if ( !is_email( $email ) ) {
 				wpwebapp_set_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_signup', $alert_invalid_email );
-				wpwebapp_set_alert_message( 'wpwebapp_credentials_username', 'wpwebapp_username', $username );
-				wpwebapp_set_alert_message( 'wpwebapp_credentials_email', 'wpwebapp_email', $email );
+				wpwebapp_set_alert_message( 'wpwebapp_credentials_signup_username', 'wpwebapp_username', $username );
+				wpwebapp_set_alert_message( 'wpwebapp_credentials_signup_email', 'wpwebapp_email', $email );
 				wp_safe_redirect( $referer, 302 );
 				exit;
 			} else if ( email_exists( $email ) ) {
 				wpwebapp_set_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_signup', $alert_email_taken );
-				wpwebapp_set_alert_message( 'wpwebapp_credentials_username', 'wpwebapp_username', $username );
-				wpwebapp_set_alert_message( 'wpwebapp_credentials_email', 'wpwebapp_email', $email );
+				wpwebapp_set_alert_message( 'wpwebapp_credentials_signup_username', 'wpwebapp_username', $username );
+				wpwebapp_set_alert_message( 'wpwebapp_credentials_signup_email', 'wpwebapp_email', $email );
 				wp_safe_redirect( $referer, 302 );
 				exit;
 			} else if ( !$pw_test ) {
 				wpwebapp_set_alert_message( 'wpwebapp_alert', 'wpwebapp_alert_signup', $alert_pw_requirements );
-				wpwebapp_set_alert_message( 'wpwebapp_credentials_username', 'wpwebapp_username', $username );
-				wpwebapp_set_alert_message( 'wpwebapp_credentials_email', 'wpwebapp_email', $email );
+				wpwebapp_set_alert_message( 'wpwebapp_credentials_signup_username', 'wpwebapp_username', $username );
+				wpwebapp_set_alert_message( 'wpwebapp_credentials_signup_email', 'wpwebapp_email', $email );
 				wp_safe_redirect( $referer, 302 );
 				exit;
 			}
