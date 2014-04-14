@@ -137,7 +137,7 @@ function wpwebapp_set_alert_message( $category, $code, $message ) {
 // Get alert message from browser session
 function wpwebapp_get_alert_message( $category, $code ) {
 	$message = '';
-	if ( isset($_SESSION[$category][$code]) && $_SESSION[$category][$code] != '' ) {
+	if ( isset($_SESSION[$category][$code]) && $_SESSION[$category][$code] !== '' ) {
 		$message = $_SESSION[$category][$code];
 		unset($_SESSION[$category]);
 	}
