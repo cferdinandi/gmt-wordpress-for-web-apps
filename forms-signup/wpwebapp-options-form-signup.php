@@ -276,7 +276,7 @@ function wpwebapp_get_send_new_user_email_user() {
 
 // Get welcome email from address
 function wpwebapp_get_new_user_email_from() {
-	$options = wpwebapp_get_plugin_options_pw_reset();
+	$options = wpwebapp_get_plugin_options_forms_signup();
 	if ( $options['new_user_email_from'] === '' ) {
 		return 'welcome';
 	} else {
@@ -286,7 +286,7 @@ function wpwebapp_get_new_user_email_from() {
 
 // Get welcome email subject
 function wpwebapp_get_new_user_email_subject( $site_name ) {
-	$options = wpwebapp_get_plugin_options_pw_reset();
+	$options = wpwebapp_get_plugin_options_forms_signup();
 	if ( $options['new_user_email_subject'] === '' ) {
 		return 'Welcome to ' . $site_name;
 	} else {
