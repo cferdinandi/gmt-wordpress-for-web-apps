@@ -13,53 +13,101 @@
 	Structure for the form fields.
  * ====================================================================== */
 
-// Text Input
-function wpwebapp_form_field_text_input( $type, $id, $label, $value, $tabindex = '', $autofocus = '' ) {
-	$form_field =
-		'<div>
-			<label for="' . $id . '">' .
-				$label .
-			'</label>
-			<input
-				type="' . $type . '"
-				id="' . $id . '"
-				name="' . $id . '"
-				value="' . $value . '"
-				tabindex="' . $tabindex . '" ' .
-				$autofocus .
-			'>
-		</div>';
-	return $form_field;
+// Label
+function wpwebapp_form_field_label( $id = '', $label = '' ) {
+	$field =
+		'<label for="' . $id . '">' .
+			$label .
+		'</label>';
+	return $field;
 }
 
-
 // Checkbox
-function wpwebapp_form_field_checkbox( $id, $label, $value, $tabindex, $checked = '' ) {
-	$form_field =
-		'<div>
-			<label for="' . $id . '">' .
-				'<input type="checkbox"
-					id="' . $id . '"
-					name="' . $id . '"
-					value="' . $value . '"
-					tabindex="' . $tabindex . '" ' .
-					$checked .
-				'>' .
-				$label .
-			'</label>
-		</div>';
-	return $form_field;
+function wpwebapp_form_field_checkbox( $id = '', $label = '', $value = '', $checked = '' ) {
+	$field =
+		'<label for="' . $id . '">' .
+			'<input type="checkbox"
+				id="' . $id . '"
+				name="' . $id . '"
+				value="' . $value . '" ' .
+				$checked .
+			'>' .
+			$label .
+		'</label>';
+	return $field;
+}
+
+// Text Input
+function wpwebapp_form_field_text_input( $type = 'text', $id = '', $label = '', $value = '' ) {
+	$field =
+		'<input
+			type="' . $type . '"
+			id="' . $id . '"
+			name="' . $id . '"
+			value="' . $value . '" ' .
+		'>';
+	return $field;
+}
+
+// Text Area
+function wpwebapp_form_field_text_area( $id = '', $label = '', $value = '' ) {
+	$field =
+		'<textarea
+			id="' . $id . '"
+			name="' . $id . '" ' .
+		'>' .
+			$value .
+		'</textarea>';
+	return $field;
 }
 
 
 // Submit
-function wpwebapp_form_field_submit( $id, $class, $label, $action, $nonce_field, $tabindex ) {
-	$form_field =
+function wpwebapp_form_field_submit( $id = '', $class = '', $label = '', $action = '', $nonce_field = '' ) {
+	$field =
+		wp_nonce_field( $action, $nonce_field) .
+		'<button type="submit" class="' . $class . '" id="' . $id . '" name="' . $id . '">' . $label . '</button>';
+	return $field;
+}
+
+// Checkbox + Wrapper
+function wpwebapp_form_field_checkbox_plus( $id, $label, $value = '', $checked = '' ) {
+	$field =
+		'<div>' .
+				wpwebapp_form_field_checkbox( $id, $label, $value, $checked ) .
+		'</div>';
+	return $field;
+}
+
+// Text Input + Label and Wrapper
+function wpwebapp_form_field_text_input_plus( $type, $id, $label, $value = '' ) {
+	$field =
+		'<div>' .
+			wpwebapp_form_field_label( $id, $label ) .
+			wpwebapp_form_field_text_input( $type, $id, $label, $value ) .
+		'</div>';
+	return $field;
+}
+
+// Text Area + Label and Wrapper
+function wpwebapp_form_field_text_area_plus( $id, $label, $value = '' ) {
+	$field =
+		'<div>' .
+			wpwebapp_form_field_label( $id, $label ) .
+			wpwebapp_form_field_text_area( $id, $label, $value ) .
+		'</div>';
+	return $field;
+}
+
+
+// Submit + Wrapper
+function wpwebapp_form_field_submit_plus( $id, $class, $label, $action, $nonce_field ) {
+	$field =
 		'<div>' .
 			wp_nonce_field( $action, $nonce_field) .
-			'<button type="submit" class="' . $class . '" id="' . $id . '" name="' . $id . '" tabindex="' . $tabindex . '">' . $label . '</button>
-		</div>';
-	return $form_field;
+			wpwebapp_form_field_submit( $id, $class, $label, $action, $nonce_field ) .
+		'</div>';
+	return $field;
 }
 
 
@@ -89,7 +137,7 @@ function wpwebapp_set_alert_message( $category, $code, $message ) {
 // Get alert message from browser session
 function wpwebapp_get_alert_message( $category, $code ) {
 	$message = '';
-	if ( isset($_SESSION[$category][$code]) && $_SESSION[$category][$code] != '' ) {
+	if ( isset($_SESSION[$category][$code]) && $_SESSION[$category][$code] !== '' ) {
 		$message = $_SESSION[$category][$code];
 		unset($_SESSION[$category]);
 	}

@@ -11,15 +11,20 @@
 // Create & Display Delete Account Form
 function wpwebapp_form_delete_account() {
 
-	// Variables
-	$submit_text = stripslashes( wpwebapp_get_delete_account_text() );
-	$submit_class = esc_attr( wpwebapp_get_delete_account_button_class() );
+	if ( is_user_logged_in() ) {
 
-	$form =
-		$alert .
-		'<form class="form-wpwebapp" id="wpwebapp-form-delete-account" name="wpwebapp-form-delete-account" action="" method="post">' .
-			wpwebapp_form_field_submit( 'wpwebapp-delete-account-submit', $submit_class, $submit_text, 'wpwebapp-delete-account-process-nonce', 'wpwebapp-delete-account-process' ) .
-		'</form>';
+		// Variables
+		$submit_text = stripslashes( wpwebapp_get_delete_account_text() );
+		$submit_class = esc_attr( wpwebapp_get_delete_account_button_class() );
+
+		$form =
+			'<form class="form-wpwebapp" id="wpwebapp-form-delete-account" name="wpwebapp-form-delete-account" action="" method="post">' .
+				wpwebapp_form_field_submit( 'wpwebapp-delete-account-submit', $submit_class, $submit_text, 'wpwebapp-delete-account-process-nonce', 'wpwebapp-delete-account-process' ) .
+			'</form>';
+
+	} else {
+		$form = '<p>' . __( 'You have to be logged in to delete your account.', 'wpwebapp' ) . '</p>';
+	}
 
 	return $form;
 
@@ -48,6 +53,6 @@ function wpwebapp_process_delete_account() {
 		}
 	}
 }
-add_action('init', 'wpwebapp_process_delete_account');
+add_action( 'init', 'wpwebapp_process_delete_account' );
 
 ?>

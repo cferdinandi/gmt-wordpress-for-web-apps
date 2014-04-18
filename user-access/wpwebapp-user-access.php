@@ -27,7 +27,7 @@ add_action('add_meta_boxes', 'wpwebapp_user_access_settings');
 function wpwebapp_user_access_fields() {
 	global $post;
 	$user_access_setting = get_post_meta( $post->ID, 'wpwebapp_user_access_setting', true );
-	if ( !$user_access_setting || $user_access_setting == '' ) {
+	if ( !$user_access_setting || $user_access_setting === '' ) {
 		$user_access_setting = 'all';
 	}
 	?>
@@ -87,10 +87,10 @@ function wpwebapp_process_user_access_page_settings() {
 	$redirect_logged_out = esc_url_raw( wpwebapp_get_redirect_url_logged_out() );
 
 	// If user doesn't meet required criteria, redirect them
-	if ( $user_access_setting == 'loggedin' && !is_user_logged_in() ) {
+	if ( $user_access_setting === 'loggedin' && !is_user_logged_in() ) {
 		wp_safe_redirect( $redirect_logged_out, 302 );
 		exit;
-	} else if ( $user_access_setting == 'loggedout' && is_user_logged_in() && !is_admin() ) {
+	} else if ( $user_access_setting === 'loggedout' && is_user_logged_in() && !is_admin() ) {
 		wp_safe_redirect( $redirect_logged_in, 302 );
 		exit;
 	}
@@ -108,7 +108,7 @@ function wpwebapp_process_user_access_post_settings() {
 	$redirect_logged_out = esc_url_raw( wpwebapp_get_redirect_url_logged_out() );
 
 	// If user doesn't meet required criteria, redirect them
-	if ( $user_access_setting == 'on' && !is_user_logged_in() && ( is_home() || is_single() ) && $redirect_logged_out != ( is_home() || is_single() ) ) {
+	if ( $user_access_setting === 'on' && !is_user_logged_in() && ( is_home() || is_single() ) && $redirect_logged_out !== ( is_home() || is_single() ) ) {
 		wp_safe_redirect( $redirect_logged_out, 302 );
 		exit;
 	}

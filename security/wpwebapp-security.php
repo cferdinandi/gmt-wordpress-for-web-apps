@@ -25,11 +25,11 @@ function wpwebapp_password_meets_requirements( $password ) {
 	// Test the password
 	if ( strlen( $password ) < $pw_min_length ) {
 		return false;
-	} else if ( $requires_letters == 'on' && !wpwebapp_has_letters( $password ) ) {
+	} else if ( $requires_letters === 'on' && !wpwebapp_has_letters( $password ) ) {
 		return false;
-	} else if ( $requires_numbers == 'on' && !wpwebapp_has_numbers( $password ) ) {
+	} else if ( $requires_numbers === 'on' && !wpwebapp_has_numbers( $password ) ) {
 		return false;
-	} else if ( $requires_special_chars == 'on' && !wpwebapp_has_special_chars( $password ) ) {
+	} else if ( $requires_special_chars === 'on' && !wpwebapp_has_special_chars( $password ) ) {
 		return false;
 	} else {
 		return true;
@@ -52,7 +52,7 @@ function wpwebapp_block_backend() {
 		$front_page = esc_url_raw( wpwebapp_get_redirect_url_logged_out() );
 	}
 
-	if ( is_admin() && $block_backend == 'hide' ) {
+	if ( is_admin() && $block_backend === 'hide' ) {
 		wp_safe_redirect( $front_page );
 		exit;
 	}
@@ -79,7 +79,7 @@ add_action( 'wp_logout', 'wpwebapp_logout_redirect' );
 
 function wpwebapp_disable_admin_bar() {
 	$disable_admin_bar = wpwebapp_get_block_admin_access();
-	if ( $disable_admin_bar == 'hide' ) {
+	if ( $disable_admin_bar === 'hide' ) {
 		show_admin_bar( false );
 	}
 }
