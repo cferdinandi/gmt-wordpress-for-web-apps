@@ -28,6 +28,10 @@ require_once( dirname( __FILE__) . '/security/wpwebapp-security.php' );
 require_once( dirname( __FILE__) . '/user-access/wpwebapp-options-user-access.php' );
 require_once( dirname( __FILE__) . '/user-access/wpwebapp-user-access.php' );
 
+// Navigation
+require_once( dirname( __FILE__) . '/navigation/wpwebapp-options-navigation.php' );
+require_once( dirname( __FILE__) . '/navigation/wpwebapp-navigation.php' );
+
 // Alerts
 require_once( dirname( __FILE__) . '/alerts/wpwebapp-options-alerts.php' );
 
@@ -59,7 +63,8 @@ require_once( dirname( __FILE__) . '/forms-email-change/wpwebapp-form-email-chan
 require_once( dirname( __FILE__) . '/forms-delete-account/wpwebapp-options-form-delete-account.php' );
 require_once( dirname( __FILE__) . '/forms-delete-account/wpwebapp-form-delete-account.php' );
 
-// Navigation
-require_once( dirname( __FILE__) . '/navigation/wpwebapp-navigation.php' );
+// Instructions
+require_once( dirname( __FILE__) . '/instructions/wpwebapp-options-logout-links.php' );
+require_once( dirname( __FILE__) . '/instructions/wpwebapp-options-usernames.php' );
 
 ?>

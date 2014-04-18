@@ -187,7 +187,9 @@ function wpwebapp_plugin_options_render_page_security() {
 		<h2><?php _e( 'Security', 'wpwebapp' ); ?></h2>
 		<?php settings_errors(); ?>
 
-		<p><?php _e( 'Edit web app security settings.', 'wpwebapp' ) ?></p>
+		<p><?php _e( 'Change the minimum password length, add character requirements, limit who can use the "forgot password" form, and change the number of hours a password reset email is valid.', 'wpwebapp' ) ?></p>
+
+		<h3><?php _e( 'Settings', 'wpwebapp' ) ?></h3>
 
 		<form method="post" action="options.php">
 			<?php

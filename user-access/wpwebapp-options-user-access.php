@@ -154,7 +154,13 @@ function wpwebapp_plugin_options_render_page_user_access() {
 		<h2><?php _e( 'User Access', 'wpwebapp' ); ?></h2>
 		<?php settings_errors(); ?>
 
-		<p><?php _e( 'Control user access to content.', 'wpwebapp' ) ?></p>
+		<p><?php _e( 'You may have content that you only want users to view if they\'re logged in. You might also have content that you only want people to have access to if they\'re logged out (like a password reset form or the login screen).', 'wpwebapp' ) ?></p>
+
+		<p><img title="Screenshot of the user access setting choices" src="<?php echo plugins_url( '../screenshots/user-access.png' , __FILE__ ); ?>"></p>
+
+		<p><?php _e( 'Simply select the appropriate user access setting from the options menu in the sidebar when you create a page. WordPress for Web Apps handles the rest, redirecting users to a landing page if they don\'t have permission to view the content.', 'wpwebapp' ) ?></p>
+
+		<h3><?php _e( 'Settings', 'wpwebapp' ) ?></h3>
 
 		<form method="post" action="options.php">
 			<?php

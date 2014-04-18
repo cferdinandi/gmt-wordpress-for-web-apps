@@ -18,10 +18,11 @@ function wpwebapp_plugin_options_render_main_page() {
 
 		<?php _e(
 			'<p>WordPress for Web Apps provides the essential components you need to power your web app with WordPress. <a target="_blank" href="https://github.com/cferdinandi/web-app-starter-kit">Learn more.</a></p>' .
-			'<p><strong>Settings</strong></p>' .
+			'<p><strong>Documentation and Settings</strong></p>' .
 			'<ul>' .
 				'<li><a href="admin.php?page=wpwebapp_plugin_options_security">Security</a></li>' .
 				'<li><a href="admin.php?page=wpwebapp_plugin_options_user_access">User Access</a></li>' .
+				'<li><a href="admin.php?page=wpwebapp_plugin_options_navigation">Navigation</a></li>' .
 				'<li><a href="admin.php?page=wpwebapp_plugin_options_alerts">Alerts</a></li>' .
 				'<li><a href="admin.php?page=wpwebapp_plugin_options_forms_login">Login Form</a></li>' .
 				'<li><a href="admin.php?page=wpwebapp_plugin_options_forms_signup">Signup Form</a></li>' .
@@ -30,6 +31,8 @@ function wpwebapp_plugin_options_render_main_page() {
 				'<li><a href="admin.php?page=wpwebapp_plugin_options_forms_pw_change">Change Password Form</a></li>' .
 				'<li><a href="admin.php?page=wpwebapp_plugin_options_forms_email_change">Change Email Form</a></li>' .
 				'<li><a href="admin.php?page=wpwebapp_plugin_options_forms_delete_account">Delete Account Button</a></li>' .
+				'<li><a href="admin.php?page=wpwebapp_plugin_options_logout_links">Logout Links</a></li>' .
+				'<li><a href="admin.php?page=wpwebapp_plugin_options_usernames">Usernames</a></li>' .
 			'</ul>',
 		'wpwebapp' ) ?>
 

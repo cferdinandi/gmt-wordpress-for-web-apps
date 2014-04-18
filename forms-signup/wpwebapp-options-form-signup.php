@@ -182,7 +182,14 @@ function wpwebapp_plugin_options_render_page_forms_signup() {
 		<h2><?php _e( 'Signup Form', 'wpwebapp' ); ?></h2>
 		<?php settings_errors(); ?>
 
-		<p><?php _e( 'Update signup form settings.', 'wpwebapp' ) ?></p>
+		<p><?php _e( 'Unlike the WordPress default, users get to create their own password at signup. After choosing a username and password, and providing an email address, they\'re logged straight in. No waiting for a confirmation email, and no more passwords emailed in plain text (which is really bad for security). Add a signup form to your app with a shortcode in your WordPress content editor or a function in your theme template files.', 'wpwebapp' ) ?></p>
+
+		<ul>
+			<li><?php _e( 'Shortcode', 'wpwebapp' ) ?>: <code>[wpwa_signup_form]</code></li>
+			<li><?php _e( 'Function', 'wpwebapp' ) ?>: <code>&lt;?php echo wpwebapp_form_signup(); ?&gt;</code></li>
+		</ul>
+
+		<h3><?php _e( 'Settings', 'wpwebapp' ) ?></h3>
 
 		<form method="post" action="options.php">
 			<?php

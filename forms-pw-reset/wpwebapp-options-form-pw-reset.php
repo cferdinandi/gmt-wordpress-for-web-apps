@@ -220,7 +220,14 @@ function wpwebapp_plugin_options_render_page_pw_reset() {
 		<h2><?php _e( 'Reset Password Form', 'wpwebapp' ); ?></h2>
 		<?php settings_errors(); ?>
 
-		<p><?php _e( 'Control the password reset form.', 'wpwebapp' ) ?></p>
+		<p><?php _e( 'Users who forget their password can provide their username or email address to have a reset URL sent to them. Reset URLs are only good for 24 hours by default and are unique to the user (better for security). After clicking the link, users get to pick their own new password and get logged right in. Add a password reset form to your app with a shortcode in your WordPress content editor or a function in your theme template files.', 'wpwebapp' ) ?></p>
+
+		<ul>
+			<li><?php _e( 'Shortcode', 'wpwebapp' ) ?>: <code>[wpwa_forgot_pw_form]</code></li>
+			<li><?php _e( 'Function', 'wpwebapp' ) ?>: <code>&lt;?php echo wpwebapp_form_pw_forgot_and_reset(); ?&gt;</code></li>
+		</ul>
+
+		<h3><?php _e( 'Settings', 'wpwebapp' ) ?></h3>
 
 		<form method="post" action="options.php">
 			<?php

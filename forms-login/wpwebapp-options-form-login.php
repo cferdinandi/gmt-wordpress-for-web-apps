@@ -113,7 +113,14 @@ function wpwebapp_plugin_options_render_page_forms_login() {
 		<h2><?php _e( 'Login Form', 'wpwebapp' ); ?></h2>
 		<?php settings_errors(); ?>
 
-		<p><?php _e( 'Login form settings.', 'wpwebapp' ) ?></p>
+		<p><?php _e( 'WordPress for Web Apps lets users login with either their username or their email address. Don\'t remember your username? No problem! Add a login form to your app with a shortcode in your WordPress content editor or a function in your theme template files.', 'wpwebapp' ) ?></p>
+
+		<ul>
+			<li><?php _e( 'Shortcode', 'wpwebapp' ) ?>: <code>[wpwa_login_form]</code></li>
+			<li><?php _e( 'Function', 'wpwebapp' ) ?>: <code>&lt;?php echo wpwebapp_form_login(); ?&gt;</code></li>
+		</ul>
+
+		<h3><?php _e( 'Settings', 'wpwebapp' ) ?></h3>
 
 		<form method="post" action="options.php">
 			<?php

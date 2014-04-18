@@ -265,7 +265,14 @@ function wpwebapp_plugin_options_render_page_user_profile() {
 		<h2><?php _e( 'User Profile Forms', 'wpwebapp' ); ?></h2>
 		<?php settings_errors(); ?>
 
-		<p><?php _e( 'Control user profile settings.', 'wpwebapp' ) ?></p>
+		<p><?php _e( 'Add a user profile update form to your app with a shortcode in your WordPress content editor or a function in your theme template files.', 'wpwebapp' ) ?></p>
+
+		<ul>
+			<li><?php _e( 'Shortcode', 'wpwebapp' ) ?>: <code>[wpwa_user_profile_form]</code></li>
+			<li><?php _e( 'Function', 'wpwebapp' ) ?>: <code>&lt;?php echo wpwebapp_form_user_profile(); ?&gt;</code></li>
+		</ul>
+
+		<h3><?php _e( 'Settings', 'wpwebapp' ) ?></h3>
 
 		<form method="post" action="options.php">
 			<?php

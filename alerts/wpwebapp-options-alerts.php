@@ -286,7 +286,9 @@ function wpwebapp_plugin_options_render_page_alerts() {
 		<h2><?php _e( 'Alerts', 'wpwebapp' ); ?></h2>
 		<?php settings_errors(); ?>
 
-		<p><?php _e( 'Control alerts, warnings, and confirmations.', 'wpwebapp' ) ?></p>
+		<p><?php _e( 'Whether form fields are left blank or passwords don\'t match, there\'s an error message for most form issues. Change the defaults to suit your apps personality and style.', 'wpwebapp' ) ?></p>
+
+		<h3><?php _e( 'Settings', 'wpwebapp' ) ?></h3>
 
 		<form method="post" action="options.php">
 			<?php

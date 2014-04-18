@@ -112,7 +112,14 @@ function wpwebapp_plugin_options_render_page_email_change() {
 		<h2><?php _e( 'Change Account Email Form', 'wpwebapp' ); ?></h2>
 		<?php settings_errors(); ?>
 
-		<p><?php _e( 'Control the change email form settings.', 'wpwebapp' ) ?></p>
+		<p><?php _e( 'Add an email change form to your app with a shortcode in your WordPress content editor or a function in your theme template files.', 'wpwebapp' ) ?></p>
+
+		<ul>
+			<li><?php _e( 'Shortcode', 'wpwebapp' ) ?>: <code>[wpwa_email_change_form]</code></li>
+			<li><?php _e( 'Function', 'wpwebapp' ) ?>: <code>&lt;?php echo wpwebapp_form_email_change(); ?&gt;</code></li>
+		</ul>
+
+		<h3><?php _e( 'Settings', 'wpwebapp' ) ?></h3>
 
 		<form method="post" action="options.php">
 			<?php

@@ -106,7 +106,16 @@ function wpwebapp_plugin_options_render_page_delete_account() {
 		<h2><?php _e( 'Delete Account Button', 'wpwebapp' ); ?></h2>
 		<?php settings_errors(); ?>
 
-		<p><?php _e( 'Control delete account settings.', 'wpwebapp' ) ?></p>
+		<p><?php _e( 'Add a delete account button to your app with a shortcode in your WordPress content editor or a function in your theme template files.', 'wpwebapp' ) ?></p>
+
+		<ul>
+			<li><?php _e( 'Shortcode', 'wpwebapp' ) ?>: <code>[wpwa_delete_account_form]</code></li>
+			<li><?php _e( 'Function', 'wpwebapp' ) ?>: <code>&lt;?php echo wpwebapp_form_delete_account(); ?&gt;</code></li>
+		</ul>
+
+		<p><strong><?php _e( 'Note', 'wpwebapp' ) ?>:</strong> <?php _e( 'The Delete Account button doesn’t include any sort of confirmation message or verification, so you should add your own. You might have an initial “Delete Account” button that opens a modal window, a drop-down menu, or a new page where the real delete button resides.', 'wpwebapp' ) ?></p>
+
+		<h3><?php _e( 'Settings', 'wpwebapp' ) ?></h3>
 
 		<form method="post" action="options.php">
 			<?php
