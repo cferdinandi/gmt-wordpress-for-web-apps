@@ -45,6 +45,9 @@ WordPress for Web Apps is licensed under the [MIT License](http://gomakethings.c
 
 ## Changelog
 
+* v3.8 - April 17, 2014
+	* Add User Profile form options.
+	* Updated documentation.
 * v3.7 - April 6, 2014
 	* Restructured plugin backend for more user control.
 * v3.6 - April 5, 2014
