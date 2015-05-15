@@ -16,7 +16,6 @@ A plugin that provides the essential components you need to power your web app w
 1. [Getting Started](#getting-started)
 2. [How to Contribute](#how-to-contribute)
 3. [License](#license)
-4. [Changelog](#changelog)
 
 
 
