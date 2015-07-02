@@ -32,10 +32,10 @@ And that's it, you're done. Nice work! You can access documentations and adjust 
 
 ## How to Contribute
 
-In lieu of a formal style guide, take care to maintain the existing coding style. Don't forget to update the version number, the changelog (in the `readme.md` file), and when applicable, the documentation.
+In lieu of a formal style guide, take care to maintain the existing coding style. Please apply fixes to both the development and production code. Don't forget to update the version number, and when applicable, the documentation.
 
 
 
 ## License
 
-WordPress for Web Apps is licensed under the [MIT License](http://gomakethings.com/mit/).
+The code is available under the [MIT License](LICENSE.md).
