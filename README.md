@@ -112,6 +112,18 @@ To redirect a user back to their current page after login or sign up, add the `r
 
 
 
+## CSS Hooks
+
+Every form and input includes a unique `id` you can hook into for styling. Additionally, form element categories also include shared classes you can use to easily style like elements in a consistent way.
+
+- `.wpwebapp-form-label` - Form labels
+- `.wpwebapp-form-input` - Text inputs
+- `.wpwebapp-form-button` - Form buttons and input[type="submit"]
+- `.wpwebapp-form-label-checkbox` - Labels for checkboxes
+- `.wpwebapp-form-checkbox` - Checkboxes
+
+
+
 ## What's new in version 5?
 
 Version 5 has been rewritten from the ground up to provide a more lightweight, performant, customizable code base.
