@@ -28,7 +28,7 @@
 					'<input type="text" class="wpwebapp-form-input" id="wpwebapp_login_username" name="wpwebapp_login_username"  value="' . esc_attr( $credentials ) . '" required>' .
 
 					'<label class="wpwebapp-form-label" for="wpwebapp_login_password">' . $options['login_password_label'] . '</label>' .
-					'<input type="password" class="wpwebapp-form-input" id="wpwebapp_login_password" name="wpwebapp_login_password"  value="" required>' .
+					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password" id="wpwebapp_login_password" name="wpwebapp_login_password"  value="" required>' .
 
 					'<label class="wpwebapp-form-label-checkbox"><input type="checkbox" class="wpwebapp-form-checkbox" id="wpwebapp_login_rememberme" name="wpwebapp_login_rememberme" value=""> ' . $options['login_rememberme_label'] . '</label>' .
 

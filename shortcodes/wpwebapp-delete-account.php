@@ -18,7 +18,7 @@
 				( empty( $error ) ? '' : '<div class="' . esc_attr( $options['alert_error_class'] ) . '">' . $error . '</div>' ) .
 				'<form class="wpwebapp-form" id="wpwebapp_delete_account" name="wpwebapp_delete_account" action="" method="post">' .
 					'<label class="wpwebapp-form-label" for="wpwebapp_delete_account_password">' . $options['delete_account_password_label'] . '</label>' .
-					'<input type="password" class="wpwebapp-form-input" id="wpwebapp_delete_account_password" name="wpwebapp_delete_account_password"  value="" required>' .
+					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password" id="wpwebapp_delete_account_password" name="wpwebapp_delete_account_password"  value="" required>' .
 					'<button class="wpwebapp-form-button ' . esc_attr( $options['delete_account_submit_class'] ) . '">' . $options['delete_account_submit_text'] . '</button>' .
 					wp_nonce_field( 'wpwebapp_delete_account_nonce', 'wpwebapp_delete_account_process' ) .
 				'</form>';

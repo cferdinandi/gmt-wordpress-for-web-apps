@@ -118,6 +118,7 @@ Every form and input includes a unique `id` you can hook into for styling. Addit
 
 - `.wpwebapp-form-label` - Form labels
 - `.wpwebapp-form-input` - Text inputs
+- `.wpwebaspp-form-password` - Password inputs
 - `.wpwebapp-form-button` - Form buttons and input[type="submit"]
 - `.wpwebapp-form-label-checkbox` - Labels for checkboxes
 - `.wpwebapp-form-checkbox` - Checkboxes

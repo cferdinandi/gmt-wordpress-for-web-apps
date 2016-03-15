@@ -27,7 +27,7 @@
 					'<input type="email" class="wpwebapp-form-input" id="wpwebapp_email_change_current_email" name="wpwebapp_email_change_current_email"  value="' . esc_attr( $current_user->user_email ) . '" required>' .
 
 					'<label class="wpwebapp-form-label" for="wpwebapp_email_change_password">' . $options['email_change_password_label'] . '</label>' .
-					'<input type="password" class="wpwebapp-form-input" id="wpwebapp_email_change_password" name="wpwebapp_email_change_password"  value="" required>' .
+					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password" id="wpwebapp_email_change_password" name="wpwebapp_email_change_password"  value="" required>' .
 
 					'<button class="wpwebapp-form-button ' . esc_attr( $options['email_change_submit_class'] ) . '">' . $options['email_change_submit_text'] . '</button>' .
 
