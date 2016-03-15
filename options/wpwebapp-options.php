@@ -665,13 +665,13 @@
 
 		// Sign Up
 		if ( isset( $input['signup_username_label'] ) && ! empty( $input['signup_username_label'] ) )
-			$output['signup_username_label'] = wp_filter_nohtml_kses( $input['signup_username_label'] );
+			$output['signup_username_label'] = wp_filter_post_kses( $input['signup_username_label'] );
 
 		if ( isset( $input['signup_email_label'] ) && ! empty( $input['signup_email_label'] ) )
-			$output['signup_email_label'] = wp_filter_nohtml_kses( $input['signup_email_label'] );
+			$output['signup_email_label'] = wp_filter_post_kses( $input['signup_email_label'] );
 
 		if ( isset( $input['signup_password_label'] ) && ! empty( $input['signup_password_label'] ) )
-			$output['signup_password_label'] = wp_filter_nohtml_kses( $input['signup_password_label'] );
+			$output['signup_password_label'] = wp_filter_post_kses( $input['signup_password_label'] );
 
 		if ( isset( $input['signup_submit_text'] ) && ! empty( $input['signup_submit_text'] ) )
 			$output['signup_submit_text'] = wp_filter_nohtml_kses( $input['signup_submit_text'] );
@@ -711,10 +711,10 @@
 
 		// Login
 		if ( isset( $input['login_username_label'] ) && ! empty( $input['login_username_label'] ) )
-			$output['login_username_label'] = wp_filter_nohtml_kses( $input['login_username_label'] );
+			$output['login_username_label'] = wp_filter_post_kses( $input['login_username_label'] );
 
 		if ( isset( $input['login_password_label'] ) && ! empty( $input['login_password_label'] ) )
-			$output['login_password_label'] = wp_filter_nohtml_kses( $input['login_password_label'] );
+			$output['login_password_label'] = wp_filter_post_kses( $input['login_password_label'] );
 
 		if ( isset( $input['login_rememberme_label'] ) && ! empty( $input['login_rememberme_label'] ) )
 			$output['login_rememberme_label'] = wp_filter_nohtml_kses( $input['login_rememberme_label'] );
@@ -743,10 +743,10 @@
 
 		// Change email address
 		if ( isset( $input['email_change_current_email_label'] ) && ! empty( $input['email_change_current_email_label'] ) )
-			$output['email_change_current_email_label'] = wp_filter_nohtml_kses( $input['email_change_current_email_label'] );
+			$output['email_change_current_email_label'] = wp_filter_post_kses( $input['email_change_current_email_label'] );
 
 		if ( isset( $input['email_change_password_label'] ) && ! empty( $input['email_change_password_label'] ) )
-			$output['email_change_password_label'] = wp_filter_nohtml_kses( $input['email_change_password_label'] );
+			$output['email_change_password_label'] = wp_filter_post_kses( $input['email_change_password_label'] );
 
 		if ( isset( $input['email_change_submit_text'] ) && ! empty( $input['email_change_submit_text'] ) )
 			$output['email_change_submit_text'] = wp_filter_nohtml_kses( $input['email_change_submit_text'] );
@@ -768,10 +768,10 @@
 
 		// Change password
 		if ( isset( $input['password_change_current_password_label'] ) && ! empty( $input['password_change_current_password_label'] ) )
-			$output['password_change_current_password_label'] = wp_filter_nohtml_kses( $input['password_change_current_password_label'] );
+			$output['password_change_current_password_label'] = wp_filter_post_kses( $input['password_change_current_password_label'] );
 
 		if ( isset( $input['password_change_new_password_label'] ) && ! empty( $input['password_change_new_password_label'] ) )
-			$output['password_change_new_password_label'] = wp_filter_nohtml_kses( $input['password_change_new_password_label'] );
+			$output['password_change_new_password_label'] = wp_filter_post_kses( $input['password_change_new_password_label'] );
 
 		if ( isset( $input['password_change_submit_text'] ) && ! empty( $input['password_change_submit_text'] ) )
 			$output['password_change_submit_text'] = wp_filter_nohtml_kses( $input['password_change_submit_text'] );
@@ -793,7 +793,7 @@
 
 		// Forgot password
 		if ( isset( $input['password_forgot_label'] ) && ! empty( $input['password_forgot_label'] ) )
-			$output['password_forgot_label'] = wp_filter_nohtml_kses( $input['password_forgot_label'] );
+			$output['password_forgot_label'] = wp_filter_post_kses( $input['password_forgot_label'] );
 
 		if ( isset( $input['password_forgot_submit_text'] ) && ! empty( $input['password_forgot_submit_text'] ) )
 			$output['password_forgot_submit_text'] = wp_filter_nohtml_kses( $input['password_forgot_submit_text'] );
@@ -802,7 +802,7 @@
 			$output['password_forgot_submit_class'] = wp_filter_nohtml_kses( $input['password_forgot_submit_class'] );
 
 		if ( isset( $input['password_reset_label'] ) && ! empty( $input['password_reset_label'] ) )
-			$output['password_reset_label'] = wp_filter_nohtml_kses( $input['password_reset_label'] );
+			$output['password_reset_label'] = wp_filter_post_kses( $input['password_reset_label'] );
 
 		if ( isset( $input['password_reset_submit_text'] ) && ! empty( $input['password_reset_submit_text'] ) )
 			$output['password_reset_submit_text'] = wp_filter_nohtml_kses( $input['password_reset_submit_text'] );
@@ -839,7 +839,7 @@
 
 		// Delete account
 		if ( isset( $input['delete_account_password_label'] ) && ! empty( $input['delete_account_password_label'] ) )
-			$output['delete_account_password_label'] = wp_filter_nohtml_kses( $input['delete_account_password_label'] );
+			$output['delete_account_password_label'] = wp_filter_post_kses( $input['delete_account_password_label'] );
 
 		if ( isset( $input['delete_account_submit_text'] ) && ! empty( $input['delete_account_submit_text'] ) )
 			$output['delete_account_submit_text'] = wp_filter_nohtml_kses( $input['delete_account_submit_text'] );
