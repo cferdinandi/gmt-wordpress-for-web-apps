@@ -37,7 +37,12 @@
 					'<label class="wpwebapp-form-label" for="wpwebapp_signup_password">' . $options['signup_password_label'] . '</label>' .
 					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password" id="wpwebapp_signup_password" name="wpwebapp_signup_password"  value="" required>' .
 
+					'<label class="wpwebapp-form-label wpwebapp-form-label-tarpit" for="wpwebapp_signup_password_confirm">' . __( 'If you are human, leave this blank', 'beacon' ) . '</label>' .
+					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password wpwebapp-form-input-tarpit" id="wpwebapp_signup_password_confirm" name="wpwebapp_signup_password_confirm"  value="">' .
+
 					'<button class="wpwebapp-form-button ' . esc_attr( $options['signup_submit_class'] ) . '">' . $options['signup_submit_text'] . '</button>' .
+
+					'<input type="hidden" id="wpwebapp_signup_tarpit_time" name="wpwebapp_signup_tarpit_time" value="' . current_time( 'timestamp' ) . '">' .
 
 					wp_nonce_field( 'wpwebapp_signup_nonce', 'wpwebapp_signup_process' ) .
 
@@ -94,7 +99,7 @@
 
 	}
 
-	// @todo Create new user account
+	// Create new user account
 	function wpwebapp_create_new_user() {
 		// @todo include an option to select the type of user role to assign member to (allows for custom roles)
 
@@ -174,6 +179,15 @@
 			exit;
 		}
 
+		// Honeypots
+		if ( !empty( $_POST['wpwebapp_signup_password_confirm'] ) || !isset( $_POST['wpwebapp_signup_tarpit_time'] ) || current_time( 'timestamp' ) - $_POST['wpwebapp_signup_tarpit_time'] < 2 ) {
+			$message = __( 'We are unable to create your account. Sorry.', 'beacon' );
+			wpwebapp_set_session( 'wpwebapp_signup_error', $message );
+			wpwebapp_set_session( 'wpwebapp_signup_credentials', $credentials );
+			wp_safe_redirect( $referer, 302 );
+			exit;
+		}
+
 		// If no errors exist, create an account and send notification emails
 		wp_create_user( $_POST['wpwebapp_signup_username'], $_POST['wpwebapp_signup_password'], sanitize_email( $_POST['wpwebapp_signup_email'] ) );
 		wpwebapp_send_user_notification_email( $_POST['wpwebapp_signup_username'], $_POST['wpwebapp_signup_email'] );
@@ -210,3 +224,17 @@
 	if ( !function_exists( 'wp_new_user_notification' ) ) {
 		function wp_new_user_notification() {}
 	}
+
+	// Add honeypost classes to the header
+	function beacon_load_honeypot_styles() {
+		?>
+			<style>
+				.wpwebapp-form-label-tarpit,
+				.wpwebapp-form-input-tarpit {
+					display: none;
+					visibility: hidden;
+				}
+			</style>
+		<?php
+	}
+	add_action('wp_head', 'beacon_load_honeypot_styles', 30);
