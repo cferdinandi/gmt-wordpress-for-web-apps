@@ -35,7 +35,7 @@
 					'<input type="email" class="wpwebapp-form-input" id="wpwebapp_signup_email" name="wpwebapp_signup_email"  value="' . esc_attr( $credentials['email'] ) . '" required>' .
 
 					'<label class="wpwebapp-form-label" for="wpwebapp_signup_password">' . $options['signup_password_label'] . '</label>' .
-					'<input type="password" class="wpwebapp-form-input" id="wpwebapp_signup_password" name="wpwebapp_signup_password"  value="" required>' .
+					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password" id="wpwebapp_signup_password" name="wpwebapp_signup_password"  value="" required>' .
 
 					'<button class="wpwebapp-form-button ' . esc_attr( $options['signup_submit_class'] ) . '">' . $options['signup_submit_text'] . '</button>' .
 
