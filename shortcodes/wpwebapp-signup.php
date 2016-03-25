@@ -28,13 +28,13 @@
 
 				'<form class="wpwebapp-form" id="wpwebapp_signup" name="wpwebapp_signup" action="" method="post">' .
 
-					'<label class="wpwebapp-form-label" for="wpwebapp_signup_username">' . $options['signup_username_label'] . '</label>' .
+					'<label class="wpwebapp-form-label" for="wpwebapp_signup_username">' . stripslashes( $options['signup_username_label'] ) . '</label>' .
 					'<input type="text" class="wpwebapp-form-input" id="wpwebapp_signup_username" name="wpwebapp_signup_username"  value="' . esc_attr( $credentials['username'] ) . '" required>' .
 
-					'<label class="wpwebapp-form-label" for="wpwebapp_signup_email">' . $options['signup_email_label'] . '</label>' .
+					'<label class="wpwebapp-form-label" for="wpwebapp_signup_email">' . stripslashes( $options['signup_email_label'] ) . '</label>' .
 					'<input type="email" class="wpwebapp-form-input" id="wpwebapp_signup_email" name="wpwebapp_signup_email"  value="' . esc_attr( $credentials['email'] ) . '" required>' .
 
-					'<label class="wpwebapp-form-label" for="wpwebapp_signup_password">' . $options['signup_password_label'] . '</label>' .
+					'<label class="wpwebapp-form-label" for="wpwebapp_signup_password">' . stripslashes( $options['signup_password_label'] ) . '</label>' .
 					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password" id="wpwebapp_signup_password" name="wpwebapp_signup_password"  value="" required>' .
 
 					'<label class="wpwebapp-form-label wpwebapp-form-label-tarpit" for="wpwebapp_signup_password_confirm">' . __( 'If you are human, leave this blank', 'beacon' ) . '</label>' .

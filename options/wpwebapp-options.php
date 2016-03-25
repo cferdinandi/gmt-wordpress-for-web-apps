@@ -42,17 +42,17 @@
 		$options = wpwebapp_get_theme_options();
 		?>
 		<div>
-			<input type="text" name="wpwebapp_theme_options[signup_username_label]" id="signup_username_label" value="<?php echo esc_attr( $options['signup_username_label'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[signup_username_label]" id="signup_username_label" value="<?php echo stripslashes( esc_attr( $options['signup_username_label'] ) ); ?>" />
 			<label class="description" for="signup_username_label"><?php _e( 'Sign up form "Username" field label', 'wpwebapp' ); ?></label>
 		</div>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[signup_email_label]" id="signup_email_label" value="<?php echo esc_attr( $options['signup_email_label'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[signup_email_label]" id="signup_email_label" value="<?php echo stripslashes( esc_attr( $options['signup_email_label'] ) ); ?>" />
 			<label class="description" for="signup_email_label"><?php _e( 'Sign up form "Email" field label', 'wpwebapp' ); ?></label>
 		</div>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[signup_password_label]" id="signup_password_label" value="<?php echo esc_attr( $options['signup_password_label'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[signup_password_label]" id="signup_password_label" value="<?php echo stripslashes( esc_attr( $options['signup_password_label'] ) ); ?>" />
 			<label class="description" for="signup_password_label"><?php _e( 'Sign up form "Password" field label', 'wpwebapp' ); ?></label>
 		</div>
 		<?php
@@ -152,17 +152,17 @@
 		$options = wpwebapp_get_theme_options();
 		?>
 		<div>
-			<input type="text" name="wpwebapp_theme_options[login_username_label]" id="login_username_label" value="<?php echo esc_attr( $options['login_username_label'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[login_username_label]" id="login_username_label" value="<?php echo stripslashes( esc_attr( $options['login_username_label'] ) ); ?>" />
 			<label class="description" for="login_username_label"><?php _e( 'Login form "Username" label', 'wpwebapp' ); ?></label>
 		</div>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[login_password_label]" id="login_password_label" value="<?php echo esc_attr( $options['login_password_label'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[login_password_label]" id="login_password_label" value="<?php echo stripslashes( esc_attr( $options['login_password_label'] ) ); ?>" />
 			<label class="description" for="login_password_label"><?php _e( 'Login form "Password" label', 'wpwebapp' ); ?></label>
 		</div>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[login_rememberme_label]" id="login_rememberme_label" value="<?php echo esc_attr( $options['login_rememberme_label'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[login_rememberme_label]" id="login_rememberme_label" value="<?php echo stripslashes( esc_attr( $options['login_rememberme_label'] ) ); ?>" />
 			<label class="description" for="login_rememberme_label"><?php _e( 'Login form "Remember Me" label', 'wpwebapp' ); ?></label>
 		</div>
 		<?php
@@ -229,12 +229,12 @@
 		$options = wpwebapp_get_theme_options();
 		?>
 		<div>
-			<input type="text" name="wpwebapp_theme_options[email_change_current_email_label]" id="email_change_current_email_label" value="<?php echo esc_attr( $options['email_change_current_email_label'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[email_change_current_email_label]" id="email_change_current_email_label" value="<?php echo stripslashes( esc_attr( $options['email_change_current_email_label'] ) ); ?>" />
 			<label class="description" for="email_change_current_email_label"><?php _e( 'Change email form "Email" label', 'wpwebapp' ); ?></label>
 		</div>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[email_change_password_label]" id="email_change_password_label" value="<?php echo esc_attr( $options['email_change_password_label'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[email_change_password_label]" id="email_change_password_label" value="<?php echo stripslashes( esc_attr( $options['email_change_password_label'] ) ); ?>" />
 			<label class="description" for="email_change_password_label"><?php _e( 'Change email form "Password" label', 'wpwebapp' ); ?></label>
 		</div>
 		<?php
@@ -290,12 +290,12 @@
 		$options = wpwebapp_get_theme_options();
 		?>
 		<div>
-			<input type="text" name="wpwebapp_theme_options[password_change_current_password_label]" id="password_change_current_password_label" value="<?php echo esc_attr( $options['password_change_current_password_label'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[password_change_current_password_label]" id="password_change_current_password_label" value="<?php echo stripslashes( esc_attr( $options['password_change_current_password_label'] ) ); ?>" />
 			<label class="description" for="password_change_current_password_label"><?php _e( 'Change password form "Current Password" label', 'wpwebapp' ); ?></label>
 		</div>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[password_change_new_password_label]" id="password_change_new_password_label" value="<?php echo esc_attr( $options['password_change_new_password_label'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[password_change_new_password_label]" id="password_change_new_password_label" value="<?php echo stripslashes( esc_attr( $options['password_change_new_password_label'] ) ); ?>" />
 			<label class="description" for="password_change_new_password_label"><?php _e( 'Change password form "New Password" label', 'wpwebapp' ); ?></label>
 		</div>
 		<?php
@@ -351,12 +351,12 @@
 		$options = wpwebapp_get_theme_options();
 		?>
 		<div>
-			<input type="text" name="wpwebapp_theme_options[password_forgot_label]" id="password_forgot_label" value="<?php echo esc_attr( $options['password_forgot_label'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[password_forgot_label]" id="password_forgot_label" value="<?php echo stripslashes( esc_attr( $options['password_forgot_label'] ) ); ?>" />
 			<label class="description" for="password_forgot_label"><?php _e( 'Forgot password form "Username" label', 'wpwebapp' ); ?></label>
 		</div>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[password_reset_label]" id="password_reset_label" value="<?php echo esc_attr( $options['password_reset_label'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[password_reset_label]" id="password_reset_label" value="<?php echo stripslashes( esc_attr( $options['password_reset_label'] ) ); ?>" />
 			<label class="description" for="password_reset_label"><?php _e( 'Reset password form "New Password" label', 'wpwebapp' ); ?></label>
 		</div>
 		<?php
@@ -464,7 +464,7 @@
 		$options = wpwebapp_get_theme_options();
 		?>
 		<div>
-			<input type="text" name="wpwebapp_theme_options[delete_account_password_label]" id="delete_account_password_label" value="<?php echo esc_attr( $options['delete_account_password_label'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[delete_account_password_label]" id="delete_account_password_label" value="<?php echo stripslashes( esc_attr( $options['delete_account_password_label'] ) ); ?>" />
 			<label class="description" for="delete_account_password_label"><?php _e( 'Delete account form "Password" label', 'wpwebapp' ); ?></label>
 		</div>
 		<?php
@@ -883,7 +883,7 @@
 		?>
 		<div class="wrap">
 			<h2><?php _e( 'WordPress for Web Apps Options', 'wpwebapp' ); ?></h2>
-			<?php settings_errors(); ?>
+			<?php // settings_errors(); ?>
 
 			<form method="post" action="options.php">
 				<?php

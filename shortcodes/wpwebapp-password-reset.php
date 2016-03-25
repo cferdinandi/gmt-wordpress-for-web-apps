@@ -29,7 +29,7 @@
 
 				'<form class="wpwebapp-form" id="wpwebapp_password_forgot" name="wpwebapp_password_forgot" action="" method="post">' .
 
-					'<label class="wpwebapp-form-label" for="wpwebapp_password_forgot_username">' . $options['password_forgot_label'] . '</label>' .
+					'<label class="wpwebapp-form-label" for="wpwebapp_password_forgot_username">' . stripslashes( $options['password_forgot_label'] ) . '</label>' .
 					'<input type="text" class="wpwebapp-form-input" id="wpwebapp_password_forgot_username" name="wpwebapp_password_forgot_username"  value="' . esc_attr( $credentials ) . '" required>' .
 
 					'<button class="wpwebapp-form-button ' . esc_attr( $options['password_forgot_submit_class'] ) . '">' . $options['password_forgot_submit_text'] . '</button>' .
@@ -60,7 +60,7 @@
 
 				'<form class="wpwebapp-form" id="wpwebapp_password_reset" name="wpwebapp_password_reset" action="" method="post">' .
 
-					'<label class="wpwebapp-form-label" for="wpwebapp_password_reset_password">' . $options['password_reset_label'] . '</label>' .
+					'<label class="wpwebapp-form-label" for="wpwebapp_password_reset_password">' . stripslashes( $options['password_reset_label'] ) . '</label>' .
 					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password" id="wpwebapp_password_reset_password" name="wpwebapp_password_reset_password" value="" required>' .
 
 					'<input type="hidden" id="wpwebapp_password_reset_key" name="wpwebapp_password_reset_key"  value="' . $_GET['reset_pw'] . '">' .
