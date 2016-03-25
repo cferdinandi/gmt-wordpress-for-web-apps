@@ -21,10 +21,10 @@
 
 				'<form class="wpwebapp-form" id="wpwebapp_password_change" name="wpwebapp_password_change" action="" method="post">' .
 
-					'<label class="wpwebapp-form-label" for="wpwebapp_password_change_current_password">' . $options['password_change_current_password_label'] . '</label>' .
+					'<label class="wpwebapp-form-label" for="wpwebapp_password_change_current_password">' . stripslashes( $options['password_change_current_password_label'] ) . '</label>' .
 					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password" id="wpwebapp_password_change_current_password" name="wpwebapp_password_change_current_password"  value="" required>' .
 
-					'<label class="wpwebapp-form-label" for="wpwebapp_password_change_new_password">' . $options['password_change_new_password_label'] . '</label>' .
+					'<label class="wpwebapp-form-label" for="wpwebapp_password_change_new_password">' . stripslashes( $options['password_change_new_password_label'] ) . '</label>' .
 					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password" id="wpwebapp_password_change_new_password" name="wpwebapp_password_change_new_password"  value="" required>' .
 
 					'<button class="wpwebapp-form-button ' . esc_attr( $options['password_change_submit_class'] ) . '">' . $options['password_change_submit_text'] . '</button>' .
