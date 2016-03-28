@@ -38,7 +38,7 @@
 					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password" id="wpwebapp_signup_password" name="wpwebapp_signup_password"  value="" required>' .
 
 					'<label class="wpwebapp-form-label wpwebapp-form-label-tarpit" for="wpwebapp_signup_password_confirm">' . __( 'If you are human, leave this blank', 'beacon' ) . '</label>' .
-					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password wpwebapp-form-input-tarpit" id="wpwebapp_signup_password_confirm" name="wpwebapp_signup_password_confirm"  value="">' .
+					'<input type="text" class="wpwebapp-form-input wpwebapp-form-password wpwebapp-form-input-tarpit" id="wpwebapp_signup_password_confirm" name="wpwebapp_signup_password_confirm"  value="">' .
 
 					'<button class="wpwebapp-form-button ' . esc_attr( $options['signup_submit_class'] ) . '">' . $options['signup_submit_text'] . '</button>' .
 
