@@ -10,6 +10,9 @@
 
 		if ( is_user_logged_in() ) {
 
+			// Prevent this content from caching
+			define('DONOTCACHEPAGE', TRUE);
+
 			// Variables
 			global $current_user;
 			get_currentuserinfo();

@@ -12,6 +12,9 @@
 			$form = '<p>' . __( 'You\'re already logged in.', 'wpwebapp' ) . '</p>';
 		} else {
 
+			// Prevent this content from caching
+			define('DONOTCACHEPAGE', TRUE);
+
 			// Variables
 			global $current_user;
 			get_currentuserinfo();

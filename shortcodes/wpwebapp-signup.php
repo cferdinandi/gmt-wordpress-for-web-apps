@@ -12,6 +12,9 @@
 			$form = '<p>' . __( 'You\'re already logged in.', 'wpwebapp' ) . '</p>';
 		} else {
 
+			// Prevent this content from caching
+			define('DONOTCACHEPAGE', TRUE);
+
 			// Variables
 			$options = wpwebapp_get_theme_options();
 			$error = wpwebapp_get_session( 'wpwebapp_signup_error', true );

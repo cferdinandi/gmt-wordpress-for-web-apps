@@ -10,6 +10,9 @@
 
 		if ( is_user_logged_in() ) {
 
+			// Prevent this content from caching
+			define('DONOTCACHEPAGE', TRUE);
+
 			// Variables
 			$options = wpwebapp_get_theme_options();
 			$error = wpwebapp_get_session( 'wpwebapp_password_change_error', true );

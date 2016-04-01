@@ -10,6 +10,9 @@
 
 		if ( is_user_logged_in() ) {
 
+			// Prevent this content from caching
+			define('DONOTCACHEPAGE', TRUE);
+
 			// Variables
 			$options = wpwebapp_get_theme_options();
 			$error = wpwebapp_get_session( 'wpwebapp_delete_account_error', true );
@@ -51,6 +54,13 @@
 		// Verify that password matches
 		if ( !isset( $_POST['wpwebapp_delete_account_password'] ) || !wp_check_password( $_POST['wpwebapp_delete_account_password'], $current_user->user_pass, $current_user->ID ) ) {
 			wpwebapp_set_session( 'wpwebapp_delete_account_error', $options['delete_account_password_error'] );
+			wp_safe_redirect( $referer, 302 );
+			exit;
+		}
+
+		// Verify that user is NOT an admin
+		if ( current_user_can( 'edit_theme_options' ) ) {
+			wpwebapp_set_session( 'wpwebapp_delete_account_error', __( 'This account cannot be deleted.', 'wpwebapp' ) );
 			wp_safe_redirect( $referer, 302 );
 			exit;
 		}
