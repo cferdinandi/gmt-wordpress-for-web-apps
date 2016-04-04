@@ -162,22 +162,11 @@
 		$reset_url = wpwebapp_prepare_url( $referer ) . 'reset_pw=' .$key . $user->ID;
 		$send_email = wpwebapp_send_password_reset_email( $user_data->user_email, $user_data->user_login, $reset_url );
 
-		// If email was sent successfully
-		if ( $send_email ) {
+		// Run custom WordPress action
+		do_action( 'wpwebapp_after_password_forgot_email_sent', $user->ID );
 
-			// Run custom WordPress action
-			do_action( 'wpwebapp_after_password_forgot_email_sent', $user->ID );
-
-			// Show success message
-			wpwebapp_set_session( 'wpwebapp_password_reset_success', $options['password_forgot_password_success'] );
-			wp_safe_redirect( $referer, 302 );
-			exit;
-
-		}
-
-		// If email failed
-		wpwebapp_set_session( 'wpwebapp_password_reset_error', $options['password_forgot_password_email_error'] );
-		wpwebapp_set_session( 'wpwebapp_password_reset_credentials', $_POST['wpwebapp_password_forgot_username'] );
+		// Show success message
+		wpwebapp_set_session( 'wpwebapp_password_reset_success', $options['password_forgot_password_success'] );
 		wp_safe_redirect( $referer, 302 );
 		exit;
 
