@@ -23,7 +23,7 @@
 					'<label class="wpwebapp-form-label" for="wpwebapp_delete_account_password">' . stripslashes( $options['delete_account_password_label'] ) . '</label>' .
 					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password" id="wpwebapp_delete_account_password" name="wpwebapp_delete_account_password"  value="" required>' .
 					'<button class="wpwebapp-form-button ' . esc_attr( $options['delete_account_submit_class'] ) . '">' . $options['delete_account_submit_text'] . '</button>' .
-					wp_nonce_field( 'wpwebapp_delete_account_nonce', 'wpwebapp_delete_account_process' ) .
+					wp_nonce_field( 'wpwebapp_delete_account_nonce', 'wpwebapp_delete_account_process', true, false ) .
 				'</form>';
 
 		} else {

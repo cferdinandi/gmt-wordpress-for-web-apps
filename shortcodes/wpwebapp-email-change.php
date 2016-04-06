@@ -34,7 +34,7 @@
 
 					'<button class="wpwebapp-form-button ' . esc_attr( $options['email_change_submit_class'] ) . '">' . $options['email_change_submit_text'] . '</button>' .
 
-					wp_nonce_field( 'wpwebapp_email_change_nonce', 'wpwebapp_email_change_process' ) .
+					wp_nonce_field( 'wpwebapp_email_change_nonce', 'wpwebapp_email_change_process', true, false ) .
 
 				'</form>';
 

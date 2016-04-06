@@ -32,7 +32,7 @@
 
 					'<button class="wpwebapp-form-button ' . esc_attr( $options['password_change_submit_class'] ) . '">' . $options['password_change_submit_text'] . '</button>' .
 
-					wp_nonce_field( 'wpwebapp_password_change_nonce', 'wpwebapp_password_change_process' ) .
+					wp_nonce_field( 'wpwebapp_password_change_nonce', 'wpwebapp_password_change_process', true, false ) .
 
 				'</form>';
 

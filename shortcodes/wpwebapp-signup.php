@@ -47,7 +47,7 @@
 
 					'<input type="hidden" id="wpwebapp_signup_tarpit_time" name="wpwebapp_signup_tarpit_time" value="' . current_time( 'timestamp' ) . '">' .
 
-					wp_nonce_field( 'wpwebapp_signup_nonce', 'wpwebapp_signup_process' ) .
+					wp_nonce_field( 'wpwebapp_signup_nonce', 'wpwebapp_signup_process', true, false ) .
 
 				'</form>';
 
