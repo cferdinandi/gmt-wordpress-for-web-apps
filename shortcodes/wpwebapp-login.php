@@ -37,7 +37,7 @@
 
 					'<button class="wpwebapp-form-button ' . esc_attr( $options['login_submit_class'] ) . '">' . $options['login_submit_text'] . '</button>' .
 
-					wp_nonce_field( 'wpwebapp_login_nonce', 'wpwebapp_login_process' ) .
+					wp_nonce_field( 'wpwebapp_login_nonce', 'wpwebapp_login_process', true, false ) .
 
 				'</form>';
 

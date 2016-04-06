@@ -37,7 +37,7 @@
 
 					'<button class="wpwebapp-form-button ' . esc_attr( $options['password_forgot_submit_class'] ) . '">' . $options['password_forgot_submit_text'] . '</button>' .
 
-					wp_nonce_field( 'wpwebapp_password_forgot_nonce', 'wpwebapp_password_forgot_process' ) .
+					wp_nonce_field( 'wpwebapp_password_forgot_nonce', 'wpwebapp_password_forgot_process', true, false ) .
 
 				'</form>';
 
@@ -73,7 +73,7 @@
 
 					'<button class="wpwebapp-form-button ' . esc_attr( $options['password_reset_submit_class'] ) . '">' . $options['password_reset_submit_text'] . '</button>' .
 
-					wp_nonce_field( 'wpwebapp_password_reset_nonce', 'wpwebapp_password_reset_process' ) .
+					wp_nonce_field( 'wpwebapp_password_reset_nonce', 'wpwebapp_password_reset_process', true, false ) .
 
 				'</form>';
 
