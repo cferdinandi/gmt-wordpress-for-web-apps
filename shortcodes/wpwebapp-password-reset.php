@@ -8,12 +8,12 @@
 	// Forgot password form
 	function wpwebapp_password_forgot_form() {
 
+		// Prevent this content from caching
+		define('DONOTCACHEPAGE', TRUE);
+
 		if ( is_user_logged_in() ) {
 			$form = '<p>' . __( 'You\'re already logged in.', 'wpwebapp' ) . '</p>';
 		} else {
-
-			// Prevent this content from caching
-			define('DONOTCACHEPAGE', TRUE);
 
 			// Variables
 			$options = wpwebapp_get_theme_options();
@@ -50,12 +50,12 @@
 	// Reset password form
 	function wpwebapp_password_reset_form() {
 
+		// Prevent this content from caching
+		define('DONOTCACHEPAGE', TRUE);
+
 		if ( is_user_logged_in() ) {
 			$form = '<p>' . __( 'You\'re already logged in.', 'wpwebapp' ) . '</p>';
 		} else {
-
-			// Prevent this content from caching
-			define('DONOTCACHEPAGE', TRUE);
 
 			// Variables
 			$options = wpwebapp_get_theme_options();

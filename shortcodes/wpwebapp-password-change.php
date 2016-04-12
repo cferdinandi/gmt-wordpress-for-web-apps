@@ -8,10 +8,10 @@
 	// Password change form shortcode
 	function wpwebapp_password_change_form() {
 
-		if ( is_user_logged_in() ) {
+		// Prevent this content from caching
+		define('DONOTCACHEPAGE', TRUE);
 
-			// Prevent this content from caching
-			define('DONOTCACHEPAGE', TRUE);
+		if ( is_user_logged_in() ) {
 
 			// Variables
 			$options = wpwebapp_get_theme_options();

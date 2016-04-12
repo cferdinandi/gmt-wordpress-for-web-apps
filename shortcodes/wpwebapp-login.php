@@ -8,12 +8,12 @@
 	// Login form shortcode
 	function wpwebapp_login_form() {
 
+		// Prevent this content from caching
+		define('DONOTCACHEPAGE', TRUE);
+
 		if ( is_user_logged_in() ) {
 			$form = '<p>' . __( 'You\'re already logged in.', 'wpwebapp' ) . '</p>';
 		} else {
-
-			// Prevent this content from caching
-			define('DONOTCACHEPAGE', TRUE);
 
 			// Variables
 			global $current_user;
