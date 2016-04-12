@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/cferdinandi/wordpress-for-web-apps/
  * GitHub Plugin URI: https://github.com/cferdinandi/wordpress-for-web-apps/
  * Description: Transform WordPress into a web app engine. Adjust your settings under <a href="options-general.php?page=wpwebapp_plugin_options">Web App Options</a>.
- * Version: 5.4.2
+ * Version: 5.4.3
  * Author: Chris Ferdinandi
  * Author URI: http://gomakethings.com
  * License: MIT
