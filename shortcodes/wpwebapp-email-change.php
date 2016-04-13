@@ -14,8 +14,7 @@
 		if ( is_user_logged_in() ) {
 
 			// Variables
-			global $current_user;
-			get_currentuserinfo();
+			$current_user = wp_get_current_user();
 			$options = wpwebapp_get_theme_options();
 			$error = wpwebapp_get_session( 'wpwebapp_email_change_error', true );
 			$success = wpwebapp_get_session( 'wpwebapp_email_change_success', true );
@@ -54,8 +53,7 @@
 		if ( !isset( $_POST['wpwebapp_email_change_process'] ) || !wp_verify_nonce( $_POST['wpwebapp_email_change_process'], 'wpwebapp_email_change_nonce' ) ) return;
 
 		// Variables
-		global $current_user;
-		get_currentuserinfo();
+		$current_user = wp_get_current_user();
 		$options = wpwebapp_get_theme_options();
 		$referer = esc_url_raw( wpwebapp_get_url() );
 

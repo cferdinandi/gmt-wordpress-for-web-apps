@@ -23,8 +23,7 @@
 
 	// Create username shortcode
 	function wpwebapp_get_username() {
-		global $current_user;
-		get_currentuserinfo();
+		$current_user = wp_get_current_user();
 		return $current_user->user_login;
 	}
 	add_shortcode( 'wpwa_username', 'wpwebapp_get_username' );

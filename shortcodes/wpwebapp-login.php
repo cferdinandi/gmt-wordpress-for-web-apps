@@ -16,8 +16,7 @@
 		} else {
 
 			// Variables
-			global $current_user;
-			get_currentuserinfo();
+			$current_user = wp_get_current_user();
 			$options = wpwebapp_get_theme_options();
 			$error = wpwebapp_get_session( 'wpwebapp_login_error', true );
 			$credentials = wpwebapp_get_session( 'wpwebapp_login_credentials', true );
