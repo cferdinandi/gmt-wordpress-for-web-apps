@@ -45,8 +45,7 @@
 		require_once( ABSPATH . 'wp-admin/includes/user.php' );
 
 		// Variables
-		global $current_user;
-		get_currentuserinfo();
+		$current_user = wp_get_current_user();
 		$options = wpwebapp_get_theme_options();
 		$referer = esc_url_raw( wpwebapp_get_url() );
 		$redirect = esc_url_raw( $options['delete_account_redirect'] );

@@ -52,8 +52,7 @@
 		if ( !isset( $_POST['wpwebapp_password_change_process'] ) || !wp_verify_nonce( $_POST['wpwebapp_password_change_process'], 'wpwebapp_password_change_nonce' ) ) return;
 
 		// Variables
-		global $current_user;
-		get_currentuserinfo();
+		$current_user = wp_get_current_user();
 		$options = wpwebapp_get_theme_options();
 		$referer = esc_url_raw( wpwebapp_get_url() );
 
