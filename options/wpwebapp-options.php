@@ -21,6 +21,24 @@
 	 * Each option field requires its own uniquely named function. Select options and radio buttons also require an additional uniquely named function with an array of option choices.
 	 */
 
+	// Create a select menu with all the current pages
+	function wpwebapp_settings_create_pages_select_fields( $selected ) {
+		$pages = get_pages(
+			array(
+				'sort_order' => 'asc',
+				'sort_column' => 'post_title',
+				'post_type' => 'page',
+				'post_status' => 'publish'
+			)
+		);
+		?>
+			<?php foreach( $pages as $key => $page ) : ?>
+				<option value="<?php echo esc_attr( $page->ID ); ?>" <?php selected( $page->ID, $selected ); ?>><?php echo esc_html( $page->post_title ); ?></option>
+			<?php endforeach; ?>
+		<?php
+	}
+
+
 	// Alert classes
 	function wpwebapp_settings_field_alert_classes() {
 		$options = wpwebapp_get_theme_options();
@@ -212,14 +230,29 @@
 		$options = wpwebapp_get_theme_options();
 		?>
 		<div>
-			<input type="text" name="wpwebapp_theme_options[login_redirect]" class="large-text" id="login_redirect" value="<?php echo esc_attr( $options['login_redirect'] ); ?>" />
-			<label class="description" for="login_redirect"><?php _e( 'URL to redirect users to after they log in', 'wpwebapp' ); ?></label>
+			<label class="description" for="login_redirect"><?php _e( 'URL to redirect users to after they log in:', 'wpwebapp' ); ?></label><br>
+			<select name="wpwebapp_theme_options[login_redirect]" id="login_redirect" >
+				<option value="0" <?php selected( '0', $options['login_redirect'] ); ?>><?php _e( 'Home', 'wpwebapp' ) ?></option>
+				<?php wpwebapp_settings_create_pages_select_fields( $options['login_redirect'] ); ?>
+			</select>
 		</div>
 		<br>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[logout_redirect]" class="large-text" id="logout_redirect" value="<?php echo esc_attr( $options['logout_redirect'] ); ?>" />
-			<label class="description" for="logout_redirect"><?php _e( 'URL to redirect users to after they logout', 'wpwebapp' ); ?></label>
+			<label class="description" for="logout_redirect"><?php _e( 'URL to redirect users to after they logout:', 'wpwebapp' ); ?></label><br>
+			<select name="wpwebapp_theme_options[logout_redirect]" id="logout_redirect" >
+				<option value="0" <?php selected( '0', $options['login_redirect'] ); ?>><?php _e( 'Home', 'wpwebapp' ) ?></option>
+				<?php wpwebapp_settings_create_pages_select_fields( $options['logout_redirect'] ); ?>
+			</select>
+		</div>
+		<br>
+
+		<div>
+			<label class="description" for="password_reset_redirect"><?php _e( 'URL to redirect users to for a forced password reset:', 'wpwebapp' ); ?></label><br>
+			<select name="wpwebapp_theme_options[password_reset_redirect]" id="password_reset_redirect" >
+				<option value="" <?php selected( '', $options['password_reset_redirect'] ); ?>><?php _e( '', 'wpwebapp' ) ?></option>
+				<?php wpwebapp_settings_create_pages_select_fields( $options['password_reset_redirect'] ); ?>
+			</select>
 		</div>
 		<?php
 	}
@@ -321,6 +354,12 @@
 	function wpwebapp_settings_field_password_change_form_errors() {
 		$options = wpwebapp_get_theme_options();
 		?>
+		<div>
+			<input type="text" name="wpwebapp_theme_options[password_change_forced_reset_error]" class="large-text" id="password_change_forced_reset_error" value="<?php echo esc_attr( $options['password_change_forced_reset_error'] ); ?>" />
+			<label class="description" for="password_change_forced_reset_error"><?php _e( 'Error when user is forced to reset their password', 'wpwebapp' ); ?></label>
+		</div>
+		<br>
+
 		<div>
 			<input type="text" name="wpwebapp_theme_options[password_change_current_password_field_empty_error]" class="large-text" id="password_change_current_password_field_empty_error" value="<?php echo esc_attr( $options['password_change_current_password_field_empty_error'] ); ?>" />
 			<label class="description" for="password_change_current_password_field_empty_error"><?php _e( 'Error when current password is not provided on the change password form', 'wpwebapp' ); ?></label>
@@ -502,8 +541,11 @@
 		$options = wpwebapp_get_theme_options();
 		?>
 		<div>
-			<input type="text" name="wpwebapp_theme_options[delete_account_redirect]" class="large-text" id="delete_account_redirect" value="<?php echo esc_attr( $options['delete_account_redirect'] ); ?>" />
-			<label class="description" for="delete_account_redirect"><?php _e( 'URL to redirect users to after their account is deleted', 'wpwebapp' ); ?></label>
+			<label class="description" for="delete_account_redirect"><?php _e( 'URL to redirect users to after their account is deleted:', 'wpwebapp' ); ?></label><br>
+			<select name="wpwebapp_theme_options[delete_account_redirect]" id="delete_account_redirect" >
+				<option value="0" <?php selected( '0', $options['delete_account_redirect'] ); ?>><?php _e( 'Home', 'wpwebapp' ) ?></option>
+				<?php wpwebapp_settings_create_pages_select_fields( $options['delete_account_redirect'] ); ?>
+			</select>
 		</div>
 		<?php
 	}
@@ -539,6 +581,19 @@
 			<label>
 				<input type="checkbox" name="wpwebapp_theme_options[password_requires_special_characters]" id="password_requires_special_characters" <?php checked( 'on', $options['password_requires_special_characters'] ); ?> />
 				<?php _e( 'Require passwords to contain at least 1 special character', 'wpwebapp' ); ?>
+			</label>
+		</div>
+		<?php
+	}
+
+	// Show the admin bar
+	function wpwebapp_settings_field_show_admin_bar() {
+		$options = wpwebapp_get_theme_options();
+		?>
+		<div>
+			<label>
+				<input type="checkbox" name="wpwebapp_theme_options[show_admin_bar]" id="show_admin_bar" <?php checked( 'on', $options['show_admin_bar'] ); ?> />
+				<?php _e( 'Show the admin bar for non-admin (disabled by default)', 'wpwebapp' ); ?>
 			</label>
 		</div>
 		<?php
@@ -589,8 +644,9 @@
 			'login_failed_error' => 'Login failed. Please try again.',
 
 			// Redirect URLs
-			'login_redirect' => get_site_url(),
-			'logout_redirect' => get_site_url(),
+			'login_redirect' => '0',
+			'logout_redirect' => '0',
+			'password_reset_redirect' => '',
 
 			// Change email address
 			'email_change_current_email_label' => 'Email',
@@ -607,6 +663,7 @@
 			'password_change_new_password_label' => 'New Password',
 			'password_change_submit_text' => 'Change My Password',
 			'password_change_submit_class' => '',
+			'password_change_forced_reset_error' => 'You must change your password before you can continue.',
 			'password_change_current_password_field_empty_error' => 'Please enter your current password.',
 			'password_change_new_password_field_empty_error' => 'Please enter a new password.',
 			'password_change_password_error' => 'The current password you provided is not correct.',
@@ -634,13 +691,14 @@
 			'delete_account_submit_text' =>  'Delete My Account',
 			'delete_account_submit_class' => '',
 			'delete_account_password_error' => 'The password you provided is not correct.',
-			'delete_account_redirect' => get_site_url(),
+			'delete_account_redirect' => '0',
 
 			// Security
 			'password_minimum_length' => 8,
 			'password_requires_letters' => 'off',
 			'password_requires_numbers' => 'off',
 			'password_requires_special_characters' => 'off',
+			'show_admin_bar' => 'off',
 
 		);
 
@@ -735,11 +793,14 @@
 			$output['login_failed_error'] = wp_filter_nohtml_kses( $input['login_failed_error'] );
 
 		// Redirects
-		if ( isset( $input['login_redirect'] ) && ! empty( $input['login_redirect'] ) )
+		if ( isset( $input['login_redirect'] ) )
 			$output['login_redirect'] = wp_filter_nohtml_kses( $input['login_redirect'] );
 
-		if ( isset( $input['logout_redirect'] ) && ! empty( $input['logout_redirect'] ) )
+		if ( isset( $input['logout_redirect'] ) )
 			$output['logout_redirect'] = wp_filter_nohtml_kses( $input['logout_redirect'] );
+
+		if ( isset( $input['password_reset_redirect'] ) )
+			$output['password_reset_redirect'] = wp_filter_nohtml_kses( $input['password_reset_redirect'] );
 
 		// Change email address
 		if ( isset( $input['email_change_current_email_label'] ) && ! empty( $input['email_change_current_email_label'] ) )
@@ -778,6 +839,9 @@
 
 		if ( isset( $input['password_change_submit_class'] ) && ! empty( $input['password_change_submit_class'] ) )
 			$output['password_change_submit_class'] = wp_filter_nohtml_kses( $input['password_change_submit_class'] );
+
+		if ( isset( $input['password_change_forced_reset_error'] ) && ! empty( $input['password_change_forced_reset_error'] ) )
+			$output['password_change_forced_reset_error'] = wp_filter_nohtml_kses( $input['password_change_forced_reset_error'] );
 
 		if ( isset( $input['password_change_current_password_field_empty_error'] ) && ! empty( $input['password_change_current_password_field_empty_error'] ) )
 			$output['password_change_current_password_field_empty_error'] = wp_filter_nohtml_kses( $input['password_change_current_password_field_empty_error'] );
@@ -850,7 +914,7 @@
 		if ( isset( $input['delete_account_password_error'] ) && ! empty( $input['delete_account_password_error'] ) )
 			$output['delete_account_password_error'] = wp_filter_nohtml_kses( $input['delete_account_password_error'] );
 
-		if ( isset( $input['delete_account_redirect'] ) && ! empty( $input['delete_account_redirect'] ) )
+		if ( isset( $input['delete_account_redirect'] ) )
 			$output['delete_account_redirect'] = wp_filter_nohtml_kses( $input['delete_account_redirect'] );
 
 		// Security
@@ -865,6 +929,9 @@
 
 		if ( isset( $input['password_requires_special_characters'] ) )
 			$output['password_requires_special_characters'] = 'on';
+
+		if ( isset( $input['show_admin_bar'] ) )
+			$output['show_admin_bar'] = 'on';
 
 
 		return apply_filters( 'wpwebapp_theme_options_validate', $output, $input );
@@ -975,6 +1042,7 @@
 		// Security
 		add_settings_field( 'security_password_length', __( 'Password Length', 'wpwebapp' ), 'wpwebapp_settings_field_password_length_requirements', 'wpwebapp_plugin_options', 'security' );
 		add_settings_field( 'security_password_characters', __( 'Password Characters', 'wpwebapp' ), 'wpwebapp_settings_field_password_character_requirements', 'wpwebapp_plugin_options', 'security' );
+		add_settings_field( 'security_show_admin_bar', __( 'Admin Bar', 'wpwebapp' ), 'wpwebapp_settings_field_show_admin_bar', 'wpwebapp_plugin_options', 'security' );
 
 	}
 	add_action( 'admin_init', 'wpwebapp_theme_options_init' );

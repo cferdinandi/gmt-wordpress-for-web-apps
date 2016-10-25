@@ -103,7 +103,7 @@
 		do_action( 'wpwebapp_after_login', $_POST['wpwebapp_login_username'] );
 
 		// Redirect after login
-		$redirect = isset( $_GET['referrer'] ) && !empty( $_GET['referrer'] ) ? esc_url_raw( $_GET['referrer'] ) : $options['login_redirect'];
+		$redirect = isset( $_GET['referrer'] ) && !empty( $_GET['referrer'] ) ? esc_url_raw( $_GET['referrer'] ) : wpwebapp_get_redirect_url( $options['login_redirect'] );
 		wp_safe_redirect( $redirect, 302 );
 		exit;
 

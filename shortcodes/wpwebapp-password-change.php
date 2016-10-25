@@ -18,7 +18,12 @@
 			$error = wpwebapp_get_session( 'wpwebapp_password_change_error', true );
 			$success = wpwebapp_get_session( 'wpwebapp_password_change_success', true );
 
+			// Check if forced reset is required
+			$current_user = wp_get_current_user();
+			$force_reset = get_user_meta( $current_user->ID, 'wpwebapp_force_password_reset', true );
+
 			$form =
+				( $force_reset === 'on' ? '<div class="' . esc_attr( $options['alert_error_class'] ) . '">' . $options['password_change_forced_reset_error'] . '</div>' : '' ) .
 				( empty( $error ) ? '' : '<div class="' . esc_attr( $options['alert_error_class'] ) . '">' . $error . '</div>' ) .
 				( empty( $success ) ? '' : '<div class="' . esc_attr( $options['alert_success_class'] ) . '">' . $success . '</div>' ) .
 
@@ -53,6 +58,7 @@
 
 		// Variables
 		$current_user = wp_get_current_user();
+		$force_reset = get_user_meta( $current_user->ID, 'wpwebapp_force_password_reset', true );
 		$options = wpwebapp_get_theme_options();
 		$referer = esc_url_raw( wpwebapp_get_url() );
 
@@ -85,9 +91,18 @@
 			exit;
 		}
 
+		// Enforce different password on forced password reset
+		if ( $force_reset === 'on' && $_POST['wpwebapp_password_change_current_password'] === $_POST['wpwebapp_password_change_new_password'] ) {
+			wp_safe_redirect( $referer, 302 );
+			exit;
+		}
+
 		// If no errors exist, change the password
 		wp_update_user( array( 'ID' => $current_user->ID, 'user_pass' => $_POST['wpwebapp_password_change_new_password'] ) );
 		wpwebapp_set_session( 'wpwebapp_password_change_success', $options['password_change_success'] );
+
+		// Remove forced password reset if one was set
+		update_usermeta( $current_user->ID, 'wpwebapp_force_password_reset', 'off' );
 
 		// Run custom WordPress action
 		do_action( 'wpwebapp_after_password_change', $current_user->ID );

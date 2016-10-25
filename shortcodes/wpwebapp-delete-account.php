@@ -48,7 +48,7 @@
 		$current_user = wp_get_current_user();
 		$options = wpwebapp_get_theme_options();
 		$referer = esc_url_raw( wpwebapp_get_url() );
-		$redirect = esc_url_raw( $options['delete_account_redirect'] );
+		$redirect = wpwebapp_get_redirect_url( $options['delete_account_redirect'] );
 
 		// Verify that password matches
 		if ( !isset( $_POST['wpwebapp_delete_account_password'] ) || !wp_check_password( $_POST['wpwebapp_delete_account_password'], $current_user->user_pass, $current_user->ID ) ) {

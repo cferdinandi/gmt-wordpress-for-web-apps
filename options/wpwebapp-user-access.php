@@ -147,7 +147,9 @@
 	add_filter( '_wp_post_revision_field_my_meta', 'wpwebapp_user_access_metabox_set_revisions_field', 10, 2 );
 
 
-	// Redirect users that don't have access to the page
+	/**
+	 * Redirect users that don't have access to the page
+	 */
 	function wpwebapp_control_access() {
 
 		// Variables
@@ -161,29 +163,38 @@
 
 		// If user is logged out and page is for logged in users only
 		if ( $user_access === 'loggedin' && !is_user_logged_in() ) {
-			wp_safe_redirect( esc_url_raw( $options['logout_redirect'] ), 302 );
+			wp_safe_redirect( wpwebapp_get_redirect_url( $options['logout_redirect'] ), 302 );
 			exit;
 		}
 
 		// If user is logged in and page is for logged out users only
 		if ( $user_access === 'loggedout' && is_user_logged_in() ) {
-			wp_safe_redirect( esc_url_raw( $options['login_redirect'] ), 302 );
+			wp_safe_redirect( wpwebapp_get_redirect_url( $options['login_redirect'] ), 302 );
 			exit;
 		}
 
 	}
 	add_action( 'wp', 'wpwebapp_control_access' );
 
-	// Redirect users away from wp-login.php after logout
+
+	/**
+	 * Redirect users away from wp-login.php after logout
+	 */
 	function wpwebapp_logout_redirect() {
 		$options = wpwebapp_get_theme_options();
-		wp_redirect( esc_url_raw( $options['logout_redirect'] ) );
+		wp_redirect( wpwebapp_get_redirect_url( $options['logout_redirect'] ) );
 		exit();
 	}
 	add_action( 'wp_logout', 'wpwebapp_logout_redirect' );
 
-	// Disable the admin bar for all users
+
+	/**
+	 * Disable the admin bar for all users
+	 */
 	function wpwebapp_disable_admin_bar() {
+		if ( current_user_can( 'edit_themes' ) ) return;
+		$options = wpwebapp_get_theme_options();
+		if ( $options['show_admin_bar'] === 'on' ) return;
 		show_admin_bar( false );
 	}
 	add_filter( 'init' , 'wpwebapp_disable_admin_bar');

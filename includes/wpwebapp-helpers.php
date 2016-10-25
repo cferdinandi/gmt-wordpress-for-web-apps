@@ -91,7 +91,6 @@
 
 	}
 
-
 	// Remove a $_GET variable from the URL
 	function wpwebapp_clean_url( $variable, $url ) {
 		$new_url = preg_replace('/(?:&|(\?))' . $variable . '=[^&]*(?(1)&|)?/i', '$1', $url);
@@ -100,6 +99,12 @@
 			$new_url = substr($new_url, 0, -1);
 		}
 		return $new_url;
+	}
+
+	// Get the proper redirect URL
+	function wpwebapp_get_redirect_url( $id ) {
+		if ( $id === 0 || $id === '0' ) return get_home_url();
+		return get_permalink( $id );
 	}
 
 

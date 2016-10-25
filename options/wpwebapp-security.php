@@ -1,11 +1,11 @@
 <?php
 
-/**
- * Security
- */
 
-
-	// Test whether or not password meets security requirements
+	/**
+	 * Test whether or not password meets security requirements
+	 * @param  string $password Password to test
+	 * @return boolen           Returns true if it meets te requirements
+	 */
 	function wpwebapp_test_password_requirements( $password ) {
 
 		// Variables
@@ -20,7 +20,11 @@
 
 	}
 
-	// Create password requirements string
+
+	/**
+	 * Create password requirements string
+	 * @return string  The password requirements
+	 */
 	function wpwebapp_password_requirements_message() {
 
 		// Variables
@@ -48,3 +52,89 @@
 		return $message;
 
 	}
+
+
+	/**
+	 * Create custom user profile fields to force password reset
+	 * @param  object $user The user
+	 */
+	function wpwebapp_security_add_user_fields( $user ) {
+
+		// Don't load for admins
+		if ( user_can( $user, 'edit_themes' ) ) return;
+
+		// Get user's forced password reset status
+		$force_reset = get_the_author_meta( 'wpwebapp_force_password_reset', $user->ID );
+
+		?>
+
+		<h3><?php _e( 'Security', 'wpwebapp' ); ?></h3>
+
+		<table class="form-table">
+
+			<tr>
+				<th>Force Password Reset</th>
+
+				<td>
+					<label>
+						<input type="checkbox" name="wpwebapp_force_password_reset" id="wpwebapp_force_password_reset" value="on" <?php checked( $force_reset, 'on' ); ?> <?php checked( $force_reset, '' ); ?>>
+						<?php _e( 'Force user to reset their password at next login', 'photoboard_user_groups' ); ?>
+					</label>
+				</td>
+			</tr>
+
+		</table>
+
+		<?php
+	}
+	add_action( 'show_user_profile', 'wpwebapp_security_add_user_fields' );
+	add_action( 'edit_user_profile', 'wpwebapp_security_add_user_fields' );
+
+
+
+	/**
+	 * Save custom user field
+	 * @param  integer $user_id The user ID
+	 */
+	function wpwebapp_security_save_user_fields( $user_id ) {
+
+		// Security check
+		if ( !current_user_can( 'edit_user', $user_id ) ) return false;
+
+		// Update force reset status
+		if ( isset( $_POST['wpwebapp_force_password_reset'] ) )  {
+			update_usermeta( $user_id, 'wpwebapp_force_password_reset', 'on' );
+		} else {
+			update_usermeta( $user_id, 'wpwebapp_force_password_reset', 'off' );
+		}
+
+	}
+	add_action( 'personal_options_update', 'wpwebapp_security_save_user_fields' );
+	add_action( 'edit_user_profile_update', 'wpwebapp_security_save_user_fields' );
+
+
+	/**
+	 * Force password reset when user logs in
+	 */
+	function wpwebapp_force_password_reset_on_login() {
+
+		// Don't run for logged-out users or admin
+		if ( !is_user_logged_in() || current_user_can( 'edit_themes' ) ) return;
+
+		// Get user forced password reset status
+		$current_user = wp_get_current_user();
+		$force_reset = get_user_meta( $current_user->ID, 'wpwebapp_force_password_reset', true );
+
+		// Don't run if password reset isn't required
+		if ( $force_reset !== 'on' ) return;
+
+		// Check that current page isn't the change password page
+		$options = wpwebapp_get_theme_options();
+		if ( empty( $options['password_reset_redirect'] ) || is_page( $options['password_reset_redirect'] ) ) return;
+
+		// Redirect to change password
+		wp_safe_redirect( get_permalink( $options['password_reset_redirect'] ), 302 );
+		exit;
+
+	}
+	add_action( 'wp', 'wpwebapp_force_password_reset_on_login' );

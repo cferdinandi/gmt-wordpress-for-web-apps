@@ -10,8 +10,8 @@ A plugin that provides the essential components you need to power your web app w
 	- Password change
 	- Delete account
 - User access settings, so you can selectively hide content from logged-out or logged-in users.
-- Security settings let you set password requirements and hide the admin bar.
-* The web app settings panel lets you easily configure error messages, button text, and more.
+- Security settings let you set password requirements, hide the admin bar, and force password resets.
+- The web app settings panel lets you easily configure error messages, button text, and more.
 
 [Download WordPress for Web Apps](https://github.com/cferdinandi/wordpress-for-web-apps/archive/master.zip)
 

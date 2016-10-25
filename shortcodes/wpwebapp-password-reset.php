@@ -224,7 +224,7 @@
 		wp_signon( $credentials);
 
 		// Redirect and exit
-		wp_safe_redirect( $options['login_redirect'], 302 );
+		wp_safe_redirect( wpwebapp_get_redirect_url( $options['login_redirect'] ), 302 );
 		exit;
 
 	}

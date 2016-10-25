@@ -8,7 +8,7 @@
 	// Create logout link shortcode
 	function wpwebapp_get_logout_url() {
 		$options = wpwebapp_get_theme_options();
-		$redirect = esc_url( $options['logout_redirect'] );
+		$redirect = wpwebapp_get_redirect_url( $options['logout_redirect'] );
 		return wp_logout_url( $redirect );
 	}
 	add_shortcode( 'wpwa_logout', 'wpwebapp_get_logout_url' );
