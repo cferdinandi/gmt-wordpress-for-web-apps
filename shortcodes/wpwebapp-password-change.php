@@ -102,13 +102,14 @@
 		wpwebapp_set_session( 'wpwebapp_password_change_success', $options['password_change_success'] );
 
 		// Remove forced password reset if one was set
-		update_usermeta( $current_user->ID, 'wpwebapp_force_password_reset', 'off' );
+		update_user_meta( $current_user->ID, 'wpwebapp_force_password_reset', 'off' );
 
 		// Run custom WordPress action
 		do_action( 'wpwebapp_after_password_change', $current_user->ID );
 
 		// Redirect
-		wp_safe_redirect( $referer, 302 );
+		$redirect = $force_reset === 'on' && isset( $_GET['referrer'] ) && !empty( $_GET['referrer'] ) ? esc_url_raw( $_GET['referrer'] ) : $referer;
+		wp_safe_redirect( $redirect, 302 );
 		exit;
 
 	}

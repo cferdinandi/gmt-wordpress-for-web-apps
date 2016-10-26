@@ -249,11 +249,20 @@
 
 		<div>
 			<label class="description" for="password_reset_redirect"><?php _e( 'URL to redirect users to for a forced password reset:', 'wpwebapp' ); ?></label><br>
-			<select name="wpwebapp_theme_options[password_reset_redirect]" id="password_reset_redirect" >
+			<select name="wpwebapp_theme_options[password_reset_redirect]" id="password_reset_redirect">
 				<option value="" <?php selected( '', $options['password_reset_redirect'] ); ?>><?php _e( '', 'wpwebapp' ) ?></option>
 				<?php wpwebapp_settings_create_pages_select_fields( $options['password_reset_redirect'] ); ?>
 			</select>
 		</div>
+		<br>
+
+		<div>
+			<label class="description">
+				<input type="checkbox" name="wpwebapp_theme_options[add_redirect_referrer]" id="add_redirect_referrer" value="on" <?php checked( $options['add_redirect_referrer'], 'on' ); ?>>
+				<?php _e( 'Add a URL referrer to "Logged Out" and "Forced Password Reset" redirects', 'wpwebapp' ); ?>
+			</label>
+		</div>
+
 		<?php
 	}
 
@@ -647,6 +656,7 @@
 			'login_redirect' => '0',
 			'logout_redirect' => '0',
 			'password_reset_redirect' => '',
+			'add_redirect_referrer' => 'off',
 
 			// Change email address
 			'email_change_current_email_label' => 'Email',
@@ -801,6 +811,9 @@
 
 		if ( isset( $input['password_reset_redirect'] ) )
 			$output['password_reset_redirect'] = wp_filter_nohtml_kses( $input['password_reset_redirect'] );
+
+		if ( isset( $input['add_redirect_referrer'] ) )
+			$output['add_redirect_referrer'] = 'on';
 
 		// Change email address
 		if ( isset( $input['email_change_current_email_label'] ) && ! empty( $input['email_change_current_email_label'] ) )

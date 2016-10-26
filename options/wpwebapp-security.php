@@ -103,9 +103,9 @@
 
 		// Update force reset status
 		if ( isset( $_POST['wpwebapp_force_password_reset'] ) )  {
-			update_usermeta( $user_id, 'wpwebapp_force_password_reset', 'on' );
+			update_user_meta( $user_id, 'wpwebapp_force_password_reset', 'on' );
 		} else {
-			update_usermeta( $user_id, 'wpwebapp_force_password_reset', 'off' );
+			update_user_meta( $user_id, 'wpwebapp_force_password_reset', 'off' );
 		}
 
 	}
@@ -133,7 +133,7 @@
 		if ( empty( $options['password_reset_redirect'] ) || is_page( $options['password_reset_redirect'] ) ) return;
 
 		// Redirect to change password
-		wp_safe_redirect( get_permalink( $options['password_reset_redirect'] ), 302 );
+		wp_safe_redirect( wpwebapp_get_redirect_url( $options['password_reset_redirect'], $options['add_redirect_referrer'] ), 302 );
 		exit;
 
 	}

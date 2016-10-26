@@ -102,9 +102,12 @@
 	}
 
 	// Get the proper redirect URL
-	function wpwebapp_get_redirect_url( $id ) {
-		if ( $id === 0 || $id === '0' ) return get_home_url();
-		return get_permalink( $id );
+	function wpwebapp_get_redirect_url( $id, $refer = 'off' ) {
+		$url = $id === 0 || $id === '0' ? get_home_url() : get_permalink( $id );
+		if ( $refer === 'on' ) {
+			$url = wpwebapp_prepare_url( $url ) . 'referrer=' . wpwebapp_get_url();
+		}
+		return esc_url_raw( $url );
 	}
 
 

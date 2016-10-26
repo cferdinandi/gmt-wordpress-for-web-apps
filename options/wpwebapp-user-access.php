@@ -163,7 +163,7 @@
 
 		// If user is logged out and page is for logged in users only
 		if ( $user_access === 'loggedin' && !is_user_logged_in() ) {
-			wp_safe_redirect( wpwebapp_get_redirect_url( $options['logout_redirect'] ), 302 );
+			wp_safe_redirect( wpwebapp_get_redirect_url( $options['logout_redirect'], $options['add_redirect_referrer'] ), 302 );
 			exit;
 		}
 
