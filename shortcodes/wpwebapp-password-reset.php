@@ -173,6 +173,7 @@
 	}
 	add_action( 'init', 'wpwebapp_process_password_forgot' );
 
+
 	// Process password reset
 	function wpwebapp_process_password_reset() {
 
@@ -210,6 +211,9 @@
 		// Reset the user's password
 		wp_update_user( array( 'ID' => $user_id, 'user_pass' => $_POST['wpwebapp_password_reset_password'] ) );
 		delete_transient( 'wpwebapp_forgot_pw_key_' . $_POST['wpwebapp_password_reset_key'] );
+
+		// Remove forced password reset if one was set
+		update_user_meta( $current_user->ID, 'wpwebapp_force_password_reset', 'off' );
 
 		// Run custom WordPress action
 		do_action( 'wpwebapp_after_password_reset', $user_id );
