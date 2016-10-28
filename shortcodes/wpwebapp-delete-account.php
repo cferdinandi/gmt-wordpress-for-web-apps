@@ -18,7 +18,7 @@
 			$error = wpwebapp_get_session( 'wpwebapp_delete_account_error', true );
 
 			$form =
-				( empty( $error ) ? '' : '<div class="' . esc_attr( $options['alert_error_class'] ) . '">' . $error . '</div>' ) .
+				( empty( $error ) ? '' : '<div class="' . esc_attr( $options['alert_error_class'] ) . '">' . stripslashes( $error ) . '</div>' ) .
 				'<form class="wpwebapp-form" id="wpwebapp_delete_account" name="wpwebapp_delete_account" action="" method="post">' .
 					'<label class="wpwebapp-form-label" for="wpwebapp_delete_account_password">' . stripslashes( $options['delete_account_password_label'] ) . '</label>' .
 					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password" id="wpwebapp_delete_account_password" name="wpwebapp_delete_account_password"  value="" required>' .

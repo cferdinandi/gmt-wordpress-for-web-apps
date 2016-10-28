@@ -23,9 +23,9 @@
 			$force_reset = get_user_meta( $current_user->ID, 'wpwebapp_force_password_reset', true );
 
 			$form =
-				( $force_reset === 'on' ? '<div class="' . esc_attr( $options['alert_error_class'] ) . '">' . $options['password_change_forced_reset_error'] . '</div>' : '' ) .
-				( empty( $error ) ? '' : '<div class="' . esc_attr( $options['alert_error_class'] ) . '">' . $error . '</div>' ) .
-				( empty( $success ) ? '' : '<div class="' . esc_attr( $options['alert_success_class'] ) . '">' . $success . '</div>' ) .
+				( $force_reset === 'on' ? '<div class="' . esc_attr( $options['alert_error_class'] ) . '">' . stripslashes( $options['password_change_forced_reset_error'] ) . '</div>' : '' ) .
+				( empty( $error ) ? '' : '<div class="' . esc_attr( $options['alert_error_class'] ) . '">' . stripslashes( $error ) . '</div>' ) .
+				( empty( $success ) ? '' : '<div class="' . esc_attr( $options['alert_success_class'] ) . '">' . stripslashes( $success ) . '</div>' ) .
 
 				'<form class="wpwebapp-form" id="wpwebapp_password_change" name="wpwebapp_password_change" action="" method="post">' .
 

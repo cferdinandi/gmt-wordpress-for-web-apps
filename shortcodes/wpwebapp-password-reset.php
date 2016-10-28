@@ -27,8 +27,8 @@
 			}
 
 			$form =
-				( empty( $error ) ? '' : '<div class="' . esc_attr( $options['alert_error_class'] ) . '">' . $error . '</div>' ) .
-				( empty( $success ) ? '' : '<div class="' . esc_attr( $options['alert_success_class'] ) . '">' . $success . '</div>' ) .
+				( empty( $error ) ? '' : '<div class="' . esc_attr( $options['alert_error_class'] ) . '">' . stripslashes( $error ) . '</div>' ) .
+				( empty( $success ) ? '' : '<div class="' . esc_attr( $options['alert_success_class'] ) . '">' . stripslashes( $success ) . '</div>' ) .
 
 				'<form class="wpwebapp-form" id="wpwebapp_password_forgot" name="wpwebapp_password_forgot" action="" method="post">' .
 
@@ -62,7 +62,7 @@
 			$error = wpwebapp_get_session( 'wpwebapp_password_reset_error', true );
 
 			$form =
-				( empty( $error ) ? '' : '<div class="' . esc_attr( $options['alert_error_class'] ) . '">' . $error . '</div>' ) .
+				( empty( $error ) ? '' : '<div class="' . esc_attr( $options['alert_error_class'] ) . '">' . stripslashes( $error ) . '</div>' ) .
 
 				'<form class="wpwebapp-form" id="wpwebapp_password_reset" name="wpwebapp_password_reset" action="" method="post">' .
 
