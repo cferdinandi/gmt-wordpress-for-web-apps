@@ -20,8 +20,8 @@
 			$success = wpwebapp_get_session( 'wpwebapp_email_change_success', true );
 
 			$form =
-				( empty( $error ) ? '' : '<div class="' . esc_attr( $options['alert_error_class'] ) . '">' . $error . '</div>' ) .
-				( empty( $success ) ? '' : '<div class="' . esc_attr( $options['alert_success_class'] ) . '">' . $success . '</div>' ) .
+				( empty( $error ) ? '' : '<div class="' . esc_attr( $options['alert_error_class'] ) . '">' . stripslashes( $error ) . '</div>' ) .
+				( empty( $success ) ? '' : '<div class="' . esc_attr( $options['alert_success_class'] ) . '">' . stripslashes( $success ) . '</div>' ) .
 
 				'<form class="wpwebapp-form" id="wpwebapp_email_change" name="wpwebapp_email_change" action="" method="post">' .
 

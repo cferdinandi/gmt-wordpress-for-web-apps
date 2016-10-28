@@ -27,7 +27,7 @@
 			}
 
 			$form =
-				( empty( $error ) ? '' : '<div class="' . esc_attr( $options['alert_error_class'] ) . '">' . $error . '</div>' ) .
+				( empty( $error ) ? '' : '<div class="' . esc_attr( $options['alert_error_class'] ) . '">' . stripslashes( $error ) . '</div>' ) .
 
 				'<form class="wpwebapp-form" id="wpwebapp_signup" name="wpwebapp_signup" action="" method="post">' .
 

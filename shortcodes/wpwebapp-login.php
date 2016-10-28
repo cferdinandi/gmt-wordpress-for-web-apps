@@ -22,7 +22,7 @@
 			$credentials = wpwebapp_get_session( 'wpwebapp_login_credentials', true );
 
 			$form =
-				( empty( $error ) ? '' : '<div class="' . esc_attr( $options['alert_error_class'] ) . '">' . $error . '</div>' ) .
+				( empty( $error ) ? '' : '<div class="' . esc_attr( $options['alert_error_class'] ) . '">' . stripslashes( $error ) . '</div>' ) .
 
 				'<form class="wpwebapp-form" id="wpwebapp_login" name="wpwebapp_login" action="" method="post">' .
 
