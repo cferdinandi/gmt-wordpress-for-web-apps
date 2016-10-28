@@ -85,7 +85,7 @@
 
 		// Check if user should receive emails
 		$options = wpwebapp_get_theme_options();
-		if ( $options['signup_receive_notifications'] === 'off' ) return;
+		if ( $options['signup_send_notifications'] === 'off' ) return;
 
 		// Variables
 		$site_name = get_bloginfo('name');

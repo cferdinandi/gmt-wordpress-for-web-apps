@@ -64,7 +64,10 @@
 		if ( user_can( $user, 'edit_themes' ) ) return;
 
 		// Get user's forced password reset status
-		$force_reset = get_the_author_meta( 'wpwebapp_force_password_reset', $user->ID );
+		$force_reset = empty($user) || !is_object( $user ) ? null : get_the_author_meta( 'wpwebapp_force_password_reset', $user->ID );
+
+		// Get options
+		$options = wpwebapp_get_theme_options();
 
 		?>
 
@@ -73,9 +76,14 @@
 		<table class="form-table">
 
 			<tr>
-				<th>Force Password Reset</th>
+				<th><?php _e( 'Force Password Reset', 'wpwebapp' ); ?></th>
 
 				<td>
+					<?php if ( empty( $options['password_reset_redirect'] ) ) : ?>
+						<div class="error notice">
+							<p>You have not specified a <a href="options-general.php?page=wpwebapp_plugin_options">forced password reset redirect URL</a> yet. The "Force Password Reset" feature will not work unless you do.</p>
+						</div>
+					<?php endif; ?>
 					<label>
 						<input type="checkbox" name="wpwebapp_force_password_reset" id="wpwebapp_force_password_reset" value="on" <?php checked( $force_reset, 'on' ); ?> <?php checked( $force_reset, '' ); ?>>
 						<?php _e( 'Force user to reset their password at next login', 'photoboard_user_groups' ); ?>
@@ -89,6 +97,7 @@
 	}
 	add_action( 'show_user_profile', 'wpwebapp_security_add_user_fields' );
 	add_action( 'edit_user_profile', 'wpwebapp_security_add_user_fields' );
+	add_action( 'user_new_form', 'wpwebapp_security_add_user_fields' );
 
 
 
@@ -111,6 +120,7 @@
 	}
 	add_action( 'personal_options_update', 'wpwebapp_security_save_user_fields' );
 	add_action( 'edit_user_profile_update', 'wpwebapp_security_save_user_fields' );
+	add_action( 'user_register', 'wpwebapp_security_save_user_fields' );
 
 
 	/**
