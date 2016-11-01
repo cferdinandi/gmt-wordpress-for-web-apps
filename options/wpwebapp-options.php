@@ -687,7 +687,7 @@
 		<div>
 			<label>
 				<input type="checkbox" name="wpwebapp_theme_options[password_requires_letters]" id="password_requires_letters" <?php checked( 'on', $options['password_requires_letters'] ); ?> />
-				<?php _e( 'Require passwords to contain at least 1 letter', 'wpwebapp' ); ?>
+				<?php _e( 'Require passwords to contain at least 1 letter (if mixed-case is required, this will also be required)', 'wpwebapp' ); ?>
 			</label>
 		</div>
 		<div>
@@ -700,6 +700,12 @@
 			<label>
 				<input type="checkbox" name="wpwebapp_theme_options[password_requires_special_characters]" id="password_requires_special_characters" <?php checked( 'on', $options['password_requires_special_characters'] ); ?> />
 				<?php _e( 'Require passwords to contain at least 1 special character', 'wpwebapp' ); ?>
+			</label>
+		</div>
+		<div>
+			<label>
+				<input type="checkbox" name="wpwebapp_theme_options[password_requires_mixed_case]" id="password_requires_mixed_case" <?php checked( 'on', $options['password_requires_mixed_case'] ); ?> />
+				<?php _e( 'Require passwords to contain mixed-case (both uppercase and lowercase letters)', 'wpwebapp' ); ?>
 			</label>
 		</div>
 		<?php
@@ -828,6 +834,7 @@
 			'password_requires_letters' => 'off',
 			'password_requires_numbers' => 'off',
 			'password_requires_special_characters' => 'off',
+			'password_requires_mixed_case' => 'off',
 			'show_admin_bar' => 'off',
 
 		);
@@ -1095,6 +1102,11 @@
 
 		if ( isset( $input['password_requires_special_characters'] ) )
 			$output['password_requires_special_characters'] = 'on';
+
+		if ( isset( $input['password_requires_mixed_case'] ) ) {
+			$output['password_requires_letters'] = 'on';
+			$output['password_requires_mixed_case'] = 'on';
+		}
 
 		if ( isset( $input['show_admin_bar'] ) )
 			$output['show_admin_bar'] = 'on';

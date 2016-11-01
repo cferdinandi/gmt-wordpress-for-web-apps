@@ -143,3 +143,10 @@
 	function wpwebapp_has_special_chars( $string ) {
 		return preg_match('/[^a-zA-Z\d]/', $string);
 	}
+
+	// Does string contain mixed case?
+	function wpwebapp_has_mixed_case( $string ) {
+		if ( empty( preg_match('/[a-z]/', $string) ) ) return false;
+		if ( empty( preg_match('/[A-Z]/', $string) ) ) return false;
+		return true;
+	}
