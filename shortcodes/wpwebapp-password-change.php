@@ -175,3 +175,10 @@
 
 	}
 	add_action( 'after_password_reset', 'wpwebapp_send_dashboard_password_change_emails' );
+
+
+	// Disable WordPress notifications for password changes
+	if ( !function_exists( 'wp_password_change_notification' ) ) {
+	    function wp_password_change_notification() {}
+	}
+	add_filter( 'send_password_change_email', '__return_false');
