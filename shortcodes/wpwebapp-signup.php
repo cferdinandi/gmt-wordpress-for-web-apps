@@ -253,7 +253,7 @@
 		$pw_reset = empty( $pw ) ? '' : wpwebapp_set_reset_key( $user_id, $pw, $options['create_user_password_time_valid'] );
 		$headers = 'From: ' . $site_name . ' <donotreply@' . $domain . '>' . "\r\n";
 		$subject = 'Welcome to ' . $site_name;
-		$message  = str_replace( '[pw_reset]', $pw_reset, str_replace( '[username]', esc_attr( $_POST['user_login'] ), stripslashes( $options['create_user_notification'] ) ) );
+		$message  = str_replace( '[expires]', $options['create_user_password_time_valid'], str_replace( '[pw_reset]', $pw_reset, str_replace( '[username]', esc_attr( $_POST['user_login'] ), stripslashes( $options['create_user_notification'] ) ) ) );
 
 		// Send email
 		@wp_mail( get_option('admin_email'), $subject, $message, $headers );
