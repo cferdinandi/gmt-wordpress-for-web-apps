@@ -98,17 +98,14 @@
 	add_shortcode( 'wpwa_forgot_password', 'wpwebapp_display_password_reset_form' );
 
 	// Send password reset email
-	function wpwebapp_send_password_reset_email( $to, $login, $reset_url ) {
+	function wpwebapp_send_password_reset_email( $to, $login, $reset_url, $expires ) {
 
 		// Variables
 		$site_name = get_bloginfo('name');
 		$domain = wpwebapp_get_site_domain();
 		$headers = 'From: ' . $site_name . ' <donotreply@' . $domain . '>' . "\r\n";
 		$subject = $site_name . ': Password Reset';
-		$message =
-			sprintf( __( 'We received a request to reset the password for your %1$s account: %2$s.', 'wpwebapp' ), $site_name, esc_attr( $login ) ) . "\r\n\r\n" .
-			sprintf( __( 'To reset your password, click on the link below (or copy and paste the URL into your browser): %s', 'wpwebapp' ), esc_url( $reset_url ) ) . "\r\n\r\n" .
-			__( 'If this was a mistake, please ignore this email.', 'wpwebapp' )  . "\r\n";
+		$message = str_replace( '[expires]', $expires, str_replace( '[reset]', esc_url( $reset_url ), str_replace( '[username]', esc_attr( $_POST['user_login'] ), stripslashes( $options['password_reset_notification_email'] ) ) ) );
 
 		// Send email
 		wp_mail( sanitize_email( $to ), $subject, $message, $headers );
@@ -153,8 +150,8 @@
 
 		// Send Password Reset Email
 		$user_data = get_userdata( $user->ID );
-		$reset_url =  wpwebapp_set_reset_key( $user->ID, $referer, $options );
-		wpwebapp_send_password_reset_email( $user_data->user_email, $user_data->user_login, $reset_url );
+		$reset_url =  wpwebapp_set_reset_key( $user->ID, $referer, $options['password_reset_time_valid'] );
+		wpwebapp_send_password_reset_email( $user_data->user_email, $user_data->user_login, $reset_url, $options['password_reset_time_valid'] );
 
 		// Run custom WordPress action
 		do_action( 'wpwebapp_after_password_forgot_email_sent', $user->ID );
@@ -230,8 +227,5 @@
 
 	// Disable Admin notification when user resets password
 	if ( !function_exists( 'wp_password_change_notification' ) ) {
-		$options = wpwebapp_get_theme_options();
-		if ( $options['password_reset_notification'] === 'off' ) {
-			function wp_password_change_notification() {}
-		}
+		function wp_password_change_notification() {}
 	}

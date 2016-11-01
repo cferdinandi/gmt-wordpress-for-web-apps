@@ -111,11 +111,11 @@
 	}
 
 	// Set a password reset key
-	function wpwebapp_set_reset_key( $user_id, $url, $options ) {
+	function wpwebapp_set_reset_key( $user_id, $url, $expires ) {
 
 		// Add a secret, temporary key to the database
 		$key = wp_generate_password( 48, false );
-		set_transient( 'wpwebapp_forgot_password_key_' . $key . $user_id, $key, 60 * 60 * $options['password_reset_time_valid'] );
+		set_transient( 'wpwebapp_forgot_password_key_' . $key . $user_id, $key, 60 * 60 * $expires );
 
 		// Return a URL with the reset key
 		return wpwebapp_prepare_url( $url ) . 'reset_pw=' .$key . $user_id;

@@ -250,7 +250,7 @@
 		$site_name = get_bloginfo('name');
 		$domain = wpwebapp_get_site_domain();
 		$pw = empty( $options['password_reset_url'] ) ? null : wpwebapp_get_redirect_url( $options['password_reset_url'] );
-		$pw_reset = empty( $pw ) ? '' : wpwebapp_set_reset_key( $user_id, $pw, $options );
+		$pw_reset = empty( $pw ) ? '' : wpwebapp_set_reset_key( $user_id, $pw, $options['create_user_password_time_valid'] );
 		$headers = 'From: ' . $site_name . ' <donotreply@' . $domain . '>' . "\r\n";
 		$subject = 'Welcome to ' . $site_name;
 		$message  = str_replace( '[pw_reset]', $pw_reset, str_replace( '[username]', esc_attr( $_POST['user_login'] ), stripslashes( $options['create_user_notification'] ) ) );
