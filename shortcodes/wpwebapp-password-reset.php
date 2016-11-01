@@ -206,7 +206,7 @@
 		delete_transient( 'wpwebapp_forgot_pw_key_' . $_POST['wpwebapp_password_reset_key'] );
 
 		// Remove forced password reset if one was set
-		update_user_meta( $current_user->ID, 'wpwebapp_force_password_reset', 'off' );
+		update_user_meta( $user_id, 'wpwebapp_force_password_reset', 'off' );
 
 		// Run custom WordPress action
 		do_action( 'wpwebapp_after_password_reset', $user_id );
