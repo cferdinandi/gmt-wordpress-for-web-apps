@@ -100,14 +100,14 @@
 	add_shortcode( 'wpwa_forgot_password', 'wpwebapp_display_password_reset_form' );
 
 	// Send password reset email
-	function wpwebapp_send_password_reset_email( $to, $login, $reset_url, $expires ) {
+	function wpwebapp_send_password_reset_email( $to, $login, $reset_url, $expires, $email ) {
 
 		// Variables
 		$site_name = get_bloginfo('name');
 		$domain = wpwebapp_get_site_domain();
 		$headers = 'From: ' . $site_name . ' <donotreply@' . $domain . '>' . "\r\n";
 		$subject = $site_name . ': Password Reset';
-		$message = str_replace( '[expires]', $expires, str_replace( '[reset]', esc_url( $reset_url ), str_replace( '[username]', esc_attr( $login ), stripslashes( $options['password_reset_notification_email'] ) ) ) );
+		$message = str_replace( '[expires]', $expires, str_replace( '[reset]', esc_url( $reset_url ), str_replace( '[username]', esc_attr( $login ), stripslashes( $email ) ) ) );
 
 		// Send email
 		@wp_mail( sanitize_email( $to ), $subject, $message, $headers );
@@ -153,7 +153,7 @@
 		// Send Password Reset Email
 		$user_data = get_userdata( $user->ID );
 		$reset_url =  wpwebapp_set_reset_key( $user->ID, $referer, $options['password_reset_time_valid'] );
-		wpwebapp_send_password_reset_email( $user_data->user_email, $user_data->user_login, $reset_url, $options['password_reset_time_valid'] );
+		wpwebapp_send_password_reset_email( $user_data->user_email, $user_data->user_login, $reset_url, $options['password_reset_time_valid'], $options['password_reset_notification_email'] );
 
 		// Run custom WordPress action
 		do_action( 'wpwebapp_after_password_forgot_email_sent', $user->ID );
