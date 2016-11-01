@@ -92,6 +92,19 @@
 		<?php
 	}
 
+	// Change password form show requirements
+	function wpwebapp_settings_field_signup_form_show_requirements() {
+		$options = wpwebapp_get_theme_options();
+		?>
+		<div>
+			<label>
+				<input type="checkbox" name="wpwebapp_theme_options[signup_show_requirements]" id="signup_show_requirements" value="on" <?php checked( $options['signup_show_requirements'], 'on' ); ?>>
+				<?php _e( 'Show password requirements with the sign up form', 'wpwebapp' ); ?>
+			</label>
+		</div>
+		<?php
+	}
+
 	// Sign up form error messages
 	function wpwebapp_settings_field_signup_form_errors() {
 		$options = wpwebapp_get_theme_options();
@@ -413,6 +426,19 @@
 		<?php
 	}
 
+	// Change password form show requirements
+	function wpwebapp_settings_field_password_change_form_show_requirements() {
+		$options = wpwebapp_get_theme_options();
+		?>
+		<div>
+			<label>
+				<input type="checkbox" name="wpwebapp_theme_options[password_change_show_requirements]" id="password_change_show_requirements" value="on" <?php checked( $options['password_change_show_requirements'], 'on' ); ?>>
+				<?php _e( 'Show password requirements with the change password form', 'wpwebapp' ); ?>
+			</label>
+		</div>
+		<?php
+	}
+
 	// Change password form error messages
 	function wpwebapp_settings_field_password_change_form_errors() {
 		$options = wpwebapp_get_theme_options();
@@ -542,6 +568,19 @@
 		<div>
 			<input type="text" name="wpwebapp_theme_options[password_reset_submit_class]" id="password_reset_submit_class" value="<?php echo esc_attr( $options['password_reset_submit_class'] ); ?>" />
 			<label class="description" for="password_reset_submit_class"><?php _e( 'Reset password form "Submit" button classes [optional]', 'wpwebapp' ); ?></label>
+		</div>
+		<?php
+	}
+
+	// Change password form show requirements
+	function wpwebapp_settings_field_password_reset_form_show_requirements() {
+		$options = wpwebapp_get_theme_options();
+		?>
+		<div>
+			<label>
+				<input type="checkbox" name="wpwebapp_theme_options[password_reset_show_requirements]" id="password_reset_show_requirements" value="on" <?php checked( $options['password_reset_show_requirements'], 'on' ); ?>>
+				<?php _e( 'Show password requirements with the password reset form', 'wpwebapp' ); ?>
+			</label>
 		</div>
 		<?php
 	}
@@ -747,6 +786,7 @@
 			'signup_password_label' => 'Password',
 			'signup_submit_text' => 'Sign Up',
 			'signup_submit_class' => '',
+			'signup_show_requirements' => 'off',
 			'signup_username_field_empty_error' => 'Please enter a username.',
 			'signup_email_field_empty_error' => 'Please enter an email address.',
 			'signup_password_field_empty_error' => 'Please enter a password.',
@@ -794,6 +834,7 @@
 			'password_change_new_password_label' => 'New Password',
 			'password_change_submit_text' => 'Change My Password',
 			'password_change_submit_class' => '',
+			'password_change_show_requirements' => 'off',
 			'password_change_forced_reset_error' => 'You must change your password before you can continue.',
 			'password_change_current_password_field_empty_error' => 'Please enter your current password.',
 			'password_change_new_password_field_empty_error' => 'Please enter a new password.',
@@ -812,6 +853,7 @@
 			'password_reset_label' => 'New Password',
 			'password_reset_submit_text' => 'Update My Password',
 			'password_reset_submit_class' => '',
+			'password_reset_show_requirements' => 'off',
 			'password_forgot_password_field_empty_error' => 'Please enter your username or email.',
 			'password_forgot_password_invalid_user_error' => 'The username or email your entered does not exist.',
 			'password_forgot_password_is_admin_error' => 'This user\'s password cannot be reset.',
@@ -873,6 +915,9 @@
 
 		if ( isset( $input['signup_submit_class'] ) && ! empty( $input['signup_submit_class'] ) )
 			$output['signup_submit_class'] = wp_filter_nohtml_kses( $input['signup_submit_class'] );
+
+		if ( isset( $input['signup_show_requirements'] ) )
+			$output['signup_show_requirements'] = 'on';
 
 		if ( isset( $input['signup_username_field_empty_error'] ) && ! empty( $input['signup_username_field_empty_error'] ) )
 			$output['signup_username_field_empty_error'] = wp_filter_nohtml_kses( $input['signup_username_field_empty_error'] );
@@ -998,6 +1043,9 @@
 		if ( isset( $input['password_change_submit_class'] ) && ! empty( $input['password_change_submit_class'] ) )
 			$output['password_change_submit_class'] = wp_filter_nohtml_kses( $input['password_change_submit_class'] );
 
+		if ( isset( $input['password_change_show_requirements'] ) )
+			$output['password_change_show_requirements'] = 'on';
+
 		if ( isset( $input['password_change_forced_reset_error'] ) && ! empty( $input['password_change_forced_reset_error'] ) )
 			$output['password_change_forced_reset_error'] = wp_filter_nohtml_kses( $input['password_change_forced_reset_error'] );
 
@@ -1046,6 +1094,9 @@
 
 		if ( isset( $input['password_reset_submit_class'] ) && ! empty( $input['password_reset_submit_class'] ) )
 			$output['password_reset_submit_class'] = wp_filter_nohtml_kses( $input['password_reset_submit_class'] );
+
+		if ( isset( $input['password_reset_show_requirements'] ) )
+			$output['password_reset_show_requirements'] = 'on';
 
 		if ( isset( $input['password_forgot_password_field_empty_error'] ) && ! empty( $input['password_forgot_password_field_empty_error'] ) )
 			$output['password_forgot_password_field_empty_error'] = wp_filter_nohtml_kses( $input['password_forgot_password_field_empty_error'] );
@@ -1183,6 +1234,7 @@
 		// Sign up form
 		add_settings_field( 'signup_labels', __( 'Sign Up Labels', 'wpwebapp' ), 'wpwebapp_settings_field_signup_form_labels', 'wpwebapp_plugin_options', 'signup' );
 		add_settings_field( 'signup_submit', __( 'Sign Up Submit Button', 'wpwebapp' ), 'wpwebapp_settings_field_signup_form_submit', 'wpwebapp_plugin_options', 'signup' );
+		add_settings_field( 'signup_requirements', __( 'Sign Up Password Requirements', 'wpwebapp' ), 'wpwebapp_settings_field_signup_form_show_requirements', 'wpwebapp_plugin_options', 'signup' );
 		add_settings_field( 'signup_errors', __( 'Sign Up Errors', 'wpwebapp' ), 'wpwebapp_settings_field_signup_form_errors', 'wpwebapp_plugin_options', 'signup' );
 		add_settings_field( 'signup_notifications_to_admin', __( 'Sign Up Admin Notifications', 'wpwebapp' ), 'wpwebapp_settings_field_signup_form_notifications_to_admin', 'wpwebapp_plugin_options', 'signup' );
 		add_settings_field( 'signup_notifications_to_user', __( 'Sign Up User Notifications', 'wpwebapp' ), 'wpwebapp_settings_field_signup_form_notifications_to_user', 'wpwebapp_plugin_options', 'signup' );
@@ -1205,6 +1257,7 @@
 		// Password change form
 		add_settings_field( 'password_change_labels', __( 'Change Password Labels', 'wpwebapp' ), 'wpwebapp_settings_field_password_change_form_labels', 'wpwebapp_plugin_options', 'password_change' );
 		add_settings_field( 'password_change_submit', __( 'Change Password Submit Buttons', 'wpwebapp' ), 'wpwebapp_settings_field_password_change_form_submit', 'wpwebapp_plugin_options', 'password_change' );
+		add_settings_field( 'password_change_show_requirements', __( 'Change Password Requirements', 'wpwebapp' ), 'wpwebapp_settings_field_password_change_form_show_requirements', 'wpwebapp_plugin_options', 'password_change' );
 		add_settings_field( 'password_change_errors', __( 'Change Password Errors', 'wpwebapp' ), 'wpwebapp_settings_field_password_change_form_errors', 'wpwebapp_plugin_options', 'password_change' );
 		add_settings_field( 'password_change_notifications_to_admin', __( 'Password Change Admin Notifications', 'wpwebapp' ), 'wpwebapp_settings_field_password_change_form_notifications_to_admin', 'wpwebapp_plugin_options', 'password_change' );
 		add_settings_field( 'password_change_notifications_to_user', __( 'Password Change User Notifications', 'wpwebapp' ), 'wpwebapp_settings_field_password_change_form_notifications_to_user', 'wpwebapp_plugin_options', 'password_change' );
@@ -1213,6 +1266,7 @@
 		add_settings_field( 'password_reset_url', __( 'Forgot Password URL', 'wpwebapp' ), 'wpwebapp_settings_field_password_reset_url', 'wpwebapp_plugin_options', 'password_forgot' );
 		add_settings_field( 'password_forgot_labels', __( 'Forgot Password Labels', 'wpwebapp' ), 'wpwebapp_settings_field_password_reset_form_labels', 'wpwebapp_plugin_options', 'password_forgot' );
 		add_settings_field( 'password_forgot_submit', __( 'Forgot Password Submit Buttons', 'wpwebapp' ), 'wpwebapp_settings_field_password_reset_form_submit', 'wpwebapp_plugin_options', 'password_forgot' );
+		add_settings_field( 'password_forgot_show_requirements', __( 'Forgot Password Requirements', 'wpwebapp' ), 'wpwebapp_settings_field_password_reset_form_show_requirements', 'wpwebapp_plugin_options', 'password_forgot' );
 		add_settings_field( 'password_forgot_errors', __( 'Forgot Password Errors', 'wpwebapp' ), 'wpwebapp_settings_field_password_reset_form_errors', 'wpwebapp_plugin_options', 'password_forgot' );
 		add_settings_field( 'password_forgot_timelimit', __( 'Forgot Password Time Limit', 'wpwebapp' ), 'wpwebapp_settings_field_password_reset_time_limit', 'wpwebapp_plugin_options', 'password_forgot' );
 		add_settings_field( 'password_reset_notification', __( 'Password Reset Notification', 'wpwebapp' ), 'wpwebapp_settings_field_password_reset_notification_email', 'wpwebapp_plugin_options', 'password_forgot' );

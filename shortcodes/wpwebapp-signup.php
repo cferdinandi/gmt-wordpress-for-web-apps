@@ -19,6 +19,7 @@
 			$options = wpwebapp_get_theme_options();
 			$error = wpwebapp_get_session( 'wpwebapp_signup_error', true );
 			$credentials = wpwebapp_get_session( 'wpwebapp_signup_credentials', true );
+			$pw_requirements = $options['signup_show_requirements'] === 'on' ? '<div class="wpwebapp-form-label-description">' . wpwebapp_password_requirements_message() . '</div>' : null;
 			if ( empty( $credentials ) || !is_object( $credentials ) ) {
 				$credentials = array(
 					'username' => '',
@@ -38,7 +39,8 @@
 					'<input type="email" class="wpwebapp-form-input" id="wpwebapp_signup_email" name="wpwebapp_signup_email"  value="' . esc_attr( $credentials['email'] ) . '" required>' .
 
 					'<label class="wpwebapp-form-label" for="wpwebapp_signup_password">' . stripslashes( $options['signup_password_label'] ) . '</label>' .
-					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password" id="wpwebapp_signup_password" name="wpwebapp_signup_password"  value="" required>' .
+					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password ' . ( empty( $pw_requirements ) ? '' : 'wpwebapp-form-input-has-description' ) . '" id="wpwebapp_signup_password" name="wpwebapp_signup_password"  value="" required>' .
+					$pw_requirements .
 
 					'<label class="wpwebapp-form-label wpwebapp-form-label-tarpit" for="wpwebapp_signup_password_confirm">' . __( 'If you are human, leave this blank', 'beacon' ) . '</label>' .
 					'<input type="text" class="wpwebapp-form-input wpwebapp-form-password wpwebapp-form-input-tarpit" id="wpwebapp_signup_password_confirm" name="wpwebapp_signup_password_confirm"  value="">' .

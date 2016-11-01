@@ -60,6 +60,7 @@
 			// Variables
 			$options = wpwebapp_get_theme_options();
 			$error = wpwebapp_get_session( 'wpwebapp_password_reset_error', true );
+			$pw_requirements = $options['signup_show_requirements'] === 'on' ? '<div class="wpwebapp-form-label-description">' . wpwebapp_password_requirements_message() . '</div>' : null;
 
 			$form =
 				( empty( $error ) ? '' : '<div class="' . esc_attr( $options['alert_error_class'] ) . '">' . stripslashes( $error ) . '</div>' ) .
@@ -67,7 +68,8 @@
 				'<form class="wpwebapp-form" id="wpwebapp_password_reset" name="wpwebapp_password_reset" action="" method="post">' .
 
 					'<label class="wpwebapp-form-label" for="wpwebapp_password_reset_password">' . stripslashes( $options['password_reset_label'] ) . '</label>' .
-					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password" id="wpwebapp_password_reset_password" name="wpwebapp_password_reset_password" value="" required>' .
+					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password ' . ( empty( $pw_requirements ) ? '' : 'wpwebapp-form-input-has-description' ) . '" id="wpwebapp_password_reset_password" name="wpwebapp_password_reset_password" value="" required>' .
+					$pw_requirements .
 
 					'<input type="hidden" id="wpwebapp_password_reset_key" name="wpwebapp_password_reset_key"  value="' . $_GET['reset_pw'] . '">' .
 
