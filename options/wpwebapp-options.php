@@ -97,49 +97,49 @@
 		$options = wpwebapp_get_theme_options();
 		?>
 		<div>
-			<input type="text" name="wpwebapp_theme_options[signup_username_field_empty_error]" class="large-text" id="signup_username_field_empty_error" value="<?php echo esc_attr( $options['signup_username_field_empty_error'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[signup_username_field_empty_error]" class="large-text" id="signup_username_field_empty_error" value="<?php echo stripslashes( esc_attr( $options['signup_username_field_empty_error'] ) ); ?>" />
 			<label class="description" for="signup_username_field_empty_error"><?php _e( 'Error when no username is provided on the sign up form', 'wpwebapp' ); ?></label>
 		</div>
 		<br>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[signup_email_field_empty_error]" class="large-text" id="signup_email_field_empty_error" value="<?php echo esc_attr( $options['signup_email_field_empty_error'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[signup_email_field_empty_error]" class="large-text" id="signup_email_field_empty_error" value="<?php echo stripslashes( esc_attr( $options['signup_email_field_empty_error'] ) ); ?>" />
 			<label class="description" for="signup_email_field_empty_error"><?php _e( 'Error when no email is provided on the sign up form', 'wpwebapp' ); ?></label>
 		</div>
 		<br>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[signup_password_field_empty_error]" class="large-text" id="signup_password_field_empty_error" value="<?php echo esc_attr( $options['signup_password_field_empty_error'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[signup_password_field_empty_error]" class="large-text" id="signup_password_field_empty_error" value="<?php echo stripslashes( esc_attr( $options['signup_password_field_empty_error'] ) ); ?>" />
 			<label class="description" for="signup_password_field_empty_error"><?php _e( 'Error when no password is provided on the sign up form', 'wpwebapp' ); ?></label>
 		</div>
 		<br>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[signup_username_invalid_error]" class="large-text" id="signup_username_invalid_error" value="<?php echo esc_attr( $options['signup_username_invalid_error'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[signup_username_invalid_error]" class="large-text" id="signup_username_invalid_error" value="<?php echo stripslashes( esc_attr( $options['signup_username_invalid_error'] ) ); ?>" />
 			<label class="description" for="signup_username_invalid_error"><?php _e( 'Error when username provided on the sign up form contains invalid characters', 'wpwebapp' ); ?></label>
 		</div>
 		<br>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[signup_username_exists_error]" class="large-text" id="signup_username_exists_error" value="<?php echo esc_attr( $options['signup_username_exists_error'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[signup_username_exists_error]" class="large-text" id="signup_username_exists_error" value="<?php echo stripslashes( esc_attr( $options['signup_username_exists_error'] ) ); ?>" />
 			<label class="description" for="signup_username_exists_error"><?php _e( 'Error when username provided on the sign up form already exists', 'wpwebapp' ); ?></label>
 		</div>
 		<br>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[signup_email_invalid_error]" class="large-text" id="signup_email_invalid_error" value="<?php echo esc_attr( $options['signup_email_invalid_error'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[signup_email_invalid_error]" class="large-text" id="signup_email_invalid_error" value="<?php echo stripslashes( esc_attr( $options['signup_email_invalid_error'] ) ); ?>" />
 			<label class="description" for="signup_email_invalid_error"><?php _e( 'Error when email provided on the sign up form is invalid', 'wpwebapp' ); ?></label>
 		</div>
 		<br>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[signup_email_exists_error]" class="large-text" id="signup_email_exists_error" value="<?php echo esc_attr( $options['signup_email_exists_error'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[signup_email_exists_error]" class="large-text" id="signup_email_exists_error" value="<?php echo stripslashes( esc_attr( $options['signup_email_exists_error'] ) ); ?>" />
 			<label class="description" for="signup_email_exists_error"><?php _e( 'Error when email provided on the sign up form already exists', 'wpwebapp' ); ?></label>
 		</div>
 		<br>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[signup_login_failed_error]" class="large-text" id="signup_login_failed_error" value="<?php echo esc_attr( $options['signup_login_failed_error'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[signup_login_failed_error]" class="large-text" id="signup_login_failed_error" value="<?php echo stripslashes( esc_attr( $options['signup_login_failed_error'] ) ); ?>" />
 			<label class="description" for="signup_login_failed_error"><?php _e( 'Error when signup fails', 'wpwebapp' ); ?></label>
 		</div>
 		<?php
@@ -187,6 +187,17 @@
 		<?php
 	}
 
+	// Forgot password form time limit
+	function wpwebapp_settings_field_create_user_password_time_limit() {
+		$options = wpwebapp_get_theme_options();
+		?>
+		<div>
+			<input type="number" min="1" name="wpwebapp_theme_options[create_user_password_time_valid]" class="small-text" id="create_user_password_time_valid" value="<?php echo esc_attr( $options['create_user_password_time_valid'] ); ?>" />
+			<label class="description" for="create_user_password_time_valid"><?php _e( 'Time (in hours) that a manually created new user "create a password" link is good for', 'wpwebapp' ); ?></label>
+		</div>
+		<?php
+	}
+
 	// Create user notifications to user
 	function wpwebapp_settings_field_create_user_notifications_to_user() {
 		$options = wpwebapp_get_theme_options();
@@ -202,7 +213,7 @@
 		<div>
 			<textarea name="wpwebapp_theme_options[create_user_notification]" class="large-text" id="create_user_notification" cols="50" rows="10"><?php echo stripslashes( esc_textarea( $options['create_user_notification'] ) ); ?></textarea>
 			<label for="create_user_notification">
-				<?php printf( __( 'The email to send to users when an account is created for them in the WordPress Dashboard. Use %s to dynamically add their username, and %s to dynamically add a link to your password reset form (only works if a page for this form has been specified).', 'wpwebapp' ), '<code>[username]</code>', '<code>[pw_reset]</code>'  ); ?>
+				<?php printf( __( 'The email to send to users when an account is created for them in the WordPress Dashboard. Use %s to dynamically add their username, and %s to dynamically add a link to your password reset form (only works if a page for this form has been specified). Use %s to include the number of hours their "create a new password" URL is good for.', 'wpwebapp' ), '<code>[username]</code>', '<code>[pw_reset]</code>', '<code>[expires]</code>'  ); ?>
 			</label>
 		</div>
 		<?php
@@ -250,19 +261,19 @@
 		$options = wpwebapp_get_theme_options();
 		?>
 		<div>
-			<input type="text" name="wpwebapp_theme_options[login_username_field_empty_error]" class="large-text" id="login_username_field_empty_error" value="<?php echo esc_attr( $options['login_username_field_empty_error'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[login_username_field_empty_error]" class="large-text" id="login_username_field_empty_error" value="<?php echo stripslashes( esc_attr( $options['login_username_field_empty_error'] ) ); ?>" />
 			<label class="description" for="login_username_field_empty_error"><?php _e( 'Error when no username is provided on the login form', 'wpwebapp' ); ?></label>
 		</div>
 		<br>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[login_password_field_empty_error]" class="large-text" id="login_password_field_empty_error" value="<?php echo esc_attr( $options['login_password_field_empty_error'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[login_password_field_empty_error]" class="large-text" id="login_password_field_empty_error" value="<?php echo stripslashes( esc_attr( $options['login_password_field_empty_error'] ) ); ?>" />
 			<label class="description" for="login_password_field_empty_error"><?php _e( 'Error when no password is provided on the login form', 'wpwebapp' ); ?></label>
 		</div>
 		<br>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[login_failed_error]" class="large-text" id="login_failed_error" value="<?php echo esc_attr( $options['login_failed_error'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[login_failed_error]" class="large-text" id="login_failed_error" value="<?php echo stripslashes( esc_attr( $options['login_failed_error'] ) ); ?>" />
 			<label class="description" for="login_failed_error"><?php _e( 'Error when login fails', 'wpwebapp' ); ?></label>
 		</div>
 		<?php
@@ -346,25 +357,25 @@
 		$options = wpwebapp_get_theme_options();
 		?>
 		<div>
-			<input type="text" name="wpwebapp_theme_options[email_change_email_field_empty_error]" class="large-text" id="email_change_email_field_empty_error" value="<?php echo esc_attr( $options['email_change_email_field_empty_error'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[email_change_email_field_empty_error]" class="large-text" id="email_change_email_field_empty_error" value="<?php echo stripslashes( esc_attr( $options['email_change_email_field_empty_error'] ) ); ?>" />
 			<label class="description" for="email_change_email_field_empty_error"><?php _e( 'Error when no email address is provided on the change email form', 'wpwebapp' ); ?></label>
 		</div>
 		<br>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[email_change_password_field_empty_error]" class="large-text" id="email_change_password_field_empty_error" value="<?php echo esc_attr( $options['email_change_password_field_empty_error'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[email_change_password_field_empty_error]" class="large-text" id="email_change_password_field_empty_error" value="<?php echo stripslashes( esc_attr( $options['email_change_password_field_empty_error'] ) ); ?>" />
 			<label class="description" for="email_change_password_field_empty_error"><?php _e( 'Error when no password is provided on the change email form', 'wpwebapp' ); ?></label>
 		</div>
 		<br>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[email_change_password_error]" class="large-text" id="email_change_password_error" value="<?php echo esc_attr( $options['email_change_password_error'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[email_change_password_error]" class="large-text" id="email_change_password_error" value="<?php echo stripslashes( esc_attr( $options['email_change_password_error'] ) ); ?>" />
 			<label class="description" for="email_change_password_error"><?php _e( 'Error when the password is incorrect on the change email form', 'wpwebapp' ); ?></label>
 		</div>
 		<br>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[email_change_success]" class="large-text" id="email_change_success" value="<?php echo esc_attr( $options['email_change_success'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[email_change_success]" class="large-text" id="email_change_success" value="<?php echo stripslashes( esc_attr( $options['email_change_success'] ) ); ?>" />
 			<label class="description" for="email_change_success"><?php _e( 'Message when the user\'s email address is successfully changed', 'wpwebapp' ); ?></label>
 		</div>
 		<?php
@@ -407,31 +418,31 @@
 		$options = wpwebapp_get_theme_options();
 		?>
 		<div>
-			<input type="text" name="wpwebapp_theme_options[password_change_forced_reset_error]" class="large-text" id="password_change_forced_reset_error" value="<?php echo esc_attr( $options['password_change_forced_reset_error'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[password_change_forced_reset_error]" class="large-text" id="password_change_forced_reset_error" value="<?php echo stripslashes( esc_attr( $options['password_change_forced_reset_error'] ) ); ?>" />
 			<label class="description" for="password_change_forced_reset_error"><?php _e( 'Error when user is forced to reset their password', 'wpwebapp' ); ?></label>
 		</div>
 		<br>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[password_change_current_password_field_empty_error]" class="large-text" id="password_change_current_password_field_empty_error" value="<?php echo esc_attr( $options['password_change_current_password_field_empty_error'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[password_change_current_password_field_empty_error]" class="large-text" id="password_change_current_password_field_empty_error" value="<?php echo stripslashes( esc_attr( $options['password_change_current_password_field_empty_error'] ) ); ?>" />
 			<label class="description" for="password_change_current_password_field_empty_error"><?php _e( 'Error when current password is not provided on the change password form', 'wpwebapp' ); ?></label>
 		</div>
 		<br>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[password_change_new_password_field_empty_error]" class="large-text" id="password_change_new_password_field_empty_error" value="<?php echo esc_attr( $options['password_change_new_password_field_empty_error'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[password_change_new_password_field_empty_error]" class="large-text" id="password_change_new_password_field_empty_error" value="<?php echo stripslashes( esc_attr( $options['password_change_new_password_field_empty_error'] ) ); ?>" />
 			<label class="description" for="password_change_new_password_field_empty_error"><?php _e( 'Error when new password is not provided on the change password form', 'wpwebapp' ); ?></label>
 		</div>
 		<br>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[password_change_password_error]" class="large-text" id="password_change_password_error" value="<?php echo esc_attr( $options['password_change_password_error'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[password_change_password_error]" class="large-text" id="password_change_password_error" value="<?php echo stripslashes( esc_attr( $options['password_change_password_error'] ) ); ?>" />
 			<label class="description" for="password_change_password_error"><?php _e( 'Error when the current password is incorrect on the change password form', 'wpwebapp' ); ?></label>
 		</div>
 		<br>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[password_change_success]" class="large-text" id="password_change_success" value="<?php echo esc_attr( $options['password_change_success'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[password_change_success]" class="large-text" id="password_change_success" value="<?php echo stripslashes( esc_attr( $options['password_change_success'] ) ); ?>" />
 			<label class="description" for="password_change_success"><?php _e( 'Message when the user\'s password is successfully changed', 'wpwebapp' ); ?></label>
 		</div>
 		<?php
@@ -498,43 +509,43 @@
 		$options = wpwebapp_get_theme_options();
 		?>
 		<div>
-			<input type="text" name="wpwebapp_theme_options[password_forgot_password_field_empty_error]" class="large-text" id="password_forgot_password_field_empty_error" value="<?php echo esc_attr( $options['password_forgot_password_field_empty_error'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[password_forgot_password_field_empty_error]" class="large-text" id="password_forgot_password_field_empty_error" value="<?php echo stripslashes( esc_attr( $options['password_forgot_password_field_empty_error'] ) ); ?>" />
 			<label class="description" for="password_forgot_password_field_empty_error"><?php _e( 'Error when username or email is not provided on the forgot password form', 'wpwebapp' ); ?></label>
 		</div>
 		<br>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[password_forgot_password_invalid_user_error]" class="large-text" id="password_forgot_password_invalid_user_error" value="<?php echo esc_attr( $options['password_forgot_password_invalid_user_error'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[password_forgot_password_invalid_user_error]" class="large-text" id="password_forgot_password_invalid_user_error" value="<?php echo stripslashes( esc_attr( $options['password_forgot_password_invalid_user_error'] ) ); ?>" />
 			<label class="description" for="password_forgot_password_invalid_user_error"><?php _e( 'Error when username or email address provided on the forgot password form do not exist', 'wpwebapp' ); ?></label>
 		</div>
 		<br>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[password_forgot_password_is_admin_error]" class="large-text" id="password_forgot_password_is_admin_error" value="<?php echo esc_attr( $options['password_forgot_password_is_admin_error'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[password_forgot_password_is_admin_error]" class="large-text" id="password_forgot_password_is_admin_error" value="<?php echo stripslashes( esc_attr( $options['password_forgot_password_is_admin_error'] ) ); ?>" />
 			<label class="description" for="password_forgot_password_is_admin_error"><?php _e( 'Error when the username or email attempting to be reset belongs to an admin', 'wpwebapp' ); ?></label>
 		</div>
 		<br>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[password_forgot_password_email_error]" class="large-text" id="password_forgot_password_email_error" value="<?php echo esc_attr( $options['password_forgot_password_email_error'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[password_forgot_password_email_error]" class="large-text" id="password_forgot_password_email_error" value="<?php echo stripslashes( esc_attr( $options['password_forgot_password_email_error'] ) ); ?>" />
 			<label class="description" for="password_forgot_password_email_error"><?php _e( 'Error when the user\'s password reset fails', 'wpwebapp' ); ?></label>
 		</div>
 		<br>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[password_forgot_password_reset_key_expired_error]" class="large-text" id="password_forgot_password_reset_key_expired_error" value="<?php echo esc_attr( $options['password_forgot_password_reset_key_expired_error'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[password_forgot_password_reset_key_expired_error]" class="large-text" id="password_forgot_password_reset_key_expired_error" value="<?php echo stripslashes( esc_attr( $options['password_forgot_password_reset_key_expired_error'] ) ); ?>" />
 			<label class="description" for="password_forgot_password_reset_key_expired_error"><?php _e( 'Error when the password reset link has expired', 'wpwebapp' ); ?></label>
 		</div>
 		<br>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[password_forgot_password_success]" class="large-text" id="password_forgot_password_success" value="<?php echo esc_attr( $options['password_forgot_password_success'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[password_forgot_password_success]" class="large-text" id="password_forgot_password_success" value="<?php echo stripslashes( esc_attr( $options['password_forgot_password_success'] ) ); ?>" />
 			<label class="description" for="password_forgot_password_success"><?php _e( 'Message when the password reset link has been sent', 'wpwebapp' ); ?></label>
 		</div>
 		<br>
 
 		<div>
-			<input type="text" name="wpwebapp_theme_options[password_reset_password_field_empty_error]" class="large-text" id="password_reset_password_field_empty_error" value="<?php echo esc_attr( $options['password_reset_password_field_empty_error'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[password_reset_password_field_empty_error]" class="large-text" id="password_reset_password_field_empty_error" value="<?php echo stripslashes( esc_attr( $options['password_reset_password_field_empty_error'] ) ); ?>" />
 			<label class="description" for="password_reset_password_field_empty_error"><?php _e( 'Error when the new password is left blank on the password reset form', 'wpwebapp' ); ?></label>
 		</div>
 		<?php
@@ -551,14 +562,14 @@
 		<?php
 	}
 
-	// Password changed notification email
+	// Email to send to users when they reset their password
 	function wpwebapp_settings_field_password_reset_notification_email() {
 		$options = wpwebapp_get_theme_options();
 		?>
 		<div>
-			<label>
-				<input type="checkbox" name="wpwebapp_theme_options[password_reset_notification]" id="password_reset_notification" <?php checked( 'on', $options['password_reset_notification'] ); ?> />
-				<?php _e( 'Send user a notification email after password is reset', 'wpwebapp' ); ?>
+			<textarea name="wpwebapp_theme_options[password_reset_notification_email]" class="large-text" id="password_reset_notification_email" cols="50" rows="10"><?php echo stripslashes( esc_textarea( $options['password_reset_notification_email'] ) ); ?></textarea>
+			<label for="password_reset_notification_email">
+				<?php printf( __( 'The email to send to users when they request a password rest. Use %s to dynamically add their username, and %s to dynamically add their custom reset URL (required). Use %s to include the number of hours their reset URL is good for.', 'wpwebapp' ), '<code>[username]</code>', '<code>[reset]</code>', '<code>[expires]</code>'  ); ?>
 			</label>
 		</div>
 		<?php
@@ -596,7 +607,7 @@
 		$options = wpwebapp_get_theme_options();
 		?>
 		<div>
-			<input type="text" name="wpwebapp_theme_options[delete_account_password_error]" class="large-text" id="delete_account_password_error" value="<?php echo esc_attr( $options['delete_account_password_error'] ); ?>" />
+			<input type="text" name="wpwebapp_theme_options[delete_account_password_error]" class="large-text" id="delete_account_password_error" value="<?php echo stripslashes( esc_attr( $options['delete_account_password_error'] ) ); ?>" />
 			<label class="description" for="delete_account_password_error"><?php _e( 'Error when password provided in the delete account form is not correct', 'wpwebapp' ); ?></label>
 		</div>
 		<?php
@@ -700,8 +711,9 @@
 			'signup_notification_to_admin' => 'New user registration for ' . get_bloginfo('name') . '.' . "\r\n\r\n" . 'Username: [username]' . "\r\n" . 'Email: [email]' . "\r\n",
 			'signup_send_notifications' => 'off',
 			'signup_notification_to_user' => 'Welcome to ' . get_bloginfo('name') . '. Your username is [username]. Log in at [login].',
+			'create_user_password_time_valid' => 48,
 			'create_user_send_notifications' => 'off',
-			'create_user_notification' => 'An account for ' . get_bloginfo('name') . ' has been created for you. Your username is [username]. You can create a password for your account at [pw_reset].',
+			'create_user_notification' => 'An account for ' . get_bloginfo('name') . ' has been created for you. Your username is [username]. You can create a password for your account at [pw_reset].'. "\r\n\r\n" . 'This link is good for [expires] hours.',
 
 			// Login
 			'login_username_label' => 'Username or Email',
@@ -756,7 +768,7 @@
 			'password_forgot_password_success' => 'An email has been sent to you with a password reset link.',
 			'password_reset_password_field_empty_error' => 'Please enter a new password.',
 			'password_reset_time_valid' => 24,
-			'password_reset_notification' => 'off',
+			'password_reset_notification_email' => 'We received a request to reset the password for your ' . get_bloginfo('name') . ' account: [username]. To reset your password, click on this link (or copy and paste the URL into your browser): [reset].' . "\r\n\r\n" . 'This link will expire in [expires] hours. If this was a mistake, please ignore this email.',
 
 			// Delete account
 			'delete_account_password_label' => 'Confirm Password',
@@ -847,6 +859,9 @@
 
 		if ( isset( $input['signup_notification_to_user'] ) && ! empty( $input['signup_notification_to_user'] ) )
 			$output['signup_notification_to_user'] = wp_filter_post_kses( $input['signup_notification_to_user'] );
+
+		if ( isset( $input['create_user_password_time_valid'] ) && ! empty( $input['create_user_password_time_valid'] ) && is_numeric( $input['create_user_password_time_valid'] ) && $input['create_user_password_time_valid'] > 0 )
+			$output['create_user_password_time_valid'] = wp_filter_nohtml_kses( $input['create_user_password_time_valid'] );
 
 		if ( isset( $input['create_user_send_notifications'] ) )
 			$output['create_user_send_notifications'] = 'on';
@@ -991,8 +1006,8 @@
 		if ( isset( $input['password_reset_time_valid'] ) && ! empty( $input['password_reset_time_valid'] ) && is_numeric( $input['password_reset_time_valid'] ) && $input['password_reset_time_valid'] > 0 )
 			$output['password_reset_time_valid'] = wp_filter_nohtml_kses( $input['password_reset_time_valid'] );
 
-		if ( isset( $input['password_reset_notification'] ) )
-			$output['password_reset_notification'] = 'on';
+		if ( isset( $input['password_reset_notification_email'] ) && ! empty( $input['password_reset_notification_email'] ) )
+			$output['password_reset_notification_email'] = wp_filter_post_kses( $input['password_reset_notification_email'] );
 
 		// Delete account
 		if ( isset( $input['delete_account_password_label'] ) && ! empty( $input['delete_account_password_label'] ) )
@@ -1101,6 +1116,7 @@
 		add_settings_field( 'signup_errors', __( 'Sign Up Errors', 'wpwebapp' ), 'wpwebapp_settings_field_signup_form_errors', 'wpwebapp_plugin_options', 'signup' );
 		add_settings_field( 'signup_notifications_to_admin', __( 'Sign Up Admin Notifications', 'wpwebapp' ), 'wpwebapp_settings_field_signup_form_notifications_to_admin', 'wpwebapp_plugin_options', 'signup' );
 		add_settings_field( 'signup_notifications_to_user', __( 'Sign Up User Notifications', 'wpwebapp' ), 'wpwebapp_settings_field_signup_form_notifications_to_user', 'wpwebapp_plugin_options', 'signup' );
+		add_settings_field( 'create_user_password_time_valid', __( 'User Password Time Limit', 'wpwebapp' ), 'wpwebapp_settings_field_create_user_password_time_limit', 'wpwebapp_plugin_options', 'signup' );
 		add_settings_field( 'create_user_notifications', __( 'Create User Notifications', 'wpwebapp' ), 'wpwebapp_settings_field_create_user_notifications_to_user', 'wpwebapp_plugin_options', 'signup' );
 
 		// Login form
