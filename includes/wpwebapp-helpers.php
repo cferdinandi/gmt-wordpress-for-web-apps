@@ -118,7 +118,7 @@
 		set_transient( 'wpwebapp_forgot_password_key_' . $key . $user_id, $key, 60 * 60 * $expires );
 
 		// Return a URL with the reset key
-		return wpwebapp_prepare_url( $url ) . 'reset_pw=' .$key . $user_id;
+		return wpwebapp_prepare_url( $url ) . 'reset_pw=' . $key . $user_id;
 	}
 
 
