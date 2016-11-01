@@ -70,10 +70,7 @@
 		$domain = wpwebapp_get_site_domain();
 		$headers = 'From: ' . $site_name . ' <donotreply@' . $domain . '>' . "\r\n";
 		$subject = $site_name . ': New User Registration';
-		$message  =
-			sprintf( __( 'New user registration for %s:', 'wpwebapp' ), get_option('blogname') ) . "\r\n\r\n" .
-			sprintf( __( 'Username: %s', 'wpwebapp' ), esc_attr( $login ) ) . "\r\n\r\n" .
-			sprintf( __( 'Email: %s', 'wpwebapp' ), sanitize_email( $email ) ) . "\r\n";
+		$message  = str_replace( '[email]', sanitize_email( $email ), str_replace( '[username]', esc_attr( $login ), stripslashes( $options['signup_notification_to_admin'] ) ) );
 
 		// Send email
 		@wp_mail( get_option('admin_email'), $subject, $message, $headers );
@@ -92,13 +89,10 @@
 		$domain = wpwebapp_get_site_domain();
 		$headers = 'From: ' . $site_name . ' <donotreply@' . $domain . '>' . "\r\n";
 		$subject = 'Welcome to ' . $site_name;
-		$message  =
-			sprintf( __( 'Welcome to %s. ', 'wpwebapp' ), $site_name ) .
-			sprintf( __( 'Your username is %s. ', 'wpwebapp' ), esc_attr( $login ) ) .
-			sprintf( __( 'Login at %s.', 'wpwebapp' ), site_url() ) . "\r\n";
+		$message  = str_replace( '[username]', esc_attr( $login ), stripslashes( $options['signup_notification_to_user'] ) );
 
 		// Send email
-		@wp_mail( sanitize_email( $email ), $subject, $message, $headers );
+		$email = @wp_mail( sanitize_email( $email ), $subject, $message, $headers );
 
 	}
 
@@ -223,12 +217,7 @@
 	}
 	add_action( 'init', 'wpwebapp_create_new_user' );
 
-	// Disable default new user admin notifications
-	if ( !function_exists( 'wp_new_user_notification' ) ) {
-		function wp_new_user_notification() {}
-	}
-
-	// Add honeypost classes to the header
+	// Add honeypot classes to the header
 	function beacon_load_honeypot_styles() {
 		?>
 			<style>
@@ -241,3 +230,33 @@
 		<?php
 	}
 	add_action('wp_head', 'beacon_load_honeypot_styles', 30);
+
+	// Disable default new user admin notifications
+	if ( !function_exists( 'wp_new_user_notification' ) ) {
+		function wp_new_user_notification() {}
+	}
+
+	// Send notification when user is manually created via the Dashboard
+	function wpwebapp_create_user_notification_email( $user_id ) {
+
+		// Don't run user was created via the front-end
+		if ( isset( $_POST['wpwebapp_signup_process'] ) ) return;
+
+		// Check if users should receive emails
+		$options = wpwebapp_get_theme_options();
+		if ( $options['create_user_send_notifications'] === 'off' ) return;
+
+		// Variables
+		$site_name = get_bloginfo('name');
+		$domain = wpwebapp_get_site_domain();
+		$pw = empty( $options['password_reset_redirect'] ) ? null : wpwebapp_get_redirect_url( $options['password_reset_redirect'] );
+		$pw_reset = empty( $pw ) ? '' : '<a href="' . $pw . '">' . $pw . '</a>';
+		$headers = 'From: ' . $site_name . ' <donotreply@' . $domain . '>' . "\r\n";
+		$subject = 'Welcome to ' . $site_name;
+		$message  = str_replace( '[pw_reset]', $pw_reset, str_replace( '[username]', esc_attr( $_POST['user_login'] ), stripslashes( $options['signup_notification_to_admin'] ) ) );
+
+		// Send email
+		@wp_mail( get_option('admin_email'), $subject, $message, $headers );
+
+	}
+	add_action( 'user_register', 'wpwebapp_create_user_notification_email', 10, 1 );

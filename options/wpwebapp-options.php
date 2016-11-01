@@ -145,21 +145,64 @@
 		<?php
 	}
 
-	// Sign up form notifications
-	function wpwebapp_settings_field_signup_form_notifications() {
+	// Sign up form notifications to site admins
+	function wpwebapp_settings_field_signup_form_notifications_to_admin() {
 		$options = wpwebapp_get_theme_options();
 		?>
 		<div>
 			<label for="signup_receive_notifications">
 				<input type="checkbox" name="wpwebapp_theme_options[signup_receive_notifications]" id="signup_receive_notifications" <?php checked( 'on', $options['signup_receive_notifications'] ); ?> />
-				<?php _e( 'Send admin a notification when a new user signs up', 'wpwebapp' ); ?>
+				<?php _e( 'Send admins a notification when a new user signs up', 'wpwebapp' ); ?>
 			</label>
 		</div>
+		<br>
 
+		<div>
+			<textarea name="wpwebapp_theme_options[signup_notification_to_admin]" class="large-text" id="signup_notification_to_admin" cols="50" rows="10"><?php echo stripslashes( esc_textarea( $options['signup_notification_to_admin'] ) ); ?></textarea>
+			<label for="signup_notification_to_admin">
+				<?php printf( __( 'The email to send to site admins when new users sign up. Use %s to dynamically add their username, and %s to dynamically add their email address.', 'wpwebapp' ), '<code>[username]</code>', '<code>[email]</code>'  ); ?>
+			</label>
+		</div>
+		<?php
+	}
+
+	// Sign up form notifications to users
+	function wpwebapp_settings_field_signup_form_notifications_to_user() {
+		$options = wpwebapp_get_theme_options();
+		?>
 		<div>
 			<label for="signup_send_notifications">
 				<input type="checkbox" name="wpwebapp_theme_options[signup_send_notifications]" id="signup_send_notifications" <?php checked( 'on', $options['signup_send_notifications'] ); ?> />
 				<?php _e( 'Send new users a welcome email when they sign up', 'wpwebapp' ); ?>
+			</label>
+		</div>
+		<br>
+
+		<div>
+			<textarea name="wpwebapp_theme_options[signup_notification_to_admin]" class="large-text" id="signup_notification_to_admin" cols="50" rows="10"><?php echo stripslashes( esc_textarea( $options['signup_notification_to_admin'] ) ); ?></textarea>
+			<label for="signup_notification_to_admin">
+				<?php printf( __( 'The email to send to site admins when new users sign up. Use %s to dynamically add their username, and %s to dynamically add their email address.', 'wpwebapp' ), '<code>[username]</code>', '<code>[email]</code>'  ); ?>
+			</label>
+		</div>
+		<?php
+	}
+
+	// Create user notifications to user
+	function wpwebapp_settings_field_create_user_notifications_to_user() {
+		$options = wpwebapp_get_theme_options();
+		?>
+		<div>
+			<label for="create_user_send_notifications">
+				<input type="checkbox" name="wpwebapp_theme_options[create_user_send_notifications]" id="create_user_send_notifications" <?php checked( 'on', $options['create_user_send_notifications'] ); ?> />
+				<?php _e( 'Send new users a welcome email when accounts are created manually in the WordPress Dashboard', 'wpwebapp' ); ?>
+			</label>
+		</div>
+		<br>
+
+		<div>
+			<textarea name="wpwebapp_theme_options[create_user_notification]" class="large-text" id="create_user_notification" cols="50" rows="10"><?php echo stripslashes( esc_textarea( $options['create_user_notification'] ) ); ?></textarea>
+			<label for="create_user_notification">
+				<?php printf( __( 'The email to send to users when an account is created for them in the WordPress Dashboard. Use %s to dynamically add their username, and %s to dynamically add a link to your password reset form (only works if a page for this form has been specified).', 'wpwebapp' ), '<code>[username]</code>', '<code>[pw_reset]</code>'  ); ?>
 			</label>
 		</div>
 		<?php
@@ -640,7 +683,11 @@
 			'signup_email_exists_error' => 'Your chosen email is already in use. Sorry.',
 			'signup_login_failed_error' => 'Your account was created by the system failed to log you in. Please try logging in now.',
 			'signup_receive_notifications' => 'off',
+			'signup_notification_to_admin' => 'New user registration for ' . get_bloginfo('name') . '.' . "\r\n\r\n" . 'Username: [username]' . "\r\n" . 'Email: [email]' . "\r\n",
 			'signup_send_notifications' => 'off',
+			'signup_notification_to_user' => 'Welcome to ' . get_bloginfo('name') . '. Your username is [username]. Log in at ' . site_url() . '.',
+			'create_user_send_notifications' => 'off',
+			'create_user_notification' => 'An account for ' . get_bloginfo('name') . ' has been created for you. Your username is [username]. You can create a password for your account at [pw_reset].',
 
 			// Login
 			'login_username_label' => 'Username or Email',
@@ -771,11 +818,26 @@
 		if ( isset( $input['signup_login_failed_error'] ) && ! empty( $input['signup_login_failed_error'] ) )
 			$output['signup_login_failed_error'] = wp_filter_nohtml_kses( $input['signup_login_failed_error'] );
 
+		if ( isset( $input['signup_login_failed_error'] ) && ! empty( $input['signup_login_failed_error'] ) )
+			$output['signup_login_failed_error'] = wp_filter_nohtml_kses( $input['signup_login_failed_error'] );
+
 		if ( isset( $input['signup_receive_notifications'] ) )
 			$output['signup_receive_notifications'] = 'on';
 
+		if ( isset( $input['signup_notification_to_admin'] ) && ! empty( $input['signup_notification_to_admin'] ) )
+			$output['signup_notification_to_admin'] = wp_filter_post_kses( $input['signup_notification_to_admin'] );
+
 		if ( isset( $input['signup_send_notifications'] ) )
 			$output['signup_send_notifications'] = 'on';
+
+		if ( isset( $input['signup_notification_to_user'] ) && ! empty( $input['signup_notification_to_user'] ) )
+			$output['signup_notification_to_user'] = wp_filter_post_kses( $input['signup_notification_to_user'] );
+
+		if ( isset( $input['create_user_send_notifications'] ) )
+			$output['create_user_send_notifications'] = 'on';
+
+		if ( isset( $input['create_user_notification'] ) && ! empty( $input['create_user_notification'] ) )
+			$output['create_user_notification'] = wp_filter_post_kses( $input['create_user_notification'] );
 
 		// Login
 		if ( isset( $input['login_username_label'] ) && ! empty( $input['login_username_label'] ) )
@@ -1019,7 +1081,9 @@
 		add_settings_field( 'signup_labels', __( 'Sign Up Labels', 'wpwebapp' ), 'wpwebapp_settings_field_signup_form_labels', 'wpwebapp_plugin_options', 'signup' );
 		add_settings_field( 'signup_submit', __( 'Sign Up Submit Button', 'wpwebapp' ), 'wpwebapp_settings_field_signup_form_submit', 'wpwebapp_plugin_options', 'signup' );
 		add_settings_field( 'signup_errors', __( 'Sign Up Errors', 'wpwebapp' ), 'wpwebapp_settings_field_signup_form_errors', 'wpwebapp_plugin_options', 'signup' );
-		add_settings_field( 'signup_notifications', __( 'Sign Up Notifications', 'wpwebapp' ), 'wpwebapp_settings_field_signup_form_notifications', 'wpwebapp_plugin_options', 'signup' );
+		add_settings_field( 'signup_notifications_to_admin', __( 'Sign Up Admin Notifications', 'wpwebapp' ), 'wpwebapp_settings_field_signup_form_notifications_to_admin', 'wpwebapp_plugin_options', 'signup' );
+		add_settings_field( 'signup_notifications_to_user', __( 'Sign Up User Notifications', 'wpwebapp' ), 'wpwebapp_settings_field_signup_form_notifications_to_user', 'wpwebapp_plugin_options', 'signup' );
+		add_settings_field( 'create_user_notifications', __( 'Create User Notifications', 'wpwebapp' ), 'wpwebapp_settings_field_create_user_notifications_to_user', 'wpwebapp_plugin_options', 'signup' );
 
 		// Login form
 		add_settings_field( 'login_labels', __( 'Login Labels', 'wpwebapp' ), 'wpwebapp_settings_field_login_form_labels', 'wpwebapp_plugin_options', 'login' );
