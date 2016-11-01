@@ -253,7 +253,7 @@
 		$pw_reset = empty( $pw ) ? '' : '<a href="' . $pw . '">' . $pw . '</a>';
 		$headers = 'From: ' . $site_name . ' <donotreply@' . $domain . '>' . "\r\n";
 		$subject = 'Welcome to ' . $site_name;
-		$message  = str_replace( '[pw_reset]', $pw_reset, str_replace( '[username]', esc_attr( $_POST['user_login'] ), stripslashes( $options['signup_notification_to_admin'] ) ) );
+		$message  = str_replace( '[pw_reset]', $pw_reset, str_replace( '[username]', esc_attr( $_POST['user_login'] ), stripslashes( $options['create_user_notification'] ) ) );
 
 		// Send email
 		@wp_mail( get_option('admin_email'), $subject, $message, $headers );
