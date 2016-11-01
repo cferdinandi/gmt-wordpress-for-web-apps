@@ -107,10 +107,10 @@
 		$domain = wpwebapp_get_site_domain();
 		$headers = 'From: ' . $site_name . ' <donotreply@' . $domain . '>' . "\r\n";
 		$subject = $site_name . ': Password Reset';
-		$message = str_replace( '[expires]', $expires, str_replace( '[reset]', esc_url( $reset_url ), str_replace( '[username]', esc_attr( $_POST['user_login'] ), stripslashes( $options['password_reset_notification_email'] ) ) ) );
+		$message = str_replace( '[expires]', $expires, str_replace( '[reset]', esc_url( $reset_url ), str_replace( '[username]', esc_attr( $login ), stripslashes( $options['password_reset_notification_email'] ) ) ) );
 
 		// Send email
-		wp_mail( sanitize_email( $to ), $subject, $message, $headers );
+		@wp_mail( sanitize_email( $to ), $subject, $message, $headers );
 
 	}
 
