@@ -179,9 +179,9 @@
 		<br>
 
 		<div>
-			<textarea name="wpwebapp_theme_options[signup_notification_to_admin]" class="large-text" id="signup_notification_to_admin" cols="50" rows="10"><?php echo stripslashes( esc_textarea( $options['signup_notification_to_admin'] ) ); ?></textarea>
-			<label for="signup_notification_to_admin">
-				<?php printf( __( 'The email to send to site admins when new users sign up. Use %s to dynamically add their username, and %s to dynamically add their email address.', 'wpwebapp' ), '<code>[username]</code>', '<code>[email]</code>'  ); ?>
+			<textarea name="wpwebapp_theme_options[signup_notification_to_user]" class="large-text" id="signup_notification_to_user" cols="50" rows="10"><?php echo stripslashes( esc_textarea( $options['signup_notification_to_user'] ) ); ?></textarea>
+			<label for="signup_notification_to_user">
+				<?php printf( __( 'The email to send to new users after they sign up. Use %s to dynamically add their username.', 'wpwebapp' ), '<code>[username]</code>'  ); ?>
 			</label>
 		</div>
 		<?php
