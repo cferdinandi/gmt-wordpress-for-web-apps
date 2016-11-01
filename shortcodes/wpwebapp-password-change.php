@@ -17,6 +17,7 @@
 			$options = wpwebapp_get_theme_options();
 			$error = wpwebapp_get_session( 'wpwebapp_password_change_error', true );
 			$success = wpwebapp_get_session( 'wpwebapp_password_change_success', true );
+			$pw_requirements = $options['signup_show_requirements'] === 'on' ? '<div class="wpwebapp-form-label-description">' . wpwebapp_password_requirements_message() . '</div>' : null;
 
 			// Check if forced reset is required
 			$current_user = wp_get_current_user();
@@ -33,7 +34,8 @@
 					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password" id="wpwebapp_password_change_current_password" name="wpwebapp_password_change_current_password"  value="" required>' .
 
 					'<label class="wpwebapp-form-label" for="wpwebapp_password_change_new_password">' . stripslashes( $options['password_change_new_password_label'] ) . '</label>' .
-					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password" id="wpwebapp_password_change_new_password" name="wpwebapp_password_change_new_password"  value="" required>' .
+					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password ' . ( empty( $pw_requirements ) ? '' : 'wpwebapp-form-input-has-description' ) . '" id="wpwebapp_password_change_new_password" name="wpwebapp_password_change_new_password"  value="" required>' .
+					$pw_requirements .
 
 					'<button class="wpwebapp-form-button ' . esc_attr( $options['password_change_submit_class'] ) . '">' . $options['password_change_submit_text'] . '</button>' .
 
