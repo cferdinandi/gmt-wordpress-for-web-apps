@@ -218,6 +218,10 @@
 		);
 		wp_signon( $credentials);
 
+		// Send password change emails
+		wpwebapp_send_password_change_email_to_admin( $user->user_login, $user->user_email );
+		wpwebapp_send_password_change_email_to_user( $user->user_login, $user->user_email );
+
 		// Redirect and exit
 		wp_safe_redirect( wpwebapp_get_redirect_url( $options['login_redirect'] ), 302 );
 		exit;

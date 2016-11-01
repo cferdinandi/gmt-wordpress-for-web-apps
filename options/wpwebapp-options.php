@@ -448,6 +448,48 @@
 		<?php
 	}
 
+	// Change password form notifications to site admins
+	function wpwebapp_settings_field_password_change_form_notifications_to_admin() {
+		$options = wpwebapp_get_theme_options();
+		?>
+		<div>
+			<label for="password_change_receive_notifications">
+				<input type="checkbox" name="wpwebapp_theme_options[password_change_receive_notifications]" id="password_change_receive_notifications" <?php checked( 'on', $options['password_change_receive_notifications'] ); ?> />
+				<?php _e( 'Send admins a notification when a user changes their password', 'wpwebapp' ); ?>
+			</label>
+		</div>
+		<br>
+
+		<div>
+			<textarea name="wpwebapp_theme_options[password_change_notification_to_admin]" class="large-text" id="password_change_notification_to_admin" cols="50" rows="10"><?php echo stripslashes( esc_textarea( $options['password_change_notification_to_admin'] ) ); ?></textarea>
+			<label for="password_change_notification_to_admin">
+				<?php printf( __( 'The email to send to site admins when a user changes their password. Use %s to dynamically add their username, and %s to dynamically add their email address.', 'wpwebapp' ), '<code>[username]</code>', '<code>[email]</code>'  ); ?>
+			</label>
+		</div>
+		<?php
+	}
+
+	// Change password form notifications to users
+	function wpwebapp_settings_field_password_change_form_notifications_to_user() {
+		$options = wpwebapp_get_theme_options();
+		?>
+		<div>
+			<label for="password_change_send_notifications">
+				<input type="checkbox" name="wpwebapp_theme_options[password_change_send_notifications]" id="password_change_send_notifications" <?php checked( 'on', $options['password_change_send_notifications'] ); ?> />
+				<?php _e( 'Send users an email when they change their password', 'wpwebapp' ); ?>
+			</label>
+		</div>
+		<br>
+
+		<div>
+			<textarea name="wpwebapp_theme_options[password_change_notification_to_user]" class="large-text" id="password_change_notification_to_user" cols="50" rows="10"><?php echo stripslashes( esc_textarea( $options['password_change_notification_to_user'] ) ); ?></textarea>
+			<label for="password_change_notification_to_user">
+				<?php printf( __( 'The email to send to users after they change their password. Use %s to dynamically add their username', 'wpwebapp' ), '<code>[username]</code>' ); ?>
+			</label>
+		</div>
+		<?php
+	}
+
 	// Forgot password page
 	function wpwebapp_settings_field_password_reset_url() {
 		$options = wpwebapp_get_theme_options();
@@ -751,6 +793,10 @@
 			'password_change_new_password_field_empty_error' => 'Please enter a new password.',
 			'password_change_password_error' => 'The current password you provided is not correct.',
 			'password_change_success' => 'Your password was updated.',
+			'password_change_receive_notifications' => 'off',
+			'password_change_notification_to_admin' => 'A user at ' . get_bloginfo('name') . ' changed their password.' . "\r\n\r\n" . 'Username: [username]' . "\r\n" . 'Email: [email]' . "\r\n",
+			'password_change_send_notifications' => 'off',
+			'password_change_notification_to_user' => 'Your password was changed on ' . get_bloginfo('name') . '. If you did not change your password, please contact your site adminstrator at ' . get_option( 'admin_email' ) . '.',
 
 			// Forgot password
 			'password_reset_url' => '',
@@ -960,6 +1006,18 @@
 		if ( isset( $input['password_change_success'] ) && ! empty( $input['password_change_success'] ) )
 			$output['password_change_success'] = wp_filter_nohtml_kses( $input['password_change_success'] );
 
+		if ( isset( $input['password_change_receive_notifications'] ) )
+			$output['password_change_receive_notifications'] = 'on';
+
+		if ( isset( $input['password_change_notification_to_admin'] ) && ! empty( $input['password_change_notification_to_admin'] ) )
+			$output['password_change_notification_to_admin'] = wp_filter_post_kses( $input['password_change_notification_to_admin'] );
+
+		if ( isset( $input['password_change_send_notifications'] ) )
+			$output['password_change_send_notifications'] = 'on';
+
+		if ( isset( $input['password_change_notification_to_user'] ) && ! empty( $input['password_change_notification_to_user'] ) )
+			$output['password_change_notification_to_user'] = wp_filter_post_kses( $input['password_change_notification_to_user'] );
+
 		// Forgot password
 		if ( isset( $input['password_reset_url'] ) )
 			$output['password_reset_url'] = wp_filter_nohtml_kses( $input['password_reset_url'] );
@@ -1132,10 +1190,12 @@
 		add_settings_field( 'email_change_submit', __( 'Email Change Submit Buttons', 'wpwebapp' ), 'wpwebapp_settings_field_email_change_form_submit', 'wpwebapp_plugin_options', 'email_change' );
 		add_settings_field( 'email_change_errors', __( 'Email Change Errors', 'wpwebapp' ), 'wpwebapp_settings_field_email_change_form_errors', 'wpwebapp_plugin_options', 'email_change' );
 
-		// Email change form
+		// Password change form
 		add_settings_field( 'password_change_labels', __( 'Change Password Labels', 'wpwebapp' ), 'wpwebapp_settings_field_password_change_form_labels', 'wpwebapp_plugin_options', 'password_change' );
 		add_settings_field( 'password_change_submit', __( 'Change Password Submit Buttons', 'wpwebapp' ), 'wpwebapp_settings_field_password_change_form_submit', 'wpwebapp_plugin_options', 'password_change' );
 		add_settings_field( 'password_change_errors', __( 'Change Password Errors', 'wpwebapp' ), 'wpwebapp_settings_field_password_change_form_errors', 'wpwebapp_plugin_options', 'password_change' );
+		add_settings_field( 'password_change_notifications_to_admin', __( 'Password Change Admin Notifications', 'wpwebapp' ), 'wpwebapp_settings_field_password_change_form_notifications_to_admin', 'wpwebapp_plugin_options', 'password_change' );
+		add_settings_field( 'password_change_notifications_to_user', __( 'Password Change User Notifications', 'wpwebapp' ), 'wpwebapp_settings_field_password_change_form_notifications_to_user', 'wpwebapp_plugin_options', 'password_change' );
 
 		// Forgot password form
 		add_settings_field( 'password_reset_url', __( 'Forgot Password URL', 'wpwebapp' ), 'wpwebapp_settings_field_password_reset_url', 'wpwebapp_plugin_options', 'password_forgot' );
