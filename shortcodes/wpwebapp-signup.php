@@ -89,7 +89,7 @@
 		$domain = wpwebapp_get_site_domain();
 		$headers = 'From: ' . $site_name . ' <donotreply@' . $domain . '>' . "\r\n";
 		$subject = 'Welcome to ' . $site_name;
-		$message  = str_replace( '[username]', esc_attr( $login ), stripslashes( $options['signup_notification_to_user'] ) );
+		$message  = str_replace( '[login]', $options['logout_redirect'], str_replace( '[username]', esc_attr( $login ), stripslashes( $options['signup_notification_to_user'] ) ) );
 
 		// Send email
 		$email = @wp_mail( sanitize_email( $email ), $subject, $message, $headers );
@@ -249,8 +249,8 @@
 		// Variables
 		$site_name = get_bloginfo('name');
 		$domain = wpwebapp_get_site_domain();
-		$pw = empty( $options['password_reset_redirect'] ) ? null : wpwebapp_get_redirect_url( $options['password_reset_redirect'] );
-		$pw_reset = empty( $pw ) ? '' : '<a href="' . $pw . '">' . $pw . '</a>';
+		$pw = empty( $options['password_reset_url'] ) ? null : wpwebapp_get_redirect_url( $options['password_reset_url'] );
+		$pw_reset = empty( $pw ) ? '' : wpwebapp_set_reset_key( $user_id, $pw, $options );
 		$headers = 'From: ' . $site_name . ' <donotreply@' . $domain . '>' . "\r\n";
 		$subject = 'Welcome to ' . $site_name;
 		$message  = str_replace( '[pw_reset]', $pw_reset, str_replace( '[username]', esc_attr( $_POST['user_login'] ), stripslashes( $options['create_user_notification'] ) ) );

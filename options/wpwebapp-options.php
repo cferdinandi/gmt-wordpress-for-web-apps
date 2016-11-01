@@ -181,7 +181,7 @@
 		<div>
 			<textarea name="wpwebapp_theme_options[signup_notification_to_user]" class="large-text" id="signup_notification_to_user" cols="50" rows="10"><?php echo stripslashes( esc_textarea( $options['signup_notification_to_user'] ) ); ?></textarea>
 			<label for="signup_notification_to_user">
-				<?php printf( __( 'The email to send to new users after they sign up. Use %s to dynamically add their username.', 'wpwebapp' ), '<code>[username]</code>'  ); ?>
+				<?php printf( __( 'The email to send to new users after they sign up. Use %s to dynamically add their username, and %s to dynamically add the log in URL.', 'wpwebapp' ), '<code>[username]</code>', '<code>[login]</code>'  ); ?>
 			</label>
 		</div>
 		<?php
@@ -437,6 +437,20 @@
 		<?php
 	}
 
+	// Forgot password page
+	function wpwebapp_settings_field_password_reset_url() {
+		$options = wpwebapp_get_theme_options();
+		?>
+		<div>
+			<label class="description" for="password_reset_url"><?php _e( 'URL for password resets', 'wpwebapp' ); ?></label><br>
+			<select name="wpwebapp_theme_options[password_reset_url]" id="password_reset_url">
+				<option value="" <?php selected( '', $options['password_reset_url'] ); ?>><?php _e( '', 'wpwebapp' ) ?></option>
+				<?php wpwebapp_settings_create_pages_select_fields( $options['password_reset_url'] ); ?>
+			</select>
+		</div>
+		<?php
+	}
+
 	// Forgot password form labels
 	function wpwebapp_settings_field_password_reset_form_labels() {
 		$options = wpwebapp_get_theme_options();
@@ -685,7 +699,7 @@
 			'signup_receive_notifications' => 'off',
 			'signup_notification_to_admin' => 'New user registration for ' . get_bloginfo('name') . '.' . "\r\n\r\n" . 'Username: [username]' . "\r\n" . 'Email: [email]' . "\r\n",
 			'signup_send_notifications' => 'off',
-			'signup_notification_to_user' => 'Welcome to ' . get_bloginfo('name') . '. Your username is [username]. Log in at ' . site_url() . '.',
+			'signup_notification_to_user' => 'Welcome to ' . get_bloginfo('name') . '. Your username is [username]. Log in at [login].',
 			'create_user_send_notifications' => 'off',
 			'create_user_notification' => 'An account for ' . get_bloginfo('name') . ' has been created for you. Your username is [username]. You can create a password for your account at [pw_reset].',
 
@@ -727,6 +741,7 @@
 			'password_change_success' => 'Your password was updated.',
 
 			// Forgot password
+			'password_reset_url' => '',
 			'password_forgot_label' => 'Username or Email',
 			'password_forgot_submit_text' => 'Reset My Password',
 			'password_forgot_submit_class' => '',
@@ -931,6 +946,9 @@
 			$output['password_change_success'] = wp_filter_nohtml_kses( $input['password_change_success'] );
 
 		// Forgot password
+		if ( isset( $input['password_reset_url'] ) )
+			$output['password_reset_url'] = wp_filter_nohtml_kses( $input['password_reset_url'] );
+
 		if ( isset( $input['password_forgot_label'] ) && ! empty( $input['password_forgot_label'] ) )
 			$output['password_forgot_label'] = wp_filter_post_kses( $input['password_forgot_label'] );
 
@@ -1104,6 +1122,7 @@
 		add_settings_field( 'password_change_errors', __( 'Change Password Errors', 'wpwebapp' ), 'wpwebapp_settings_field_password_change_form_errors', 'wpwebapp_plugin_options', 'password_change' );
 
 		// Forgot password form
+		add_settings_field( 'password_reset_url', __( 'Forgot Password URL', 'wpwebapp' ), 'wpwebapp_settings_field_password_reset_url', 'wpwebapp_plugin_options', 'password_forgot' );
 		add_settings_field( 'password_forgot_labels', __( 'Forgot Password Labels', 'wpwebapp' ), 'wpwebapp_settings_field_password_reset_form_labels', 'wpwebapp_plugin_options', 'password_forgot' );
 		add_settings_field( 'password_forgot_submit', __( 'Forgot Password Submit Buttons', 'wpwebapp' ), 'wpwebapp_settings_field_password_reset_form_submit', 'wpwebapp_plugin_options', 'password_forgot' );
 		add_settings_field( 'password_forgot_errors', __( 'Forgot Password Errors', 'wpwebapp' ), 'wpwebapp_settings_field_password_reset_form_errors', 'wpwebapp_plugin_options', 'password_forgot' );
