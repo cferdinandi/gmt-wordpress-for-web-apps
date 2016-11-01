@@ -151,16 +151,10 @@
 			exit;
 		}
 
-		// Get user data
-		$user_data = get_userdata( $user->ID );
-		$key = wp_generate_password( 48, false );
-
-		// Add a secret, temporary key to the database
-		set_transient( 'wpwebapp_forgot_password_key_' . $key . $user->ID, $key, 60 * 60 * $options['password_reset_time_valid'] );
-
 		// Send Password Reset Email
-		$reset_url = wpwebapp_prepare_url( $referer ) . 'reset_pw=' .$key . $user->ID;
-		$send_email = wpwebapp_send_password_reset_email( $user_data->user_email, $user_data->user_login, $reset_url );
+		$user_data = get_userdata( $user->ID );
+		$reset_url =  wpwebapp_set_reset_key( $user->ID, $referer, $options );
+		wpwebapp_send_password_reset_email( $user_data->user_email, $user_data->user_login, $reset_url );
 
 		// Run custom WordPress action
 		do_action( 'wpwebapp_after_password_forgot_email_sent', $user->ID );
