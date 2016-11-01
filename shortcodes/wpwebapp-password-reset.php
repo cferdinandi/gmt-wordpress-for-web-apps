@@ -225,7 +225,6 @@
 	}
 	add_action( 'init', 'wpwebapp_process_password_reset' );
 
+
 	// Disable Admin notification when user resets password
-	if ( !function_exists( 'wp_password_change_notification' ) ) {
-		function wp_password_change_notification() {}
-	}
+	add_filter( 'send_email_change_email', '__return_false' );
