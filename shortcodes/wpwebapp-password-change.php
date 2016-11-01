@@ -17,7 +17,7 @@
 			$options = wpwebapp_get_theme_options();
 			$error = wpwebapp_get_session( 'wpwebapp_password_change_error', true );
 			$success = wpwebapp_get_session( 'wpwebapp_password_change_success', true );
-			$pw_requirements = $options['signup_show_requirements'] === 'on' ? '<div class="wpwebapp-form-label-description">' . wpwebapp_password_requirements_message() . '</div>' : null;
+			$pw_requirements = $options['password_change_show_requirements'] === 'on' ? '<div class="wpwebapp-form-label-description">' . wpwebapp_password_requirements_message() . '</div>' : null;
 
 			// Check if forced reset is required
 			$current_user = wp_get_current_user();
