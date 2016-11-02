@@ -22,7 +22,7 @@
 			$credentials = wpwebapp_get_session( 'wpwebapp_password_reset_credentials', true );
 
 			// Check if there's an expired reset key
-			if ( isset( $_GET['reset_pw'] ) && empty( get_transient( 'wpwebapp_forgot_password_key_' . $_GET['reset_pw'] ) ) ) {
+			if ( empty( get_transient( 'wpwebapp_forgot_password_key_' . $_GET['reset_pw'] ) ) ) {
 				$error = $options['password_forgot_password_reset_key_expired_error'];
 			}
 
@@ -203,7 +203,7 @@
 
 		// Reset the user's password
 		wp_update_user( array( 'ID' => $user_id, 'user_pass' => $_POST['wpwebapp_password_reset_password'] ) );
-		delete_transient( 'wpwebapp_forgot_pw_key_' . $_POST['wpwebapp_password_reset_key'] );
+		delete_transient( 'wpwebapp_forgot_password_key_' . $_POST['wpwebapp_password_reset_key'] );
 
 		// Remove forced password reset if one was set
 		update_user_meta( $user_id, 'wpwebapp_force_password_reset', 'off' );
@@ -230,7 +230,3 @@
 
 	}
 	add_action( 'init', 'wpwebapp_process_password_reset' );
-
-
-	// Disable Admin notification when user resets password
-	add_filter( 'send_email_change_email', '__return_false' );
