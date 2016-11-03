@@ -22,7 +22,7 @@
 			$credentials = wpwebapp_get_session( 'wpwebapp_password_reset_credentials', true );
 
 			// Check if there's an expired reset key
-			if ( empty( get_transient( 'wpwebapp_forgot_password_key_' . $_GET['reset_pw'] ) ) ) {
+			if ( isset( $_GET['reset_pw'] ) && empty( get_transient( 'wpwebapp_forgot_password_key_' . $_GET['reset_pw'] ) ) ) {
 				$error = $options['password_forgot_password_reset_key_expired_error'];
 			}
 
