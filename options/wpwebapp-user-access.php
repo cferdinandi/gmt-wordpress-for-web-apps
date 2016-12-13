@@ -152,6 +152,9 @@
 	 */
 	function wpwebapp_control_access() {
 
+		// Don't run on admin page
+		if ( is_admin() ) return;
+
 		// Variables
 		global $post;
 		if ( empty( $post ) ) return;
