@@ -22,7 +22,7 @@
 			$credentials = wpwebapp_get_session( 'wpwebapp_login_credentials', true );
 
 			$form =
-				( empty( $error ) ? '' : '<div class="' . esc_attr( $options['alert_error_class'] ) . '">' . stripslashes( $error ) . '</div>' ) .
+				( empty( $error ) ? '' : '<div class="wpwebapp-alert wpwebapp-alert-error">' . stripslashes( $error ) . '</div>' ) .
 
 				'<form class="wpwebapp-form" id="wpwebapp_login" name="wpwebapp_login" action="" method="post">' .
 
@@ -34,7 +34,7 @@
 
 					'<label class="wpwebapp-form-label-checkbox"><input type="checkbox" class="wpwebapp-form-checkbox" id="wpwebapp_login_rememberme" name="wpwebapp_login_rememberme" value=""> ' . stripslashes( $options['login_rememberme_label'] ) . '</label>' .
 
-					'<button class="wpwebapp-form-button ' . esc_attr( $options['login_submit_class'] ) . '">' . $options['login_submit_text'] . '</button>' .
+					'<button class="wpwebapp-form-button wpwebapp-form-button-login">' . $options['login_submit_text'] . '</button>' .
 
 					wp_nonce_field( 'wpwebapp_login_nonce', 'wpwebapp_login_process', true, false ) .
 
