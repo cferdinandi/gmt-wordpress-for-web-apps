@@ -28,7 +28,7 @@
 			}
 
 			$form =
-				( empty( $error ) ? '' : '<div class="' . esc_attr( $options['alert_error_class'] ) . '">' . stripslashes( $error ) . '</div>' ) .
+				( empty( $error ) ? '' : '<div class="wpwebapp_alert wpwebapp_alert_error">' . stripslashes( $error ) . '</div>' ) .
 
 				'<form class="wpwebapp-form" id="wpwebapp_signup" name="wpwebapp_signup" action="" method="post">' .
 
@@ -45,7 +45,7 @@
 					'<label class="wpwebapp-form-label wpwebapp-form-label-tarpit" for="wpwebapp_signup_password_confirm">' . __( 'If you are human, leave this blank', 'beacon' ) . '</label>' .
 					'<input type="text" class="wpwebapp-form-input wpwebapp-form-password wpwebapp-form-input-tarpit" id="wpwebapp_signup_password_confirm" name="wpwebapp_signup_password_confirm"  value="">' .
 
-					'<button class="wpwebapp-form-button ' . esc_attr( $options['signup_submit_class'] ) . '">' . $options['signup_submit_text'] . '</button>' .
+					'<button class="wpwebapp-form-button wpwebapp-form-button-signup">' . $options['signup_submit_text'] . '</button>' .
 
 					'<input type="hidden" id="wpwebapp_signup_tarpit_time" name="wpwebapp_signup_tarpit_time" value="' . current_time( 'timestamp' ) . '">' .
 

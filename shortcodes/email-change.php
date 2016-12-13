@@ -20,8 +20,8 @@
 			$success = wpwebapp_get_session( 'wpwebapp_email_change_success', true );
 
 			$form =
-				( empty( $error ) ? '' : '<div class="' . esc_attr( $options['alert_error_class'] ) . '">' . stripslashes( $error ) . '</div>' ) .
-				( empty( $success ) ? '' : '<div class="' . esc_attr( $options['alert_success_class'] ) . '">' . stripslashes( $success ) . '</div>' ) .
+				( empty( $error ) ? '' : '<div class="wpwebapp-alert wpwebapp-alert-error">' . stripslashes( $error ) . '</div>' ) .
+				( empty( $success ) ? '' : '<div class="wpwebapp-alert wpwebapp-alert-success">' . stripslashes( $success ) . '</div>' ) .
 
 				'<form class="wpwebapp-form" id="wpwebapp_email_change" name="wpwebapp_email_change" action="" method="post">' .
 
@@ -31,7 +31,7 @@
 					'<label class="wpwebapp-form-label" for="wpwebapp_email_change_password">' . stripslashes( $options['email_change_password_label'] ) . '</label>' .
 					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password" id="wpwebapp_email_change_password" name="wpwebapp_email_change_password"  value="" required>' .
 
-					'<button class="wpwebapp-form-button ' . esc_attr( $options['email_change_submit_class'] ) . '">' . $options['email_change_submit_text'] . '</button>' .
+					'<button class="wpwebapp-form-button wpwebapp-form-button-email-change">' . $options['email_change_submit_text'] . '</button>' .
 
 					wp_nonce_field( 'wpwebapp_email_change_nonce', 'wpwebapp_email_change_process', true, false ) .
 

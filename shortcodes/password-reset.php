@@ -27,15 +27,15 @@
 			}
 
 			$form =
-				( empty( $error ) ? '' : '<div class="' . esc_attr( $options['alert_error_class'] ) . '">' . stripslashes( $error ) . '</div>' ) .
-				( empty( $success ) ? '' : '<div class="' . esc_attr( $options['alert_success_class'] ) . '">' . stripslashes( $success ) . '</div>' ) .
+				( empty( $error ) ? '' : '<div class="wpwebapp-alert wpwebapp-alert-error">' . stripslashes( $error ) . '</div>' ) .
+				( empty( $success ) ? '' : '<div class="wpwebapp-alert wpwebapp-alert-success">' . stripslashes( $success ) . '</div>' ) .
 
 				'<form class="wpwebapp-form" id="wpwebapp_password_forgot" name="wpwebapp_password_forgot" action="" method="post">' .
 
 					'<label class="wpwebapp-form-label" for="wpwebapp_password_forgot_username">' . stripslashes( $options['password_forgot_label'] ) . '</label>' .
 					'<input type="text" class="wpwebapp-form-input" id="wpwebapp_password_forgot_username" name="wpwebapp_password_forgot_username"  value="' . esc_attr( $credentials ) . '" required>' .
 
-					'<button class="wpwebapp-form-button ' . esc_attr( $options['password_forgot_submit_class'] ) . '">' . $options['password_forgot_submit_text'] . '</button>' .
+					'<button class="wpwebapp-form-button wpwebapp-form-button-password-forgot">' . $options['password_forgot_submit_text'] . '</button>' .
 
 					wp_nonce_field( 'wpwebapp_password_forgot_nonce', 'wpwebapp_password_forgot_process', true, false ) .
 
@@ -63,7 +63,7 @@
 			$pw_requirements = $options['password_reset_show_requirements'] === 'on' ? '<div class="wpwebapp-form-label-description">' . wpwebapp_password_requirements_message() . '</div>' : null;
 
 			$form =
-				( empty( $error ) ? '' : '<div class="' . esc_attr( $options['alert_error_class'] ) . '">' . stripslashes( $error ) . '</div>' ) .
+				( empty( $error ) ? '' : '<div class="wpwebapp-alert wpwebapp-alert-error">' . stripslashes( $error ) . '</div>' ) .
 
 				'<form class="wpwebapp-form" id="wpwebapp_password_reset" name="wpwebapp_password_reset" action="" method="post">' .
 
@@ -73,7 +73,7 @@
 
 					'<input type="hidden" id="wpwebapp_password_reset_key" name="wpwebapp_password_reset_key"  value="' . $_GET['reset_pw'] . '">' .
 
-					'<button class="wpwebapp-form-button ' . esc_attr( $options['password_reset_submit_class'] ) . '">' . $options['password_reset_submit_text'] . '</button>' .
+					'<button class="wpwebapp-form-button wpwebapp-form-button-reset-key">' . $options['password_reset_submit_text'] . '</button>' .
 
 					wp_nonce_field( 'wpwebapp_password_reset_nonce', 'wpwebapp_password_reset_process', true, false ) .
 
