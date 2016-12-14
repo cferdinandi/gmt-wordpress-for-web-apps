@@ -9,7 +9,7 @@
 	function wpwebapp_test_password_requirements( $password ) {
 
 		// Variables
-		$options = wpwebapp_get_theme_options();
+		$options = wpwebapp_get_theme_options_security();
 
 		// Test the password
 		if ( strlen( $password ) < $options['password_minimum_length'] ) return false;
@@ -29,7 +29,7 @@
 	function wpwebapp_password_requirements_message() {
 
 		// Variables
-		$options = wpwebapp_get_theme_options();
+		$options = wpwebapp_get_theme_options_security();
 		$length = $options['password_requires_mixed_case'] === 'on' && intval( $options['password_minimum_length'] ) < 2 ? 2 : $options['password_minimum_length'];
 
 		// Message
@@ -81,7 +81,7 @@
 		$force_reset = empty($user) || !is_object( $user ) ? null : get_the_author_meta( 'wpwebapp_force_password_reset', $user->ID );
 
 		// Get options
-		$options = wpwebapp_get_theme_options();
+		$options = wpwebapp_get_theme_options_redirects();
 
 		?>
 
@@ -153,7 +153,7 @@
 		if ( $force_reset !== 'on' ) return;
 
 		// Check that current page isn't the change password page
-		$options = wpwebapp_get_theme_options();
+		$options = wpwebapp_get_theme_options_redirects();
 		if ( empty( $options['password_reset_redirect'] ) || is_page( $options['password_reset_redirect'] ) ) return;
 
 		// Redirect to change password

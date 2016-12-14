@@ -14,7 +14,7 @@
 		if ( is_user_logged_in() ) {
 
 			// Variables
-			$options = wpwebapp_get_theme_options();
+			$options = wpwebapp_get_theme_options_change_password();
 			$error = wpwebapp_get_session( 'wpwebapp_password_change_error', true );
 			$success = wpwebapp_get_session( 'wpwebapp_password_change_success', true );
 			$pw_requirements = $options['password_change_show_requirements'] === 'on' ? '<div class="wpwebapp-form-label-description">' . wpwebapp_password_requirements_message() . '</div>' : null;
@@ -57,7 +57,7 @@
 	function wpwebapp_send_password_change_email_to_admin( $login, $email ) {
 
 		// Check if admin wants to receive emails
-		$options = wpwebapp_get_theme_options();
+		$options = wpwebapp_get_theme_options_change_password();
 		if ( $options['password_change_receive_notifications'] === 'off' ) return;
 
 		// Variables
@@ -77,7 +77,7 @@
 	function wpwebapp_send_password_change_email_to_user( $login, $email ) {
 
 		// Check if user should receive email
-		$options = wpwebapp_get_theme_options();
+		$options = wpwebapp_get_theme_options_change_password();
 		if ( $options['password_change_send_notifications'] === 'off' ) return;
 
 		// Variables
@@ -102,7 +102,7 @@
 		// Variables
 		$current_user = wp_get_current_user();
 		$force_reset = get_user_meta( $current_user->ID, 'wpwebapp_force_password_reset', true );
-		$options = wpwebapp_get_theme_options();
+		$options = wpwebapp_get_theme_options_change_password();
 		$referer = esc_url_raw( wpwebapp_get_url() );
 
 		// Check that current password is supplied

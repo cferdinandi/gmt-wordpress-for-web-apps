@@ -17,7 +17,7 @@
 
 			// Variables
 			$current_user = wp_get_current_user();
-			$options = wpwebapp_get_theme_options();
+			$options = wpwebapp_get_theme_options_login();
 			$error = wpwebapp_get_session( 'wpwebapp_login_error', true );
 			$credentials = wpwebapp_get_session( 'wpwebapp_login_credentials', true );
 
@@ -55,7 +55,8 @@
 		if ( !isset( $_POST['wpwebapp_login_process'] ) || !wp_verify_nonce( $_POST['wpwebapp_login_process'], 'wpwebapp_login_nonce' ) ) return;
 
 		// Variables
-		$options = wpwebapp_get_theme_options();
+		$options = wpwebapp_get_theme_options_login();
+		$redirects = wpwebapp_get_theme_options_redirects();
 		$referer = esc_url_raw( wpwebapp_get_url() );
 		$username = isset( $_POST['wpwebapp_login_username'] ) ? $_POST['wpwebapp_login_username'] : '';
 		$rememberme = isset( $_POST['wpwebapp_login_rememberme'] ) ? true : false;
@@ -103,7 +104,7 @@
 		do_action( 'wpwebapp_after_login', $_POST['wpwebapp_login_username'] );
 
 		// Redirect after login
-		$redirect = isset( $_GET['referrer'] ) && !empty( $_GET['referrer'] ) ? esc_url_raw( $_GET['referrer'] ) : wpwebapp_get_redirect_url( $options['login_redirect'] );
+		$redirect = isset( $_GET['referrer'] ) && !empty( $_GET['referrer'] ) ? esc_url_raw( $_GET['referrer'] ) : wpwebapp_get_redirect_url( $redirects['login_redirect'] );
 		wp_safe_redirect( $redirect, 302 );
 		exit;
 

@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/cferdinandi/gmt-wordpress-for-web-apps/
  * GitHub Plugin URI: https://github.com/cferdinandi/gmt-wordpress-for-web-apps/
  * Description: Transform WordPress into a web app engine. Adjust your settings under <a href="options-general.php?page=wpwebapp_plugin_options">Web App Options</a>.
- * Version: 7.4.5
+ * Version: 8.0.0
  * Author: Chris Ferdinandi
  * Author URI: http://gomakethings.com
  * License: MIT
@@ -14,7 +14,7 @@
 // Includes
 require_once( plugin_dir_path( __FILE__ ) . 'includes/wp-session-manager/wp-session-manager.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'includes/helpers.php' );
-// require_once( plugin_dir_path( __FILE__ ) . 'includes/migrate-options.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'includes/migrate-options.php' );
 
 // Options
 require_once( plugin_dir_path( __FILE__ ) . 'options/options.php' );
