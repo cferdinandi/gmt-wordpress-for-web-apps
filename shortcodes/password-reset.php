@@ -16,7 +16,7 @@
 		} else {
 
 			// Variables
-			$options = wpwebapp_get_theme_options();
+			$options = wpwebapp_get_theme_options_forgot_password();
 			$error = wpwebapp_get_session( 'wpwebapp_password_reset_error', true );
 			$success = wpwebapp_get_session( 'wpwebapp_password_reset_success', true );
 			$credentials = wpwebapp_get_session( 'wpwebapp_password_reset_credentials', true );
@@ -58,7 +58,7 @@
 		} else {
 
 			// Variables
-			$options = wpwebapp_get_theme_options();
+			$options = wpwebapp_get_theme_options_forgot_password();
 			$error = wpwebapp_get_session( 'wpwebapp_password_reset_error', true );
 			$pw_requirements = $options['password_reset_show_requirements'] === 'on' ? '<div class="wpwebapp-form-label-description">' . wpwebapp_password_requirements_message() . '</div>' : null;
 
@@ -121,7 +121,7 @@
 		if ( !isset( $_POST['wpwebapp_password_forgot_process'] ) || !wp_verify_nonce( $_POST['wpwebapp_password_forgot_process'], 'wpwebapp_password_forgot_nonce' ) ) return;
 
 		// Variables
-		$options = wpwebapp_get_theme_options();
+		$options = wpwebapp_get_theme_options_forgot_password();
 		$referer = esc_url_raw( wpwebapp_clean_url( 'reset_pw', wpwebapp_get_url() ) );
 
 		// Check that a username is supplied
@@ -174,7 +174,8 @@
 		if ( !isset( $_POST['wpwebapp_password_reset_process'] ) || !wp_verify_nonce( $_POST['wpwebapp_password_reset_process'], 'wpwebapp_password_reset_nonce' ) ) return;
 
 		// Variables
-		$options = wpwebapp_get_theme_options();
+		$options = wpwebapp_get_theme_options_forgot_password();
+		$redirects = wpwebapp_get_theme_options_redirects();
 		$referer = esc_url_raw( wpwebapp_get_url() );
 		$redirect = wpwebapp_clean_url( 'reset_pw', wpwebapp_get_url() );
 
@@ -225,7 +226,7 @@
 		wpwebapp_send_password_change_email_to_user( $user->user_login, $user->user_email );
 
 		// Redirect and exit
-		wp_safe_redirect( wpwebapp_get_redirect_url( $options['login_redirect'] ), 302 );
+		wp_safe_redirect( wpwebapp_get_redirect_url( $redirects['login_redirect'] ), 302 );
 		exit;
 
 	}

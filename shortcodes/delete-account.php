@@ -14,7 +14,7 @@
 		if ( is_user_logged_in() ) {
 
 			// Variables
-			$options = wpwebapp_get_theme_options();
+			$options = wpwebapp_get_theme_options_delete_account();
 			$error = wpwebapp_get_session( 'wpwebapp_delete_account_error', true );
 
 			$form =
@@ -46,7 +46,7 @@
 
 		// Variables
 		$current_user = wp_get_current_user();
-		$options = wpwebapp_get_theme_options();
+		$options = wpwebapp_get_theme_options_delete_account();
 		$referer = esc_url_raw( wpwebapp_get_url() );
 		$redirect = wpwebapp_get_redirect_url( $options['delete_account_redirect'] );
 

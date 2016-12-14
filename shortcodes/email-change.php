@@ -15,7 +15,7 @@
 
 			// Variables
 			$current_user = wp_get_current_user();
-			$options = wpwebapp_get_theme_options();
+			$options = wpwebapp_get_theme_options_change_email();
 			$error = wpwebapp_get_session( 'wpwebapp_email_change_error', true );
 			$success = wpwebapp_get_session( 'wpwebapp_email_change_success', true );
 
@@ -54,7 +54,7 @@
 
 		// Variables
 		$current_user = wp_get_current_user();
-		$options = wpwebapp_get_theme_options();
+		$options = wpwebapp_get_theme_options_change_email();
 		$referer = esc_url_raw( wpwebapp_get_url() );
 
 		// Check that email is supplied

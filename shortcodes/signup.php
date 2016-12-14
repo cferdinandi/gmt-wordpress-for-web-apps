@@ -16,7 +16,7 @@
 		} else {
 
 			// Variables
-			$options = wpwebapp_get_theme_options();
+			$options = wpwebapp_get_theme_options_signup();
 			$error = wpwebapp_get_session( 'wpwebapp_signup_error', true );
 			$credentials = wpwebapp_get_session( 'wpwebapp_signup_credentials', true );
 			$pw_requirements = $options['signup_show_requirements'] === 'on' ? '<div class="wpwebapp-form-label-description">' . wpwebapp_password_requirements_message() . '</div>' : null;
@@ -64,7 +64,7 @@
 	function wpwebapp_send_user_notification_email( $login, $email ) {
 
 		// Check if admin wants to receive emails
-		$options = wpwebapp_get_theme_options();
+		$options = wpwebapp_get_theme_options_signup();
 		if ( $options['signup_receive_notifications'] === 'off' ) return;
 
 		// Variables
@@ -84,6 +84,7 @@
 
 		// Check if user should receive emails
 		$options = wpwebapp_get_theme_options();
+		$redirects = wpwebapp_get_theme_options_redirects();
 		if ( $options['signup_send_notifications'] === 'off' ) return;
 
 		// Variables
@@ -91,7 +92,7 @@
 		$domain = wpwebapp_get_site_domain();
 		$headers = 'From: ' . $site_name . ' <donotreply@' . $domain . '>' . "\r\n";
 		$subject = 'Welcome to ' . $site_name;
-		$message  = str_replace( '[login]', $options['logout_redirect'], str_replace( '[username]', esc_attr( $login ), stripslashes( $options['signup_notification_to_user'] ) ) );
+		$message  = str_replace( '[login]', $redirects['logout_redirect'], str_replace( '[username]', esc_attr( $login ), stripslashes( $options['signup_notification_to_user'] ) ) );
 
 		// Send email
 		$email = @wp_mail( sanitize_email( $email ), $subject, $message, $headers );
@@ -106,7 +107,8 @@
 		if ( !isset( $_POST['wpwebapp_signup_process'] ) || !wp_verify_nonce( $_POST['wpwebapp_signup_process'], 'wpwebapp_signup_nonce' ) ) return;
 
 		// Variables
-		$options = wpwebapp_get_theme_options();
+		$options = wpwebapp_get_theme_options_signups();
+		$redirects = wpwebapp_get_theme_options_redirects();
 		$referer = esc_url_raw( wpwebapp_get_url() );
 		$credentials = array(
 			'username' => $_POST['wpwebapp_signup_username'],
@@ -212,7 +214,7 @@
 		}
 
 		// Redirect after login
-		$redirect = isset( $_GET['referrer'] ) && !empty( $_GET['referrer'] ) ? esc_url_raw( $_GET['referrer'] ) : wpwebapp_get_redirect_url( $options['login_redirect'] );
+		$redirect = isset( $_GET['referrer'] ) && !empty( $_GET['referrer'] ) ? esc_url_raw( $_GET['referrer'] ) : wpwebapp_get_redirect_url( $redirects['login_redirect'] );
 		wp_safe_redirect( $redirect, 302 );
 		exit;
 
@@ -246,12 +248,14 @@
 
 		// Check if users should receive emails
 		$options = wpwebapp_get_theme_options();
+		$redirects = wpwebapp_get_theme_options_redirects();
+		$pw_reset = wpwebapp_get_theme_options_forgot_password();
 		if ( $options['create_user_send_notifications'] === 'off' ) return;
 
 		// Variables
 		$site_name = get_bloginfo('name');
 		$domain = wpwebapp_get_site_domain();
-		$pw = empty( $options['password_reset_url'] ) ? null : wpwebapp_get_redirect_url( $options['password_reset_url'] );
+		$pw = empty( $pw_reset['password_reset_url'] ) ? null : wpwebapp_get_redirect_url( $pw_reset['password_reset_url'] );
 		$pw_reset = empty( $pw ) ? '' : wpwebapp_set_reset_key( $user_id, $pw, $options['create_user_password_time_valid'] );
 		$headers = 'From: ' . $site_name . ' <donotreply@' . $domain . '>' . "\r\n";
 		$subject = 'Welcome to ' . $site_name;

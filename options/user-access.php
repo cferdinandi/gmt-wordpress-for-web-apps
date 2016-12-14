@@ -158,7 +158,7 @@
 		// Variables
 		global $post;
 		if ( empty( $post ) ) return;
-		$options = wpwebapp_get_theme_options();
+		$options = wpwebapp_get_theme_options_redirects();
 		$user_access = get_post_meta( $post->ID, 'wpwebapp_user_access', true );
 
 		// Bail if no access restrictions
@@ -184,7 +184,7 @@
 	 * Redirect users away from wp-login.php after logout
 	 */
 	function wpwebapp_logout_redirect() {
-		$options = wpwebapp_get_theme_options();
+		$options = wpwebapp_get_theme_options_redirects();
 		wp_redirect( wpwebapp_get_redirect_url( $options['logout_redirect'] ) );
 		exit();
 	}
@@ -196,7 +196,7 @@
 	 */
 	function wpwebapp_disable_admin_bar() {
 		if ( current_user_can( 'edit_themes' ) ) return;
-		$options = wpwebapp_get_theme_options();
+		$options = wpwebapp_get_theme_options_security();
 		if ( $options['show_admin_bar'] === 'on' ) return;
 		show_admin_bar( false );
 	}
