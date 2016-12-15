@@ -83,7 +83,7 @@
 	function wpwebapp_send_user_welcome_email( $login, $email ) {
 
 		// Check if user should receive emails
-		$options = wpwebapp_get_theme_options();
+		$options = wpwebapp_get_theme_options_signup();
 		$redirects = wpwebapp_get_theme_options_redirects();
 		if ( $options['signup_send_notifications'] === 'off' ) return;
 
@@ -247,7 +247,7 @@
 		if ( isset( $_POST['wpwebapp_signup_process'] ) ) return;
 
 		// Check if users should receive emails
-		$options = wpwebapp_get_theme_options();
+		$options = wpwebapp_get_theme_options_signup();
 		$redirects = wpwebapp_get_theme_options_redirects();
 		$pw_reset = wpwebapp_get_theme_options_forgot_password();
 		if ( $options['create_user_send_notifications'] === 'off' ) return;
