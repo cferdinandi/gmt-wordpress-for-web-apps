@@ -107,7 +107,7 @@
 		if ( !isset( $_POST['wpwebapp_signup_process'] ) || !wp_verify_nonce( $_POST['wpwebapp_signup_process'], 'wpwebapp_signup_nonce' ) ) return;
 
 		// Variables
-		$options = wpwebapp_get_theme_options_signups();
+		$options = wpwebapp_get_theme_options_signup();
 		$redirects = wpwebapp_get_theme_options_redirects();
 		$referer = esc_url_raw( wpwebapp_get_url() );
 		$credentials = array(
