@@ -55,6 +55,7 @@
 		// Variables
 		$current_user = wp_get_current_user();
 		$options = wpwebapp_get_theme_options_change_email();
+		$options_signup = wpwebapp_get_theme_options_signup();
 		$referer = esc_url_raw( wpwebapp_get_url() );
 
 		// Check that email is supplied
@@ -74,6 +75,13 @@
 		// Validate and authenticate password
 		if ( !wp_check_password( $_POST['wpwebapp_email_change_password'], $current_user->user_pass, $current_user->ID ) ) {
 			wpwebapp_set_session( 'wpwebapp_email_change_error', $options['email_change_password_error'] );
+			wp_safe_redirect( $referer, 302 );
+			exit;
+		}
+
+		// Make sure email isn't already taken by another user
+		if ( email_exists( $_POST['wpwebapp_email_change_current_email'] ) ) {
+			wpwebapp_set_session( 'wpwebapp_email_change_error', $options_signup['signup_username_exists_error'] );
 			wp_safe_redirect( $referer, 302 );
 			exit;
 		}
