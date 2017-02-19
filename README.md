@@ -125,24 +125,6 @@ Every form and input includes a unique `id` you can hook into for styling. Addit
 
 
 
-## What's new in version 5?
-
-Version 5 has been rewritten from the ground up to provide a more lightweight, performant, customizable code base.
-
-**Removed:**
-
-These items should now be handled at the theme level rather than through this plugin.
-
-- User Profile Form
-- Built-In logged-out/logged-in navigation
-
-**Added:**
-
-- `?referrer` query string lets you redirect users dynamically after login or sign up.
-- Custom action hooks to let you extend the plugin without touching the core.
-
-
-
 ## How to Contribute
 
 To contribute to this project, please consult the [Contribution Guidelines](CONTRIBUTING.md).
