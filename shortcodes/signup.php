@@ -253,13 +253,14 @@
 		if ( $options['create_user_send_notifications'] === 'off' ) return;
 
 		// Variables
+		$user = get_user_by( 'ID', $user_id );
 		$site_name = get_bloginfo('name');
 		$domain = wpwebapp_get_site_domain();
 		$pw = empty( $pw_reset['password_reset_url'] ) ? null : wpwebapp_get_redirect_url( $pw_reset['password_reset_url'] );
 		$pw_reset = empty( $pw ) ? '' : wpwebapp_set_reset_key( $user_id, $pw, $options['create_user_password_time_valid'] );
 		$headers = 'From: ' . $site_name . ' <donotreply@' . $domain . '>' . "\r\n";
 		$subject = 'Welcome to ' . $site_name;
-		$message  = str_replace( '[expires]', $options['create_user_password_time_valid'], str_replace( '[pw_reset]', $pw_reset, str_replace( '[username]', esc_attr( $_POST['user_login'] ), stripslashes( $options['create_user_notification'] ) ) ) );
+		$message  = str_replace( '[expires]', $options['create_user_password_time_valid'], str_replace( '[pw_reset]', $pw_reset, str_replace( '[username]', esc_attr( $user->user_login ), stripslashes( $options['create_user_notification'] ) ) ) );
 
 		// Send email
 		@wp_mail( get_option('admin_email'), $subject, $message, $headers );
