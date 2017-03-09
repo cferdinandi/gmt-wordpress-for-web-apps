@@ -9,7 +9,9 @@
 	function wpwebapp_delete_account_form() {
 
 		// Prevent this content from caching
-		define('DONOTCACHEPAGE', TRUE);
+		if ( !defined ( 'DONOTCACHEPAGE' ) || !DONOTCACHEPAGE ) {
+			define('DONOTCACHEPAGE', TRUE);
+		}
 
 		if ( is_user_logged_in() ) {
 
