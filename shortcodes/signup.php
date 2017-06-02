@@ -250,7 +250,6 @@
 
 		// Check if users should receive emails
 		$options = wpwebapp_get_theme_options_signup();
-		$redirects = wpwebapp_get_theme_options_redirects();
 		$pw_reset = wpwebapp_get_theme_options_forgot_password();
 		if ( $options['create_user_send_notifications'] === 'off' ) return;
 
@@ -262,7 +261,7 @@
 		$pw_reset = empty( $pw ) ? '' : wpwebapp_set_reset_key( $user_id, $pw, $options['create_user_password_time_valid'] );
 		$headers = 'From: ' . $site_name . ' <donotreply@' . $domain . '>' . "\r\n";
 		$subject = 'Welcome to ' . $site_name;
-		$message  = str_replace( '[login]', $redirects['logout_redirect'], str_replace( '[expires]', $options['create_user_password_time_valid'], str_replace( '[pw_reset]', $pw_reset, str_replace( '[username]', esc_attr( $user->user_login ), stripslashes( $options['create_user_notification'] ) ) ) ) );
+		$message  = str_replace( '[expires]', $options['create_user_password_time_valid'], str_replace( '[pw_reset]', $pw_reset, str_replace( '[username]', esc_attr( $user->user_login ), stripslashes( $options['create_user_notification'] ) ) ) );
 
 		// Send email
 		@wp_mail( $user->user_email, $subject, $message, $headers );
