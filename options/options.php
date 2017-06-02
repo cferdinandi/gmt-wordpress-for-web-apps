@@ -282,7 +282,7 @@
 		<div>
 			<label class="description" for="logout_redirect"><?php _e( 'URL to redirect users to after they logout:', 'wpwebapp' ); ?></label><br>
 			<select name="wpwebapp_theme_options_redirects[logout_redirect]" id="logout_redirect" >
-				<option value="0" <?php selected( '0', $options['login_redirect'] ); ?>><?php _e( 'Home', 'wpwebapp' ) ?></option>
+				<option value="0" <?php selected( '0', $options['logout_redirect'] ); ?>><?php _e( 'Home', 'wpwebapp' ) ?></option>
 				<?php wpwebapp_settings_create_pages_select_fields( $options['logout_redirect'] ); ?>
 			</select>
 		</div>
