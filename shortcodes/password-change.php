@@ -17,33 +17,38 @@
 
 			// Variables
 			$options = wpwebapp_get_theme_options_change_password();
+      $field_classes = wpwebapp_prepare_field_classes();
 			$error = wpwebapp_get_session( 'wpwebapp_password_change_error', true );
 			$success = wpwebapp_get_session( 'wpwebapp_password_change_success', true );
-			$pw_requirements = $options['password_change_show_requirements'] === 'on' ? '<div class="wpwebapp-form-label-description">' . wpwebapp_password_requirements_message() . '</div>' : null;
+			$pw_requirements = $options['password_change_show_requirements'] === 'on' ? '<div class="' . $field_classes['field_caption'] . '">' . wpwebapp_password_requirements_message() . '</div>' : null;
 
 			// Check if forced reset is required
 			$current_user = wp_get_current_user();
 			$force_reset = get_user_meta( $current_user->ID, 'wpwebapp_force_password_reset', true );
 
 			$form =
-				( $force_reset === 'on' ? '<div class="wpwebapp-alert wpwebapp-alert-error">' . stripslashes( $options['password_change_forced_reset_error'] ) . '</div>' : '' ) .
-				( empty( $error ) ? '' : '<div class="wpwebapp-alert wpwebapp-alert-error">' . stripslashes( $error ) . '</div>' ) .
-				( empty( $success ) ? '' : '<div class="wpwebapp-alert wpwebapp-alert-success">' . stripslashes( $success ) . '</div>' ) .
+				( $force_reset === 'on' ? '<div class="' . $field_classes['form_alert'] . ' ' . $field_classes['form_alert_error'] . '">' . stripslashes( $options['password_change_forced_reset_error'] ) . '</div>' : '' ) .
+        ( empty( $error ) ? '' : '<div class="' . $field_classes['form_alert'] . ' ' . $field_classes['form_alert_error'] . '">' . stripslashes( $error ) . '</div>' ) .
+        ( empty( $success ) ? '' : '<div class="' . $field_classes['form_alert'] . ' ' . $field_classes['form_alert_success'] . '">' . stripslashes( $success ) . '</div>' ) .
 
-				'<form class="wpwebapp-form" id="wpwebapp_password_change" name="wpwebapp_password_change" action="" method="post">' .
+        '<form class="' . $field_classes['form'] . '" id="wpwebapp_password_change" name="wpwebapp_password_change" action="" method="post">' .
 
-					'<label class="wpwebapp-form-label" for="wpwebapp_password_change_current_password">' . stripslashes( $options['password_change_current_password_label'] ) . '</label>' .
-					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password" id="wpwebapp_password_change_current_password" name="wpwebapp_password_change_current_password"  value="" required>' .
+          '<div class="' . $field_classes['form_group'] . '">' .
+            '<label class="' . $field_classes['field_label'] . '" for="wpwebapp_password_change_current_password">' . stripslashes( $options['password_change_current_password_label'] ) . '</label>' .
+            '<input type="password" class="' . $field_classes['field'] . ' ' . $field_classes['field_password'] . ' ' . $field_classes['field_required_tag'] . '" id="wpwebapp_password_change_current_password" name="wpwebapp_password_change_current_password"  value="" required>' .
+          '</div>' .
 
-					'<label class="wpwebapp-form-label" for="wpwebapp_password_change_new_password">' . stripslashes( $options['password_change_new_password_label'] ) . '</label>' .
-					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password ' . ( empty( $pw_requirements ) ? '' : 'wpwebapp-form-input-has-description' ) . '" id="wpwebapp_password_change_new_password" name="wpwebapp_password_change_new_password"  value="" required>' .
-					$pw_requirements .
+          '<div class="' . $field_classes['form_group'] . '">' .
+            '<label class="' . $field_classes['field_label'] . '" for="wpwebapp_password_change_new_password">' . stripslashes( $options['password_change_new_password_label'] ) . '</label>' .
+            '<input type="password" class="' . $field_classes['field'] . ' ' . $field_classes['field_password'] . ' ' . $field_classes['field_required_tag'] . '' . ( empty( $pw_requirements ) ? '' : 'wpwebapp-form-input-has-description' ) . '" id="wpwebapp_password_change_new_password" name="wpwebapp_password_change_new_password"  value="" required>' .
+            $pw_requirements .
+          '</div>' .
 
-					'<button class="wpwebapp-form-button wpwebapp-form-button-password-change">' . $options['password_change_submit_text'] . '</button>' .
+          '<button class="' . $field_classes['form_submit'] . ' ' . $field_classes['form_submit_password_change'] . '">' . $options['password_change_submit_text'] . '</button>' .
 
-					wp_nonce_field( 'wpwebapp_password_change_nonce', 'wpwebapp_password_change_process', true, false ) .
+          wp_nonce_field( 'wpwebapp_password_change_nonce', 'wpwebapp_password_change_process', true, false ) .
 
-				'</form>';
+        '</form>';
 
 		} else {
 			$form = '<p>' . __( 'You need to be logged in to change your password.', 'wpwebapp' ) . '</p>';

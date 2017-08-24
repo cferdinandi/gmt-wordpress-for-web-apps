@@ -19,6 +19,7 @@
 
 			// Variables
 			$options = wpwebapp_get_theme_options_forgot_password();
+      $field_classes = wpwebapp_prepare_field_classes();
 			$error = wpwebapp_get_session( 'wpwebapp_password_reset_error', true );
 			$success = wpwebapp_get_session( 'wpwebapp_password_reset_success', true );
 			$credentials = wpwebapp_get_session( 'wpwebapp_password_reset_credentials', true );
@@ -29,19 +30,21 @@
 			}
 
 			$form =
-				( empty( $error ) ? '' : '<div class="wpwebapp-alert wpwebapp-alert-error">' . stripslashes( $error ) . '</div>' ) .
-				( empty( $success ) ? '' : '<div class="wpwebapp-alert wpwebapp-alert-success">' . stripslashes( $success ) . '</div>' ) .
+				( empty( $error ) ? '' : '<div class="' . $field_classes['form_alert'] . ' ' . $field_classes['form_alert_error'] . '">' . stripslashes( $error ) . '</div>' ) .
+        ( empty( $success ) ? '' : '<div class="' . $field_classes['form_alert'] . ' ' . $field_classes['form_alert_succes'] . '">' . stripslashes( $success ) . '</div>' ) .
 
-				'<form class="wpwebapp-form" id="wpwebapp_password_forgot" name="wpwebapp_password_forgot" action="" method="post">' .
+        '<form class="' . $field_classes['form'] . '" id="wpwebapp_password_forgot" name="wpwebapp_password_forgot" action="" method="post">' .
 
-					'<label class="wpwebapp-form-label" for="wpwebapp_password_forgot_username">' . stripslashes( $options['password_forgot_label'] ) . '</label>' .
-					'<input type="text" class="wpwebapp-form-input" id="wpwebapp_password_forgot_username" name="wpwebapp_password_forgot_username"  value="' . esc_attr( $credentials ) . '" required>' .
+          '<div class="' . $field_classes['form_group'] . '">' .
+            '<label class="' . $field_classes['field_label'] . '" for="wpwebapp_password_forgot_username">' . stripslashes( $options['password_forgot_label'] ) . '</label>' .
+            '<input type="text" class="' . $field_classes['field'] . ' ' . $field_classes['field_required_tag'] . '" id="wpwebapp_password_forgot_username" name="wpwebapp_password_forgot_username"  value="' . esc_attr( $credentials ) . '" required>' .
+          '</div>' .
 
-					'<button class="wpwebapp-form-button wpwebapp-form-button-password-forgot">' . $options['password_forgot_submit_text'] . '</button>' .
+          '<button class="' . $field_classes['form_submit'] . ' ' . $field_classes['form_submit_password_reset'] . '">' . $options['password_forgot_submit_text'] . '</button>' .
 
-					wp_nonce_field( 'wpwebapp_password_forgot_nonce', 'wpwebapp_password_forgot_process', true, false ) .
+          wp_nonce_field( 'wpwebapp_password_forgot_nonce', 'wpwebapp_password_forgot_process', true, false ) .
 
-				'</form>';
+        '</form>';
 
 		}
 

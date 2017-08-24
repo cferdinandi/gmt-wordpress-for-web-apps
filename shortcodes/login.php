@@ -20,27 +20,34 @@
 			// Variables
 			$current_user = wp_get_current_user();
 			$options = wpwebapp_get_theme_options_login();
+      $field_classes = wpwebapp_prepare_field_classes();
 			$error = wpwebapp_get_session( 'wpwebapp_login_error', true );
 			$credentials = wpwebapp_get_session( 'wpwebapp_login_credentials', true );
 
 			$form =
-				( empty( $error ) ? '' : '<div class="wpwebapp-alert wpwebapp-alert-error">' . stripslashes( $error ) . '</div>' ) .
+				( empty( $error ) ? '' : '<div class="' . $field_classes['form_alert'] . ' ' . $field_classes['form_alert_error'] . '">' . stripslashes( $error ) . '</div>' ) .
 
-				'<form class="wpwebapp-form" id="wpwebapp_login" name="wpwebapp_login" action="" method="post">' .
+        '<form class="' . $field_classes['form'] . '" id="wpwebapp_login" name="wpwebapp_login" action="" method="post">' .
 
-					'<label class="wpwebapp-form-label" for="wpwebapp_login_username">' . stripslashes( $options['login_username_label'] ) . '</label>' .
-					'<input type="text" class="wpwebapp-form-input" id="wpwebapp_login_username" name="wpwebapp_login_username"  value="' . esc_attr( $credentials ) . '" required>' .
+          '<div class="' . $field_classes['form_group'] . '">' .
+            '<label class="' . $field_classes['field_label'] . '" for="wpwebapp_login_username">' . stripslashes( $options['login_username_label'] ) . '</label>' .
+            '<input type="text" class="' . $field_classes['field'] . ' ' . $field_classes['field_required_tag'] . '" id="wpwebapp_login_username" name="wpwebapp_login_username"  value="' . esc_attr( $credentials ) . '" required>' .
+          '</div>' .
 
-					'<label class="wpwebapp-form-label" for="wpwebapp_login_password">' . stripslashes( $options['login_password_label'] ) . '</label>' .
-					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password" id="wpwebapp_login_password" name="wpwebapp_login_password"  value="" required>' .
+          '<div class="' . $field_classes['form_group'] . '">' .
+            '<label class="' . $field_classes['field_label'] . '" for="wpwebapp_login_password">' . stripslashes( $options['login_password_label'] ) . '</label>' .
+            '<input type="password" class="' . $field_classes['field'] . ' ' . $field_classes['field_password'] . ' ' . $field_classes['field_required_tag'] . '" id="wpwebapp_login_password" name="wpwebapp_login_password"  value="" required>' .
+          '</div>' .
 
-					'<label class="wpwebapp-form-label-checkbox"><input type="checkbox" class="wpwebapp-form-checkbox" id="wpwebapp_login_rememberme" name="wpwebapp_login_rememberme" value=""> ' . stripslashes( $options['login_rememberme_label'] ) . '</label>' .
+          '<div class="' . $field_classes['form_group'] . '">' .
+            '<label class="' . $field_classes['field_label_checkbox'] . '"><input type="checkbox" class="' . $field_classes['field_checkbox'] . '" id="wpwebapp_login_rememberme" name="wpwebapp_login_rememberme" value=""> ' . stripslashes( $options['login_rememberme_label'] ) . '</label>' .
+          '</div>' .
 
-					'<button class="wpwebapp-form-button wpwebapp-form-button-login">' . $options['login_submit_text'] . '</button>' .
+          '<button class="' . $field_classes['form_submit'] . ' ' . $field_classes['form_submit_login'] . '">' . $options['login_submit_text'] . '</button>' .
 
-					wp_nonce_field( 'wpwebapp_login_nonce', 'wpwebapp_login_process', true, false ) .
+          wp_nonce_field( 'wpwebapp_login_nonce', 'wpwebapp_login_process', true, false ) .
 
-				'</form>';
+        '</form>';
 
 		}
 
