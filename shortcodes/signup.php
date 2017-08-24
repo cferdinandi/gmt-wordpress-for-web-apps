@@ -19,9 +19,10 @@
 
 			// Variables
 			$options = wpwebapp_get_theme_options_signup();
+      $field_classes = wpwebapp_prepare_field_classes();
 			$error = wpwebapp_get_session( 'wpwebapp_signup_error', true );
 			$credentials = wpwebapp_get_session( 'wpwebapp_signup_credentials', true );
-			$pw_requirements = $options['signup_show_requirements'] === 'on' ? '<div class="wpwebapp-form-label-description">' . wpwebapp_password_requirements_message() . '</div>' : null;
+			$pw_requirements = $options['signup_show_requirements'] === 'on' ? '<div class="' . $field_classes['field_caption'] . '">' . wpwebapp_password_requirements_message() . '</div>' : null;
 			if ( empty( $credentials ) || !is_object( $credentials ) ) {
 				$credentials = array(
 					'username' => '',
@@ -30,30 +31,36 @@
 			}
 
 			$form =
-				( empty( $error ) ? '' : '<div class="wpwebapp_alert wpwebapp_alert_error">' . stripslashes( $error ) . '</div>' ) .
+				( empty( $error ) ? '' : '<div class="' . $field_classes['form_alert'] . ' ' . $field_classes['form_alert_error'] . '">' . stripslashes( $error ) . '</div>' ) .
 
-				'<form class="wpwebapp-form" id="wpwebapp_signup" name="wpwebapp_signup" action="" method="post">' .
+        '<form class="' . $field_classes['form'] . '" id="wpwebapp_signup" name="wpwebapp_signup" action="" method="post">' .
 
-					'<label class="wpwebapp-form-label" for="wpwebapp_signup_username">' . stripslashes( $options['signup_username_label'] ) . '</label>' .
-					'<input type="text" class="wpwebapp-form-input" id="wpwebapp_signup_username" name="wpwebapp_signup_username"  value="' . esc_attr( $credentials['username'] ) . '" required>' .
+          '<div class="' . $field_classes['form_group'] . '">' .
+            '<label class="' . $field_classes['field_label'] . '" for="wpwebapp_signup_username">' . stripslashes( $options['signup_username_label'] ) . '</label>' .
+            '<input type="text" class="' . $field_classes['field'] . ' ' . $field_classes['field_required_tag'] . '" id="wpwebapp_signup_username" name="wpwebapp_signup_username"  value="' . esc_attr( $credentials['username'] ) . '" required>' .
+          '</div>' .
 
-					'<label class="wpwebapp-form-label" for="wpwebapp_signup_email">' . stripslashes( $options['signup_email_label'] ) . '</label>' .
-					'<input type="email" class="wpwebapp-form-input" id="wpwebapp_signup_email" name="wpwebapp_signup_email"  value="' . esc_attr( $credentials['email'] ) . '" required>' .
+          '<div class="' . $field_classes['form_group'] . '">' .
+            '<label class="' . $field_classes['field_label'] . '" for="wpwebapp_signup_email">' . stripslashes( $options['signup_email_label'] ) . '</label>' .
+            '<input type="email" class="' . $field_classes['field'] . ' ' . $field_classes['field_required_tag'] . '" id="wpwebapp_signup_email" name="wpwebapp_signup_email"  value="' . esc_attr( $credentials['email'] ) . '" required>' .
+          '</div>' .
 
-					'<label class="wpwebapp-form-label" for="wpwebapp_signup_password">' . stripslashes( $options['signup_password_label'] ) . '</label>' .
-					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password ' . ( empty( $pw_requirements ) ? '' : 'wpwebapp-form-input-has-description' ) . '" id="wpwebapp_signup_password" name="wpwebapp_signup_password"  value="" required>' .
-					$pw_requirements .
+          '<div class="' . $field_classes['form_group'] . '">' .
+            '<label class="' . $field_classes['field_label'] . '" for="wpwebapp_signup_password">' . stripslashes( $options['signup_password_label'] ) . '</label>' .
+            '<input type="password" class="' . $field_classes['field'] . ' ' . $field_classes['field_password'] . ' ' . $field_classes['field_required_tag'] . ' ' . ( empty( $pw_requirements ) ? '' : 'wpwebapp-form-input-has-description' ) . '" id="wpwebapp_signup_password" name="wpwebapp_signup_password"  value="" required>' .
+            $pw_requirements .
+          '</div>' .
 
-					'<label class="wpwebapp-form-label wpwebapp-form-label-tarpit" for="wpwebapp_signup_password_confirm">' . __( 'If you are human, leave this blank', 'beacon' ) . '</label>' .
-					'<input type="text" class="wpwebapp-form-input wpwebapp-form-password wpwebapp-form-input-tarpit" id="wpwebapp_signup_password_confirm" name="wpwebapp_signup_password_confirm"  value="">' .
+          '<label class="' . $field_classes['field_label_honeypot'] . '" for="wpwebapp_signup_password_confirm">' . __( 'If you are human, leave this blank', 'beacon' ) . '</label>' .
+          '<input type="text" class="' . $field_classes['field_honeypot'] . '" id="wpwebapp_signup_password_confirm" name="wpwebapp_signup_password_confirm"  value="">' .
 
-					'<button class="wpwebapp-form-button wpwebapp-form-button-signup">' . $options['signup_submit_text'] . '</button>' .
+          '<button class="' . $field_classes['form_submit'] . ' ' . $field_classes['form_submit_signup'] . '">' . $options['signup_submit_text'] . '</button>' .
 
-					'<input type="hidden" id="wpwebapp_signup_tarpit_time" name="wpwebapp_signup_tarpit_time" value="' . current_time( 'timestamp' ) . '">' .
+          '<input type="hidden" id="wpwebapp_signup_tarpit_time" name="wpwebapp_signup_tarpit_time" value="' . current_time( 'timestamp' ) . '">' .
 
-					wp_nonce_field( 'wpwebapp_signup_nonce', 'wpwebapp_signup_process', true, false ) .
+          wp_nonce_field( 'wpwebapp_signup_nonce', 'wpwebapp_signup_process', true, false ) .
 
-				'</form>';
+        '</form>';
 
 		}
 

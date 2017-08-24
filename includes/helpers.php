@@ -50,6 +50,41 @@
 
 	}
 
+  // Prepare field classes
+  function wpwebapp_prepare_field_classes() {
+
+    $field_classes = array(
+      "form"                        => "wpwebapp-form",
+      "form_alert"                  => "wpwebapp-alert",
+      "form_alert_error"            => "wpwebapp-alert-error",
+      "form_alert_success"          => "wpwebapp-alert-success",
+      "form_submit"                 => "wpwebapp-form-button",
+      "form_submit_delete_account"  => "wpwebapp-form-button-delete-account",
+      "form_submit_email_change"    => "wpwebapp-form-button-email-change",
+      "form_submit_login"           => "wpwebapp-form-button-login",
+      "form_submit_password_change" => "wpwebapp-form-button-password-change",
+      "form_submit_password_reset"  => "wpwebapp-form-button-password-reset",
+      "form_submit_signup"          => "wpwebapp-form-button-signup",
+      "form_group"                  => "",
+      "field_label"                 => "wpwebapp-form-label",
+      "field_label_checkbox"        => "wpwebapp-form-label-checkbox",
+      "field_label_honeypot"        => "wpwebapp-form-label-tarpit",
+      "field"                       => "wpwebapp-form-input",
+      "field_password"              => "wpwebapp-form-password",
+      "field_checkbox"              => "wpwebapp-form-checkbox",
+      "field_honeypot"              => "wpwebapp-form-input-tarpit",
+      "field_required_tag"          => "wpwebapp-form-input-required",
+      "field_caption"               => "wpwebapp-form-label-description",
+    );
+
+    if ( has_filter('wpwebapp_render_field_classes') ) {
+      $new_field_classes = apply_filters( 'wpwebapp_render_field_classes', $field_classes );
+      $field_classes = array_replace( $field_classes, $new_field_classes );
+    }
+
+    return $field_classes;
+  }
+
 
 
 	/**

@@ -18,26 +18,30 @@
 			// Variables
 			$current_user = wp_get_current_user();
 			$options = wpwebapp_get_theme_options_change_email();
+      $field_classes = wpwebapp_prepare_field_classes();
 			$error = wpwebapp_get_session( 'wpwebapp_email_change_error', true );
 			$success = wpwebapp_get_session( 'wpwebapp_email_change_success', true );
 
 			$form =
-				( empty( $error ) ? '' : '<div class="wpwebapp-alert wpwebapp-alert-error">' . stripslashes( $error ) . '</div>' ) .
-				( empty( $success ) ? '' : '<div class="wpwebapp-alert wpwebapp-alert-success">' . stripslashes( $success ) . '</div>' ) .
+				( empty( $error ) ? '' : '<div class="' . $field_classes['form_alert'] . ' ' . $field_classes['form_alert_error'] . '">' . stripslashes( $error ) . '</div>' ) .
+        ( empty( $success ) ? '' : '<div class="' . $field_classes['form_alert'] . ' ' . $field_classes['form_alert_succes'] .'">' . stripslashes( $success ) . '</div>' ) .
+        '<form class="' . $field_classes['form'] . '" id="wpwebapp_email_change" name="wpwebapp_email_change" action="" method="post">' .
 
-				'<form class="wpwebapp-form" id="wpwebapp_email_change" name="wpwebapp_email_change" action="" method="post">' .
+          '<div class="' . $field_classes['form_group'] . '">' .
+            '<label class="' . $field_classes['field_label'] . '" for="wpwebapp_email_change_current_email">' . stripslashes( $options['email_change_current_email_label'] ) . '</label>' .
+            '<input type="email" class="' . $field_classes['field'] . ' ' . $field_classes['field_required_tag'] . '" id="wpwebapp_email_change_current_email" name="wpwebapp_email_change_current_email"  value="' . esc_attr( $current_user->user_email ) . '" required>' .
+          '</div>' .
 
-					'<label class="wpwebapp-form-label" for="wpwebapp_email_change_current_email">' . stripslashes( $options['email_change_current_email_label'] ) . '</label>' .
-					'<input type="email" class="wpwebapp-form-input" id="wpwebapp_email_change_current_email" name="wpwebapp_email_change_current_email"  value="' . esc_attr( $current_user->user_email ) . '" required>' .
+          '<div class="' . $field_classes['form_group'] . '">' .
+            '<label class="' . $field_classes['field_label'] . '" for="wpwebapp_email_change_password">' . stripslashes( $options['email_change_password_label'] ) . '</label>' .
+            '<input type="password" class="' . $field_classes['field'] . ' ' . $field_classes['field_password'] . ' ' . $field_classes['field_required_tag'] .'" id="wpwebapp_email_change_password" name="wpwebapp_email_change_password"  value="" required>' .
+          '</div>' .
 
-					'<label class="wpwebapp-form-label" for="wpwebapp_email_change_password">' . stripslashes( $options['email_change_password_label'] ) . '</label>' .
-					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password" id="wpwebapp_email_change_password" name="wpwebapp_email_change_password"  value="" required>' .
+          '<button class="' . $field_classes['form_submit'] .' ' . $field_classes['form_submit_email_change'] . '">' . $options['email_change_submit_text'] . '</button>' .
 
-					'<button class="wpwebapp-form-button wpwebapp-form-button-email-change">' . $options['email_change_submit_text'] . '</button>' .
+          wp_nonce_field( 'wpwebapp_email_change_nonce', 'wpwebapp_email_change_process', true, false ) .
 
-					wp_nonce_field( 'wpwebapp_email_change_nonce', 'wpwebapp_email_change_process', true, false ) .
-
-				'</form>';
+        '</form>';
 
 		} else {
 			$form = '<p>' . __( 'You need to be logged in to change your email address.', 'wpwebapp' ) . '</p>';

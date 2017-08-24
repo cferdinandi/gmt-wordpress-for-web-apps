@@ -17,16 +17,21 @@
 
 			// Variables
 			$options = wpwebapp_get_theme_options_delete_account();
+      $field_classes = wpwebapp_prepare_field_classes();
 			$error = wpwebapp_get_session( 'wpwebapp_delete_account_error', true );
 
 			$form =
-				( empty( $error ) ? '' : '<div class="wpwebapp-alert wpwebapp-alert-error">' . stripslashes( $error ) . '</div>' ) .
-				'<form class="wpwebapp-form" id="wpwebapp_delete_account" name="wpwebapp_delete_account" action="" method="post">' .
-					'<label class="wpwebapp-form-label" for="wpwebapp_delete_account_password">' . stripslashes( $options['delete_account_password_label'] ) . '</label>' .
-					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password" id="wpwebapp_delete_account_password" name="wpwebapp_delete_account_password"  value="" required>' .
-					'<button class="wpwebapp-form-button wpwebapp-form-button-delete-account">' . $options['delete_account_submit_text'] . '</button>' .
-					wp_nonce_field( 'wpwebapp_delete_account_nonce', 'wpwebapp_delete_account_process', true, false ) .
-				'</form>';
+				( empty( $error ) ? '' : '<div class="' . $field_classes['form_alert'] . ' ' . $field_classes['form_alert_error'] . '">' . stripslashes( $error ) . '</div>' ) .
+        '<form class="' . $field_classes['form'] . '" id="wpwebapp_delete_account" name="wpwebapp_delete_account" action="" method="post">' .
+
+          '<div class="' . $field_classes['form_group'] . '">' .
+            '<label class="' . $field_classes['field_label'] . '" for="wpwebapp_delete_account_password">' . stripslashes( $options['delete_account_password_label'] ) . '</label>' .
+            '<input type="password" class="' . $field_classes['field'] . ' ' . $field_classes['field_password'] . ' ' . $field_classes['field_required_tag'] . '" id="wpwebapp_delete_account_password" name="wpwebapp_delete_account_password"  value="" required>' .
+          '</div>' .
+
+          '<button class="' . $field_classes['form_submit']. ' ' . $field_classes['form_submit_delete_account'] . '">' . $options['delete_account_submit_text'] . '</button>' .
+          wp_nonce_field( 'wpwebapp_delete_account_nonce', 'wpwebapp_delete_account_process', true, false ) .
+        '</form>';
 
 		} else {
 			$form = '<p>' . __( 'You need to be logged in to delete your account.', 'wpwebapp' ) . '</p>';
