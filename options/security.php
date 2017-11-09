@@ -100,7 +100,7 @@
 					<?php endif; ?>
 					<label>
 						<input type="checkbox" name="wpwebapp_force_password_reset" id="wpwebapp_force_password_reset" value="on" <?php checked( $force_reset, 'on' ); ?>>
-						<?php _e( 'Force user to reset their password at next login', 'photoboard_user_groups' ); ?>
+						<?php _e( 'Force user to reset their password at next login', 'wpwebapp' ); ?>
 					</label>
 				</td>
 			</tr>

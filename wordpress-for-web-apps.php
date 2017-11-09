@@ -8,9 +8,17 @@
  * Version: 8.0.8
  * Author: Chris Ferdinandi
  * Author URI: http://gomakethings.com
+ * Text Domain: gmt-wordpress-for-web-apps
+ * Domain Path: /languages
+ *
  * License: MIT
  */
 
+
+function wpwebapp_load_plugin_textdomain() {
+    load_plugin_textdomain( 'wpwebapp', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
+}
+add_action( 'plugins_loaded', 'wpwebapp_load_plugin_textdomain' );
 // Includes
 require_once( plugin_dir_path( __FILE__ ) . 'includes/wp-session-manager/wp-session-manager.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'includes/helpers.php' );

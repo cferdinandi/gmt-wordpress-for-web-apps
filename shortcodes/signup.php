@@ -44,7 +44,7 @@
 					'<input type="password" class="wpwebapp-form-input wpwebapp-form-password ' . ( empty( $pw_requirements ) ? '' : 'wpwebapp-form-input-has-description' ) . '" id="wpwebapp_signup_password" name="wpwebapp_signup_password"  value="" required>' .
 					$pw_requirements .
 
-					'<label class="wpwebapp-form-label wpwebapp-form-label-tarpit" for="wpwebapp_signup_password_confirm">' . __( 'If you are human, leave this blank', 'beacon' ) . '</label>' .
+					'<label class="wpwebapp-form-label wpwebapp-form-label-tarpit" for="wpwebapp_signup_password_confirm">' . __( 'If you are human, leave this blank', 'wpwebapp' ) . '</label>' .
 					'<input type="text" class="wpwebapp-form-input wpwebapp-form-password wpwebapp-form-input-tarpit" id="wpwebapp_signup_password_confirm" name="wpwebapp_signup_password_confirm"  value="">' .
 
 					'<button class="wpwebapp-form-button wpwebapp-form-button-signup">' . $options['signup_submit_text'] . '</button>' .
@@ -184,7 +184,7 @@
 
 		// Honeypots
 		if ( !empty( $_POST['wpwebapp_signup_password_confirm'] ) || !isset( $_POST['wpwebapp_signup_tarpit_time'] ) || current_time( 'timestamp' ) - $_POST['wpwebapp_signup_tarpit_time'] < 2 ) {
-			$message = __( 'We are unable to create your account. Sorry.', 'beacon' );
+			$message = __( 'We are unable to create your account. Sorry.', 'wpwebapp' );
 			wpwebapp_set_session( 'wpwebapp_signup_error', $message );
 			wpwebapp_set_session( 'wpwebapp_signup_credentials', $credentials );
 			wp_safe_redirect( $referer, 302 );

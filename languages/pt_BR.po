@@ -1,0 +1,2034 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GMT WordPress for Web Apps\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-08 15:34-0200\n"
+"PO-Revision-Date: 2017-11-09 01:28-0200\n"
+"Last-Translator: Celso Bessa - 2Aces <celso.bessa@2aces.com.br>\n"
+"Language-Team: Celso Bessa celso.bessa@japuapp.com.br\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.3\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-KeywordsList: __;_e;_n;_n:1,2;_n_noop:1,2;_x;_ex;_nx;_nx:1,2;"
+"_nx_noop:1,2;esc_html__;esc_html_e;esc_html_x;esc_attr_x;esc_attr_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: includes/wp-session-manager\n"
+
+#: options/options.php:47 options/options_deprecated.php:49
+msgid "Sign up form \"Username\" field label"
+msgstr "Etiqueta do campo \"Nome de usuário\" no formulário de inscrição"
+
+#: options/options.php:52 options/options_deprecated.php:54
+msgid "Sign up form \"Email\" field label"
+msgstr "Etiqueta do campo \"Email\" no formulário de inscrição"
+
+#: options/options.php:57 options/options_deprecated.php:59
+msgid "Sign up form \"Password\" field label"
+msgstr "Etiqueta do campo \"Senha\" no formulário de inscrição"
+
+#: options/options.php:68 options/options_deprecated.php:70
+msgid "Sign up form \"Submit\" button text"
+msgstr "Etiqueta do campo \"Enviar\" no formulário de inscrição"
+
+#: options/options.php:81 options/options_deprecated.php:83
+msgid "Show password requirements with the sign up form"
+msgstr "Mostre requirementos de senha no formulário de inscrição"
+
+#: options/options.php:93 options/options_deprecated.php:95
+msgid "Error when no username is provided on the sign up form"
+msgstr ""
+"Erro quando não for fornecido nome de usuário no formulário de inscrição"
+
+#: options/options.php:99 options/options_deprecated.php:101
+msgid "Error when no email is provided on the sign up form"
+msgstr "Erro quando não for fornecido email no formulário de inscrição"
+
+#: options/options.php:105 options/options_deprecated.php:107
+msgid "Error when no password is provided on the sign up form"
+msgstr "Erro quando não for fornecida senha no formulário de inscrição"
+
+#: options/options.php:111 options/options_deprecated.php:113
+msgid ""
+"Error when username provided on the sign up form contains invalid characters"
+msgstr ""
+"Erro quando nome de usuário fornecido no formulário de inscrição tiver "
+"caracteres inválidos"
+
+#: options/options.php:117 options/options_deprecated.php:119
+msgid "Error when username provided on the sign up form already exists"
+msgstr ""
+"Erro quando nome de usuário fornecido no formulário de inscrição já existir"
+
+#: options/options.php:123 options/options_deprecated.php:125
+msgid "Error when email provided on the sign up form is invalid"
+msgstr "Erro quando emailo fornecido no formulário de inscrição for inválido"
+
+#: options/options.php:129 options/options_deprecated.php:131
+msgid "Error when email provided on the sign up form already exists"
+msgstr "Erro quando email fornecido no formulário de inscrição já existir"
+
+#: options/options.php:135 options/options_deprecated.php:137
+msgid "Error when signup fails"
+msgstr "Erro quando inscrição falhar"
+
+#: options/options.php:147 options/options_deprecated.php:149
+msgid "Send admins a notification when a new user signs up"
+msgstr ""
+"Envia uma notificação para os admins quando um novo usuário se inscreve"
+
+#: options/options.php:155 options/options_deprecated.php:157
+#, php-format
+msgid ""
+"The email to send to site admins when new users sign up. Use %s to "
+"dynamically add their username, and %s to dynamically add their email "
+"address."
+msgstr ""
+"O email enviado para os admins quando um novo usuário se inscreve. Use %s "
+"para adicionar nome de usuário dinamicamente e %s para adicionar o email "
+"deles dinamicamente."
+
+#: options/options.php:168 options/options_deprecated.php:170
+msgid "Send new users a welcome email when they sign up"
+msgstr "Envia um email de boas vindas aos novos usuários quando se inscrevem"
+
+#: options/options.php:176 options/options_deprecated.php:178
+#, php-format
+msgid ""
+"The email to send to new users after they sign up. Use %s to dynamically add "
+"their username, and %s to dynamically add the log in URL."
+msgstr ""
+"O email para ser enviado a novos usuários quando se inscrevem. Use %s para "
+"adicionar o nome de usuário dinamicamente e %s para adicionar a URL de login "
+"dinamicamente."
+
+#: options/options.php:188 options/options_deprecated.php:190
+msgid ""
+"Time (in hours) that a manually created new user \"create a password\" link "
+"is good for"
+msgstr ""
+"Tempo (em horas) de validade para um link \"crie uma senha\" para novo "
+"usuário criado manualmente"
+
+#: options/options.php:200 options/options_deprecated.php:202
+msgid ""
+"Send new users a welcome email when accounts are created manually in the "
+"WordPress Dashboard"
+msgstr ""
+"Envie um email de boas vindas para os usuários quando a conta é criada "
+"manualmente no Painel WordPress"
+
+#: options/options.php:208 options/options_deprecated.php:210
+#, php-format
+msgid ""
+"The email to send to users when an account is created for them in the "
+"WordPress Dashboard. Use %s to dynamically add their username, and %s to "
+"dynamically add a link to your password reset form (only works if a page for "
+"this form has been specified). Use %s to include the number of hours their "
+"\"create a new password\" URL is good for."
+msgstr ""
+"O email para ser enviado aos usuários quando uma nova conta é criada para "
+"eles no Painel WordPress. Use %s para adicionar o nome de usuário "
+"dinamicamente, e %s para adicionar dinamicamente um link para o formulário "
+"Mudar Senha (funciona apenas se a página deste formulário foi especificada). "
+"Use %s para incluir o número de horas em que a URL \"crie uma nova senha\" é "
+"válida."
+
+#: options/options.php:220 options/options_deprecated.php:222
+msgid "Login form \"Username\" label"
+msgstr "Etiqueta de \"Nome de Usuário\" no Formulário de Login"
+
+#: options/options.php:225 options/options_deprecated.php:227
+msgid "Login form \"Password\" label"
+msgstr "Etiqueta de \"Senha\" no Formulário de Login"
+
+#: options/options.php:230 options/options_deprecated.php:232
+msgid "Login form \"Remember Me\" label"
+msgstr "Etiqueta \"Lembrar de mim\" no Formulário de Login"
+
+#: options/options.php:241 options/options_deprecated.php:243
+msgid "Login form \"Submit\" button text"
+msgstr "Texto do botão \"Enviar\" no Formulário de Login"
+
+#: options/options.php:252 options/options_deprecated.php:254
+msgid "Error when no username is provided on the login form"
+msgstr "Erro quando nome de usuário não é fornecido no Formulário de Login"
+
+#: options/options.php:258 options/options_deprecated.php:260
+msgid "Error when no password is provided on the login form"
+msgstr "Erro quando senha não é fornecida no Formulário de Login"
+
+#: options/options.php:264 options/options_deprecated.php:266
+msgid "Error when login fails"
+msgstr "Erro quando o login falha"
+
+#: options/options.php:274 options/options_deprecated.php:276
+msgid "URL to redirect users to after they log in:"
+msgstr "URL para redireciona os usuários depois que eles logam:"
+
+#: options/options.php:276 options/options.php:285 options/options.php:653
+#: options/options_deprecated.php:278 options/options_deprecated.php:287
+#: options/options_deprecated.php:655
+msgid "Home"
+msgstr "Início"
+
+#: options/options.php:283 options/options_deprecated.php:285
+msgid "URL to redirect users to after they logout:"
+msgstr "URL para direcionar o usuários depois que deslogam:"
+
+#: options/options.php:292 options/options_deprecated.php:294
+msgid "URL to redirect users to for a forced password reset:"
+msgstr "URL para redirecionar os usuário para forçar criarem uma nova senha:"
+
+#: options/options.php:303 options/options_deprecated.php:305
+msgid ""
+"Add a URL referrer to \"Logged Out\" and \"Forced Password Reset\" redirects"
+msgstr ""
+"Adicionar um URL referrer para os redirecionamentos de \"Deslogar/Sair\" e "
+"Reset Forçado de Senha"
+
+#: options/options.php:316 options/options_deprecated.php:318
+msgid "Change email form \"Email\" label"
+msgstr "Etiqueta \"Email\" do formulário Mudar Email"
+
+#: options/options.php:321 options/options_deprecated.php:323
+msgid "Change email form \"Password\" label"
+msgstr "Etiqueta \"Senha\" do formulário Mudar Email"
+
+#: options/options.php:332 options/options_deprecated.php:334
+msgid "Change email form \"Submit\" button text"
+msgstr "Etiqueta do botão \"Enviar\" do formulário Mudar Email"
+
+#: options/options.php:343 options/options_deprecated.php:345
+msgid "Error when no email address is provided on the change email form"
+msgstr ""
+"Erro quando não é fornecido um endereço de email no formulário Mudar Email"
+
+#: options/options.php:349 options/options_deprecated.php:351
+msgid "Error when no password is provided on the change email form"
+msgstr "Erro quando não é fornecida senha no formulário Mudar Email"
+
+#: options/options.php:355 options/options_deprecated.php:357
+msgid "Error when the password is incorrect on the change email form"
+msgstr "Erro quando a senha é errada no formulário Mudar Email"
+
+#: options/options.php:361 options/options_deprecated.php:363
+msgid "Message when the user's email address is successfully changed"
+msgstr "Mensagem para quando o usuário mudar o endereço de email com sucesso"
+
+#: options/options.php:372 options/options_deprecated.php:374
+msgid "Change password form \"Current Password\" label"
+msgstr "Etiqueta \"Senha Atual\" do formulário Mudar Senha"
+
+#: options/options.php:377 options/options_deprecated.php:379
+msgid "Change password form \"New Password\" label"
+msgstr "Etiqueta \"Senha Nova\" do formulário Mudar Senha"
+
+#: options/options.php:388 options/options_deprecated.php:390
+msgid "Change password form \"Submit\" button text"
+msgstr "Etiqueta do botão \"Enviar\" do formulário Mudar Senha"
+
+#: options/options.php:400 options/options_deprecated.php:402
+msgid "Show password requirements with the change password form"
+msgstr "Mostrar requirementos de senha no formulário Mudar Senha"
+
+#: options/options.php:412 options/options_deprecated.php:414
+msgid "Error when user is forced to reset their password"
+msgstr "Erro quando um usuário é forçado a mudar a senha"
+
+#: options/options.php:418 options/options_deprecated.php:420
+msgid "Error when current password is not provided on the change password form"
+msgstr "Erro quando a senha atual não for fornecida no formulário mudar senha"
+
+#: options/options.php:424 options/options_deprecated.php:426
+msgid "Error when new password is not provided on the change password form"
+msgstr "Erro quando a senha nova não for fornecida no formulário mudar senha"
+
+#: options/options.php:430 options/options_deprecated.php:432
+msgid ""
+"Error when the current password is incorrect on the change password form"
+msgstr "Erro quando a senha atual estiver errada no formulário mudar senha"
+
+#: options/options.php:436 options/options_deprecated.php:438
+msgid "Message when the user's password is successfully changed"
+msgstr "Mensagem quando a senha do usuário for modificada com sucesso"
+
+#: options/options.php:448 options/options_deprecated.php:450
+msgid "Send admins a notification when a user changes their password"
+msgstr "Envia uma notificação aos admins quando um usuário muda a senha"
+
+#: options/options.php:456 options/options_deprecated.php:458
+#, php-format
+msgid ""
+"The email to send to site admins when a user changes their password. Use %s "
+"to dynamically add their username, and %s to dynamically add their email "
+"address."
+msgstr ""
+"O email enviado ao admins do site quando um usuário muda a senha. Use %s "
+"para adicionar o nome de usuário dinamicamente, e %s para adicionar o "
+"endereço de email dinamicamente."
+
+#: options/options.php:469 options/options_deprecated.php:471
+msgid "Send users an email when they change their password"
+msgstr "Enviar um email aos usuáris quando mudarem a senha"
+
+#: options/options.php:477 options/options_deprecated.php:479
+#, php-format
+msgid ""
+"The email to send to users after they change their password. Use %s to "
+"dynamically add their username"
+msgstr ""
+"O email para ser enviado aos usuário quando mudam a senha. Use %s para "
+"adicionar o nome de usuário dinamicamente"
+
+#: options/options.php:488 options/options_deprecated.php:490
+msgid "URL for password resets"
+msgstr "URL para mudar senhas"
+
+#: options/options.php:503 options/options_deprecated.php:505
+msgid "Forgot password form \"Username\" label"
+msgstr "Etiqueta \"Nome de Usuário\" no formulário Esqueci a Senha"
+
+#: options/options.php:508 options/options_deprecated.php:510
+msgid "Reset password form \"New Password\" label"
+msgstr "Etiqueta \"Nova Senha\" no formulário Mudar Senha"
+
+#: options/options.php:519 options/options_deprecated.php:521
+msgid "Forgot password form \"Submit\" button text"
+msgstr "Texto do botão \"Enviar\" no formulário Esqueci a Senha"
+
+#: options/options.php:524 options/options_deprecated.php:526
+msgid "Reset password form \"Submit\" button text"
+msgstr "Texto do botão \"Enviar\" no formulário Mudar Senha"
+
+#: options/options.php:536 options/options_deprecated.php:538
+msgid "Show password requirements with the password reset form"
+msgstr "Mostre requirementos de senha no formulário Mudar Senha"
+
+#: options/options.php:548 options/options_deprecated.php:550
+msgid ""
+"Error when username or email is not provided on the forgot password form"
+msgstr ""
+"Erro quando o nome de usuário ou email não for forem fornecidos no "
+"formulário Esqueci a Senha"
+
+#: options/options.php:554 options/options_deprecated.php:556
+msgid ""
+"Error when username or email address provided on the forgot password form do "
+"not exist"
+msgstr ""
+"Erro quando o nome de usuário ou endereço de email fornecidos no formulário "
+"Esqueci a Senha não existirem"
+
+#: options/options.php:560 options/options_deprecated.php:562
+msgid ""
+"Error when the username or email attempting to be reset belongs to an admin"
+msgstr ""
+"Erro quando o nome de usuário ou email tentando a modificação pertencer a um "
+"admin"
+
+#: options/options.php:566 options/options_deprecated.php:568
+msgid "Error when the user's password reset fails"
+msgstr "Erro quando a mudança de senha do usuário falhar"
+
+#: options/options.php:572 options/options_deprecated.php:574
+msgid "Error when the password reset link has expired"
+msgstr "Erero quando o link Mudar Senha expirar"
+
+#: options/options.php:578 options/options_deprecated.php:580
+msgid "Message when the password reset link has been sent"
+msgstr "Mensagem quando o link Mudar Senha for enviado"
+
+#: options/options.php:584 options/options_deprecated.php:586
+msgid "Error when the new password is left blank on the password reset form"
+msgstr ""
+"Erro quando o campo nova senha for deixada em branca no formulário Mudar "
+"Senha"
+
+#: options/options.php:595 options/options_deprecated.php:597
+msgid "Time (in hours) that password reset link is valid for"
+msgstr "Tempo (em horas) de validade do link de Mudar Senha"
+
+#: options/options.php:607 options/options_deprecated.php:609
+#, php-format
+msgid ""
+"The email to send to users when they request a password reset. Use %s to "
+"dynamically add their username, and %s to dynamically add their custom reset "
+"URL (required). Use %s to include the number of hours their reset URL is "
+"good for."
+msgstr ""
+"O email para ser enviado aos usuários qu ando pedem uma nova senha. Use %s "
+"para adicionar o nome de usuário dinamicamente, e use %s para adicionar "
+"dinamicamente a URL personalidade de mudança (obrigatório). Use %s para "
+"incluir o número de horas que esta URL de mudança será válida."
+
+#: options/options.php:619 options/options_deprecated.php:621
+msgid "Delete account form \"Password\" label"
+msgstr "Etiqueta \"Senha\" do formulário Apagar Conta"
+
+#: options/options.php:630 options/options_deprecated.php:632
+msgid "Delete account form \"Submit\" button text"
+msgstr "Texto do botão \"Enviar\" do formulário Apagar Conta"
+
+#: options/options.php:641 options/options_deprecated.php:643
+msgid "Error when password provided in the delete account form is not correct"
+msgstr "Erro quando a senha usada no formulário Apagar Conta estiver incorreta"
+
+#: options/options.php:651 options/options_deprecated.php:653
+msgid "URL to redirect users to after their account is deleted:"
+msgstr "URL para redirecionar os usuários depois que a senha foi apagada:"
+
+#: options/options.php:666 options/options_deprecated.php:668
+msgid "Minimum character length for passwords"
+msgstr "Mínimo de caracteres para senha"
+
+#: options/options.php:678 options/options_deprecated.php:680
+msgid ""
+"Require passwords to contain at least 1 letter (if mixed-case is required, "
+"this will also be required)"
+msgstr ""
+"Obriga que senha tenham ao menos 1 letra (se variar Maiúsculas/Minúsculas "
+"for obrigatório, isto também será obrigatório)"
+
+#: options/options.php:684 options/options_deprecated.php:686
+msgid "Require passwords to contain at least 1 number"
+msgstr "Obriga que senhas tenham ao menos 1 número"
+
+#: options/options.php:690 options/options_deprecated.php:692
+msgid "Require passwords to contain at least 1 special character"
+msgstr "Obriga que senha tenham ao menos 1 caractere especial"
+
+#: options/options.php:696 options/options_deprecated.php:698
+msgid ""
+"Require passwords to contain mixed-case (both uppercase and lowercase "
+"letters)"
+msgstr "Obriga que senha misturem Maiúsculas e Minúsculas"
+
+#: options/options.php:709 options/options_deprecated.php:711
+msgid "Show the admin bar for non-admin (disabled by default)"
+msgstr ""
+"Mostre a barra de admin para usuários que não sejam admin (desabilitado por "
+"padrão)"
+
+#: options/options.php:727 options/options_deprecated.php:731
+msgid "Username"
+msgstr "Nome de Usuário"
+
+#: options/options.php:728 options/options.php:797
+#: options/options_deprecated.php:732 options/options_deprecated.php:768
+msgid "Email"
+msgstr "Email"
+
+#: options/options.php:729 options/options.php:761 options/options.php:798
+#: options/options_deprecated.php:733 options/options_deprecated.php:754
+#: options/options_deprecated.php:769
+msgid "Password"
+msgstr "Senha"
+
+#: options/options.php:730 options/options.php:1195
+#: options/options_deprecated.php:734
+msgid "Sign Up"
+msgstr "Inscreva-se"
+
+#: options/options.php:732 options/options_deprecated.php:736
+msgid "Please enter a username."
+msgstr "Por favor digite um nome de usuário."
+
+#: options/options.php:733 options/options_deprecated.php:737
+msgid "Please enter an email address."
+msgstr "Por favor digite um endereço de email."
+
+#: options/options.php:734 options/options_deprecated.php:738
+msgid "Please enter a password."
+msgstr "Por favor digite uma senha."
+
+#: options/options.php:735 options/options_deprecated.php:739
+msgid ""
+"Usernames can only contain letters, numbers, and these special characters: "
+"_, space, ., -, *, and @."
+msgstr ""
+"Nomes de usuários podem conter apenas letras, números e estes caracteres "
+"especiais: _, espaço, ., -, *, e @."
+
+#: options/options.php:736 options/options_deprecated.php:740
+msgid "Your chosen username is already in use. Sorry."
+msgstr "O nome de usuário que escolheu já existe. Desculpe."
+
+#: options/options.php:737 options/options_deprecated.php:741
+msgid "Please use a valid email address."
+msgstr "Por favor use um endereço de email válido."
+
+#: options/options.php:738 options/options_deprecated.php:742
+msgid "Your chosen email is already in use. Sorry."
+msgstr "O email que escolheu já está em uso. Desculpe."
+
+#: options/options.php:739 options/options_deprecated.php:743
+msgid ""
+"Your account was created but the system failed to log you in. Please try "
+"logging in now."
+msgstr ""
+"Sua conta foi criada mas o sistema falhou em fazer login. Por favor tente "
+"logar agora."
+
+#: options/options.php:760 options/options.php:844
+#: options/options_deprecated.php:753 options/options_deprecated.php:793
+msgid "Username or Email"
+msgstr "Nome de usuário ou Email"
+
+#: options/options.php:762 options/options_deprecated.php:755
+msgid "Remember me"
+msgstr "Lembre de mim"
+
+#: options/options.php:763 options/options.php:1196
+#: options/options_deprecated.php:756
+msgid "Login"
+msgstr "Login"
+
+#: options/options.php:764 options/options_deprecated.php:757
+msgid "Please enter a username or email address."
+msgstr "Por favor digite um nome de usuário ou endereço de email."
+
+#: options/options.php:765 options/options.php:801
+#: options/options_deprecated.php:758 options/options_deprecated.php:772
+msgid "Please enter your password."
+msgstr "Por favor digite sua senha."
+
+#: options/options.php:766 options/options_deprecated.php:759
+msgid "Login failed. Please try again."
+msgstr "Falhou o login. Por favor tente novamente."
+
+#: options/options.php:799 options/options_deprecated.php:770
+msgid "Change My Email"
+msgstr "Mudar Meu Email"
+
+#: options/options.php:800 options/options_deprecated.php:771
+msgid "Please enter a new email address."
+msgstr "Por favor digite um novo endereço de email."
+
+#: options/options.php:802 options/options.php:873
+#: options/options_deprecated.php:773 options/options_deprecated.php:811
+msgid "The password you provided is not correct."
+msgstr "A senha que forneceu está incorreta."
+
+#: options/options.php:803 options/options_deprecated.php:774
+msgid "Your email address was updated."
+msgstr "Seu endereço de email foi atualizado."
+
+#: options/options.php:817 options/options_deprecated.php:777
+msgid "Current Password"
+msgstr "Senha Atual"
+
+#: options/options.php:818 options/options.php:846
+#: options/options_deprecated.php:778 options/options_deprecated.php:795
+msgid "New Password"
+msgstr "Nova Senha"
+
+#: options/options.php:819 options/options_deprecated.php:779
+msgid "Change My Password"
+msgstr "Mudar Minha Senha"
+
+#: options/options.php:821 options/options_deprecated.php:781
+msgid " You must change your password before you can continue."
+msgstr " Você deve mudar sua senha antes de continuar."
+
+#: options/options.php:822 options/options_deprecated.php:782
+msgid "Please enter your current password."
+msgstr "Por favor digite sua senha atual."
+
+#: options/options.php:823 options/options.php:855
+#: options/options_deprecated.php:783 options/options_deprecated.php:804
+msgid "Please enter a new password."
+msgstr "Por favor digite uma senha nova."
+
+#: options/options.php:824 options/options_deprecated.php:784
+msgid "The current password you provided is not correct."
+msgstr "A senha atual que forneceu está incorreta."
+
+#: options/options.php:825 options/options_deprecated.php:785
+msgid "Your password was updated."
+msgstr "Sua senha foi atualizada."
+
+#: options/options.php:845 options/options_deprecated.php:794
+msgid "Reset My Password"
+msgstr "Mudar Minha Senha"
+
+#: options/options.php:847 options/options_deprecated.php:796
+msgid "Update My Password"
+msgstr "Atualizar Minha Senha"
+
+#: options/options.php:849 options/options_deprecated.php:798
+msgid "Please enter your username or email."
+msgstr "Por favor digite seu nome de usuário ou email."
+
+#: options/options.php:850 options/options_deprecated.php:799
+msgid "The username or email your entered does not exist."
+msgstr "O nome de usuário ou email que digitou não existe."
+
+#: options/options.php:851 options/options_deprecated.php:800
+msgid "This user's password cannot be reset."
+msgstr "A senha deste usuário não pode ser resetada."
+
+#: options/options.php:852 options/options_deprecated.php:801
+msgid "Password reset failed. Please try again."
+msgstr "Mudança de senha falhou. Por favor tente novamente."
+
+#: options/options.php:853 options/options_deprecated.php:802
+msgid "This link has expired. Please try again."
+msgstr "Este link expirou. Por favor tente novamente."
+
+#: options/options.php:854 options/options_deprecated.php:803
+msgid "An email has been sent to you with a password reset link."
+msgstr "Um email foi enviado para você com um link para mudar a senha."
+
+#: options/options.php:871 options/options_deprecated.php:809
+msgid "Confirm Password"
+msgstr "Confirme a senha"
+
+#: options/options.php:872 options/options_deprecated.php:810
+msgid "Delete My Account"
+msgstr "Apague minha Conta"
+
+#: options/options.php:1197 options/options_deprecated.php:1126
+msgid "Redirects"
+msgstr "Redireciona"
+
+#: options/options.php:1198
+msgid "Change Email"
+msgstr "Mudar Email"
+
+#: options/options.php:1199
+msgid "Change Password"
+msgstr "Mudar Senha"
+
+#: options/options.php:1200
+msgid "Forgot Password"
+msgstr "Esqueci a Senha"
+
+#: options/options.php:1201
+msgid "Delete Account"
+msgstr "Apagar Conta"
+
+#: options/options.php:1202 options/options_deprecated.php:1131
+#: options/security.php:88
+msgid "Security"
+msgstr "Segurança"
+
+#: options/options.php:1213 options/options_deprecated.php:1093
+msgid "WordPress for Web Apps Options"
+msgstr "Opções do WordPress para Aplicativos Web"
+
+#: options/options.php:1279 options/options_deprecated.php:1143
+msgid "Sign Up Labels"
+msgstr "Etiquetas da Inscrição"
+
+#: options/options.php:1280 options/options_deprecated.php:1144
+msgid "Sign Up Submit Button"
+msgstr "Botão de Enviar Inscrição"
+
+#: options/options.php:1281 options/options_deprecated.php:1145
+msgid "Sign Up Password Requirements"
+msgstr "Requerimentos da senha de Inscrição"
+
+#: options/options.php:1282 options/options_deprecated.php:1146
+msgid "Sign Up Errors"
+msgstr "Erros da Inscrição"
+
+#: options/options.php:1283 options/options_deprecated.php:1147
+msgid "Sign Up Admin Notifications"
+msgstr "Notificações de Admin da Inscrição"
+
+#: options/options.php:1284 options/options_deprecated.php:1148
+msgid "Sign Up User Notifications"
+msgstr "Notificações de Usuários da Inscricão"
+
+#: options/options.php:1285 options/options_deprecated.php:1149
+msgid "User Password Time Limit"
+msgstr "Limite tempo da Senha de Usuário"
+
+#: options/options.php:1286 options/options_deprecated.php:1150
+msgid "Create User Notifications"
+msgstr "Criar Notificações de Usuários"
+
+#: options/options.php:1289 options/options_deprecated.php:1153
+msgid "Login Labels"
+msgstr "Etiquetes do Login"
+
+#: options/options.php:1290 options/options_deprecated.php:1154
+msgid "Login Submit Button"
+msgstr "Botão de Envio de Loging"
+
+#: options/options.php:1291 options/options_deprecated.php:1155
+msgid "Login Errors"
+msgstr "Erros de Login"
+
+#: options/options.php:1294 options/options_deprecated.php:1158
+msgid "Redirect URLs"
+msgstr "URLs de Redirecionamento"
+
+#: options/options.php:1297 options/options_deprecated.php:1161
+msgid "Email Change Labels"
+msgstr "Etiquetas de Mudar Email"
+
+#: options/options.php:1298 options/options_deprecated.php:1162
+msgid "Email Change Submit Buttons"
+msgstr "Botões de Envio de Mudar Email"
+
+#: options/options.php:1299 options/options_deprecated.php:1163
+msgid "Email Change Errors"
+msgstr "Erros de Mudança de Email"
+
+#: options/options.php:1302 options/options_deprecated.php:1166
+msgid "Change Password Labels"
+msgstr "Etiquetas de Mudança de Senha"
+
+#: options/options.php:1303 options/options_deprecated.php:1167
+msgid "Change Password Submit Buttons"
+msgstr ""
+
+#: options/options.php:1304 options/options_deprecated.php:1168
+msgid "Change Password Requirements"
+msgstr ""
+
+#: options/options.php:1305 options/options_deprecated.php:1169
+msgid "Change Password Errors"
+msgstr ""
+
+#: options/options.php:1306 options/options_deprecated.php:1170
+msgid "Password Change Admin Notifications"
+msgstr ""
+
+#: options/options.php:1307 options/options_deprecated.php:1171
+msgid "Password Change User Notifications"
+msgstr ""
+
+#: options/options.php:1310 options/options_deprecated.php:1174
+msgid "Forgot Password URL"
+msgstr ""
+
+#: options/options.php:1311 options/options_deprecated.php:1175
+msgid "Forgot Password Labels"
+msgstr ""
+
+#: options/options.php:1312 options/options_deprecated.php:1176
+msgid "Forgot Password Submit Buttons"
+msgstr ""
+
+#: options/options.php:1313 options/options_deprecated.php:1177
+msgid "Forgot Password Requirements"
+msgstr ""
+
+#: options/options.php:1314 options/options_deprecated.php:1178
+msgid "Forgot Password Errors"
+msgstr ""
+
+#: options/options.php:1315 options/options_deprecated.php:1179
+msgid "Forgot Password Time Limit"
+msgstr ""
+
+#: options/options.php:1316 options/options_deprecated.php:1180
+msgid "Password Reset Notification"
+msgstr ""
+
+#: options/options.php:1319 options/options_deprecated.php:1183
+msgid "Delete Account Labels"
+msgstr ""
+
+#: options/options.php:1320 options/options_deprecated.php:1184
+msgid "Delete Account Submit Buttons"
+msgstr ""
+
+#: options/options.php:1321 options/options_deprecated.php:1185
+msgid "Delete Account Errors"
+msgstr ""
+
+#: options/options.php:1322 options/options_deprecated.php:1186
+msgid "Delete Account Redirect"
+msgstr ""
+
+#: options/options.php:1325 options/options_deprecated.php:1189
+msgid "Password Length"
+msgstr ""
+
+#: options/options.php:1326 options/options_deprecated.php:1190
+msgid "Password Characters"
+msgstr ""
+
+#: options/options.php:1327 options/options_deprecated.php:1191
+msgid "Admin Bar"
+msgstr ""
+
+#: options/options.php:1349 options/options_deprecated.php:1213
+msgid "Web Apps"
+msgstr ""
+
+#: options/options_deprecated.php:1124
+msgid "Sign Up Form"
+msgstr ""
+
+#: options/options_deprecated.php:1125
+msgid "Login Form"
+msgstr ""
+
+#: options/options_deprecated.php:1127
+msgid "Change Email Form"
+msgstr ""
+
+#: options/options_deprecated.php:1128
+msgid "Change Password Form"
+msgstr ""
+
+#: options/options_deprecated.php:1129
+msgid "Forgot Password Form"
+msgstr ""
+
+#: options/options_deprecated.php:1130
+msgid "Delete Account Form"
+msgstr ""
+
+#: options/security.php:93
+msgid "Force Password Reset"
+msgstr ""
+
+#: options/security.php:103
+msgid "Force user to reset their password at next login"
+msgstr ""
+
+#: options/user-access.php:12
+msgid "User Access"
+msgstr ""
+
+#: shortcodes/delete-account.php:32
+msgid "You need to be logged in to delete your account."
+msgstr ""
+
+#: shortcodes/delete-account.php:64
+msgid "This account cannot be deleted."
+msgstr ""
+
+#: shortcodes/email-change.php:43
+msgid "You need to be logged in to change your email address."
+msgstr ""
+
+#: shortcodes/login.php:17 shortcodes/password-reset.php:17
+#: shortcodes/password-reset.php:61 shortcodes/signup.php:17
+msgid "You're already logged in."
+msgstr ""
+
+#: shortcodes/password-change.php:49
+msgid "You need to be logged in to change your password."
+msgstr ""
+
+#: shortcodes/signup.php:47
+msgid "If you are human, leave this blank"
+msgstr ""
+
+#: shortcodes/signup.php:187
+msgid "We are unable to create your account. Sorry."
+msgstr ""
+
+#~ msgid ""
+#~ "Your account was created by the system failed to log you in. Please try "
+#~ "logging in now."
+#~ msgstr ""
+#~ "Sua conta foi criada mas o sistema não consegui logar você. Por favor, "
+#~ "tente logar agora."
+
+#~ msgid "Oops! That page can&rsquo;t be found."
+#~ msgstr "Opa, essa página não foi encontrada."
+
+#~ msgid ""
+#~ "It looks like nothing was found at this location. Maybe try one of the "
+#~ "links below or a search?"
+#~ msgstr ""
+#~ "Parece que não havia nada por aqui. Talvez tentando utilizar algum dos "
+#~ "links abaixo ou a busca?"
+
+#~ msgid "Most Used Categories"
+#~ msgstr "Categorias mais utilizadas"
+
+#~ msgid "Try looking in the monthly archives. %1$s"
+#~ msgstr "Tente procurar por arquivos mensais. %1$s"
+
+#~ msgid "One thought on &ldquo;%2$s&rdquo;"
+#~ msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+#~ msgstr[0] "Um comentário em &ldquo;%2$s&rdquo;"
+#~ msgstr[1] "%1$s comentários em &ldquo;%2$s&rdquo;"
+
+#~ msgid "Comment navigation"
+#~ msgstr "Navegação dos comentários"
+
+#~ msgid "Older Comments"
+#~ msgstr "Comentários antigos"
+
+#~ msgid "Newer Comments"
+#~ msgstr "Comentários recentes"
+
+#~ msgid "Comments are closed."
+#~ msgstr "Comentários não permitidos."
+
+#~ msgid "Back To Top"
+#~ msgstr "Voltar ao topo"
+
+#~ msgid "Primary Menu"
+#~ msgstr "Menu primário"
+
+#~ msgid "Page Menu"
+#~ msgstr "Menu de Página"
+
+#~ msgid "Sidebar"
+#~ msgstr "Barra Lateral"
+
+#~ msgid "Default sidebar for blog template"
+#~ msgstr "Barra Lateral padrão do modelo blog"
+
+#~ msgid "Page"
+#~ msgstr "Página"
+
+#~ msgid "Sidebar for template With Sidebar"
+#~ msgstr "Barra Lateral do modelo With Sidebar"
+
+#~ msgid "on"
+#~ msgstr "em"
+
+#~ msgid "Install Required Plugins"
+#~ msgstr "Instale os plugins requeridos"
+
+#~ msgid "Install Plugins"
+#~ msgstr "Instale Plugins"
+
+#~ msgid "Installing Plugin: %s"
+#~ msgstr "Instalando Plugin: %s"
+
+#~ msgid "Something went wrong with the plugin API."
+#~ msgstr "Alguma coisa aconteceu errado na instalação da API do plugin."
+
+#~ msgid "This theme requires the following plugin: %1$s."
+#~ msgid_plural "This theme requires the following plugins: %1$s."
+#~ msgstr[0] "Este tema necessita do seguinte plugin: %1$s."
+#~ msgstr[1] "Este tema necessita dos seguintes plugins: %1$s."
+
+#~ msgid "This theme recommends the following plugin: %1$s."
+#~ msgid_plural "This theme recommends the following plugins: %1$s."
+#~ msgstr[0] "Este tema recomenda os seguinte plugin: %1$s."
+#~ msgstr[1] "Este tema recomenda os seguintes plugins: %1$s."
+
+#~ msgid ""
+#~ "Sorry, but you do not have the correct permissions to install the %1$s "
+#~ "plugin."
+#~ msgid_plural ""
+#~ "Sorry, but you do not have the correct permissions to install the %1$s "
+#~ "plugins."
+#~ msgstr[0] ""
+#~ "Me desculpe mas você não tem permissão para instalar o plugin %1$s."
+#~ msgstr[1] ""
+#~ "Me desculpe mas você não tem permissão para instalar os plugins %1$s."
+
+#~ msgid ""
+#~ "The following plugin needs to be updated to its latest version to ensure "
+#~ "maximum compatibility with this theme: %1$s."
+#~ msgid_plural ""
+#~ "The following plugins need to be updated to their latest version to "
+#~ "ensure maximum compatibility with this theme: %1$s."
+#~ msgstr[0] ""
+#~ "O seguinte plugin necessita atualização para garantir máxima "
+#~ "compatibilidade com esse tema: %1$s."
+#~ msgstr[1] ""
+#~ "Os seguintes plugins necessitam atualização para garantir máxima "
+#~ "compatibilidade com esse tema: %1$s."
+
+#~ msgid "There is an update available for: %1$s."
+#~ msgid_plural "There are updates available for the following plugins: %1$s."
+#~ msgstr[0] "Existe atualizações disponíveis para os seguintes plugins: %1$s."
+#~ msgstr[1] "Existe uma atualização disponível para: %1$s."
+
+#~ msgid ""
+#~ "Sorry, but you do not have the correct permissions to update the %1$s "
+#~ "plugin."
+#~ msgid_plural ""
+#~ "Sorry, but you do not have the correct permissions to update the %1$s "
+#~ "plugins."
+#~ msgstr[0] ""
+#~ "Me desculpe, você não tem permissão para atualizar o plugin: %1$s."
+#~ msgstr[1] ""
+#~ "Me desculpe, você não tem permissão para atualizar os plugins: %1$s."
+
+#~ msgid "The following required plugin is currently inactive: %1$s."
+#~ msgid_plural "The following required plugins are currently inactive: %1$s."
+#~ msgstr[0] "O seguinte plugin requerido esta inativo: %1$s."
+#~ msgstr[1] "Os seguintes plugins requeridos estão inativos: %1$s."
+
+#~ msgid "The following recommended plugin is currently inactive: %1$s."
+#~ msgid_plural ""
+#~ "The following recommended plugins are currently inactive: %1$s."
+#~ msgstr[0] "O seguinte plugin recomendado esta inativo: %1$s."
+#~ msgstr[1] "Os seguintes plugins recomendados estão inativos: %1$s."
+
+#~ msgid ""
+#~ "Sorry, but you do not have the correct permissions to activate the %1$s "
+#~ "plugin."
+#~ msgid_plural ""
+#~ "Sorry, but you do not have the correct permissions to activate the %1$s "
+#~ "plugins."
+#~ msgstr[0] "Me desculpe, você não tem permissão para ativar o plugin: %1$s."
+#~ msgstr[1] ""
+#~ "Me desculpe, você não tem permissão para ativar os plugins: %1$s."
+
+#~ msgid "Begin installing plugin"
+#~ msgid_plural "Begin installing plugins"
+#~ msgstr[0] "Começar a instalar o plugin"
+#~ msgstr[1] "Começar a instalar os plugins"
+
+#~ msgid "Begin updating plugin"
+#~ msgid_plural "Begin updating plugins"
+#~ msgstr[0] "Começar a atualizar o plugin"
+#~ msgstr[1] "Começar a atualizar os plugins"
+
+#~ msgid "Begin activating plugin"
+#~ msgid_plural "Begin activating plugins"
+#~ msgstr[0] "Começar a ativar o plugin"
+#~ msgstr[1] "Começar a ativar os plugins"
+
+#~ msgid "Return to Required Plugins Installer"
+#~ msgstr "Voltar para o instalador de Plugins obrigatórios"
+
+#~ msgid "Plugin activated successfully."
+#~ msgstr "Plugin ativado corretamente."
+
+#~ msgid "The following plugin was activated successfully:"
+#~ msgstr "Os seguintes plugins foram ativados com sucesso:"
+
+#~ msgid "No action taken. Plugin %1$s was already active."
+#~ msgstr "Ação desnecessária. Plugin %1$s já está ativo."
+
+#~ msgid ""
+#~ "Plugin not activated. A higher version of %s is needed for this theme. "
+#~ "Please update the plugin."
+#~ msgstr ""
+#~ "Plugin não ativado. Uma versão mais atual de %s é necessária para esse "
+#~ "tema. Por favor atualize o plugin."
+
+#~ msgid "All plugins installed and activated successfully. %1$s"
+#~ msgstr "Todos os plugins instalados e ativados com sucesso. %1$s"
+
+#~ msgid "Please contact the administrator of this site for help."
+#~ msgstr "Por favor contate o administrador do site para obter ajuda."
+
+#~ msgid "Skip to content"
+#~ msgstr "Ir para o conteúdo"
+
+#~ msgid "Add images in gallery"
+#~ msgstr "Adicione imagem na galeria"
+
+#~ msgid "Add in gallery"
+#~ msgstr "Adicione uma galeria"
+
+#~ msgid "Remove image"
+#~ msgstr "Remover imagem"
+
+#~ msgid "Choose a file"
+#~ msgstr "Selecione um arquivo"
+
+#~ msgid "Add file"
+#~ msgstr "Adicionar um arquivo"
+
+#~ msgid "Select file"
+#~ msgstr "Selecione um arquivo"
+
+#~ msgid "Select image"
+#~ msgstr "Selecione uma imagem"
+
+#~ msgid "Item"
+#~ msgstr "Item"
+
+#~ msgid "Add an item"
+#~ msgstr "Adicionar um item"
+
+#~ msgid "Remove"
+#~ msgstr "Remover"
+
+#~ msgid "Add"
+#~ msgstr "Adicionar"
+
+#~ msgid "Change"
+#~ msgstr "Mudar"
+
+#~ msgid "Edit Section"
+#~ msgstr "Editar Seção"
+
+#~ msgid "Close"
+#~ msgstr "Fechar"
+
+#~ msgid "Section: "
+#~ msgstr "Seção: "
+
+#~ msgid "Site Title, Tagline & Logo"
+#~ msgstr "Título do Site, Descrição & Logotipo"
+
+#~ msgid "Select page"
+#~ msgstr "Selecione uma página"
+
+#~ msgid "Select member"
+#~ msgstr "Selecione um membro"
+
+#~ msgid "Hide site title"
+#~ msgstr "Esconder título do site"
+
+#~ msgid "Hide site tagline"
+#~ msgstr "Esconder descrição do site"
+
+#~ msgid "Theme Options"
+#~ msgstr "Opções do Tema"
+
+#~ msgid "Global"
+#~ msgstr "Globais"
+
+#~ msgid "Primary Color"
+#~ msgstr "Cor Primária"
+
+#~ msgid "Disable animation effect?"
+#~ msgstr "Desativar efeitos de animação?"
+
+#~ msgid "Check this box to disable all element animation when scroll."
+#~ msgstr "Assinale para desativar o efeito de animação ao rolar."
+
+#~ msgid "Header Transparent"
+#~ msgstr "Menu transparente"
+
+#~ msgid "Apply for front page template only."
+#~ msgstr "Aplicado somente na página principal."
+
+#~ msgid "Header"
+#~ msgstr "Cabeçalho"
+
+#~ msgid "Background Color"
+#~ msgstr "Cor do Plano de Fundo"
+
+#~ msgid "Site Title Color"
+#~ msgstr "Cor do Título do Site"
+
+#~ msgid "Only set if you don't use an image logo."
+#~ msgstr "Somente se você não usa uma imagem como logotipo."
+
+#~ msgid "Menu Link Color"
+#~ msgstr "Cor do Link do Menu"
+
+#~ msgid "Menu Link Hover/Active Color"
+#~ msgstr "Cor do Link do Menu Ativo/Hover"
+
+#~ msgid "Menu Link Hover/Active BG Color"
+#~ msgstr "Cor do plano de fundo de Link do Menu Ativo/Hover"
+
+#~ msgid "Responsive Menu Button Color"
+#~ msgstr "Cor do Botão de Menu responsivo"
+
+#~ msgid "Center vertical align for menu"
+#~ msgstr "Alinhamento vertical central para menu"
+
+#~ msgid ""
+#~ "If you use logo and your logo is too tall, check this box to auto "
+#~ "vertical align menu."
+#~ msgstr ""
+#~ "Se você usou um logo muito alto, assinale esse box para alinhar o menu "
+#~ "verticalmente."
+
+#~ msgid "Disable Sticky Header?"
+#~ msgstr "Desativar menu fixo?"
+
+#~ msgid "Check this box to disable sticky header when scroll."
+#~ msgstr "Assinale para desativar o menu fixo ao rolar."
+
+#~ msgid "Footer"
+#~ msgstr "Rodapé"
+
+#~ msgid "Few Rights Reserved"
+#~ msgstr "Alguns direitos reservados"
+
+#~ msgid "Footer Text"
+#~ msgstr "Texto do rodapé"
+
+#~ msgid "Footer Link"
+#~ msgstr "Link do Texto do rodapé"
+
+#~ msgid "Footer Info Background"
+#~ msgstr "Plano de fundo do rodapé"
+
+#~ msgid "Hide footer back to top?"
+#~ msgstr "Esconder o \"Voltar ao topo\"?"
+
+#~ msgid "Check this box to hide footer back to top button."
+#~ msgstr "Assinale para esconder o botão Voltar ao topo."
+
+#~ msgid "Blog Settings"
+#~ msgstr "Blog"
+
+#~ msgid "Blog style"
+#~ msgstr "Layout do Blog"
+
+#~ msgid "Grid"
+#~ msgstr "Grade"
+
+#~ msgid "List"
+#~ msgstr "Lista"
+
+#~ msgid "Hero Options"
+#~ msgstr "Seção Hero"
+
+#~ msgid "Text animation"
+#~ msgstr "Animação de texto"
+
+#~ msgid "Speed"
+#~ msgstr "Velocidade"
+
+#~ msgid "The delay between the changing of each phrase in milliseconds."
+#~ msgstr "O tempo de duração da transição de cada frase em milisegundos."
+
+#~ msgid "Section: Hero"
+#~ msgstr "Seção: Hero"
+
+#~ msgid "Hero Settings"
+#~ msgstr "Configuração da Seção"
+
+#~ msgid "Hide this section?"
+#~ msgstr "Esconder essa seção?"
+
+#~ msgid "Check this box to hide this section."
+#~ msgstr "Assinale para esconder essa seção."
+
+#~ msgid "Title section in customizer"
+#~ msgstr "Título da seção no customizer"
+
+#~ msgid "This title is only showed in customizer"
+#~ msgstr "Exibido somente no customizer"
+
+#~ msgid "hero"
+#~ msgstr "hero"
+
+#~ msgid "Section ID:"
+#~ msgstr "ID da seção:"
+
+#~ msgid "The section id, we will use this for link anchor."
+#~ msgstr "O ID da seção, será usado como âncora para links."
+
+#~ msgid "Make hero section full screen"
+#~ msgstr "Fazer da seção Hero tela cheia"
+
+#~ msgid "Check this box to make hero section full screen."
+#~ msgstr "Assinale para fazer da seção Hero tela cheia."
+
+#~ msgid "10"
+#~ msgstr "10"
+
+#~ msgid "Padding Top:"
+#~ msgstr "Margem superior:"
+
+#~ msgid "The hero content padding top in percent (%)."
+#~ msgstr "A margem superior do conteúdo em porcentagem (%)."
+
+#~ msgid "Padding Bottom:"
+#~ msgstr "Margem inferior:"
+
+#~ msgid "The hero content padding bottom in percent (%)."
+#~ msgstr "A margem inferior do conteúdo em porcentagem (%)."
+
+#~ msgid "Hero Background Media"
+#~ msgstr "Mídia do Plano de Fundo"
+
+#~ msgid "Background Images"
+#~ msgstr "Imagens de plano de fundo"
+
+#~ msgid "Background"
+#~ msgstr "Plano de fundo"
+
+#~ msgid "Background Image"
+#~ msgstr "Imagem de plano de fundo"
+
+#~ msgid "Background Overlay Color"
+#~ msgstr "Cor de camada sobre o Plano de Fundo"
+
+#~ msgid "Enable parallax effect (apply for first BG image only)"
+#~ msgstr ""
+#~ "Ativar efeito parallax (aplicado somente na primeira imagem de fundo)"
+
+#~ msgid "Hero Content Layout"
+#~ msgstr "Conteúdo e Layout"
+
+#~ msgid "Display Layout"
+#~ msgstr "Layout exibido"
+
+#~ msgid "Layout 1"
+#~ msgstr "Layout 1"
+
+#~ msgid "Layout 2"
+#~ msgstr "Layout 2"
+
+#~ msgid ""
+#~ "We are <span class=\"js-rotating\">coletivo | One Page | Responsive | "
+#~ "Perfection</span>"
+#~ msgstr ""
+#~ "Um tema <span class=\"js-rotating\">WordPress | Livre | Responsivo | "
+#~ "Seguro</span>"
+
+#~ msgid "Large Text"
+#~ msgstr "Texto grande"
+
+#~ msgid ""
+#~ "Text Rotating Guide: Put your rotate texts separate by \"|\" into <span "
+#~ "class=\"js-rotating\">...</span>, go to Customizer->Site Option->Animate "
+#~ "to control rotate animation."
+#~ msgstr ""
+#~ "Guia para texto rotativo: Coloque seus textos separados por \"|\" dentro "
+#~ "de um <span class=\"js-rotating\">...</span>, vá para Customizer->Opções "
+#~ "do Site->Animação para configurar a rotação."
+
+#~ msgid ""
+#~ "Morbi tempus porta nunc <strong>pharetra quisque</strong> ligula "
+#~ "imperdiet posuere<br> vitae felis proin sagittis leo ac tellus blandit "
+#~ "sollicitudin quisque vitae placerat."
+#~ msgstr ""
+#~ "Morbi tempus porta nunc <strong>pharetra quisque</strong> ligula "
+#~ "imperdiet posuere<br> vitae felis proin sagittis leo ac tellus blandit "
+#~ "sollicitudin quisque vitae placerat."
+
+#~ msgid "Small Text"
+#~ msgstr "Texto pequeno"
+
+#~ msgid "You can use text rotate slider in this textarea too."
+#~ msgstr "Você pode usar o slider rotativo nessa área também."
+
+#~ msgid "About Us"
+#~ msgstr "Sobre nós"
+
+#~ msgid "Button #1 Text"
+#~ msgstr "Texto Botão #1"
+
+#~ msgid "#about"
+#~ msgstr "#sobre"
+
+#~ msgid "Button #1 Link"
+#~ msgstr "Link Botão #1"
+
+#~ msgid "Button #1 style"
+#~ msgstr "Estilo Botão #1"
+
+#~ msgid "Button Primary"
+#~ msgstr "Botão Primário"
+
+#~ msgid "Button Secondary"
+#~ msgstr "Botão Secundário"
+
+#~ msgid "Button"
+#~ msgstr "Botão"
+
+#~ msgid "Primary"
+#~ msgstr "Primário"
+
+#~ msgid "Success"
+#~ msgstr "Sucesso"
+
+#~ msgid "Info"
+#~ msgstr "Informações"
+
+#~ msgid "Warning"
+#~ msgstr "Aviso"
+
+#~ msgid "Danger"
+#~ msgstr "Perigo"
+
+#~ msgid "Get Started"
+#~ msgstr "Entenda"
+
+#~ msgid "Button #2 Text"
+#~ msgstr "Texto de Botão #2"
+
+#~ msgid "#contact"
+#~ msgstr "#contato"
+
+#~ msgid "Button #2 Link"
+#~ msgstr "Link de Botão #2"
+
+#~ msgid "Content Text"
+#~ msgstr "Conteúdo"
+
+#~ msgid "Image"
+#~ msgstr "Imagem"
+
+#~ msgid "Section: Features"
+#~ msgstr "Seção: Destaques"
+
+#~ msgid "Section Settings"
+#~ msgstr "Configuração da Seção"
+
+#~ msgid "features"
+#~ msgstr "destaques"
+
+#~ msgid "Features"
+#~ msgstr "Destaques"
+
+#~ msgid "Section Title"
+#~ msgstr "Título da Seção"
+
+#~ msgid "Section subtitle"
+#~ msgstr "Subtítulo da seção"
+
+#~ msgid "Section Subtitle"
+#~ msgstr "Subtítulo da Seção"
+
+#~ msgid "Section Description"
+#~ msgstr "Descrição da seção"
+
+#~ msgid "Features Layout Setting"
+#~ msgstr "Configurações de layout de Destaques"
+
+#~ msgid "4 Columns"
+#~ msgstr "4 colunas"
+
+#~ msgid "3 Columns"
+#~ msgstr "3 Colunas"
+
+#~ msgid "2 Columns"
+#~ msgstr "2 Colunas"
+
+#~ msgid "Section Content"
+#~ msgstr "Conteúdo da Seção"
+
+#~ msgid "Features content"
+#~ msgstr "Conteúdo de Destaques"
+
+#~ msgid "[live_title]"
+#~ msgstr "[live_title]"
+
+#~ msgid "Only 6 features allowed"
+#~ msgstr "Somente 6 destaques são permitidos"
+
+#~ msgid "Title"
+#~ msgstr "Título"
+
+#~ msgid "Custom icon"
+#~ msgstr "Ícone customizado"
+
+#~ msgid "Icon"
+#~ msgstr "Ícone"
+
+#~ msgid "image"
+#~ msgstr "imagem"
+
+#~ msgid "Description"
+#~ msgstr "Descrição"
+
+#~ msgid "Custom Link"
+#~ msgstr "Link customizado"
+
+#~ msgid "Section: Your Slider"
+#~ msgstr "Seção: Seu Slider"
+
+#~ msgid "yourslider"
+#~ msgstr "seuslider"
+
+#~ msgid "Your Slider"
+#~ msgstr "Seu Slider"
+
+#~ msgid "See all we Do"
+#~ msgstr "Veja tudo o que fazemos"
+
+#~ msgid "Slider Shortcode"
+#~ msgstr "Shortcode do Slider"
+
+#~ msgid ""
+#~ "In order to display a Slider install the plugin of your preference and "
+#~ "then copy the shortcode and paste it here, the shortcode will be like "
+#~ "this <code>[metaslider id=XXX]</code> or this <code>[brasa_slider id="
+#~ "\"123\"]</code>"
+#~ msgstr ""
+#~ "Para visualizar um Slider instale o plugin de sua preferência e copie e "
+#~ "cole seu shortcode aqui, o shortcode será algo como <code>[metaslider "
+#~ "id=XXX]</code> ou como <code>[brasa_slider id=\"123\"]</code>"
+
+#~ msgid "Section: Page Featured"
+#~ msgstr "Seção: Página destacada"
+
+#~ msgid "featuredpage"
+#~ msgstr "paginadestacada"
+
+#~ msgid "Featured Page"
+#~ msgstr "Página Destacada"
+
+#~ msgid "You need to select a Featured Image for a background in full size."
+#~ msgstr ""
+#~ "Você precisa configurar uma imagem destacada para ele aparecer em tamanho "
+#~ "completo no fundo."
+
+#~ msgid "Content source"
+#~ msgstr "Formato do conteúdo"
+
+#~ msgid "Full Page Content"
+#~ msgstr "Conteúdo completo da página"
+
+#~ msgid "Page Excerpt"
+#~ msgstr "Resumo da Página"
+
+#~ msgid "Discover"
+#~ msgstr "Descubra"
+
+#~ msgid "Featured Page Button Text"
+#~ msgstr "Texto de botão para Página Destacada"
+
+#~ msgid "Section: Services"
+#~ msgstr "Seção: Serviços"
+
+#~ msgid "services"
+#~ msgstr "serviços"
+
+#~ msgid "Our Services"
+#~ msgstr "Nossos serviços"
+
+#~ msgid "Services Layout Setting"
+#~ msgstr "Layout de Serviços"
+
+#~ msgid "Service content"
+#~ msgstr "Conteúdo de Serviços"
+
+#~ msgid "Only 12 Services highlights allowed "
+#~ msgstr "Somente 12 serviços destacados são permitidos "
+
+#~ msgid "Select a page"
+#~ msgstr "Selecione página"
+
+#~ msgid "Link to single page"
+#~ msgstr "Link para a página"
+
+#~ msgid "Section: Portfolio"
+#~ msgstr "Seção: Portfólio"
+
+#~ msgid "portfolio"
+#~ msgstr "portfolio"
+
+#~ msgid "Number of projects to show"
+#~ msgstr "Número de projetos para exibir"
+
+#~ msgid "Our Work"
+#~ msgstr "Nosso Trabalho"
+
+#~ msgid "Portfolio Button Link"
+#~ msgstr "Link botão de portfólio"
+
+#~ msgid "It should be your portfolio page link."
+#~ msgstr "Deve ser o link para sua página de projetos."
+
+#~ msgid "See Our Portfolio"
+#~ msgstr "Veja nosso portfólio"
+
+#~ msgid "Portfolio Button Text"
+#~ msgstr "Texto do botão de portfólio"
+
+#~ msgid "Section: Video Lightbox"
+#~ msgstr "Seção: Vídeo Modal"
+
+#~ msgid "Section heading"
+#~ msgstr "Chamada da seção"
+
+#~ msgid "Video url"
+#~ msgstr "URL do Vídeo"
+
+#~ msgid "Paste Youtube or Vimeo url here"
+#~ msgstr "Cole sua URL do Vimeo ou do YouTube aqui"
+
+#~ msgid "Background image"
+#~ msgstr "Imagem de Plano de Fundo"
+
+#~ msgid "Section: Gallery"
+#~ msgstr "Seção: Galeria"
+
+#~ msgid "gallery"
+#~ msgstr "galeria"
+
+#~ msgid "Gallery"
+#~ msgstr "Galeria"
+
+#~ msgid "Select Gallery Page"
+#~ msgstr "Selecione página com Galeria"
+
+#~ msgid "Select a page which have content contain [gallery] shortcode."
+#~ msgstr "Selecione uma página que contenha o shortcode [gallery]."
+
+#~ msgid "Layout"
+#~ msgstr "Layout"
+
+#~ msgid "Default, inside container"
+#~ msgstr "Padrão, dentro do container"
+
+#~ msgid "Full Width"
+#~ msgstr "Largura Completa"
+
+#~ msgid "Display"
+#~ msgstr "Mostrar"
+
+#~ msgid "Carousel"
+#~ msgstr "Carrocel"
+
+#~ msgid "Slider"
+#~ msgstr "Slider"
+
+#~ msgid "Justified"
+#~ msgstr "Justificado"
+
+#~ msgid "Item Spacing"
+#~ msgstr "Espaçamento entre itens"
+
+#~ msgid "Row Height"
+#~ msgstr "Altura da linha"
+
+#~ msgid "Layout columns"
+#~ msgstr "Colunas"
+
+#~ msgid "Number items"
+#~ msgstr "Número de itens"
+
+#~ msgid "Enable Lightbox"
+#~ msgstr "Ativar Lightbox"
+
+#~ msgid "Read More Link"
+#~ msgstr "Link Leia Mais"
+
+#~ msgid "View More"
+#~ msgstr "Veja Mais"
+
+#~ msgid "Read More Text"
+#~ msgstr "Texto de Leia Mais"
+
+#~ msgid "Section: Team"
+#~ msgstr "Seção: Equipe"
+
+#~ msgid "team"
+#~ msgstr "equipe"
+
+#~ msgid "Our Team"
+#~ msgstr "Nossa equipe"
+
+#~ msgid "Team Layout Setting"
+#~ msgstr "Layout de Equipe"
+
+#~ msgid "Team members"
+#~ msgstr "Membros da Equipe"
+
+#~ msgid "Only 9 members allowed"
+#~ msgstr "Somente 9 membros são permitidos"
+
+#~ msgid "User media"
+#~ msgstr "Mídia de usuário"
+
+#~ msgid "Section: News"
+#~ msgstr "Seção: Notícias"
+
+#~ msgid "news"
+#~ msgstr "noticias"
+
+#~ msgid "Latest News"
+#~ msgstr "Últimas notícias"
+
+#~ msgid "Number of post to show"
+#~ msgstr "Número de posts para exibir"
+
+#~ msgid "More News button link"
+#~ msgstr "Link do botão Mais Notícias"
+
+#~ msgid "It should be your blog page link."
+#~ msgstr "Deve ser o link para sua página de postagens."
+
+#~ msgid "Read Our Blog"
+#~ msgstr "Leia nosso Blog"
+
+#~ msgid "More News Button Text"
+#~ msgstr "Texto do botão Mais notícias"
+
+#~ msgid "Section: Contact"
+#~ msgstr "Seção: Contato"
+
+#~ msgid "Hide contact form completely."
+#~ msgstr "Esconder formulário de Contato."
+
+#~ msgid "Check this box to hide contact form."
+#~ msgstr "Assinale para esconder o Formulário de Contato."
+
+#~ msgid "contact"
+#~ msgstr "contato"
+
+#~ msgid "Get in touch"
+#~ msgstr "Entre em contato"
+
+#~ msgid ""
+#~ "In order to display a contact form install a plugin and then copy the "
+#~ "shortcode and paste it here, the shortcode will be like this "
+#~ "<code>[contact-form][contact-field...][/contact-form]</code>"
+#~ msgstr ""
+#~ "Para visualizar um Formulário de Contato instale um plugin de sua "
+#~ "preferência e cole seu shortcode aqui, o shortcode será algo como "
+#~ "<code>[contact-form][contact-field...][/contact-form]</code>"
+
+#~ msgid "Contact Form Shortcode"
+#~ msgstr "Shortcode do Formulário de Contato"
+
+#~ msgid "Contact Box Title Alternative"
+#~ msgstr "Texto do Título de Contato Alternativo"
+
+#~ msgid "Contact Text Alternative"
+#~ msgstr "Texto de Contato Alternativo"
+
+#~ msgid "Contact Box Title"
+#~ msgstr "Texto do título de Contato"
+
+#~ msgid "Contact Text 2"
+#~ msgstr "Texto de Contato"
+
+#~ msgid "Address"
+#~ msgstr "Endereço"
+
+#~ msgid "Phone"
+#~ msgstr "Telefone"
+
+#~ msgid "Fax"
+#~ msgstr "Fax"
+
+#~ msgid "Section: Social"
+#~ msgstr "Seção: Redes Sociais"
+
+#~ msgid "Social Settings"
+#~ msgstr "Configuração da Seção"
+
+#~ msgid "Hide Footer Social?"
+#~ msgstr "Esconder Redes sociais?"
+
+#~ msgid "Check this box to hide footer social section."
+#~ msgstr "Assinale esse box para esconder a seção Rede Sociais."
+
+#~ msgid "Keep Updated"
+#~ msgstr "Mantenha atualizado"
+
+#~ msgid "Social Footer Title"
+#~ msgstr "Título Redes sociais"
+
+#~ msgid "Footer Background"
+#~ msgstr "Plano de fundo Redes Sociais"
+
+#~ msgid "Social Profiles"
+#~ msgstr "Perfis de Redes sociais"
+
+#~ msgid ""
+#~ "These social profiles setting below will display at the footer of your "
+#~ "site."
+#~ msgstr ""
+#~ "Esses perfis sociais que está incluindo aparecerão no rodapé de seu site."
+
+#~ msgid "Socials"
+#~ msgstr "Perfis"
+
+#~ msgid "Only 5 social networks allowed"
+#~ msgstr "Somente 5 redes sociais são permitidas"
+
+#~ msgid "Social network"
+#~ msgstr "Rede social"
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgid "Sections"
+#~ msgstr "Seções"
+
+#~ msgid ""
+#~ "Organize with drag and drop to define sections order, open it to "
+#~ "customize each one"
+#~ msgstr ""
+#~ "Organize arrastando e soltando para definir a ordem das seções, abra para "
+#~ "customizar cada uma"
+
+#~ msgid "[live_title] <a>(Edit Section)</a>"
+#~ msgstr "[live_title] <a>(Editar Seção)</a>"
+
+#~ msgid "Search"
+#~ msgstr "Pesquise"
+
+#~ msgid "Font Awesome"
+#~ msgstr "Fonte Awesome"
+
+#~ msgid "%1$s action required"
+#~ msgid_plural "%1$s actions required"
+#~ msgstr[0] "%1$s ação requerida"
+#~ msgstr[1] "%1$s ações requeridas"
+
+#~ msgid "Coletivo Theme %s"
+#~ msgstr "Tema Coletivo %s"
+
+#~ msgid "Coletivo Theme"
+#~ msgstr "Tema Coletivo"
+
+#~ msgid "Coletivo Dashboard"
+#~ msgstr "Painel de Controle Tema Coletivo"
+
+#~ msgid ""
+#~ "Welcome! Thank you for choosing %1$s! To fully take advantage of the best "
+#~ "our theme can offer please make sure you visit our <a href=\"%2$s"
+#~ "\">Welcome page</a>"
+#~ msgstr ""
+#~ "Ola! Seja bem-vindo. Obrigado por escolher o %1$s! Para ter  certeza que "
+#~ "está usando as melhores vantagens que seu tema pode oferecer visita a <a "
+#~ "href=\"%2$s\">Página de boas-vindas</a>"
+
+#~ msgid "Welcome to Coletivo - Version %1s"
+#~ msgstr "Bem Vindo ao Tema Coletivo - Versão %1s"
+
+#~ msgid ""
+#~ "Coletivo is a creative and flexible WordPress theme well suited for "
+#~ "business, social projects, portfolio, digital agency, product showcase, "
+#~ "freelancers websites."
+#~ msgstr ""
+#~ "Coletivo é um tema de página única criativo e flexível , ótimo para "
+#~ "negócios, portfolios, agencias digitais, demonstração de produtos e "
+#~ "freelancers."
+
+#~ msgid "Coletivo"
+#~ msgstr "Coletivo"
+
+#~ msgid "Actions Required"
+#~ msgstr "Ações necessárias"
+
+#~ msgid "Theme Customizer"
+#~ msgstr "Customizador de temas"
+
+#~ msgid ""
+#~ "%s supports the Theme Customizer for all theme settings. Click \"Customize"
+#~ "\" to start customize your site."
+#~ msgstr ""
+#~ "%s suporta o Customizer para todas as suas configurações. Clique em "
+#~ "\"Personalizar\" para começar a fazer seu site."
+
+#~ msgid "Start Customize"
+#~ msgstr "Iniciar customização"
+
+#~ msgid "Theme Documentation"
+#~ msgstr "Documentação do tema"
+
+#~ msgid ""
+#~ "Need any help to setup and configure %s? Please have a look at our "
+#~ "documentations instructions."
+#~ msgstr ""
+#~ "Precisa de alguma ajuda para configurar %s? Por favor dê uma olhada nas "
+#~ "instruções de nossa documentãção."
+
+#~ msgid "Coletivo Documentation"
+#~ msgstr "Documentação do OndePress"
+
+#~ msgid "Having Trouble, Need Support?"
+#~ msgstr "Está com problemas, precisa de suporte?"
+
+#~ msgid ""
+#~ "Support for %s WordPress theme is conducted through FameThemes support "
+#~ "ticket system."
+#~ msgstr ""
+#~ "Suporte para o %s será feito diretamente nos repositório oficial do "
+#~ "WordPress."
+
+#~ msgid "Dismiss"
+#~ msgstr "Descarte"
+
+#~ msgid "Switch \"Front page displays\" to \"A static page\""
+#~ msgstr "Muda \"Página inicial\" para \"uma página estática\""
+
+#~ msgid ""
+#~ "In order to have the one page look for your website, please go to "
+#~ "Customize -&gt; Static Front Page and switch \"Front page displays\" to "
+#~ "\"A static page\"."
+#~ msgstr ""
+#~ "Para conseguir configurar a página principal do tema como a página "
+#~ "inicial de seu site , por favor vá em Customize -&gt; Static Front Page "
+#~ "and switch \"Front page displays\" to \"A static page\"."
+
+#~ msgid "Setup front page displays"
+#~ msgstr "Ajustes"
+
+#~ msgid "Set your homepage page template to \"Frontpage\"."
+#~ msgstr "Configura o modelo da página inicial para \"Frontpage”."
+
+#~ msgid ""
+#~ "In order to change homepage section contents, you will need to set "
+#~ "template \"Frontpage\" for your homepage."
+#~ msgstr ""
+#~ "Para alterar os conteúdos das seções da homepage você precisa configurar "
+#~ "\"Frontpage\" como o modelo de sua página inicial."
+
+#~ msgid "Change homepage page template"
+#~ msgstr "Mudar modelo da  página inicial"
+
+#~ msgid "Keep update with %s"
+#~ msgstr "Se mantenha atualizado com %s"
+
+#~ msgid "Hooray! There are no required actions for you right now."
+#~ msgstr "Boa! Não existem mais ações obrigatórias para você nesse momento."
+
+#~ msgid "Menu"
+#~ msgstr "Menu"
+
+#~ msgid "Posted on %s"
+#~ msgstr "Postado em %s"
+
+#~ msgid "by %s"
+#~ msgstr "por %s"
+
+#~ msgid ", "
+#~ msgstr ", "
+
+#~ msgid "Posted in %1$s"
+#~ msgstr "Postado em %1$s"
+
+#~ msgid "Tagged %1$s"
+#~ msgstr "Tags %1$s"
+
+#~ msgid "Leave a comment"
+#~ msgstr "Deixe um comentário"
+
+#~ msgid "1 Comment"
+#~ msgstr "1 Comentário"
+
+#~ msgid "% Comments"
+#~ msgstr "% Comentários"
+
+#~ msgid "Pingback:"
+#~ msgstr "Pingback:"
+
+#~ msgid "(Edit)"
+#~ msgstr "(Editar)"
+
+#~ msgid "Post author"
+#~ msgstr "Autor do post"
+
+#~ msgid "%1$s"
+#~ msgstr "%1$s"
+
+#~ msgid "Reply"
+#~ msgstr "Responder"
+
+#~ msgid "Edit"
+#~ msgstr "Editar"
+
+#~ msgid "Your comment is awaiting moderation."
+#~ msgstr "Seu comentário está aguardando  aprovação."
+
+#~ msgid "%2$s %1$s"
+#~ msgstr "%2$s %1$s"
+
+#~ msgid "Proudly Powered by %1$s"
+#~ msgstr "Orgulhosamente desenvolvido com %1$s"
+
+#~ msgid "Search Results for: %s"
+#~ msgstr "Resultados de Busca para: %s"
+
+#~ msgid "Why choose Us"
+#~ msgstr "Porque nos escolher"
+
+#~ msgid "#services"
+#~ msgstr "#servicos"
+
+#~ msgid "See our portfolio"
+#~ msgstr "Veja nosso portfólio"
+
+#~ msgid "<i class=\"fa fa-caret-left\" aria-hidden=\"true\"></i> Previous"
+#~ msgstr "<i class=\"fa fa-caret-left\" aria-hidden=\"true\"></i> Anterior"
+
+#~ msgid "Next <i class=\"fa fa-caret-right\" aria-hidden=\"true\"></i>"
+#~ msgstr "Próximo <i class=\"fa fa-caret-right\" aria-hidden=\"true\"></i>"
+
+#~ msgid "Pages:"
+#~ msgstr "Páginas:"
+
+#~ msgid "Nothing Found"
+#~ msgstr "Nada Encontrado"
+
+#~ msgid ""
+#~ "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+#~ msgstr ""
+#~ "Pronto para publicar seu primeiro post? <a href=\"%1$s\">Comece agora</a>."
+
+#~ msgid ""
+#~ "Sorry, but nothing matched your search terms. Please try again with some "
+#~ "different keywords."
+#~ msgstr ""
+#~ "Me desculpe mas sua busca não gerou resultados. Por favor tente novamente "
+#~ "com outras palavras."
+
+# ão
+#~ msgid ""
+#~ "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+#~ "searching can help."
+#~ msgstr ""
+#~ "Me parece que você não conseguiu encontrar o que queria. Talvez uma busca "
+#~ "possa auxiliar."
+
+#~ msgid "Site Colors"
+#~ msgstr "Cores do Site"
+
+#~ msgid "Portfolio"
+#~ msgstr "Portfolio"
+
+#~ msgid "Join our Newsletter"
+#~ msgstr "Assine nossa Newsletter"
+
+#~ msgid "Enter your e-mail address"
+#~ msgstr "Escreva seu endereço de email"
+
+#~ msgid "Subscribe"
+#~ msgstr "Assine"
+
+#~ msgid ""
+#~ "In order to display contact form install <a target=\"_blank\" href="
+#~ "\"https://wordpress.org/plugins/contact-form-7/\">Contact Form 7</a> "
+#~ "plugin and then copy the contact form shortcode and paste it here, the "
+#~ "shortcode will be like this <code>[contact-form-7 id=\"xxxx\" title="
+#~ "\"Example Contact Form\"]</code>"
+#~ msgstr ""
+#~ "Para visualizar um Formulário de Contato  instale o <a target=\"_blank\" "
+#~ "href=\"https://wordpress.org/plugins/contact-form-7/\">Contact Form 7</a> "
+#~ "e então copie e cole seu shortcode aqui, o shortcode será algo como "
+#~ "<code>[contact-form-7 id=\"xxxx\" title=\"Exemplo de Formulário de  "
+#~ "Contato\"]</code>"
+
+#~ msgid "Tema Coletivo"
+#~ msgstr "Tema Coletivo"
+
+#~ msgid ""
+#~ "Coletivo theme is an outstanding creative and flexible WordPress one page "
+#~ "theme well suited for business, portfolio, digital agency, product "
+#~ "showcase, freelancers and everyone else who appreciate good design."
+#~ msgstr ""
+#~ "Coletivo é um tema de página única criativo e flexível , ótimo para "
+#~ "negócios, portfolios, agencias digitais, demonstração de produtos e "
+#~ "freelancers."
+
+#~ msgid "http://coletivowp.com.br/tema-coletivo"
+#~ msgstr "http://coletivowp.com.br/tema-coletivo"
+
+#~ msgid "Brasa Design"
+#~ msgstr "Brasa Design"
+
+#~ msgid "http://brasa.art.br"
+#~ msgstr "Brasa Design"
+
+#~ msgctxt "comments title"
+#~ msgid "One thought on &ldquo;%2$s&rdquo;"
+#~ msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+#~ msgstr[0] "Idéia sobre &ldquo;%2$s&rdquo;"
+#~ msgstr[1] "%1$s idéias sobre &ldquo;%2$s&rdquo;"
+
+#~ msgctxt "Open Sans font: on or off"
+#~ msgid "on"
+#~ msgstr "Ligada"
+
+#~ msgctxt "Raleway font: on or off"
+#~ msgid "on"
+#~ msgstr "Ligada"
+
+#~ msgid "Frontpage"
+#~ msgstr "Página inicial"
+
+#~ msgid "With Sidebar"
+#~ msgstr "Com barra lateral"
