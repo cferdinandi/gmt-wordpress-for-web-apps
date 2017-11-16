@@ -34,33 +34,33 @@
 
 		// Message
 		if ( $options['password_requires_mixed_case'] === 'on' && $options['password_requires_numbers'] === 'on' && $options['password_requires_special_characters'] === 'on' ) {
-			$message = 'Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character, and be at least ' . $length . ' characters long.';
+			$message = sprintf( __( 'Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character, and be at least $s characters long.' , 'wpwebapp') , $length);
 		} elseif ( $options['password_requires_mixed_case'] === 'on' && $options['password_requires_numbers'] === 'on' ) {
-			$message = 'Password must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number, and be at least ' . $length . ' characters long.';
+			$message = sprintf( __( 'Password must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number, and be at least $s characters long.' , 'wpwebapp') , $length);
 		} elseif ( $options['password_requires_mixed_case'] === 'on' && $options['password_requires_special_characters'] === 'on' ) {
-			$message = 'Password must contain at least 1 uppercase letter, 1 lowercase letter, and 1 special character, and be at least ' . $length . ' characters long.';
+			$message = sprintf( __( 'Password must contain at least 1 uppercase letter, 1 lowercase letter, and 1 special character, and be at least $s characters long.' , 'wpwebapp') , $length);
 		} elseif ( $options['password_requires_letters'] === 'on' && $options['password_requires_numbers'] === 'on' && $options['password_requires_special_characters'] === 'on' ) {
-			$message = 'Password must contain at least 1 letter, 1 number, and 1 special character, and be at least ' . $length . ' characters long.';
+			$message = sprintf( __( 'Password must contain at least 1 letter, 1 number, and 1 special character, and be at least $s characters long.' , 'wpwebapp') , $length);
 		} elseif ( $options['password_requires_mixed_case'] === 'on' && $options['password_requires_numbers'] === 'on' ) {
-			$message = 'Password must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number, and be at least ' . $length . ' characters long.';
+			$message = sprintf( __( 'Password must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number, and be at least $s characters long.' , 'wpwebapp') , $length);
 		} elseif ( $options['password_requires_mixed_case'] === 'on' && $options['password_requires_special_characters'] === 'on' ) {
-			$message = 'Password must contain at least 1 uppercase letter, 1 lowercase letter, and 1 special character, and be at least ' . $length . ' characters long.';
+			$message = sprintf( __( 'Password must contain at least 1 uppercase letter, 1 lowercase letter, and 1 special character, and be at least $s characters long.' , 'wpwebapp') , $length);
 		} elseif ( $options['password_requires_letters'] === 'on' && $options['password_requires_numbers'] === 'on' ) {
-			$message = 'Password must contain at least 1 letter and 1 number, and be at least ' . $length . ' characters long.';
+			$message = sprintf( __( 'Password must contain at least 1 letter and 1 number, and be at least $s characters long.' , 'wpwebapp') , $length);
 		} elseif ( $options['password_requires_letters'] === 'on' && $options['password_requires_special_characters'] === 'on' ) {
-			$message = 'Password must contain at least 1 letter and 1 special character, and be at least ' . $length . ' characters long.';
+			$message = sprintf( __( 'Password must contain at least 1 letter and 1 special character, and be at least $s characters long.' , 'wpwebapp') , $length);
 		} elseif ( $options['password_requires_numbers'] === 'on' && $options['password_requires_special_characters'] === 'on' ) {
-			$message = 'Password must contain at least 1 number and 1 special character, and be at least ' . $length . ' characters long.';
+			$message = sprintf( __( 'Password must contain at least 1 number and 1 special character, and be at least $s characters long.' , 'wpwebapp') , $length);
 		} elseif ( $options['password_requires_mixed_case'] === 'on' ) {
-			$message = 'Password must contain at least 1 uppercase letter and 1 lowercase letter, and be at least ' . $length . ' characters long.';
+			$message = sprintf( __( 'Password must contain at least 1 uppercase letter and 1 lowercase letter, and be at least $s characters long.' , 'wpwebapp') , $length);
 		} elseif ( $options['password_requires_letters'] === 'on' ) {
-			$message = 'Password must contain at least 1 letter and be at least ' . $length . ' characters long.';
+			$message = sprintf( __( 'Password must contain at least 1 letter and be at least $s characters long.' , 'wpwebapp') , $length);
 		} elseif ( $options['password_requires_numbers'] === 'on' ) {
-			$message = 'Password must contain at least 1 number and be at least ' . $length . ' characters long.';
+			$message = sprintf( __( 'Password must contain at least 1 number and be at least $s characters long.' , 'wpwebapp') , $length);
 		} elseif ( $options['password_requires_special_characters'] === 'on' ) {
-			$message = 'Password must contain at least 1 special character and be at least ' . $length . ' characters long.';
+			$message = sprintf( __( 'Password must contain at least 1 special character and be at least $s characters long.' , 'wpwebapp') , $length);
 		} else {
-			$message = 'Password must be at least ' . $length . ' characters long.';
+			$message = sprintf( __( 'Password must be at least $s characters long.' , 'wpwebapp') , $length);
 		}
 
 		return $message;

@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: GMT WordPress for Web Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-08 15:34-0200\n"
-"PO-Revision-Date: 2017-11-09 01:28-0200\n"
+"PO-Revision-Date: 2017-11-16 13:11-0200\n"
 "Last-Translator: Celso Bessa - 2Aces <celso.bessa@2aces.com.br>\n"
 "Language-Team: Celso Bessa celso.bessa@japuapp.com.br\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.0.4\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-KeywordsList: __;_e;_n;_n:1,2;_n_noop:1,2;_x;_ex;_nx;_nx:1,2;"
@@ -686,148 +686,148 @@ msgstr "Etiquetas de Mudança de Senha"
 
 #: options/options.php:1303 options/options_deprecated.php:1167
 msgid "Change Password Submit Buttons"
-msgstr ""
+msgstr "Botões de Enviar do Mudar Senha"
 
 #: options/options.php:1304 options/options_deprecated.php:1168
 msgid "Change Password Requirements"
-msgstr ""
+msgstr "Requirementos do Mudar Senha"
 
 #: options/options.php:1305 options/options_deprecated.php:1169
 msgid "Change Password Errors"
-msgstr ""
+msgstr "Erros do Mudar Senha"
 
 #: options/options.php:1306 options/options_deprecated.php:1170
 msgid "Password Change Admin Notifications"
-msgstr ""
+msgstr "Notificações no Admin do Mudar Senha"
 
 #: options/options.php:1307 options/options_deprecated.php:1171
 msgid "Password Change User Notifications"
-msgstr ""
+msgstr "Notificações de Usuário do Mudar Senha"
 
 #: options/options.php:1310 options/options_deprecated.php:1174
 msgid "Forgot Password URL"
-msgstr ""
+msgstr "URL do Esqueci Senha"
 
 #: options/options.php:1311 options/options_deprecated.php:1175
 msgid "Forgot Password Labels"
-msgstr ""
+msgstr "Etiquetas do Esqueci Senha"
 
 #: options/options.php:1312 options/options_deprecated.php:1176
 msgid "Forgot Password Submit Buttons"
-msgstr ""
+msgstr "Botões de Enviar do Esqueci Senha"
 
 #: options/options.php:1313 options/options_deprecated.php:1177
 msgid "Forgot Password Requirements"
-msgstr ""
+msgstr "Requerimentos do Esqueci Senha"
 
 #: options/options.php:1314 options/options_deprecated.php:1178
 msgid "Forgot Password Errors"
-msgstr ""
+msgstr "Erros do Esqueci Senha"
 
 #: options/options.php:1315 options/options_deprecated.php:1179
 msgid "Forgot Password Time Limit"
-msgstr ""
+msgstr "Limite do Tempo do Esqueci Senha"
 
 #: options/options.php:1316 options/options_deprecated.php:1180
 msgid "Password Reset Notification"
-msgstr ""
+msgstr "Notificação do Resetar Senha"
 
 #: options/options.php:1319 options/options_deprecated.php:1183
 msgid "Delete Account Labels"
-msgstr ""
+msgstr "Etiquetas do Apagar Conta"
 
 #: options/options.php:1320 options/options_deprecated.php:1184
 msgid "Delete Account Submit Buttons"
-msgstr ""
+msgstr "Botões do Apagar Conta"
 
 #: options/options.php:1321 options/options_deprecated.php:1185
 msgid "Delete Account Errors"
-msgstr ""
+msgstr "Erros do Apagar Conta"
 
 #: options/options.php:1322 options/options_deprecated.php:1186
 msgid "Delete Account Redirect"
-msgstr ""
+msgstr "Redirecionar do Apagar Conta"
 
 #: options/options.php:1325 options/options_deprecated.php:1189
 msgid "Password Length"
-msgstr ""
+msgstr "Tamanho da Senha"
 
 #: options/options.php:1326 options/options_deprecated.php:1190
 msgid "Password Characters"
-msgstr ""
+msgstr "Caracteres da Senha"
 
 #: options/options.php:1327 options/options_deprecated.php:1191
 msgid "Admin Bar"
-msgstr ""
+msgstr "Barra do Admin"
 
 #: options/options.php:1349 options/options_deprecated.php:1213
 msgid "Web Apps"
-msgstr ""
+msgstr "Aplicativos Web"
 
 #: options/options_deprecated.php:1124
 msgid "Sign Up Form"
-msgstr ""
+msgstr "Formulário de Inscrição"
 
 #: options/options_deprecated.php:1125
 msgid "Login Form"
-msgstr ""
+msgstr "Formulário de Login"
 
 #: options/options_deprecated.php:1127
 msgid "Change Email Form"
-msgstr ""
+msgstr "Formulário de Mudar Email"
 
 #: options/options_deprecated.php:1128
 msgid "Change Password Form"
-msgstr ""
+msgstr "Formulário de Mudar Senha"
 
 #: options/options_deprecated.php:1129
 msgid "Forgot Password Form"
-msgstr ""
+msgstr "Formulário Esqueci a Senha"
 
 #: options/options_deprecated.php:1130
 msgid "Delete Account Form"
-msgstr ""
+msgstr "Formulário Apagar Conta"
 
 #: options/security.php:93
 msgid "Force Password Reset"
-msgstr ""
+msgstr "Forçar Mudança de Senha"
 
 #: options/security.php:103
 msgid "Force user to reset their password at next login"
-msgstr ""
+msgstr "Forçar usuária/o mudar a senha dela/e no próximo login"
 
 #: options/user-access.php:12
 msgid "User Access"
-msgstr ""
+msgstr "Acesso do Usuário"
 
 #: shortcodes/delete-account.php:32
 msgid "You need to be logged in to delete your account."
-msgstr ""
+msgstr "Você precisa estar logados para apagar sua conta."
 
 #: shortcodes/delete-account.php:64
 msgid "This account cannot be deleted."
-msgstr ""
+msgstr "Esta conta foi apagada."
 
 #: shortcodes/email-change.php:43
 msgid "You need to be logged in to change your email address."
-msgstr ""
+msgstr "Você precisa estar logado para mudar seu endereço."
 
 #: shortcodes/login.php:17 shortcodes/password-reset.php:17
 #: shortcodes/password-reset.php:61 shortcodes/signup.php:17
 msgid "You're already logged in."
-msgstr ""
+msgstr "Você já está logado."
 
 #: shortcodes/password-change.php:49
 msgid "You need to be logged in to change your password."
-msgstr ""
+msgstr "Você precisa estar logado para mudar sua senha."
 
 #: shortcodes/signup.php:47
 msgid "If you are human, leave this blank"
-msgstr ""
+msgstr "Se você é humano, deixe isto em branco"
 
 #: shortcodes/signup.php:187
 msgid "We are unable to create your account. Sorry."
-msgstr ""
+msgstr "Não conseguimos criar a conta. Desculpe."
 
 #~ msgid ""
 #~ "Your account was created by the system failed to log you in. Please try "
