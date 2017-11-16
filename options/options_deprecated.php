@@ -293,7 +293,7 @@
 		<div>
 			<label class="description" for="password_reset_redirect"><?php _e( 'URL to redirect users to for a forced password reset:', 'wpwebapp' ); ?></label><br>
 			<select name="wpwebapp_theme_options[password_reset_redirect]" id="password_reset_redirect">
-				<option value="" <?php selected( '', $options['password_reset_redirect'] ); ?>><?php _e( '', 'wpwebapp' ) ?></option>
+				<option value="" <?php selected( '', $options['password_reset_redirect'] ); ?>><?php echo ''; ?></option>
 				<?php wpwebapp_settings_create_pages_select_fields( $options['password_reset_redirect'] ); ?>
 			</select>
 		</div>
@@ -489,7 +489,7 @@
 		<div>
 			<label class="description" for="password_reset_url"><?php _e( 'URL for password resets', 'wpwebapp' ); ?></label><br>
 			<select name="wpwebapp_theme_options[password_reset_url]" id="password_reset_url">
-				<option value="" <?php selected( '', $options['password_reset_url'] ); ?>><?php _e( '', 'wpwebapp' ) ?></option>
+				<option value="" <?php selected( '', $options['password_reset_url'] ); ?>><?php echo ''; ?></option>
 				<?php wpwebapp_settings_create_pages_select_fields( $options['password_reset_url'] ); ?>
 			</select>
 		</div>
@@ -606,7 +606,7 @@
 		<div>
 			<textarea name="wpwebapp_theme_options[password_reset_notification_email]" class="large-text" id="password_reset_notification_email" cols="50" rows="10"><?php echo stripslashes( esc_textarea( $options['password_reset_notification_email'] ) ); ?></textarea>
 			<label for="password_reset_notification_email">
-				<?php printf( __( 'The email to send to users when they request a password rest. Use %s to dynamically add their username, and %s to dynamically add their custom reset URL (required). Use %s to include the number of hours their reset URL is good for.', 'wpwebapp' ), '<code>[username]</code>', '<code>[reset]</code>', '<code>[expires]</code>'  ); ?>
+				<?php printf( __( 'The email to send to users when they request a password reset. Use %s to dynamically add their username, and %s to dynamically add their custom reset URL (required). Use %s to include the number of hours their reset URL is good for.', 'wpwebapp' ), '<code>[username]</code>', '<code>[reset]</code>', '<code>[expires]</code>'  ); ?>
 			</label>
 		</div>
 		<?php
@@ -740,7 +740,7 @@
 			'signup_username_exists_error' => __( 'Your chosen username is already in use. Sorry.', 'wpwebapp' ),
 			'signup_email_invalid_error' => __( 'Please use a valid email address.', 'wpwebapp' ),
 			'signup_email_exists_error' => __( 'Your chosen email is already in use. Sorry.', 'wpwebapp' ),
-			'signup_login_failed_error' => __( 'Your account was created by the system failed to log you in. Please try logging in now.', 'wpwebapp' ),
+			'signup_login_failed_error' => __( 'Your account was created but the system failed to log you in. Please try logging in now.', 'wpwebapp' ),
 			'signup_receive_notifications' => 'off',
 			'signup_notification_to_admin' => 'New user registration for ' . get_bloginfo('name') . '.' . "\r\n\r\n" . 'Username: [username]' . "\r\n" . 'Email: [email]' . "\r\n",
 			'signup_send_notifications' => 'off',

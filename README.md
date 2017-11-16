@@ -134,3 +134,9 @@ To contribute to this project, please consult the [Contribution Guidelines](CONT
 ## License
 
 The code is available under the [MIT License](LICENSE.md).
+
+
+
+## Changelog
+
+Check [CHANGELOG.md file](CHANGELOG.md).
