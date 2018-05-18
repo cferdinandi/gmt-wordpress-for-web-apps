@@ -1,4 +1,6 @@
-# WordPress for Web Apps
+# [DEPRECATED] WordPress for Web Apps
+
+*__Deprecation Notice:__ This plugin is no longer be maintained or updated.*
 
 A plugin that provides the essential components you need to power your web app with WordPress.
 
